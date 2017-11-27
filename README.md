@@ -51,5 +51,5 @@ To install the  package, you must install from GitHub using the `devtools` packa
 
 ```r
 library(devtools)
-install_github("mikejohnson51/rainfall_runoff")
+install_github("mikejohnson51/HydroData")
 ```
