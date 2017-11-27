@@ -1,7 +1,7 @@
 `HydroData`
 ================
 
-HydroData is a package designed to ease the burden of data collection and processing for hydrologic and earth systems analysis. Currently, 7 datasets are avaialble with the intention of adding at least 7 more. The central componenet of every function in this package is a user defined area of interest (AOI) which can be defined in a number of ways. With defined AOI parameters each function internally follows a three step work flow:
+HydroData is a package designed to ease the burden of data collection and processing for hydrologic and earth systems analysis. Currently, 8 datasets are avaialble with the intention of adding at least 8 more. The central componenet of every function in this package is a user defined area of interest (AOI) which can be defined in a number of ways. With defined AOI parameters each function internally follows a three step work flow:
 
 1. Create AOI shapefile
 2. Define API call (if needed) and download data  
@@ -32,7 +32,7 @@ This AOI can be defined in any one of 4 ways:
  5) USGS Stream flow Stations
  6) NID Dams
  7) USGS Reservoirs
- 8) Roads (Tiger, OSM)
+ 8) Roads (Tiger (Historic - current), OSM)
  
 ## Functions in Development
  1) NOAA GCHN
@@ -42,6 +42,7 @@ This AOI can be defined in any one of 4 ways:
  5) NASS Agricultural Statiscs
  6) SSUGRO soils
  7) USGS County Water Use states
+ 8) Census tract population
  
 ![USCB](https://www.ucsb.edu/graphic-identity/downloads/wave/ucsbwave-black.png)
 
