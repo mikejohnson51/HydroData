@@ -13,16 +13,16 @@ Within each step the approapriate projection trasforms, and grid alignments are 
 This AOI can be defined in any one of 4 ways:
 
  1) A state **ex: 'CA'**
- 2) A state, county description **ex: c(state = 'TX', county = Harris")**
- 2) A user supplied shapefile (.shp) (**ex: rgdal::readOGR(la_metro.shp)**)
+ 2) A state, county description **ex: c(state = 'TX', county = 'Harris')**
+ 2) A user supplied shapefile (.shp) (**ex: rgdal::readOGR('la_metro.shp')**)
  3) A area defined by a centroid and a bounding box height and width:
       The centroid can be defined by:
         
        1. A coordinate pair **ex: c(34.41, 119.85, 10, 10)**
             
-            If interested in local area use **get_ip_loc()** to import local lat, lon
+            If get local area use **get_ip_loc()** to import your (lat, lon)
         
-       2. A place name **ex: c('UCSB', 10, 10)**
+       2. A place name **ex: c('KMART near UCSB', 10, 10)**
         
 ## Current Supported functions
  1) NHD flowlines
