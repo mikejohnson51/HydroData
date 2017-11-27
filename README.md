@@ -1,7 +1,7 @@
 `HydroData`
 ================
 
-HydroData is a package designed to ease the burden of data collection and processing for hydrologic and earth systems analysis. Currently, 8 datasets are avaialble with the intention of adding at least 8 more. The central componenet of every function in this package is a user defined area of interest (AOI) which can be defined in a number of ways. With defined AOI parameters each function internally follows a three step work flow:
+**HydroData** is a package designed to ease the burden of data collection and processing for hydrologic and earth systems analysis. Currently, 8 datasets are avaialble with the intention of adding at least 8 more. The central componenet of every function in this package is a user defined area of interest (AOI) which can be defined in a number of ways. With defined AOI parameters each function internally follows a three step work flow:
 
 1. Create AOI shapefile
 2. Define API call (if needed) and download data  
@@ -12,17 +12,17 @@ Within each step the approapriate projection trasforms, and grid alignments are 
 ## AOI Definiton
 This AOI can be defined in any one of 4 ways:
 
- 1) A state *ex: "CA"* 
- 2) A state, county description "TX, Harris"*
- 2) A user supplied shapefile (.shp) (*ex: la_metro.shp*)
+ 1) A state **ex: 'CA'**
+ 2) A state, county description **ex: c(state = 'TX', county = Harris")**
+ 2) A user supplied shapefile (.shp) (**ex: rgdal::readOGR(la_metro.shp)**)
  3) A area defined by a centroid and a bounding box height and width:
       The centroid can be defined by:
         
        1. A coordinate pair **ex: c(34.41, 119.85, 10, 10)**
             
-            If interested in local area use get_ip_loc() to import local lat, lon
+            If interested in local area use **get_ip_loc()** to import local lat, lon
         
-       2. A place name *ex: c('UCSB', 10, 10)*
+       2. A place name **ex: c('UCSB', 10, 10)**
         
 ## Current Supported functions
  1) NHD flowlines
