@@ -1,11 +1,16 @@
 Package: HydroData
 Type: Package
-Title: What the Package Does (Title Case)
+Title: HydroData
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author@R: person("Mike", "Johnson", "mike.johnson@geog.ucsb.edu", role = c("aut", "cre")
+Description: This is a package to help researchers and practitioners to find, pre-process,  and utilize land surface, infrastructural and, station based datasets relevant to geography, hydrology, and earth system science. 
+Imports:
+    rgdal,
+    raster,
+    tidyverse,
+    XML    
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.0.1.9000
+

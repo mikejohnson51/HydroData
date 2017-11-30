@@ -30,7 +30,7 @@
 #' Mike Johnson
 
 
-define_AOI = function(state = NULL, county = NULL, clip_unit = NULL, get.basmap = TRUE){
+define_AOI = function(state = NULL, county = NULL, clip_unit = NULL, get.basemap = TRUE){
 
 if(!is.null(state) && !is.null(clip_unit)){
   stop("Only 'state' or 'clip_unit' can be used. Set the other to NULL")}
@@ -56,7 +56,7 @@ if(!is.null(state) && !(state %in% state.abb || state %in% state.name)){
 if(is.null(clip_unit) && !is.null(state)){
   shp = get_region_sp(state = state, county = county)
 
-  if(get.basmap == TRUE){
+  if(get.basemap == TRUE){
     bmap = suppressWarnings(dismo::gmap(shp, lonlat = TRUE))
     return(list(shp = shp, bmap = bmap))
   }else{
@@ -68,7 +68,7 @@ if(class(clip_unit) == 'SpatialPolygons'){
   shp = clip_unit
   bmap = suppressWarnings(dismo::gmap(shp, lonlat = TRUE))
 
-  if(get.basmap == TRUE){
+  if(get.basemap == TRUE){
     bmap = suppressWarnings(dismo::gmap(shp, lonlat = TRUE))
     return(list(shp = shp, bmap = bmap))
   }else{
@@ -132,7 +132,7 @@ if(length(clip_unit) == 4){
 
 shp = get_clip_unit(location = location, width = w, height = h)
 
-if(get.basmap == TRUE){
+if(get.basemap == TRUE){
   bmap = suppressWarnings(dismo::gmap(shp, lonlat = TRUE))
   return(list(shp = shp, bmap = bmap))
 }else{

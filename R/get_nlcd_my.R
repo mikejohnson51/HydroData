@@ -6,15 +6,15 @@ message("AOI defined, and shapefile determined.")
 
   USAbb = c(48,66,24,123)
   bb = matrix(AOI@bbox, ncol = 2)
-  
+
   lon.bb = c(abs(ceiling(bb[1,2])), abs(floor(bb[1,1])))
-  
+
   lon = seq(USAbb[2], USAbb[4], 3)
     i = which.max(1/(lon.bb[1] - lon))
     j = sum((lon.bb[2] - lon) > 0) #   which.max(1/(lon.bb[2] - lon))
     k = seq(i,j,1)
   lon.f = sprintf('%03d', lon[k])
-    
+
   lat.bb = c(floor(bb[2,1]), ceiling(bb[2,2]))
 
   lat = seq(USAbb[3], USAbb[1], 3)
@@ -22,7 +22,7 @@ message("AOI defined, and shapefile determined.")
     j = sum((lat.bb[2] - lat) > 0)
     k = seq(i,j,1)
   lat.f = lat[k]
-  
+
 mat = expand.grid(lat.f,lon.f)
 
 urls = vector()
@@ -41,7 +41,7 @@ for(i in 1:dim(mat)[1]){
   }
 }
 
-if(length(urls) > 1){ 
+if(length(urls) > 1){
   verb = 'are'
   noun = 'rasters'
 } else {
@@ -69,7 +69,7 @@ bounds = spTransform(AOI, CRS("+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_
 +towgs84=0,0,0"))
 
 for(i in 1:length(year)){
-  
+
 xxx = grep(year[i], all.files, value=TRUE)
 
 input.rasters <- lapply(xxx, raster)
@@ -83,16 +83,16 @@ for(j in 1:length(input.rasters)){
 if(length(input.rasters) > 1){
   message("Mosaicing raster for ", year[i])
   utils::flush.console()
-  
+
   input.rasters$fun <- max
   input.rasters$na.rm <- TRUE
-  
+
   mos = do.call(mosaic, input.rasters)
-  
+
   nlcd[[paste0("lc_", year[i])]] = mos
-  
+
   gc()
-  
+
 } else {
   nlcd[[paste0("lc_", year[i])]] = mos
 }
@@ -109,10 +109,9 @@ if(keep.boundary == TRUE){
 }else{
   return(nlcd)
 }
-  
+
 }
 
-hope = get_nlcd_multi(state = "TX", county = "Harris", year = c(2001,2006), keep.boundary = TRUE)
 
 
 

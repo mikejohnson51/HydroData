@@ -1,4 +1,4 @@
-#' Color Palletes USefull for NLCD and NED plotting
+#' Color Palletes Usefull for NLCD and NED plotting
 #'
 #' Color pallets for visualizing land use and elevation raster data
 #'

@@ -1,10 +1,10 @@
 get_reservoir = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary = FALSE ){
-  
+
 #Define AOI
   AOI = define_AOI(state = state, county = county, clip_unit = clip_unit, get.basmap = FALSE)
   message("AOI defined!")
-  
-# Get Data  
+
+# Get Data
   URL = 'https://water.usgs.gov/GIS/dsdl/reservoir_shp.zip'
   temp  = tempfile()
   temp1 = tempfile()
@@ -25,14 +25,5 @@ get_reservoir = function(state = NULL, county = NULL, clip_unit = NULL, keep.bou
   }else{
       return(sp)
   }
-} 
+}
 
-#Example
-res = get_reservoir(state = "TX", county = "Harris", keep.boundary = TRUE)
-
-res$boundary
-
-plot(harric.ned, col = col_elev)
-plot(res$boundary, add = TRUE)
-plot(res$reservoirs, add = TRUE, col = 'red', pch = 16)
-plot(harric.ned, col = col_elev)
