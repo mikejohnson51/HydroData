@@ -27,12 +27,12 @@ This AOI can be defined in any one of 4 ways:
 ## Current Supported functions
  1) NHD flowlines
  2) WBD boundaries (at all levels)
- 3) NED elevation (1 arc and 1/3 arc) 
- 4) NLCD 2001, 2006, 2011
+ 3) NED elevation (1 arc second and 1/3 arc second resolution) 
+ 4) NLCD (years 2001, 2006, 2011)
  5) USGS Stream flow Stations
  6) NID Dams
  7) USGS Reservoirs
- 8) Roads (Tiger (Historic - current), OSM)
+ 8) Roads (Tiger, OSM)
  
 ## Functions in Development
  1) NOAA GCHN
