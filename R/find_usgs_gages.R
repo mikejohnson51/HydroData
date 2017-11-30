@@ -1,6 +1,6 @@
-#' Locate all USGS NWIS Stream Gages within Area of Interest
+#' Locate all USGS NWIS Stream Gages within an Area of Interest
 #'
-#' Function to locate all USGS stations within Area of Interest
+#' Function to locate all USGS stations within and Area of Interest
 #'
 #' @param state a character string. Can be full name or state abbriviation
 #' @param county a character string. Can be full name or state abbriviation
@@ -12,13 +12,13 @@
 #' Find all USGS stream gages  in Harris County, Texas
 #'
 #' harris.usgs = find_USGS_stations(state = 'TX', county = 'harris', keep.boundary = TRUE, keep.basemap = TRUE)
-#' plot(test$basmap)
-#' plot(test$boundary, add = TRUE, lwd = 5)
-#' plot(test$gages, add = TRUE, lwd = 2, col = "darkgreen")
+#' plot(harris.usgs$basemap)
+#' plot(harris.usgs$boundary, add = TRUE, lwd = 5)
+#' plot(harris.usgs$gages, add = TRUE, lwd = 2, col = "darkgreen")
 #'
-#' Get Station ID's
+#' Get gage IDs
 #'
-#' IDs = test$stations$feature_id
+#' IDs = test$gages$feature_id
 #'
 #' @author
 #' Mike Johnson
@@ -26,14 +26,12 @@
 find_USGS_gages = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary = FALSE, keep.basemap = FALSE){
 
   AOI = define_AOI(state = state, county = county, clip_unit = clip_unit, get.basemap = keep.basemap)
-  message("AOI defined and shapefile determined, loading CONUS USGS data...")
+  message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Shapefile determined. Now loading loading CONUS USGS data...")
 
   #Load usgsStation Data
     load('data/usgsStations.Rdata')
   #Convert to Spatial Points Dataframe
-    coords = cbind(usgsStations$lon_reachCent, usgsStations$lat_reachCent)
-    sp = SpatialPoints(coords)
-    sp = SpatialPointsDataFrame(sp, usgsStations)
+    sp = SpatialPointsDataFrame(cbind(usgsStations$lon_reachCent, usgsStations$lat_reachCent), usgsStations)
   # Remove file
     message("All USGS Data loaded: ", formatC(dim(sp)[1], format="d", big.mark=","), " gages in total")
 
@@ -49,14 +47,14 @@ find_USGS_gages = function(state = NULL, county = NULL, clip_unit = NULL, keep.b
     shp = sp[AOI,]
   }
 
-    message(length(shp), " USGS stations found")
+    message(formatC(as.numeric(length(shp)), format="d", big.mark=","), " USGS gages found.")
 
       if(keep.boundary && keep.basemap){
-        message("List of gages,", nameAOI(state = state, county = county, clip_unit = clip_unit), " shapefile, and basemap returned")
+        message("Shapefiles of gages,", nameAOI(state = state, county = county, clip_unit = clip_unit), ", and raster basemap returned")
         return(list(gages = shp, boundary = AOI$shp, basmap = AOI$bmap))
 
       }else if(!keep.boundary && keep.basemap ){
-        message("List of gages and basemap returned")
+        message("Shapefile of gages and basemap returned")
         return(list(gages = shp, basmap = AOI$bmap))
 
       }else if(keep.boundary && !keep.basemap ){
@@ -69,4 +67,3 @@ find_USGS_gages = function(state = NULL, county = NULL, clip_unit = NULL, keep.b
       }
 }
 
-test = find_USGS_gages(state = "TX", county = 'harris')

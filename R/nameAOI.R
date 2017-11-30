@@ -1,9 +1,9 @@
-#' A function for returning name of AOI
+#' A function for returning a text string name of AOI
 #'
 #' @examples
 #' nameAOI(state = "CA")
 #'
-#' @returns
+#' @return
 #'
 #' A character string
 #'

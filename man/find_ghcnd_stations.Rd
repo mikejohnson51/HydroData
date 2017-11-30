@@ -5,7 +5,7 @@
 \title{Locate all NOAA GCHN Stations within Area of Interest}
 \usage{
 find_ghcnd_stations(state = NULL, county = NULL, clip_unit = NULL,
-  keep.boundary = TRUE)
+  keep.boundary = FALSE, keep.basemap = FALSE)
 }
 \arguments{
 \item{state}{a character string. Can be full name or state abbriviation}
@@ -15,6 +15,8 @@ find_ghcnd_stations(state = NULL, county = NULL, clip_unit = NULL,
 \item{clip_unit}{can be provided as a shapefile or as a vector defineing centroid and bounding box diminsion}
 
 \item{keep.boundary}{logical. If TRUE, the AOI shapefile will be returned with station data in a list}
+
+\item{keep.basemap}{logical. If TRUE, the google basemap will be returned with gage station in a list}
 }
 \description{
 Function to locate all GCHN stations within Area of Interest
@@ -22,9 +24,14 @@ Function to locate all GCHN stations within Area of Interest
 \examples{
 Find all GCHN stations in Harris County, Texas
 
-harris.clim = find_ghcnd_stations(state = "TX", county = "Harris")
-plot(harris.clim$boundary)
+harris.clim = find_ghcnd_stations(state = 'TX', county = 'Harris')
+plot(harris.clim$basemap)
+plot(harris.clim$boundary, add = TRUE)
 plot(harris.clim$gchn, add = TRUE, pch = 16, col = 'blue')
+
+Get Station IDs
+
+IDs = test$stations$ID
 
 }
 \author{
