@@ -1,7 +1,9 @@
 `HydroData`
 ================
 
-**HydroData** is a package designed to ease the burden of data collection and processing for hydrologic and earth systems analysis. Currently, 8 datasets are avaialble with the intention of adding at least 8 more. The central componenet of every function in this package is a user defined area of interest (AOI) which can be defined in a number of ways. With defined AOI parameters each function internally follows a three step work flow:
+**HydroData** is a package designed to ease the burden of data collection and processing for hydrologic and earth systems analysis. It also focuses of helping researchers more quickly map and communicate the data they use.
+
+Currently, 8 datasets are avaialble with the intention of adding at least 8 more. The central componenet of every function in this package is a user defined area of interest (AOI) which can be defined in a number of ways. With defined AOI parameters each function internally follows a three step work flow:
 
 1. Create AOI shapefile
 2. Define API call (if needed) and download data  
@@ -27,12 +29,12 @@ This AOI can be defined in any one of 4 ways:
 ## Current Supported functions
  1) NHD flowlines
  2) WBD boundaries (at all levels)
- 3) NED elevation (1 arc and 1/3 arc) 
- 4) NLCD 2001, 2006, 2011
+ 3) NED elevation (1 arc second and 1/3 arc second resolution) 
+ 4) NLCD (years 2001, 2006, 2011)
  5) USGS Stream flow Stations
  6) NID Dams
  7) USGS Reservoirs
- 8) Roads (Tiger (Historic - current), OSM)
+ 8) Roads (Tiger, OSM)
  
 ## Functions in Development
  1) NOAA GCHN
