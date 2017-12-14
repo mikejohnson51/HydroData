@@ -1,30 +1,28 @@
 #' Find all NHD flowlines within an Area of Interest
 #'
-#' Function to locate all NHD flowlines within an Area of Interest
+#' Download NHD flowlines within an Area of Interest
 #'
 #' @param state a character string. Can be full name or state abbriviation
 #' @param county a character string. Can be full name or state abbriviation
 #' @param clip_unit can be provided as a shapefile or as a vector defineing centroid and bounding box diminsion
 #' @param keep.boundary logical. If TRUE, the AOI shapefile will be returned with gage data in a list
 #' @param keep.basemap logical. If TRUE, the google basemap will be returned with gage data in a list
+#' @param comids logical. If TRUE, returns a list of COMIDS for all stream reaches on AOI
 #'
 #' @examples
 #' Find all NHD flowlines in El Paso County, Colorado
 #'
-#'el.paso = find_flowlines(state = 'CO', county = 'El Paso', keep.boundary = TRUE, keep.basemap = TRUE)
+#'el.paso = find_flowlines(state = 'CO', county = 'El Paso', keep.boundary = TRUE, keep.basemap = TRUE, comids = TRUE)
 #'
 #'plot(el.paso$basemap)
 #'plot(el.paso$boundary, add = TRUE, lwd = 5)
 #'plot(el.paso$flowlines, add = TRUE, col = 'blue', lwd = el.paso$flowlines$streamorde)
 #'
-#' Get NHD COMIDs
-#'
-#' comids = el.paso$flowlines$comid
-#'
+#' @export
 #' @author
 #' Mike Johnson
 
-find_flowlines = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary = FALSE, keep.basemap = FALSE){
+find_flowlines = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary = FALSE, keep.basemap = FALSE, comids = FALSE){
 
   AOI = define_AOI(state = state, county = county, clip_unit = clip_unit, get.basemap = keep.basemap)
   message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Shapefile determined. Now loading NHD flowline data...")
@@ -58,24 +56,29 @@ find_flowlines = function(state = NULL, county = NULL, clip_unit = NULL, keep.bo
 
     message(formatC(as.numeric(length(shp)), format="d", big.mark=","), " flowlines found.")
 
-    if(keep.boundary && keep.basemap){
-      message("Shapefiles of flowlines, ", nameAOI(state = state, county = county, clip_unit = clip_unit), ", and raster basemap returned")
-      return(list(flowlines = shp, boundary = AOI$shp, basemap = AOI$bmap))
+  if(sum(keep.basemap,keep.boundary,comids) > 0){
+   items =  list()
+   items[['flowlines']] = shp
+   if(keep.boundary){items[['boundary']] = AOI$shp}
+   if(keep.basemap){items[['basemap']] = AOI$bmap}
+   if(comids){items[['comids']] = shp$comid}
 
-    }else if(!keep.boundary && keep.basemap ){
-      message("Shapefile of flowlines and basemap returned")
-      return(list(flowlines = shp, basemap = AOI$bmap))
+    mess = vector(mode = 'character')
+    mess = append(mess, "Returned list includes: flowline shapefile")
 
-    }else if(keep.boundary && !keep.basemap ){
-      message("Flowlines, and ", nameAOI(state = state, county = county, clip_unit = clip_unit), " shapefile returned")
-      return(list(flowlines = shp, boundary = AOI))
+    if(keep.boundary){mess = append(mess, "boundary shapefile")}
+    if(keep.basemap){mess = append(mess, "basemap raster")}
+    if(comids){mess = append(mess, "list of comids")}
 
-    }else{
-      message("Flowlines shapefile returned")
+      end.item = length(mess)
+      last.item = mess[end.item]
+      last.item = paste("and", last.item)
+      mess[end.item] = last.item
+
+    message(paste(mess, collapse = ", "))
+    return(items)} else{
       return(shp)
     }
 }
-
-?find_flowlines
 
 

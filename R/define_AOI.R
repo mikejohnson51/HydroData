@@ -7,6 +7,8 @@
 #' @param clip_unit can be provided as a shapefile or as a vector defineing centroid and bounding box diminsion
 #' @param get_basemap logical. If TRUE AOI shapefile will be returned as a list also containing a basemap of AOI
 #'
+#' @export
+#
 #' @examples
 #' #By state
 #' define_AOI(state = 'CA')
@@ -25,12 +27,12 @@
 #'
 #' #By HUC8 unit covering users location
 #' define_AOI(clip_unit = get_WBD(get_ip_loc(), level = 8))
+#' @export
 #'
 #' @author
 #' Mike Johnson
 
-
-define_AOI = function(state = NULL, county = NULL, clip_unit = NULL, get.basemap = TRUE){
+define_AOI = function(state = NULL, county = NULL, clip_unit = NULL, get.basemap = FALSE){
 
 if(!is.null(state) && !is.null(clip_unit)){
   stop("Only 'state' or 'clip_unit' can be used. Set the other to NULL")}
@@ -64,7 +66,7 @@ if(is.null(clip_unit) && !is.null(state)){
   }
 }
 
-if(class(clip_unit) == 'SpatialPolygons'){
+if(class(clip_unit) == 'SpatialPolygons' | class(clip_unit) == 'SpatialPolygonsDataFrame' ){
   shp = clip_unit
   bmap = suppressWarnings(dismo::gmap(shp, lonlat = TRUE))
 
@@ -93,7 +95,7 @@ if(length(clip_unit) == 3){
     clip_unit[[2]] = p[2]
     clip_unit[[1]] = p[1]
 
-  } else if(!is.character(clip_unit[[1]]) || !is.numeric(clip_unit[[2]]) || !is.numeric(clip_unit[[3]])){
+  } else if(!any(is.character(clip_unit[[1]]), is.numeric(clip_unit[[2]]),!is.numeric(clip_unit[[3]]))){
     stop("A clip_unit with length 3 must be defined by:
          (1) A name (i.e 'UCSB', 'The Walmart near the National Water Center') (character)
          (2) A bound box height (in miles) (numeric)

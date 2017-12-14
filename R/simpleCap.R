@@ -3,6 +3,7 @@
 #' @examples
 #' simpleCap("santa barbara")
 #'
+#' @export
 #' @author
 #' Mike Johnson
 

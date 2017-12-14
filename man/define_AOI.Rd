@@ -5,7 +5,7 @@
 \title{Define Area of interest (AOI)}
 \usage{
 define_AOI(state = NULL, county = NULL, clip_unit = NULL,
-  get.basemap = TRUE)
+  get.basemap = FALSE)
 }
 \arguments{
 \item{state}{a character string. Can be full name or state abbriviation}
@@ -37,7 +37,6 @@ define_AOI(clip_unit = c('KMART near UCSB', 10, 10))
 
 #By HUC8 unit covering users location
 define_AOI(clip_unit = get_WBD(get_ip_loc(), level = 8))
-
 }
 \author{
 Mike Johnson

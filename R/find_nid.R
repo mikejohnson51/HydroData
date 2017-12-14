@@ -16,6 +16,7 @@
 #' plot(tx.dams$boundary, add = TRUE)
 #' plot(tx.dams$dams, add = TRUE)
 #'
+#' @export
 #' @author
 #' Mike Johnson
 
@@ -66,4 +67,3 @@ find_nid = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary
   }
 }
 
-?find_nid

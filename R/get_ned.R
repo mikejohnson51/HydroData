@@ -9,16 +9,10 @@
 #' @param res resolution of NED data. 1 equals 1 arc second, 13 equals 1/3 arc second.
 #'
 #' @examples
-#' Get 1 arc second elevation for San Fransisco County, CA
+#' Get 1 arc second elevation for El Paso County Colorado Springs
 #'
-#' harris.clim = find_ghcnd_stations(state = 'TX', county = 'Harris')
-#' plot(harris.clim$basemap)
-#' plot(harris.clim$boundary, add = TRUE)
-#' plot(harris.clim$gchn, add = TRUE, pch = 16, col = 'blue')
-#'
-#' Get Station IDs
-#'
-#' IDs = test$stations$ID
+#' el.paso.elev = get_ned(state = "CO", county = "El Paso", res = 1, keep.boundary = TRUE)
+#' plot(el.paso.elev, col = col_elev)
 #'
 #' @author
 #' Mike Johnson
@@ -107,6 +101,3 @@ get_ned = function(state = NULL, county = NULL, clip_unit = NULL, res = 1, keep.
   }
 }
 
-sf.elev = get_ned(state = 'CA', county = 'san francisco',  res = 1, keep.boundary = TRUE)
-
-plot(sf.elev)

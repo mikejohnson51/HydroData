@@ -7,6 +7,8 @@
 #'
 #' A character string
 #'
+#' @export
+#'
 #' @author
 #' Mike Johnson
 
