@@ -38,14 +38,16 @@ This AOI can be defined in any one of 4 ways:
  9) NOAA GCHN
  10) USDA Cropscape
  11) USGS County Water Use stats
+ 12) National Water Model Streamflow
+ 13) CyberGIS HAND products
  
 ## Functions in Development
  
- 2) LANDSAT MODIS products
- 3) SNOTEL
- 5) NASS Agricultural Statiscs
- 6) SSUGRO soils
- 8) Census tract population
+ 1) LANDSAT MODIS products
+ 2) SNOTEL
+ 3) NASS Agricultural Statiscs
+ 4) SSUGRO soils
+ 5) Census tract population
  
 ![USCB](https://www.ucsb.edu/graphic-identity/downloads/wave/ucsbwave-black.png)
 
