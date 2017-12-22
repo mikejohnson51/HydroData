@@ -35,15 +35,16 @@ This AOI can be defined in any one of 4 ways:
  6) NID Dams
  7) USGS Reservoirs
  8) Roads (Tiger, OSM)
+ 9) NOAA GCHN
+ 10) USDA Cropscape
+ 11) USGS County Water Use stats
  
 ## Functions in Development
- 1) NOAA GCHN
+ 
  2) LANDSAT MODIS products
  3) SNOTEL
- 4) USDA Cropscape
  5) NASS Agricultural Statiscs
  6) SSUGRO soils
- 7) USGS County Water Use states
  8) Census tract population
  
 ![USCB](https://www.ucsb.edu/graphic-identity/downloads/wave/ucsbwave-black.png)
