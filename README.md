@@ -43,12 +43,11 @@ This AOI can be defined in any one of 4 ways:
  
 ## Functions in Development
  
- 1) LANDSAT MODIS products
- 2) SNOTEL
- 3) NASS Agricultural Statiscs
- 4) SSUGRO soils
- 5) Census tract population
- 
+ 1) SNOTEL
+ 2) SSUGRO soil data
+ 3) Daymet data
+ 4) PRISM climatology data
+
 ![USCB](https://www.ucsb.edu/graphic-identity/downloads/wave/ucsbwave-black.png)
 
 ## Installation
