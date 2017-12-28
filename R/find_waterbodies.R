@@ -4,9 +4,9 @@ find_waterbodies = function(state = NULL, county = NULL, clip_unit = NULL, keep.
   AOI = define_AOI(state = state, county = county, clip_unit = clip_unit, get.basemap = keep.basemap)
   if(is.null(clip_unit)){AOI = AOI} else {AOI = AOI$map}
 
-  meta = data.frame(STATE = state, COUNTY = county, CLIP = clip_unit, type = 'water.bodies', ACCESS = Sys.time())
+  meta = data.frame(STATE = simpleCap(state), COUNTY = simpleCap(county),  TYPE = 'water.bodies', ACCESS = Sys.time())
 
-  message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Shapefile determined. Now loading North American water bodies database...")
+  message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ".\nShapefile determined.\nLoading North American Water Bodies")
 
   # Get Data
 
@@ -40,8 +40,7 @@ find_waterbodies = function(state = NULL, county = NULL, clip_unit = NULL, keep.
 
   }else{
     message("Water bodies shapefile returned")
-    return(shp, meta = meta)
+    return(list(waterbodies = shp, meta = meta))
   }
 }
 
-find_waterbodies(state = 'TX', county = "harris")

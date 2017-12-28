@@ -22,19 +22,19 @@
 
 get_region_sp = function(state = NULL, county = NULL){
 
-if(is.null(state)){stop("State must be provided!")}
-state = toupper(state)
+  if(is.null(state)){stop("State must be provided!")}
+  state = toupper(state)
 
-for(i in 1:length(state)){ if(nchar(state[i]) > 2){state[i] <- simpleCap(tolower(state[i]))}else{ state[i] <-setNames(state.name, state.abb)[state[i]] }}
+  for(i in 1:length(state)){ if(nchar(state[i]) > 2){state[i] <- simpleCap(tolower(state[i]))}else{ state[i] <-setNames(state.name, state.abb)[state[i]] }}
 
-map = readRDS('data/countymaps.rds')
-map = map[map$STATE %in% state,]
+  map = readRDS('data/countymaps.rds')
+  map = map[map$STATE %in% state,]
 
-if(is.null(county)){return(map)
-  }else{
-    county = simpleCap(tolower(county))
-    map = map[map$NAME %in% county, ]
-    return(map)
+  if(is.null(county)){return(map)
+    }else{
+      county = simpleCap(tolower(county))
+      map = map[map$NAME %in% county, ]
+      return(map)
 }
 }
 
