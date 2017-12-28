@@ -14,7 +14,7 @@
 #' @param interval.hr logical. Hourly step between folder of NETCDF files
 #'
 #' @examples
-#' Get NWM data for November 15 - 30, 2017 for the HUC8 surrondining UCSB's campus
+#' Get NWM data for November 15 - 30, 2017 for the HUC8 surrondining UCSBs campus
 #'
 #' ucsb.flow = readNWM(comids = get_WBD(location = 'UCSB', level = 10), startDate = "2017-11-15", endDate = "2017-11-20", config = "analysis_assim", time = 0, forecast = 0, keep.flowlines = T, keep.basemap = T)
 #'
@@ -28,8 +28,6 @@
 
 readNWM = function(comids, startDate, endDate = NULL, config = "analysis_assim", time = NULL,
                    forecast = NULL, keep.flowlines = FALSE, keep.basemap = FALSE, path = NULL, interval.hr = NULL){
-
-############################## IDENTIFY COMIDS
 
   if(class(comids) == 'numeric'){
     comids = comids

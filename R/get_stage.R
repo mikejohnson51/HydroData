@@ -8,7 +8,7 @@
 #' @param rating_curves dataframe of synthetic rating curves \code{\link{get.rating}}
 #'
 #' @example
-#' stage = get_stage(al.flows, al.ratingCurves)
+#' al.stage = get_stage(al.flows, al.rc)
 #'
 #' @export
 #' @author

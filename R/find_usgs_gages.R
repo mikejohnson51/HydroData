@@ -26,6 +26,8 @@
 find_USGS_gages = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary = FALSE, keep.basemap = FALSE){
 
   AOI = define_AOI(state = state, county = county, clip_unit = clip_unit, get.basemap = keep.basemap)
+  if(is.null(clip_unit)){AOI = AOI} else {AOI = AOI$map}
+
   message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Shapefile determined. Now loading loading CONUS USGS data...")
 
   #Load usgsStation Data

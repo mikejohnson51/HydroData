@@ -4,8 +4,8 @@ Title: HydroData
 Version: 0.1.0
 Author@R: person("Mike", "Johnson", "mike.johnson@geog.ucsb.edu", role = c("aut", "cre")
 Description: This is a package to help researchers and practitioners to find, pre-process,  and utilize land surface, infrastructural and, station based datasets relevant to geography, hydrology, and earth system science. 
-Depends: R (>= 3.3.1)
-Imports:
+Depends: 
+   R (>= 3.3.1),
    rgdal,
    raster,
    tidyverse,
@@ -13,7 +13,9 @@ Imports:
    xml2,		
    dams,
    RCurl,
-   dismo 
+   dismo,
+   sp,
+   data.table 
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true

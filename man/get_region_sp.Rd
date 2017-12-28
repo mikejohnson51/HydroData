@@ -4,24 +4,24 @@
 \alias{get_region_sp}
 \title{A function for finding County and State shapefiles}
 \usage{
-get_region_sp(state = NULL, county = NULL,
-  proj = "+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0")
+get_region_sp(state = NULL, county = NULL)
 }
 \arguments{
 \item{state}{a character string. Can be full name or state abbriviation}
 
-\item{county}{a character string. Can be full name or state abbriviation}
-
-\item{proj}{a projction string. Default is a EPSG:4326}
+\item{county}{a character string.}
 }
 \value{
-A character string
+SpatialPolygonDataFrame
 }
 \description{
-This function utilizes the Maptools package to generate a shapefile for a county or state given a user query.
+Generates a shapefile for a county or state from a user query complete with FIP code, and identifying names.
 }
 \examples{
+get_region_sp(state = "CA")
+get_region_sp(state = c("CA","Utah","Nevada"))
 get_region_sp(state = "CA", county = "San Luis Obispo")
+get_region_sp(state = "CA", county = c("San Luis Obispo", "Santa Barbara", "Ventura")
 
 }
 \author{

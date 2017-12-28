@@ -1,5 +1,7 @@
 get_clip_unit = function(location = NULL, width = NULL, height = NULL){
 
+map = readRDS('data/countymaps.rds')
+
 if(class(location) == "numeric"){ location = location }
 
 if(class(location) == "character"){
@@ -23,12 +25,11 @@ if(class(location) == "character"){
                     ncol = 2, byrow = TRUE)
 
   P1 = Polygon(coords)
+  shp = SpatialPolygons(list(Polygons(list(P1), ID = "a")), proj4string=(map@proj4string))
 
-  shp = SpatialPolygons(list(Polygons(list(P1), ID = "a")), proj4string=CRS("+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs"))
+  final = list(shp = shp, map = map[shp,])
 
-
-return(shp)
+return(final)
 
 }
-
 

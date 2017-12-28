@@ -20,7 +20,7 @@
 #' @author
 #' Mike Johnson
 
-find_res = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary = FALSE, keep.basemap = FALSE){
+find_reservoir = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary = FALSE, keep.basemap = FALSE){
 
   AOI = define_AOI(state = state, county = county, clip_unit = clip_unit, get.basemap = keep.basemap)
   message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Shapefile determined. Now loading USGS Reservoir database...")

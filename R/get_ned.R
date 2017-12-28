@@ -19,7 +19,7 @@
 
 get_ned = function(state = NULL, county = NULL, clip_unit = NULL, res = 1, keep.boundary = FALSE){
 
-  if(!(res != 1 || res != 13)){stop("Resoultion must be either 1 (1 arc second) or 13 (1/3 arc second).\n  Please use one of those values.")}
+  if(!(res %in% c(1,13))){stop("Resoultion must be either 1 (1 arc second) or 13 (1/3 arc second).\n  Please use one of those values.")}
 
   ######### 1. Define Area of Interst #########
 

@@ -1,3 +1,15 @@
+#' Clip and merge raster data
+#'
+#' Clip raster data to a set boundary and merge
+#'
+#' @param dataset a list of rasters
+#' @param bounds a boundary to clip to
+#'
+#' @export
+#' @author
+#' Mike Johnson
+
+
 clip.merge = function(dataset, bounds){
 
   for(j in 1:length(dataset)){
@@ -10,7 +22,7 @@ clip.merge = function(dataset, bounds){
   }
 
   if(length(dataset) > 1){
-    message("Mosaicing raster for ", HUC6[i])
+    message("Mosaicing raster for ", dataset[i])
     utils::flush.console()
     dataset$fun <- max
     dataset$na.rm <- TRUE
