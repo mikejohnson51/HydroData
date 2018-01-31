@@ -6,7 +6,6 @@
 #' @param county a character string. Can be full name or state abbriviation
 #' @param clip_unit can be provided as a shapefile or as a vector defineing centroid and bounding box diminsion
 #'
-#' @export
 #
 #' @examples
 #' #By state
@@ -173,6 +172,7 @@ shp <- getClipUnit(location = location, width = w, height = h, origin = o)
 return(shp)
 
 }
+
 
 
 

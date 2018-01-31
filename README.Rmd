@@ -4,8 +4,11 @@ output: html_document
 ---
 ```{r}
 library(devtools)
-install_github("mikejohnson51/HydroData")
+devtools::install_github("mikejohnson51/HydroData")
+
+??findUSGS
 ```
+
 
 ##Defining an AOI
 
