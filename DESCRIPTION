@@ -15,7 +15,9 @@ Depends:
    RCurl,
    dismo,
    sp,
-   data.table 
+   data.table,
+   dams,
+   rgeos		 
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
