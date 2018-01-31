@@ -6,6 +6,8 @@ Author@R: person("Mike", "Johnson", "mike.johnson@geog.ucsb.edu", role = c("aut"
 Description: Helps researchers and practitioners find, pre-process, and utilize land surface, infrastructural and, station based datasets relevant to geography, hydrology, and earth system science. 
 Depends: 
    R (>= 3.3.1),
+   sp
+Imports:
    rgdal,
    raster,
    tidyverse,

@@ -2,6 +2,10 @@
 title: "HydroData"
 output: html_document
 ---
+```{r}
+library(devtools)
+install_github("mikejohnson51/HydroData")
+```
 
 ##Defining an AOI
 
@@ -13,7 +17,7 @@ The central componenet of every function in HydroData is a user defined area of 
  CA = getAOI(state = "California")
  TX = getAOI(state = "TX")
  
- par(mfrow = c(1,2))
+ par(mfrow = c(2,1))
  plot(CA); plot(TX)
 ```
 
