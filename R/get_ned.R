@@ -17,21 +17,21 @@
 #' @author
 #' Mike Johnson
 
-get_ned = function(state = NULL, county = NULL, clip_unit = NULL, res = 1, keep.boundary = FALSE){
+getNED = function(state = NULL, county = NULL, clip_unit = NULL, res = 1, keep.boundary = FALSE){
 
   if(!(res %in% c(1,13))){stop("Resoultion must be either 1 (1 arc second) or 13 (1/3 arc second).\n  Please use one of those values.")}
 
   ######### 1. Define Area of Interst #########
 
-  AOI = define_AOI(state = state, county = county, clip_unit = clip_unit, get.basemap = FALSE)
-  bb = matrix(AOI@bbox , ncol = 2)
+  AOI = getAOI(state = state, county = county, clip_unit = clip_unit)
+  bb = AOI@bbox
 
   # Defined by upper left Coordinates
 
   lon = head(sprintf("%03d", abs(seq(floor(bb[1,1]), ceiling(bb[1,2]), by = 1))), -1)
   lat = head(seq(ceiling(bb[2,2]), floor(bb[2,1]), by = -1), -1)
   mat = expand.grid(lat,lon)
-  message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Shapefile determined. Now loading", res, "arc second NED data...")
+  message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Shapefile determined. Now loading ", res, " arc second NED data...")
 
   ########## 2. Download Data ##########
 
@@ -96,7 +96,7 @@ get_ned = function(state = NULL, county = NULL, clip_unit = NULL, res = 1, keep.
     message("Returned object contains elevation raster and boundary shapefile")
     return(list(elev = mos, boundary = bounds))
   }else{
-    message("Returned object contains elevevation raster")
+    message("Returned object contains elevation raster")
     return(mos)
   }
 }

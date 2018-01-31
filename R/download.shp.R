@@ -19,18 +19,19 @@ download.shp = function(URL, type){
   temp <- tempfile(fileext = ".zip")
   td <- tempdir()
 
-  message("Trying URL: ", URL)
+  message("Trying URL ... \n")
 
   download.file(URL, destfile =  temp, quiet = TRUE)
-  unzip(temp, exdir = td, overwrite = T)
+  unzip(temp, exdir = td, overwrite = TRUE)
 
-  sp = rgdal::readOGR(list.files(td, pattern = '.shp$', full.names = TRUE), stringsAsFactors = FALSE, verbose = FALSE)
-  message("All ", type, " loaded: ", formatC(dim(sp)[1], format="d", big.mark=","), " in total.")
+  sp = suppressWarnings(rgdal::readOGR(list.files(td, pattern = '.shp$', full.names = TRUE), stringsAsFactors = FALSE, verbose = FALSE))
+  message("All ", type, " loaded: ", formatC(dim(sp)[1], format="d", big.mark=","), " in total.\n")
 
   unlink(dir(td))
 
   return(sp)
 
 }
+
 
 

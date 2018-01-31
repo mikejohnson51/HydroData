@@ -73,8 +73,8 @@ waterUse = function(state = NULL, county = NULL, clip_unit = NULL, year = 2010){
   message("All data downloaded. Now subsetting...")
   if(all(c(exists("waterUse00"), !exists("waterUse05"), !exists("waterUse10")))){zz = waterUse00}
   if(all(c(!exists("waterUse00"), exists("waterUse05"), !exists("waterUse10")))){zz = waterUse05}
-  if(all(c(!exists("waterUse00"), !exists("waterUse05"), exists("waterUse10")))){zz = waterUse10}
-  if(sum(c(exists("waterUse00"), exists("waterUse05"), exists("waterUse10"))) > 1){
+  if(all(c(!exists("waterUse00"), !exists ("waterUse05"), exists("waterUse10")))){zz = waterUse10}
+  if(sum(c(exists("waterUse00"), exists ("waterUse05"), exists("waterUse10"))) > 1){
     if(!exists("waterUse00")){ zz = merge(waterUse05, waterUse10, all = TRUE)
     }else if(!exists("waterUse05")){ zz = merge(waterUse00, waterUse10, all = TRUE)
     }else if(!exists("waterUse10")){ zz = merge(waterUse00, waterUse05, all = TRUE)

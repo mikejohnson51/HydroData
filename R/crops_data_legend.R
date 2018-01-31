@@ -107,4 +107,5 @@ colors = c("#FFD300", "#FF2626", "#00A8E5", "#FF9E0C", "#267000", "#FFFF00",
            "#FF6666", "#FF6666", "#FF6666", "#FF6666", "#FFD300", "#267000",
            "#A57000", "#267000")
 
- 
+
+crops.legend = data.frame(value, crops)

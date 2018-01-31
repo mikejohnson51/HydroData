@@ -27,10 +27,15 @@ if(!is.null(state)){
   }
 
 if(!is.null(state) && !is.null(county)){
+  county.map = vector(mode= 'character')
+  for(i in 1:length(county)){county.map = append(county.map, simpleCap(tolower(county[i])))}
+  if(length(county.map) > 1) {county.map[length(county.map)] = paste("and", tail(county.map, n = 1))}
+  county.map = paste(county.map, collapse = ', ')
+
     if(nchar(state == 2)){
-        unit = paste0("boundary of ", simpleCap(county) ," County, ", setNames(state.name, state.abb)[state])
+        unit = paste0("boundary of ", county.map ," County, ", setNames(state.name, state.abb)[state])
       }else{
-        unit = paste0("boundary of ", simpleCap(county) ," County, ", state)
+        unit = paste0("boundary of ", county.map ," County, ", state)
     }
 }
   return(unit)
