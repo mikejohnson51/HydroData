@@ -2,61 +2,67 @@
 % Please edit documentation in R/findUSGS.R
 \name{findUSGS}
 \alias{findUSGS}
-\title{Find USGS Stream Gages within an Area of Interest}
+\title{Find USGS Stream Gages within a defined area}
 \usage{
 findUSGS(state = NULL, county = NULL, clip_unit = NULL,
   boundary = FALSE, basemap = FALSE, ids = FALSE, save = FALSE)
 }
 \arguments{
-\item{state}{character.  Full name or two character abbriviation. Not case senstive}
+\item{state}{character. Provide full name(s) or two character abbriviation(s). Not case senstive}
 
-\item{county}{character. Can be full name or state abbriviation. Requires 'state' input.}
+\item{county}{character. Provide county name(s). Requires 'state' input.}
 
 \item{clip_unit}{SpatialObject* or list. For details see \code{?getClipUnit}}
 
-\item{boundary}{logical. If TRUE, the AOI shapefile will be returned in list}
+\item{boundary}{logical. If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list}
 
-\item{basemap}{logical. If TRUE, a google basemap will be returned within list}
+\item{basemap}{logical. If TRUE, a basemap will be joined to returned list}
 
 \item{ids}{logical. Returns a vector of station IDs for 'getting' data in list}
 
-\item{save}{logical. If TRUE, all data is written to a HydroData folder in users working directory}
+\item{save}{logical. If TRUE, all data is saved to a HydroData folder creted in users working directory}
 }
 \value{
 A named list with 'spatial' USGS station data and optional basemap and AOI boundary objects.
 }
 \description{
-Find USGS NWIS stream gages within an Area of Interest. Meta data returned allows for easy data download via
- the USGS \code{daRetrieval} package. Specifically, \code{readNWISdv}.
+Find USGS Stream Gages within a defined area
 }
 \details{
-To better understand how to easily define an AOI for all \code{HydroData} functions please see \code{?getAOI}
+\code{fingUSGS} finds USGS NWIS stream gages within an Area of Interest. Metadata allows for easy data download via
+ the USGS \code{\link{daRetrieval}} package using \code{site_no} or the \code{\link{getNWM}} function using \code{feature_ids}.
+ To better understand how to easily define an AOI for all \code{HydroData} functions please see \code{?getAOI}.
+ All HydroData outputs are projected to \emph{'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}
 
 \code{findUSGS} returns a named list of minimum length 1:
 \enumerate{
-\item 'station': A \code{SpatialPointsDataFrame} of stations and metadata
-\item 'basemap':  \code{Raster} of basemap if basemap is \code{TRUE}
-\item 'boundary':  \code{SpatialPolygon} of defined AOI if boundary is \code{TRUE}
+\item 'nwis':  A \code{SpatialPointsDataFrame} of stations and metadata
+\item 'basemap':  A \code{RasterLayer} basemap if basemap is \code{TRUE}
+\item 'boundary': A \code{SpatialPolygon} of defined AOI if boundary is \code{TRUE}
 }
 }
 \examples{
 \dontrun{
 # Find all stations in Harris County, Texas:
+
  harris.usgs <- findUSGS(state = 'TX', county = 'harris',
                              boundary = TRUE, basemap = TRUE, ids = TRUE,
                              save = TRUE)
 
-# Find all stations within a 10 square miles of the National Water Center:
+# Find all stations within 10 square miles of the National Water Center:
+
  nwc.usgs <- findUSGS(clip_unit = list("National Water Center", 10,  10),
                              boundary = TRUE, basemap = TRUE, ids = TRUE,
                              save = TRUE)
 
 # Visualize Data:
+
  plot(harris.usgs$basemap)
  plot(harris.usgs$boundary, add = TRUE, lwd = 5)
  plot(harris.usgs$usgs, add = TRUE, lwd = 2, col = "darkgreen")
 
 # Get discharge data for all stations
+
  Q <- dataRetrieval::readNWISdv(siteNumbers = harris.usgs$ids[1],
                                     parameterCd = "00060")
  Q <- dataRetrieval::renameNWISColumns(Q)
@@ -71,6 +77,14 @@ To better understand how to easily define an AOI for all \code{HydroData} functi
 }
 
 }
+\seealso{
+\itemize{
+         \item \code{\link{getClipUnit}}
+         \item\link{getAOI}
+         \item\link{dataRetrivial::readNWISdv}
+         }
+}
 \author{
 Mike Johnson
 }
+\concept{HydroData 'find' functions}

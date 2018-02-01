@@ -1,8 +1,13 @@
 
 tigerRoads = function(state = NULL, county = NULL, clip_unit = NULL){
 
-AOI = define_AOI(state = state, county = county, clip_unit = clip_unit)
- fips = sprintf("%05d", AOI$FIPS)
+  if(!is.null(clip_unit)){
+    AOI = getFiatBoundary(clip_unit = clip_unit)
+  } else {
+    AOI = getAOI(state = state, county = county)
+  }
+
+fips = sprintf("%05d", AOI$FIPS)
     URL = paste0("https://www2.census.gov/geo/tiger/TIGER2015/ROADS/tl_2015_",fips, "_roads.zip")
      zip = tempfile()
        dir = tempdir()
@@ -16,3 +21,4 @@ AOI = define_AOI(state = state, county = county, clip_unit = clip_unit)
  return(roads)
 
 }
+

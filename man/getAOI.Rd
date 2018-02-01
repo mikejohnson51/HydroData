@@ -7,34 +7,78 @@
 getAOI(state = NULL, county = NULL, clip_unit = NULL)
 }
 \arguments{
-\item{state}{a character string. Can be full name or state abbriviation}
+\item{state}{character.  Full name or two character abbriviation. Not case senstive}
 
-\item{county}{a character string. Can be full name or state abbriviation}
+\item{county}{character. Can be full name or state abbriviation. Requires 'state' input.}
 
-\item{clip_unit}{can be provided as a shapefile or as a vector defineing centroid and bounding box diminsion}
+\item{clip_unit}{SpatialObject* or list. If a list, a clip unit requires 3 inputs:\enumerate{
+                                    \item A point: \itemize{
+                                    \item 'named location' ex: "UCSB"
+                                     \item 'lat, lon' pair: ex: -36, -120
+                                     }
+                                     \item  Bounding box diminsions \itemize{
+                                      \item  A bounding box height in miles ex: 10
+                                       \item A bounding box width in miles ex: 10
+                                     }
+                                     \item The realtive location of the point to the bounding box \itemize{
+                                        \item 'center', 'lowerleft', 'lowerright', 'upperrigh', 'upperleft'
+                                        \item Default is: 'center'
+                                        }
+                                        }
+
+3 to 5 members can be used to describe a clip unit and \strong{ORDER MATTERS!! (location, height, width, origin)} :\itemize{
+                                    \item 3 members: location name, height, width\itemize{
+                                        \item ex: \emph{list("UCSB", 10, 10) }}
+                                    \item 4 members: lat, long, height, width\itemize{
+                                        \item ex: \emph{list(36, -120, 10, 10) }}
+                                    \item 4 members: location name, height, width, origin\itemize{
+                                        \item ex: \emph{list("UCSB", 10, 10, "lowerright) }}
+                                    \item 5 members: lat, long, height, width, origin\itemize{
+                                        \item ex: \emph{list(36,-120, 10, 10, "upperright) }}
+                                    }}
+}
+\value{
+\code{getAOI} returns a \code{SpatialPolygon}
 }
 \description{
-Internal function used to generate AOI shapefiles in all HydroData functions.
+Get Area of interest (AOI) boundary
+}
+\details{
+\code{getAOI} gets a bounding box or fiat boundary to serve as AOI in all \code{HydroData} functions. All HydroData outputs are projected
+to \emph{'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}.
 }
 \examples{
-#By state
-define_AOI(state = 'CA')
+\dontrun{
+#Get AOI defined by a state
+    getAOI(state = 'CA')
 
-#By state, county combination
-define_AOI(state = 'California', county = 'Santa Barbara')
+#Get AOI defined by state & county pair
+    getAOI(state = 'California', county = 'Santa Barbara')
 
-#By external shapefile
-define_AOI(clip_unit = rgdal::readOGR('la_metro.shp'))
+#Get AOI defined by external shapefile
+    getAOI(clip_unit = rgdal::readOGR('la_metro.shp'))
 
-#By 10 mile2 bounding box using users location as centroid
-define_AOI(clip_unit = c(get_ip_loc(), 10, 10))
+#Get AOI defined by 10 mile2 bounding box using users location as centroid
+    getAOI(clip_unit = c(get_ip_loc(), 10, 10))
 
-#By 10 mile2 bounding box using the 'KMART near UCSB' as centroid
-define_AOI(clip_unit = c('KMART near UCSB', 10, 10))
+#Get AOI defined by 10 mile2 bounding box using the 'KMART near UCSB' as centroid
+    getAOI(clip_unit = c('KMART near UCSB', 10, 10))
 
 #By HUC8 unit covering users location
-define_AOI(clip_unit = get_WBD(get_ip_loc(), level = 8))
+    getAOI(clip_unit = getWBD(get_ip_loc(), level = 8))
+}
+
+}
+\seealso{
+\itemize{
+         \item \code{\link{getClipUnit}}
+         \item \code{\link{getFiatBoundary}}
+         }
+
+Other HydroData 'get' functions: \code{\link{getClipUnit}},
+  \code{\link{getFiatBoundary}}
 }
 \author{
 Mike Johnson
 }
+\concept{HydroData 'get' functions}

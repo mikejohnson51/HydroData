@@ -1,31 +1,68 @@
 #' Get Area of interest (AOI) boundary
 #'
-#' Internal function used to generate AOI shapefiles in all HydroData functions.
+#'@details
+#' \code{getAOI} gets a bounding box or fiat boundary to serve as AOI in all \code{HydroData} functions. All HydroData outputs are projected
+#' to \emph{'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}.
 #'
-#' @param state a character string. Can be full name or state abbriviation
-#' @param county a character string. Can be full name or state abbriviation
-#' @param clip_unit can be provided as a shapefile or as a vector defineing centroid and bounding box diminsion
 #'
-#
+#' @param state     character.  Full name or two character abbriviation. Not case senstive
+#' @param county    character. Can be full name or state abbriviation. Requires 'state' input.
+#' @param clip_unit SpatialObject* or list. If a list, a clip unit requires 3 inputs:\enumerate{
+#'                                     \item A point: \itemize{
+#'                                     \item 'named location' ex: "UCSB"
+#'                                      \item 'lat, lon' pair: ex: -36, -120
+#'                                      }
+#'                                      \item  Bounding box diminsions \itemize{
+#'                                       \item  A bounding box height in miles ex: 10
+#'                                        \item A bounding box width in miles ex: 10
+#'                                      }
+#'                                      \item The realtive location of the point to the bounding box \itemize{
+#'                                         \item 'center', 'lowerleft', 'lowerright', 'upperrigh', 'upperleft'
+#'                                         \item Default is: 'center'
+#'                                         }
+#'                                         }
+#'
+#' 3 to 5 members can be used to describe a clip unit and \strong{ORDER MATTERS!! (location, height, width, origin)} :\itemize{
+#'                                     \item 3 members: location name, height, width\itemize{
+#'                                         \item ex: \emph{list("UCSB", 10, 10) }}
+#'                                     \item 4 members: lat, long, height, width\itemize{
+#'                                         \item ex: \emph{list(36, -120, 10, 10) }}
+#'                                     \item 4 members: location name, height, width, origin\itemize{
+#'                                         \item ex: \emph{list("UCSB", 10, 10, "lowerright) }}
+#'                                     \item 5 members: lat, long, height, width, origin\itemize{
+#'                                         \item ex: \emph{list(36,-120, 10, 10, "upperright) }}
+#'                                     }
+#'
+#' @return \code{getAOI} returns a \code{SpatialPolygon}
+#' @export
+#'
 #' @examples
-#' #By state
-#' define_AOI(state = 'CA')
+#' \dontrun{
+#' #Get AOI defined by a state
+#'     getAOI(state = 'CA')
 #'
-#' #By state, county combination
-#' define_AOI(state = 'California', county = 'Santa Barbara')
+#' #Get AOI defined by state & county pair
+#'     getAOI(state = 'California', county = 'Santa Barbara')
 #'
-#' #By external shapefile
-#' define_AOI(clip_unit = rgdal::readOGR('la_metro.shp'))
+#' #Get AOI defined by external shapefile
+#'     getAOI(clip_unit = rgdal::readOGR('la_metro.shp'))
 #'
-#' #By 10 mile2 bounding box using users location as centroid
-#' define_AOI(clip_unit = c(get_ip_loc(), 10, 10))
+#' #Get AOI defined by 10 mile2 bounding box using users location as centroid
+#'     getAOI(clip_unit = c(get_ip_loc(), 10, 10))
 #'
-#' #By 10 mile2 bounding box using the 'KMART near UCSB' as centroid
-#' define_AOI(clip_unit = c('KMART near UCSB', 10, 10))
+#' #Get AOI defined by 10 mile2 bounding box using the 'KMART near UCSB' as centroid
+#'     getAOI(clip_unit = c('KMART near UCSB', 10, 10))
 #'
 #' #By HUC8 unit covering users location
-#' define_AOI(clip_unit = get_WBD(get_ip_loc(), level = 8))
-#' @export
+#'     getAOI(clip_unit = getWBD(get_ip_loc(), level = 8))
+#' }
+#'
+#' @seealso \itemize{
+#'          \item \code{\link{getClipUnit}}
+#'          \item \code{\link{getFiatBoundary}}
+#'          }
+#'
+#' @family HydroData 'get' functions
 #'
 #' @author
 #' Mike Johnson
@@ -55,7 +92,7 @@ getAOI = function(state = NULL, county = NULL, clip_unit = NULL){
         stop("State must be a character value. Try surrounding in qoutes...")
       }
 
-    if(!is.null(state) && !(state %in% state.abb || state %in% state.name)){
+    if(!is.null(state) && !(toupper(state) %in% state.abb || state %in% state.name)){
         stop("State not recongized. Full names or abbreviations can be used. Please check spelling.")
     }
 
@@ -67,13 +104,15 @@ getAOI = function(state = NULL, county = NULL, clip_unit = NULL){
 
   if(is.null(clip_unit) && !is.null(state)){
       shp <- getFiatBoundary(state = state, county = county)
-       return(shp)
-    }
 
+      return(shp)
+    }
+?`spTransform,SpatialPolygons,CRS-method`
 # AOI by user shapefile
 
     if(class(clip_unit) == 'SpatialPolygons' | class(clip_unit) == 'SpatialPolygonsDataFrame' ){
-       shp <- clip_unit
+       shp <- clip_unit %>%
+         spTransform(HydroDataProj)
          return(shp)
     }
 
@@ -172,7 +211,5 @@ shp <- getClipUnit(location = location, width = w, height = h, origin = o)
 return(shp)
 
 }
-
-
 
 

@@ -13,3 +13,7 @@ simpleCap <- function(x) {
         sep="", collapse=" ")
   }
 
+
+
+
+HydroDataProj = CRS('+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs')

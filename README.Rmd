@@ -2,11 +2,12 @@
 title: "HydroData"
 output: html_document
 ---
-```{r}
+```{r, setup, include=FALSE}
 library(devtools)
-devtools::install_github("mikejohnson51/HydroData")
+#devtools::install_github("mikejohnson51/HydroData")
+library(HydroData)
 
-??findUSGS
+#??findUSGS
 ```
 
 
@@ -16,17 +17,17 @@ The central componenet of every function in HydroData is a user defined area of 
 
 (1) An AOI can be defined as a state name or abbriviation:
 
-```{r}
+```{r, fig.align='center'}
  CA = getAOI(state = "California")
  TX = getAOI(state = "TX")
  
- par(mfrow = c(2,1))
+ par(mfrow = c(1,2))
  plot(CA); plot(TX)
 ```
 
 (2) An AOI can be defined by a state, county pair:
 
-```{r}
+```{r, fig.align='center'}
  sb = getAOI(state = "California", county = "Santa Barbara")
  
  plot(sb)
@@ -35,15 +36,15 @@ The central componenet of every function in HydroData is a user defined area of 
 (3) An AOI can be defined A user supplied Spatial or Raster object:
  
 ```{r}
- la.met = getAOI(clip_unit = rgdal::readOGR("/LA_metro"))
+# la.met = getAOI(clip_unit = rgdal::readOGR("/LA_metro"))
  
- plot(la.met)
+ #plot(la.met)
 ```
  
 (3) An area defined by a location a bounding box height and width and optional origin:
       The centroid can be defined by:
       
-```{r}
+```{r, fig.align='center'}
  nwc = getAOI(clip_unit = list("National Water Center", 10, 10))
  
  pt = getAOI(clip_unit = list(34.41, 119.85, 10, 10))
@@ -69,7 +70,7 @@ Other functions might have unique parameters such as year or resolution which wi
 
 #### USGS NWIS Gaging Stations
 
-```{r}
+```{r, fig.align='center'}
 # Find all USGS stations in El Paso County, Colorado
 
 elpaso = findUSGS(state = 'CO', county = 'El Paso', basemap = T, boundary = T)
