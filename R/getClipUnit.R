@@ -1,19 +1,26 @@
 #' Get a bouding box for a location
 #'
 #' @details
-#' \code{getClipUnit} gets a \code{SpatialPolygon} for a defiend state and/or county or those intersecting a clip_unit.
-#' Fiat boundaries come from the 2017 US Census Bureau 2017 TIGER Dataset.
+#' \code{getClipUnit} generates a \code{SpatialPolygon} based on a location, bounding box height and width and point position.
+#'  All HydroData outputs are projected to \emph{'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}.
+#'  Locations given by a character string are geocoded via the \code{dismo} package to get a lat, long pair. All bounding boxes defined by a width an a height.
+#'  The point from chich these are drawn ins defined by a given location and origin.
 #'
-#' All HydroData outputs are projected to \emph{'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}
+#' @param location Defined by a location or lat, long pair
+#' @param height   define the height of the desired bounding box in miles
+#' @param width    define the width of the desired bounding box in miles
+#' @param origin   define the position of the point with respect to the bounding box. Default is set to center. Options include \itemize{
+#' \item{"center"}
+#'  \item{"lowerleft"}
+#'   \item{"lowerright"}
+#'    \item{"upperright"}
+#'     \item{"upperleft"}
+#'   }
 #'
-#' @param state     character. Full name or two character abbriviation. Not case senstive
-#' @param county    character. Provide county name(s). Requires 'state' input.
-#' @param clip_unit SpatialObject* or list. For details see \code{?getClipUnit}
-#'
-#' @return \code{getFiatBoundary} returns a \code{SpatialPolygon} Object
+#' @return \code{getClipUnit} returns a \code{SpatialPolygon} Object
 #' @export
 #' @seealso \itemize{
-#'          \item \code{\link{getClipUnit}}
+#'          \item \code{\link{getFiatBoundary}}
 #'          \item \code{\link{getAOI}}
 #'          }
 #'
@@ -21,8 +28,8 @@
 #'
 #' @examples
 #' \dontrun{
-#' # Get Single State
-#'     getFiatBoundary(state = "CA")
+#' # Get clip unit using name
+#'     get
 #'
 #' # Get Multi-state
 #'     getFiatBoundary(state = c("CA","Utah","Nevada"))
@@ -41,11 +48,6 @@
 #'
 #' @author
 #' Mike Johnson
-
-
-
-
-
 
 
 getClipUnit = function(location = NULL, width = NULL, height = NULL, origin = NULL){

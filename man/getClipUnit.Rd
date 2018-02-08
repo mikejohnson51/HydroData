@@ -7,28 +7,36 @@
 getClipUnit(location = NULL, width = NULL, height = NULL, origin = NULL)
 }
 \arguments{
-\item{state}{character. Full name or two character abbriviation. Not case senstive}
+\item{location}{Defined by a location or lat, long pair}
 
-\item{county}{character. Provide county name(s). Requires 'state' input.}
+\item{width}{define the width of the desired bounding box in miles}
 
-\item{clip_unit}{SpatialObject* or list. For details see \code{?getClipUnit}}
+\item{height}{define the height of the desired bounding box in miles}
+
+\item{origin}{define the position of the point with respect to the bounding box. Default is set to center. Options include \itemize{
+\item{"center"}
+ \item{"lowerleft"}
+  \item{"lowerright"}
+   \item{"upperright"}
+    \item{"upperleft"}
+  }}
 }
 \value{
-\code{getFiatBoundary} returns a \code{SpatialPolygon} Object
+\code{getClipUnit} returns a \code{SpatialPolygon} Object
 }
 \description{
 Get a bouding box for a location
 }
 \details{
-\code{getClipUnit} gets a \code{SpatialPolygon} for a defiend state and/or county or those intersecting a clip_unit.
-Fiat boundaries come from the 2017 US Census Bureau 2017 TIGER Dataset.
-
-All HydroData outputs are projected to \emph{'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}
+\code{getClipUnit} generates a \code{SpatialPolygon} based on a location, bounding box height and width and point position.
+ All HydroData outputs are projected to \emph{'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}.
+ Locations given by a character string are geocoded via the \code{dismo} package to get a lat, long pair. All bounding boxes defined by a width an a height.
+ The point from chich these are drawn ins defined by a given location and origin.
 }
 \examples{
 \dontrun{
-# Get Single State
-    getFiatBoundary(state = "CA")
+# Get clip unit using name
+    get
 
 # Get Multi-state
     getFiatBoundary(state = c("CA","Utah","Nevada"))
@@ -46,7 +54,7 @@ All HydroData outputs are projected to \emph{'+proj=longlat +ellps=GRS80 +towgs8
 }
 \seealso{
 \itemize{
-         \item \code{\link{getClipUnit}}
+         \item \code{\link{getFiatBoundary}}
          \item \code{\link{getAOI}}
          }
 

@@ -64,4 +64,4 @@ find_flowlines = function(state = NULL, county = NULL, clip_unit = NULL, keep.bo
    return(items)
 }
 
-do.call(file.remove, list(list.files(tempdir(), full.names = TRUE)))
+#do.call(file.remove, list(list.files(tempdir(), full.names = TRUE)))

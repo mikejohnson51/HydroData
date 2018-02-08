@@ -1,4 +1,4 @@
-getDaymet <- function(state = NULL, county = NULL, clip_unit = NULL, year = NULL,
+getDaymet <- function(state = NULL, county = NULL, clip_unit = NULL, tile.ids = NULL, year = NULL,
                       parameters = NULL, aggregate = NULL, crop.data = FALSE)
 {
 
@@ -19,7 +19,7 @@ getDaymet <- function(state = NULL, county = NULL, clip_unit = NULL, year = NULL
                                                                                   collapse = "', '"), "'")
   }
 
-  all.years <- 1980:(year(Sys.Date()) - 1)
+  all.years <- 1980:(lubridate::year(Sys.Date()) - 1)
 
   if (!all(year %in% all.years))
   {
@@ -35,18 +35,36 @@ getDaymet <- function(state = NULL, county = NULL, clip_unit = NULL, year = NULL
     paste(all.parameters, collapse = "', '"), "'")
   }
 
-  A <- getAOI(state = state, county = county, clip_unit = clip_unit)
-  message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit),
-          ". Now loading DAYMET data from NASA ...\n")
 
-  load("/Users/mikejohnson/Desktop/ABM_data/daymet_tiles.rda")
-  AOI <- spTransform(A, daymet_tiles@proj4string)
-  tile.ids <- daymet_tiles[AOI, ]$TileID
+  load("data/daymet_tiles.rda")
+
+  if(!is.null(tile.ids)) {
+      tile.ids = tile.ids
+      bad.ids = setdiff(tile.ids,daymet_tiles$TileID )
+      if(length(bad.ids > 0)){stop( paste(bad.ids,collapse = ", "),
+                                    if(length(bad.ids) > 1){" are not valid tile ids."
+                                    } else {
+                                      " is not a valid tile id. "
+                                    })
+        }
+  }else{
+    A <- getAOI(state = state, county = county, clip_unit = clip_unit)
+    message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit),
+          ". Now loading DAYMET data from NASA ...\n")
+    AOI <- spTransform(A, daymet_tiles@proj4string)
+    tile.ids <- daymet_tiles[AOI, ]$TileID
+  }
+
   daymet.data <- list()
 
   message("AOI covers ", length(tile.ids), " daymet tiles ...")
 
   ###### BREAK DOWN BY PARAMETER #######
+
+  # open temp directory
+  td <- tempdir()
+  files <- list.files(td, pattern = ".nc$", full.names = T)
+  file.remove(files)
 
   for (k in seq_along(parameters))
   {
@@ -66,11 +84,6 @@ getDaymet <- function(state = NULL, county = NULL, clip_unit = NULL, year = NULL
                                     year[y], "/", tile.ids[t], "_", year[y], "/", parameters[k], ".nc"))
       }
     }
-
-    # open temp directory
-    td <- tempdir()
-    files <- list.files(td, pattern = ".nc$", full.names = T)
-    file.remove(files)
 
     # download all url files
     for (i in seq_along(urls))

@@ -107,14 +107,21 @@ getAOI = function(state = NULL, county = NULL, clip_unit = NULL){
 
       return(shp)
     }
-?`spTransform,SpatialPolygons,CRS-method`
+
 # AOI by user shapefile
 
-    if(class(clip_unit) == 'SpatialPolygons' | class(clip_unit) == 'SpatialPolygonsDataFrame' ){
-       shp <- clip_unit %>%
-         spTransform(HydroDataProj)
-         return(shp)
-    }
+    if(grepl(pattern = "Raster", class(clip_unit), ignore.case = T, fixed = F) ){
+      shp =  rasterToPolygons(clip_unit) %>%
+        spTransform(HydroDataProj)
+      return(shp)
+      }
+
+   if(grepl(pattern = "Spatial", class(clip_unit), ignore.case = T, fixed = F) ){
+    shp =  clip_unit %>%
+      spTransform(HydroDataProj)
+    return(shp)
+  }
+
 
 #------------------------------------------------------------------------------#
 # Clip Unit Defintion  (getClipUnit() for 3,4, or 5 inputs)                    #
