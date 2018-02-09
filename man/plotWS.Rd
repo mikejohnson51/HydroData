@@ -20,10 +20,15 @@ plotWS(waterUse.obj = NULL, variable = NULL, plot.type = "static",
 Function to visualize waterUse data by county in both static and interactive formats.
 }
 \examples{
-plotWu(wu10, variable = wu.variable$`Public Supply, surface-water withdrawals, fresh, in Mgal/d`, plot.type = 'static', year = 2010)
+\dontrun{
+plotWu(wu10,
+       variable = wu.variable$`Public Supply, surface-water withdrawals, fresh, in Mgal/d`,
+       plot.type = 'static', year = 2010)
 
-plotWu(wu10, variable = wu.variable$`Public Supply, surface-water withdrawals, fresh, in Mgal/d`, plot.type = 'interactive', year = 2010)
-
+plotWu(wu10,
+       variable = wu.variable$`Public Supply, surface-water withdrawals, fresh, in Mgal/d`,
+       plot.type = 'interactive', year = 2010)
+}
 }
 \author{
 Mike Johnson

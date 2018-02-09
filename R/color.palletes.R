@@ -2,10 +2,6 @@
 #'
 #' Color pallets for visualizing land use and elevation raster data
 #'
-#' @examples
-#' plot(SB_nlcd_2001, col = col_lc)
-#' plot(SB_ned_13, col = col_elev)
-#'
 #' @author
 #' Mike Johnson
 

@@ -15,7 +15,10 @@ download.shp(URL, type)
 Internal HydroData function
 }
 \examples{
+\dontrun{
 download.shp(URL, type = "flowlines")
+}
+
 
 }
 \author{

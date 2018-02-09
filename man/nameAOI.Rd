@@ -6,6 +6,13 @@
 \usage{
 nameAOI(state = NULL, county = NULL, clip_unit = NULL)
 }
+\arguments{
+\item{state}{a character string. Can be full name or state abbriviation}
+
+\item{county}{a character string. Can be full name or state abbriviation}
+
+\item{clip_unit}{can be provided as a shapefile or as a vector defineing centroid and bounding box diminsion}
+}
 \value{
 A character string
 }
@@ -13,8 +20,9 @@ A character string
 A function for returning a text string name of AOI
 }
 \examples{
+\dontrun{
 nameAOI(state = "CA")
-
+}
 }
 \author{
 Mike Johnson

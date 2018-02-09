@@ -1,25 +1,29 @@
 #' Locate all NOAA GCHN Stations within Area of Interest
 #'
-#' Function to locate all GCHN stations within Area of Interest
+#' Function to find GCHN stations within Area of Interest
 #'
 #' @param state a character string. Can be full name or state abbriviation
 #' @param county a character string. Can be full name or state abbriviation
 #' @param clip_unit can be provided as a shapefile or as a vector defineing centroid and bounding box diminsion
-#' @param keep.boundary logical. If TRUE, the AOI shapefile will be returned with station data in a list
-#' @param keep.basemap logical. If TRUE, the google basemap will be returned with gage station in a list
+#' @param get.boundary logical. If TRUE, the AOI shapefile will be returned with station data in a list
+#' @param get.basemap logical. If TRUE, the google basemap will be returned with gage station in a list
+#' @param ids logical. If TRUE, return a vector of station ids in AOI. Can be passed to \code{getGCHN}
 #' @param save logical. If TRUE, all data is written to a HydroData folder in the working directory
 #'
 #' @examples
-#' Find all GCHN stations in Harris County, Texas
+#' \dontrun{
+#' #Find all GCHN stations in Harris County, Texas
 #'
-#' harris.clim = find_ghcnd_stations(state = 'TX', county = 'Harris', keep.boundary = TRUE, keep.basemap = TRUE, ids = TRUE, save = TRUE)
+#' harris.clim = findGCHN(state = 'TX', county = 'Harris',
+#'               keep.boundary = TRUE, keep.basemap = TRUE, ids = TRUE, save = TRUE)
 #' plot(harris.clim$basemap)
 #' plot(harris.clim$boundary, add = TRUE, lwd = 5)
 #' plot(harris.clim$noaa, add = TRUE, pch = 16, col = 'blue')
 #'
-#' Get Station IDs
+#' #Get Station IDs
 #'
 #' harris.clim$ids
+#' }
 #'
 #' @author
 #' Mike Johnson
@@ -46,8 +50,12 @@ findGCHN = function(state = NULL, county = NULL, clip_unit = NULL, get.boundary 
 
   message("All GHCN Data loaded: ", formatC(dim(stations)[1], format="d", big.mark=","), " stations in total.\n")
 
-  stations = stations %>% drop_na(LAT) %>% drop_na(LAT) %>% mutate(LAT = as.numeric(LAT), LON = as.numeric(LON)) %>%
-    filter(LAT  <= bb[2,2]) %>% filter(LAT  >= bb[2,1]) %>% filter(LON >= bb[1,1]) %>% filter(LON <= bb[1,2])
+  stations = stations %>% drop_na(stations$LAT) %>%
+    drop_na(stations$LAT) %>%
+    mutate(LAT = as.numeric(stations$LAT), LON = as.numeric(stations$LON)) %>%
+    filter(LAT  <= bb[2,2]) %>%
+    filter(LAT  >= bb[2,1]) %>%
+    filter(LON >= bb[1,1]) %>% filter(LON <= bb[1,2])
 
   if(length(stations == 0)){stop("0 stations found in specified AOI.")}
   sp = SpatialPointsDataFrame(cbind(stations$LON, stations$LAT), stations)
@@ -93,10 +101,9 @@ findGCHN = function(state = NULL, county = NULL, clip_unit = NULL, get.boundary 
 #' @param parameters a character string. Should the returned data be subset to a particular parameter(s)?
 #' @param years  a character or numeric string. Should the returned data be subset to a particular year(s)?
 #'
-#' @examples
-#'
 #' @author
 #' Mike Johnson
+#' @export
 
 
 getGCHN = function(IDs = NULL, parameters = NULL, years = NULL) {

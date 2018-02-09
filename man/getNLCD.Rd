@@ -22,6 +22,7 @@ getNLCD(state = NULL, county = NULL, clip_unit = NULL, year = NULL,
 Function to download land cover data for an area of interest from 2001, 2006, 2011
 }
 \examples{
+\dontrun{
 el.paso.lc = get_nlcd_multi(state = 'CO', county = 'El Paso', year = c(2001, 2006, 2011))
 
 plot(el.paso.lc$lc$lc_2001, col = col_lc$color, main = "2001")
@@ -35,6 +36,7 @@ legend('topright',col_lc$description,fill=col_lc$color, cex = .5)
 plot(el.paso.lc$lc$lc_2011, col = col_lc$color, main = "2011")
 plot(el.paso.lc$boundary, add = TRUE, lwd = 5)
 legend('topright',col_lc$description,fill=col_lc$color, cex = .5)
+}
 
 }
 \author{

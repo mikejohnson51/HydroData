@@ -7,7 +7,10 @@
 
 #'
 #' @examples
+#' \dontrun{
 #' download.shp(URL, type = "flowlines")
+#' }
+#'
 #'
 #' @export
 #' @author

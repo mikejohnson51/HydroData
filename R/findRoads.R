@@ -10,23 +10,25 @@
 #' @param save logical. If TRUE, all data is written to a HydroData folder in the working directory
 #'
 #' @examples
-#'
+#'\dontrun{
 #' ep.roads = find_roads(state = 'CO', county = 'el paso', keep.boundary = TRUE, keep.basemap = TRUE)
 #' plot(ep.roads$basemap)
 #' plot(ep.roads$boundary, add = T, lwd = 5 )
 #' plot(ep.roads$roads,    add = T )
+#'}
 #'
 #' @export
 #' @author
 #' Mike Johnson
 
-find_roads = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary = FALSE, keep.basemap = FALSE, save = FALSE){
+findRoads = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary = FALSE, keep.basemap = FALSE, save = FALSE){
 
   ########## 1. Define AOI ##########
     do.call(file.remove, list(list.files(tempdir(), full.names = T)))
     items =  list()
     report = vector(mode = 'character')
-    AOI = define_AOI(state = state, county = county, clip_unit = clip_unit, get.basemap = keep.basemap)
+    A = getAOI(state = state, county = county, clip_unit = clip_unit)
+    AOI = getFiatBoundary(clip_unit = A)
 
     FIP = AOI$FIP
     if(is.null(FIP)){ FIP = AOI$map$FIP }
@@ -55,7 +57,7 @@ find_roads = function(state = NULL, county = NULL, clip_unit = NULL, keep.bounda
 
   ########## 3. Process Data ##########
 
-    input.shp <- lapply(list.files(tempd, pattern = ".shp$", full.names = TRUE), readOGR)
+    input.shp <- lapply(list.files(tempd, pattern = ".shp$", full.names = TRUE), rgdal::readOGR)
 
     for(j in 1:length(input.shp)){
       input.shp[[j]] = spTransform(input.shp[[j]], A@proj4string)

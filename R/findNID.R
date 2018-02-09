@@ -10,28 +10,33 @@
 #' @param save logical. If TRUE, all data is written to a HydroData folder in the working directory
 #'
 #' @examples
-#' Find all dams in Texas
+#' \dontrun{
+#' #Find all dams in Texas
 #'
 #' tx.dams = find_nid(state = "TX", keep.boundary = TRUE, keep.basemap = TRUE, save= TRUE)
 #' plot(tx.dams$basmap)
 #' plot(tx.dams$boundary, add = TRUE)
 #' plot(tx.dams$dams, add = TRUE)
-#'
+#'}
 #' @export
 #' @author
 #' Mike Johnson
 
-find_nid = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary = FALSE, keep.basemap = FALSE, save = FALSE){
+findNID = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary = FALSE, keep.basemap = FALSE, save = FALSE){
 
   items =  list()
   report = vector(mode = 'character')
-  AOI = define_AOI(state = state, county = county, clip_unit = clip_unit, get.basemap = keep.basemap)
-  if (any(keep.basemap == TRUE, !is.null(clip_unit))) {A = AOI$shp} else {A = AOI}
+  A = getAOI(state = state, county = county, clip_unit = clip_unit)
     message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Shapefile determined. Now loading loading NID database...")
 
-  data(nid_cleaned)
-  dams = nid_cleaned %>% filter(!State  %in% c("AK", "HI", "GU", "PR")) %>% drop_na(Longitude, Latitude)
+    data(nid_cleaned, envir = environment())
+
+  dams = nid_cleaned %>%
+         filter(!State  %in% c("AK", "HI", "GU", "PR")) %>%
+         drop_na(Longitude, Latitude)
+
   rm(nid_cleaned)
+
   sp = SpatialPointsDataFrame(cbind(dams$Longitude, dams$Latitude), data = dams)
     message("All dams in CONUS loaded: ", formatC(dim(sp)[1], format="d", big.mark=","), " dams in total")
 
@@ -40,8 +45,7 @@ find_nid = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary
     message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " NID dams found in ", nameAOI(state = state, county = county, clip_unit = clip_unit))
 
   items[['dams']] = sp ; report = append(report, "Returned list includes: NID dams shapefile")
-  if (keep.boundary) {items[['boundary']] = AOI$shp; report = append(report, "boundary shapefile")}
-  if (keep.basemap) {items[['basemap']] = AOI$bmap ; report = append(report, "basemap raster")}
+
 
   if(length(report) > 1) {report[length(report)] = paste("and",  tail(report, n = 1))}
     message(paste(report, collapse = ", "))

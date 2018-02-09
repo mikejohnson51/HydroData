@@ -3,26 +3,26 @@
 #' Function to locate all WBD basins at all nested levels. Input can be a know HUC code or a location within a basin of interest.
 #' The nested leve of interest should be supplied by the level parameter. The subbassins parameter gets all nested levels beneth the levels specification.
 #'
-#' @param HUC a character string. Provide a
-#' @param location a character string. Can be full name or state abbriviation
+#' @param HUC a character string.
+#' @param location a character string.
 #' @param level specify whay HUC level you are interested in. Options include, 2,4,6,8,10,12.
 #' @param subbasins logical. If TRUE, a shapefile of nested basin within specified level retuned as list object
 #' @param keep.basemap logical. If TRUE, a google basemap will be returned with HUC shapefiles
 #'
 #' @examples
-#'
-#' harris.huc = get_WBD(location = "Harris County, Texas", level = 6, subbasins = T, keep.basemap = T)
-#'
+#'\dontrun{
+#' harris.huc = getWBD(location = "Harris County, Texas", level = 6,
+#'                     subbasins = T, keep.basemap = T)
 #' plot(harris.huc$map)
 #' plot(harris.huc$huc$huc6, add = T, lwd = 6)
 #' plot(harris.huc$huc$huc8, add = T, pch = 16, lwd = 3)
 #' plot(harris.huc$huc$huc10, add = T,  lwd = 1, border = 'red')
-#'
+#'}
 #' @export
 #' @author
 #' Mike Johnson
 
-find_WBD = function(HUC = NULL, location = NULL, level = 10, subbasins = FALSE, keep.basemap = FALSE){
+findWBD = function(HUC = NULL, location = NULL, level = 10, subbasins = FALSE, keep.basemap = FALSE){
 
     if(class(location) == "numeric"){
 
@@ -64,7 +64,7 @@ find_WBD = function(HUC = NULL, location = NULL, level = 10, subbasins = FALSE, 
 
     unzip(zipfile = temp, exdir = temp2, overwrite = TRUE)
 
-    shp = readOGR(paste0(temp2,'/Shape/WBDHU',nchar(HUC),".shp"))%>%
+    shp = rgdal::readOGR(paste0(temp2,'/Shape/WBDHU',nchar(HUC),".shp"))%>%
       spTransform(CRS('+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0'))
 
 
@@ -104,7 +104,7 @@ find_WBD = function(HUC = NULL, location = NULL, level = 10, subbasins = FALSE, 
 
     unzip(zipfile = temp, exdir = temp2)
 
-    shp = suppressWarnings(readOGR(paste0(temp2,'/nhdflowline_network.shp'), verbose = FALSE))
+    shp = suppressWarnings(rgdal::readOGR(paste0(temp2,'/nhdflowline_network.shp'), verbose = FALSE))
 
     HUC8 = unique(substr(shp$reachcode, 1, 8))
 
@@ -117,7 +117,7 @@ find_WBD = function(HUC = NULL, location = NULL, level = 10, subbasins = FALSE, 
      unzip(zipfile = temp3, exdir = temp4)
 
 if(subbasins == FALSE){
-       shp = suppressWarnings(readOGR(paste0(temp4,'/Shape/WBDHU', level ,'.shp'), verbose = FALSE)) %>%
+       shp = suppressWarnings(rgdal::readOGR(paste0(temp4,'/Shape/WBDHU', level ,'.shp'), verbose = FALSE)) %>%
          spTransform(CRS("+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"))
 
        if(level >= 8){
@@ -128,7 +128,7 @@ if(subbasins == FALSE){
       shp = list()
      list = seq(level,12, 2)
 
-     test = suppressWarnings(readOGR(paste0(temp4,'/Shape/WBDHU', list[1] ,'.shp'), verbose = FALSE))%>%
+     test = suppressWarnings(rgdal::readOGR(paste0(temp4,'/Shape/WBDHU', list[1] ,'.shp'), verbose = FALSE))%>%
        spTransform(CRS("+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"))
 
      shp[[paste0("huc",list[1])]] = test[sp,]
@@ -136,7 +136,7 @@ if(subbasins == FALSE){
      value = as.character(shp[[1]][[paste0("HUC",list[1])]])
 
      for(i in 2:length(list)){
-       test = suppressWarnings(readOGR(paste0(temp4,'/Shape/WBDHU', list[i] ,'.shp'), verbose = FALSE))%>%
+       test = suppressWarnings(rgdal::readOGR(paste0(temp4,'/Shape/WBDHU', list[i] ,'.shp'), verbose = FALSE))%>%
          spTransform(CRS("+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0"))
 
         toMatch = grepl(value, as.character(test[[paste0("HUC",list[i])]]))

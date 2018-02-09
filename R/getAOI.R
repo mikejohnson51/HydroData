@@ -92,7 +92,7 @@ getAOI = function(state = NULL, county = NULL, clip_unit = NULL){
         stop("State must be a character value. Try surrounding in qoutes...")
       }
 
-    if(!is.null(state) && !(toupper(state) %in% state.abb || state %in% state.name)){
+    if(!is.null(state) && !(toupper(state) %in% datasets::state.abb || state %in% datasets::state.name)){
         stop("State not recongized. Full names or abbreviations can be used. Please check spelling.")
     }
 

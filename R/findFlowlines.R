@@ -11,26 +11,28 @@
 #' @param save logical. If TRUE, all data is written to a HydroData folder in the working directory
 #'
 #' @examples
-#' Find all NHD flowlines in El Paso County, Colorado
+#' \dontrun{
+#' #Find all NHD flowlines in El Paso County, Colorado
 #'
-#' el.paso = find_flowlines(state = 'CO', county = 'El Paso', keep.boundary = TRUE, keep.basemap = TRUE, comids = TRUE, save = TRUE)
+#' el.paso = findNHD(state = 'CO', county = 'El Paso',
+#'           keep.boundary = TRUE, keep.basemap = TRUE, comids = TRUE, save = TRUE)
 #'
 #' plot(el.paso$basemap)
 #' plot(el.paso$boundary, add = TRUE, lwd = 5)
 #' plot(el.paso$flowlines, add = TRUE, col = 'blue', lwd = el.paso$flowlines$streamorde)
-#'
+#'}
 #' @export
 #' @author
 #' Mike Johnson
 
-find_flowlines = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary = FALSE, keep.basemap = FALSE, comids = FALSE, save = FALSE){
-  do.call(file.remove, list(list.files(tempdir(), full.names = T)))
+findNHD = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary = FALSE, keep.basemap = FALSE, comids = FALSE, save = FALSE){
+  #do.call(file.remove, list(list.files(tempdir(), full.names = T)))
   items =  list()
   report = vector(mode = 'character')
-  AOI = define_AOI(state = state, county = county, clip_unit = clip_unit, get.basemap = TRUE)
+  AOI = getAOI(state = state, county = county, clip_unit = clip_unit)
     message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Shapefile determined. Now loading NHD flowline data...\n")
-    if(length(AOI) > 1){ A = AOI$shp} else {A = AOI}
-  bb = A@bbox
+
+  bb = AOI@bbox
 
   URL = paste0("https://cida.usgs.gov/nwc/geoserver/nhdplus/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=nhdplus:nhdflowline_network&srsName=EPSG:4326&bbox=",
                  min(bb[2, ]), ",",
@@ -38,8 +40,8 @@ find_flowlines = function(state = NULL, county = NULL, clip_unit = NULL, keep.bo
                  max(bb[2, ]), ",",
                  max(bb[1, ]), "&outputFormat=SHAPE-ZIP")
 
-  sl = download.shp(URL = URL, type = 'NHD flowlines') %>% spTransform(A@proj4string)
-  sl = sl[A, ]
+  sl = download.shp(URL = URL, type = 'NHD flowlines') %>% spTransform(AOI@proj4string)
+  sl = sl[AOI, ]
 
 
   items[['flowlines']] = sl ; report = append(report, "Returned list includes: flowline shapefile")

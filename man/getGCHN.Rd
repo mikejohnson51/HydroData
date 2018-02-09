@@ -16,9 +16,6 @@ getGCHN(IDs = NULL, parameters = NULL, years = NULL)
 \description{
 Function to download a dataframe of meterological data from known GCHN station. See findGCHN function to find station ids by AOI.
 }
-\examples{
-
-}
 \author{
 Mike Johnson
 }

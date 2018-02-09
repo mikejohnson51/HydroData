@@ -25,8 +25,9 @@ Summary Dataframe
 Generates a raster, spatial point and summary of Koppen Classifications
 }
 \examples{
+\dontrun{
 co.koppen = getKoppenClass(state = "CA")
-
+}
 }
 \author{
 Mike Johnson

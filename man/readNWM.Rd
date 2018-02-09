@@ -33,14 +33,20 @@ readNWM(comids, startDate, endDate = NULL, config = "analysis_assim",
 Imports National Water Model streamflow data from the Hydroshare Data Explore or a folder of previously downloaded NETCDF files.
 }
 \examples{
-Get NWM data for November 15 - 30, 2017 for the HUC8 surrondining UCSBs campus
+\dontrun{
+#Get NWM data for November 15 - 30, 2017 for the HUC8 surrondining UCSBs campus
 
-ucsb.flow = readNWM(comids = get_WBD(location = 'UCSB', level = 10), startDate = "2017-11-15", endDate = "2017-11-20", config = "analysis_assim", time = 0, forecast = 0, keep.flowlines = T, keep.basemap = T)
+ucsb.flow = readNWM(comids = get_WBD(location = 'UCSB', level = 10),
+                    startDate = "2017-11-15", endDate = "2017-11-20",
+                    config = "analysis_assim", time = 0, forecast = 0,
+                    keep.flowlines = T, keep.basemap = T)
 
-Get NWM from previously download set forescast file for the 2015 Christmas Day flood in Tuscaloosa Alabama:
+#Get data from download forecast of the 2015 Christmas Day flood in Tuscaloosa, AL:
 
-al.flow = readNWM(comids = define_AOI(clip_unit = list("National Water Center", 10, 10)), path = "/RetroData_12.25.2015", startDate = "2015-12-25 00:00:00", interval.hr = 1)
-
+al.flow = readNWM(comids = define_AOI(clip_unit = list("National Water Center", 10, 10)),
+                  path = "/RetroData_12.25.2015", startDate = "2015-12-25 00:00:00",
+                  interval.hr = 1)
+}
 }
 \author{
 Mike Johnson

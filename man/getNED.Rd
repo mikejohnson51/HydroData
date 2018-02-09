@@ -22,11 +22,12 @@ getNED(state = NULL, county = NULL, clip_unit = NULL, res = 1,
 Function to download elevation data for an area of interest
 }
 \examples{
-Get 1 arc second elevation for El Paso County Colorado Springs
+\dontrun{
+#Get 1 arc second elevation for El Paso County Colorado Springs
 
 el.paso.elev = get_ned(state = "CO", county = "El Paso", res = 1, keep.boundary = TRUE)
 plot(el.paso.elev, col = col_elev)
-
+}
 }
 \author{
 Mike Johnson

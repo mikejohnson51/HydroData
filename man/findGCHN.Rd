@@ -14,26 +14,31 @@ findGCHN(state = NULL, county = NULL, clip_unit = NULL,
 
 \item{clip_unit}{can be provided as a shapefile or as a vector defineing centroid and bounding box diminsion}
 
+\item{get.boundary}{logical. If TRUE, the AOI shapefile will be returned with station data in a list}
+
+\item{get.basemap}{logical. If TRUE, the google basemap will be returned with gage station in a list}
+
+\item{ids}{logical. If TRUE, return a vector of station ids in AOI. Can be passed to \code{getGCHN}}
+
 \item{save}{logical. If TRUE, all data is written to a HydroData folder in the working directory}
-
-\item{keep.boundary}{logical. If TRUE, the AOI shapefile will be returned with station data in a list}
-
-\item{keep.basemap}{logical. If TRUE, the google basemap will be returned with gage station in a list}
 }
 \description{
-Function to locate all GCHN stations within Area of Interest
+Function to find GCHN stations within Area of Interest
 }
 \examples{
-Find all GCHN stations in Harris County, Texas
+\dontrun{
+#Find all GCHN stations in Harris County, Texas
 
-harris.clim = find_ghcnd_stations(state = 'TX', county = 'Harris', keep.boundary = TRUE, keep.basemap = TRUE, ids = TRUE, save = TRUE)
+harris.clim = findGCHN(state = 'TX', county = 'Harris',
+              keep.boundary = TRUE, keep.basemap = TRUE, ids = TRUE, save = TRUE)
 plot(harris.clim$basemap)
 plot(harris.clim$boundary, add = TRUE, lwd = 5)
 plot(harris.clim$noaa, add = TRUE, pch = 16, col = 'blue')
 
-Get Station IDs
+#Get Station IDs
 
 harris.clim$ids
+}
 
 }
 \author{

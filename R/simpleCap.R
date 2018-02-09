@@ -1,5 +1,7 @@
 #' A function for capitilizing all words in a string
 #'
+#' @param x a string to be parsed.
+#'
 #' @examples
 #' simpleCap("santa barbara")
 #'
@@ -15,6 +17,6 @@ simpleCap <- function(x) {
 
 
 
-HydroDataProj = CRS('+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs')
+HydroDataProj = sp::CRS('+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs')
 
 

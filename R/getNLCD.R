@@ -9,6 +9,7 @@
 #' @param year year of land cover desired. Options include 2001, 2006, and 2011. Multiple years can be given as a vector.
 #'
 #' @examples
+#' \dontrun{
 #' el.paso.lc = get_nlcd_multi(state = 'CO', county = 'El Paso', year = c(2001, 2006, 2011))
 #'
 #' plot(el.paso.lc$lc$lc_2001, col = col_lc$color, main = "2001")
@@ -22,6 +23,7 @@
 #' plot(el.paso.lc$lc$lc_2011, col = col_lc$color, main = "2011")
 #' plot(el.paso.lc$boundary, add = TRUE, lwd = 5)
 #' legend('topright',col_lc$description,fill=col_lc$color, cex = .5)
+#' }
 #'
 #' @author
 #' Mike Johnson
@@ -36,7 +38,7 @@ AOI = getAOI(state = state, county = county, clip_unit = clip_unit)
 message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Shapefile determined. Now loading NLCD data for ", paste0(year, collapse = ", "),".")
 
   USAbb = c(48,66,24,123)
-  bb = matrix(A@bbox, ncol = 2)
+  bb = matrix(AOI@bbox, ncol = 2)
 
   lon.bb = c(abs(ceiling(bb[1,2])), abs(floor(bb[1,1])))
 
@@ -101,7 +103,7 @@ for(i in 1:length(year)){
 
 xxx = grep(year[i], all.files, value=TRUE)
 input.rasters <- lapply(xxx, raster)
-bounds = spTransform(A, input.rasters[[1]]@crs)
+bounds = spTransform(AOI, input.rasters[[1]]@crs)
 
 for(j in 1:length(input.rasters)){
   if(!is.null(intersect(extent(input.rasters[[j]]),extent(bounds)))){

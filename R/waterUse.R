@@ -8,10 +8,10 @@
 #' @param year define year to download. Any combination of 2000, 2005 and 2010 accepted
 #'
 #' @examples
-#' wu10 = waterUse(state = "CO", year = 2010)
+#' \dontrun{wu10 = waterUse(state = "CO", year = 2010)
 #'
 #' wu.co = waterUse(statte = c("CA", "UT", "AZ", "NV"), year = c(2000, 2005, 2010))
-#'
+#'}
 #'@return list of SpatialPolygons and Data
 #'
 #' @author
@@ -20,7 +20,7 @@
 waterUse = function(state = NULL, county = NULL, clip_unit = NULL, year = 2010){
 
   if(!any(year %in% c(2000, 2005, 2010))){stop('USGS water use data only available for years: 2000, 2005, 2010 in HydroData Package')}
-  AOI = define_AOI(state = state, county = county, clip_unit = clip_unit)
+  AOI = getAOI(state = state, county = county, clip_unit = clip_unit)
   if(is.null(clip_unit)){AOI = AOI} else {AOI = AOI$map}
   name.AOI = nameAOI(state = state, county = county, clip_unit = clip_unit)
   message("AOI defined as the ", name.AOI, ". Shapefile determined. Now (down)loading USGS water use data...")
@@ -97,10 +97,15 @@ waterUse = function(state = NULL, county = NULL, clip_unit = NULL, year = 2010){
 
 #'
 #' @examples
-#' plotWu(wu10, variable = wu.variable$`Public Supply, surface-water withdrawals, fresh, in Mgal/d`, plot.type = 'static', year = 2010)
+#' \dontrun{
+#' plotWu(wu10,
+#'        variable = wu.variable$`Public Supply, surface-water withdrawals, fresh, in Mgal/d`,
+#'        plot.type = 'static', year = 2010)
 #'
-#' plotWu(wu10, variable = wu.variable$`Public Supply, surface-water withdrawals, fresh, in Mgal/d`, plot.type = 'interactive', year = 2010)
-#'
+#' plotWu(wu10,
+#'        variable = wu.variable$`Public Supply, surface-water withdrawals, fresh, in Mgal/d`,
+#'        plot.type = 'interactive', year = 2010)
+#'}
 #' @author
 #' Mike Johnson
 

@@ -1,15 +1,20 @@
 Package: HydroData
 Type: Package
 Title: HydroData
+Description: Helps find, pre-process, and utilize land surface, infrastructural and, station based datasets relevant to geography, hydrology, and earth system science. 
 Version: 0.1.0
-Author@R: person("Mike", "Johnson", "mike.johnson@geog.ucsb.edu", role = c("aut", "cre"))
-Description: Helps researchers and practitioners find, pre-process, and utilize land surface, infrastructural and, station based datasets relevant to geography, hydrology, and earth system science. 
+Date: 2018-2-9
+Author: Mike Johnson [aut, cre]
+Maintainer: Mike Johnson <mike.johnson@geog.ucsb.edu>
 Depends:
-    R(>= 3.0.0),
-    sp,
-    raster,
-    tidyverse
+    R(>= 3.0.0)
 Imports:
+    sp,
+    tidyr,
+    dplyr,
+    magrittr,
+    raster,
+    utils,
     data.table,
     rgdal,
     XML,
@@ -17,8 +22,23 @@ Imports:
     dams,
     RCurl,
     dismo,
-    rgeos		 
-License: What license is it under?
+    rgeos,
+    classInt,
+    ggmap,
+    lubridate,
+    maptools,
+    prism,
+    readr,
+    rjson,
+    rvest,
+    RColorBrewer,
+    methods,
+    ncdf4,
+    datasets,
+    stats,
+    leaflet,
+    USAboundaries		 
+License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1.9000

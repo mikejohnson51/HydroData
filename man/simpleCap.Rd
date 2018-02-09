@@ -6,6 +6,9 @@
 \usage{
 simpleCap(x)
 }
+\arguments{
+\item{x}{a string to be parsed.}
+}
 \description{
 A function for capitilizing all words in a string
 }

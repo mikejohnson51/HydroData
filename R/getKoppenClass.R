@@ -8,8 +8,9 @@
 #' @param keep.basemap logical. If TRUE, the google basemap will be returned with gage data in a list
 #
 #' @examples
+#' \dontrun{
 #' co.koppen = getKoppenClass(state = "CA")
-#'
+#'}
 #' @return
 #'
 #' Raster
@@ -101,10 +102,9 @@ getKoppenClass = function(state = NULL, county = NULL, clip_unit = NULL, keep.ba
 #------------------------------------------------------------------------------#
 # Load Raster Data and Define AOI                                              #
 #------------------------------------------------------------------------------#
-    kopRas <- readRDS ("data/koppen_raster.rds")
+    load("data/koppen_raster.rda")
 
-    A      <- getAOI (state = state, county = county, clip_unit = clip_unit) %>%
-              spTransform (kopRas@crs)
+    A      <- getAOI (state = state, county = county, clip_unit = clip_unit) %>% spTransform (projection(kopRas))
 
 #------------------------------------------------------------------------------#
 # Format and Manipulate Data for AOI                                           #
@@ -119,7 +119,7 @@ getKoppenClass = function(state = NULL, county = NULL, clip_unit = NULL, keep.ba
     r@legend@colortable <-  climate.colors
 
     z <- rasterToPoints(r, spatial=T)
-    z <- spTransform(z, CRS=projection(r))
+    #z <- spTransform(z, CRS=projection(r))
     z <- as.data.frame(z);
     z <-  subset(z, z[1]!=32);
 

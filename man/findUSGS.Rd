@@ -30,13 +30,13 @@ Find USGS Stream Gages within a defined area
 }
 \details{
 \code{fingUSGS} finds USGS NWIS stream gages within an Area of Interest. Metadata allows for easy data download via
- the USGS \code{\link{daRetrieval}} package using \code{site_no} or the \code{\link{getNWM}} function using \code{feature_ids}.
+ the USGS \code{\link[dataRetrieval]{readNWISdv}} package using 'site_no' or the \code{getNWM} function using 'feature_ids'.
  To better understand how to easily define an AOI for all \code{HydroData} functions please see \code{?getAOI}.
  All HydroData outputs are projected to \emph{'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}
 
 \code{findUSGS} returns a named list of minimum length 1:
 \enumerate{
-\item 'nwis':  A \code{SpatialPointsDataFrame} of stations and metadata
+\item 'nwis':     A \code{SpatialPointsDataFrame} of stations and metadata
 \item 'basemap':  A \code{RasterLayer} basemap if basemap is \code{TRUE}
 \item 'boundary': A \code{SpatialPolygon} of defined AOI if boundary is \code{TRUE}
 }
@@ -80,8 +80,8 @@ Find USGS Stream Gages within a defined area
 \seealso{
 \itemize{
          \item \code{\link{getClipUnit}}
-         \item\link{getAOI}
-         \item\link{dataRetrivial::readNWISdv}
+         \item \link{getAOI}
+         \item \link[dataRetrieval]{readNWISdv}
          }
 }
 \author{

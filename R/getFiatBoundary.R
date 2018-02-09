@@ -37,50 +37,34 @@
 #'    getFiatBoundary(clip_unit = list("UCSB", 10, 10, "lowerleft"))
 #'}
 #'
-#' @family
-#'
 #' @author
 #' Mike Johnson
 
 getFiatBoundary <- function(state = NULL, county = NULL, clip_unit = NULL) {
 
-  map <- readRDS("data/countymaps.rds") %>% spTransform(HydroDataProj)
+  map = as(us_counties(map_date = NULL, resolution = "high", states = NULL), "Spatial") %>% spTransform(HydroDataProj)
 
   if(!is.null(clip_unit)){
     A = getAOI(state = NULL, county = NULL, clip_unit = clip_unit)
+    map = as(us_states(map_date = NULL, resolution = "high", states = NULL), "Spatial") %>% spTransform(HydroDataProj)
     map = map[A, ]
+    map = as(us_counties(map_date = NULL, resolution = "high", states = map$name), "Spatial") %>% spTransform(HydroDataProj)
+    map = map[A, ]
+
     return(map)
   } else {
 
-  state <- toupper(state)
+    map = as(us_counties(map_date = NULL, resolution = "high", states = state), "Spatial") %>% spTransform(HydroDataProj)
 
-  for (i in 1:length(state)) {
-    if (nchar(state[i]) > 2) {
-      state[i] <- simpleCap(tolower(state[i]))
-    } else {
-      state[i] <- setNames(state.name, state.abb)[state[i]]
+    if(!is.null(county)){
+        county.map <- vector(mode = "character")
+      for (i in 1:length(county)) {
+        county.map <- append(county.map, simpleCap(tolower(county[i])))
+        map <- map[map$name %in% county.map, ]
+     }
     }
-  }
 
-  map <- map[map$STATE %in% state, ]
-
-  if (is.null(county)) {
-    map <- maptools::unionSpatialPolygons(map, ID = map$STATEFP)
-    if (length(map) < 1) {
-    }
-    return(map)
-  } else {
-    county.map <- vector(mode = "character")
-    for (i in 1:length(county)) {
-      county.map <- append(county.map, simpleCap(tolower(county[i])))
-    }
-    map <- map[map$NAME %in% county.map, ]
-    if (length(map) < 1) {
-      stop("County defined does not exist. Please check spelling and that county exists in 2017.")
-    }
     return(map)
   }
   }
-
-}
 

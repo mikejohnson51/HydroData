@@ -1,8 +1,9 @@
 #' A function for returning a users Lat, long from IP Address
 #'
 #' @examples
+#' \dontrun{
 #' my.location = get_loc_ip()
-#'
+#'}
 #' @return
 #'
 #' A numeric lat, long pair

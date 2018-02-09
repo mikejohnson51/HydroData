@@ -13,8 +13,9 @@ A numeric lat, long pair
 A function for returning a users Lat, long from IP Address
 }
 \examples{
+\dontrun{
 my.location = get_loc_ip()
-
+}
 }
 \author{
 Mike Johnson

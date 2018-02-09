@@ -22,10 +22,10 @@ list of SpatialPolygons and Data
 Function to download national water use data for an area of interest from 2000, 2005, 2010
 }
 \examples{
-wu10 = waterUse(state = "CO", year = 2010)
+\dontrun{wu10 = waterUse(state = "CO", year = 2010)
 
 wu.co = waterUse(statte = c("CA", "UT", "AZ", "NV"), year = c(2000, 2005, 2010))
-
+}
 }
 \author{
 Mike Johnson

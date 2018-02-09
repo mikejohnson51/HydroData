@@ -44,8 +44,6 @@
 #'    getFiatBoundary(clip_unit = list("UCSB", 10, 10, "lowerleft"))
 #'}
 #'
-#' @family
-#'
 #' @author
 #' Mike Johnson
 
