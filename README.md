@@ -3,7 +3,7 @@
 
 **HydroData** HydroData is an R package designed to help find, get, and visualize climate, hydrology, and the landscape data in a single framework developed with a core language (R) and common geospatial reference, and unifying vocabulary built around ‘finding’ and ‘getting’ data for an area of interest. In this contexts finding data referes to identifying the spatail feature classes and identifers needed to download data, and getting data refers to the process of getting tabular or raster data relating to an AOI or found location. Currently the package support access to 18 National/Global data sources:
 
-##Installation
+## Installation
 
 To install the  package, you must install from GitHub using the `devtools` packages:
 
@@ -12,7 +12,7 @@ library(devtools)
 install_github("mikejohnson51/HydroData")
 ```
 
-##Data Sources
+## Data Sources
 
   - The [ USGS National Elevation Dataset (NED)](http://ned.usgs.gov) elevation data at 1 and 1/3 arc-second
   - The [ USGS National Hydrography Dataset (NHD)](http://nhd.usgs.gov) 
