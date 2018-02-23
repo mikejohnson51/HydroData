@@ -71,11 +71,11 @@ The central componenet of every function in HydroData is a user defined area of 
 
 # Select a 100 sqmi AOI with the KMART near UCSB at the lower left corner
  
- goleta = getAOI(list("KMART near UCSB", 10, 10, "lowerleft"))
+ goleta = getAOI(clip_unit = list("KMART near UCSB", 10, 10, "lowerleft"))
  
 # Select a 100 sqmi AOI with UC Berkley at the Upper right corner
  
- berkley = getAOI(list("UC Berkley", 10, 10, "upperright"))
+ berkley = getAOI(clip_unit = list("UC Berkley", 10, 10, "upperright"))
 ``` 
 
 In all of the following functions state, county, and clip_unit are offered as parameters so that you can define your search for finding and getting data.
