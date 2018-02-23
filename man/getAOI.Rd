@@ -9,63 +9,64 @@ getAOI(state = NULL, county = NULL, clip_unit = NULL)
 \arguments{
 \item{state}{character.  Full name or two character abbriviation. Not case senstive}
 
-\item{county}{character. Can be full name or state abbriviation. Requires 'state' input.}
+\item{county}{character.  County name(s). Requires \code{state} input. Not case senstive}
 
-\item{clip_unit}{SpatialObject* or list. If a list, a clip unit requires 3 inputs:\enumerate{
-                                    \item A point: \itemize{
-                                    \item 'named location' ex: "UCSB"
-                                     \item 'lat, lon' pair: ex: -36, -120
-                                     }
+\item{clip_unit}{SpatialObject* or list. If a list, a clip unit requires 3 inputs:
+                              \enumerate{
+                                     \item  A point: \itemize{
+                                            \item  'location name' ex: "UCSB"
+                                            \item 'latitude, longitude' pair: ex: '-36, -120'
+                                         }
                                      \item  Bounding box diminsions \itemize{
-                                      \item  A bounding box height in miles ex: 10
-                                       \item A bounding box width in miles ex: 10
+                                     \item  A bounding box height \strong{in miles} ex: 10
+                                     \item A bounding box width \strong{in miles} ex: 10
                                      }
                                      \item The realtive location of the point to the bounding box \itemize{
-                                        \item 'center', 'lowerleft', 'lowerright', 'upperrigh', 'upperleft'
+                                        \item 'center', 'lowerleft', 'lowerright', 'upperright', 'upperleft'
                                         \item Default is: 'center'
-                                        }
-                                        }
-
-3 to 5 members can be used to describe a clip unit and \strong{ORDER MATTERS!! (location, height, width, origin)} :\itemize{
-                                    \item 3 members: location name, height, width\itemize{
-                                        \item ex: \emph{list("UCSB", 10, 10) }}
-                                    \item 4 members: lat, long, height, width\itemize{
-                                        \item ex: \emph{list(36, -120, 10, 10) }}
-                                    \item 4 members: location name, height, width, origin\itemize{
-                                        \item ex: \emph{list("UCSB", 10, 10, "lowerright) }}
-                                    \item 5 members: lat, long, height, width, origin\itemize{
-                                        \item ex: \emph{list(36,-120, 10, 10, "upperright) }}
+                                     }
+                                 }
+3 to 5 elements can be used to describe and refine these inputs but \strong{ORDER MATTERS (point, height, width, origin)}.
+Acceptable variations include:
+\itemize{
+                                    \item 3 members: (1) location name, (2) height, (3) width \itemize{
+                                        \item \emph{list("UCSB", 10, 10) }}
+                                    \item 4 members: (1) latitude, (2) longitude, (3) height, (4) width\itemize{
+                                        \item \emph{list(36, -120, 10, 10) }}
+                                    \item 4 members: (1) location name, (2) height, (3) width, (4) origin\itemize{
+                                        \item \emph{list("UCSB", 10, 10, "lowerright) }}
+                                    \item 5 members: (1) lat, (2) long, (3) height, (4) width, (5) origin\itemize{
+                                        \item \emph{list(36,-120, 10, 10, "upperright) }}
                                     }}
 }
 \value{
-\code{getAOI} returns a \code{SpatialPolygon}
+All HydroData outputs are projected to \emph{'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}.
 }
 \description{
-Get Area of interest (AOI) boundary
-}
-\details{
-\code{getAOI} gets a bounding box or fiat boundary to serve as AOI in all \code{HydroData} functions. All HydroData outputs are projected
-to \emph{'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}.
+The core of  all \code{HydroData} functions is a bounding area. This area can be defined by (1) a US state name(s),
+a (2) US county name(s), or a uniqe bounding box. The parameters used in \code{getAOI} are the same as all \code{HydroData}
+functions. Understanding the flexibility of \code{getAOI} allows you to 'find' and 'get' data for your region of interest.
 }
 \examples{
 \dontrun{
-#Get AOI defined by a state
+# Get AOI defined by a state(s)
     getAOI(state = 'CA')
+    getAOI(state = c('CA', 'nevada'))
 
-#Get AOI defined by state & county pair
+# Get AOI defined by state & county pair(s)
     getAOI(state = 'California', county = 'Santa Barbara')
+    getAOI(state = 'California', county = c('Santa Barbara', 'ventura'))
 
-#Get AOI defined by external shapefile
+# Get AOI defined by external shapefile
     getAOI(clip_unit = rgdal::readOGR('la_metro.shp'))
+    getAOI(clip_unit = raster('AOI.tif'))
 
-#Get AOI defined by 10 mile2 bounding box using users location as centroid
+# Get AOI defined by 10 mile bounding box using users location as centroid
     getAOI(clip_unit = c(get_ip_loc(), 10, 10))
 
-#Get AOI defined by 10 mile2 bounding box using the 'KMART near UCSB' as centroid
-    getAOI(clip_unit = c('KMART near UCSB', 10, 10))
-
-#By HUC8 unit covering users location
-    getAOI(clip_unit = getWBD(get_ip_loc(), level = 8))
+# Get AOI defined by 10 mile2 bounding box using the 'KMART near UCSB' as centroid or lower left corner
+    getAOI(clip_unit = list('KMART near UCSB', 10, 10))
+    getAOI(clip_unit = list('KMART near UCSB', 10, 10, 'lowerleft'))
 }
 
 }

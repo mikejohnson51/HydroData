@@ -2,33 +2,51 @@
 % Please edit documentation in R/findWaterbodies.R
 \name{findWaterbodies}
 \alias{findWaterbodies}
-\title{Locate all Water Bodies within Area of Interest}
+\title{Find Water Bodies within Area of Interest}
 \usage{
 findWaterbodies(state = NULL, county = NULL, clip_unit = NULL,
-  keep.boundary = FALSE, keep.basemap = FALSE, save = FALSE)
+  boundary = FALSE, basemap = FALSE, save = FALSE)
 }
 \arguments{
-\item{state}{a character string. Can be full name or state abbriviation}
+\item{state}{character. Provide full name(s) or two character abbriviation(s). Not case senstive}
 
-\item{county}{a character string. Can be full name or state abbriviation}
+\item{county}{character. Provide county name(s). Requires \code{state} input.}
 
-\item{clip_unit}{can be provided as a shapefile or as a vector defineing centroid and bounding box diminsion}
+\item{clip_unit}{SpatialObject* or list. For details see \code{?getClipUnit}}
 
-\item{keep.boundary}{logical. If TRUE, the AOI shapefile will be returned with gage data in a list}
+\item{boundary}{logical. If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list}
 
-\item{keep.basemap}{logical. If TRUE, the google basemap will be returned with gage data in a list}
+\item{basemap}{logical. If TRUE, a basemap will be joined to returned list from \code{\link[dismo]{gmap}}.
 
-\item{save}{logical. If TRUE, all data is written to a HydroData folder in the working directory}
+ #' If a user wants greater control over basemap apperance replace TRUE with either:
+\itemize{
+\item't':  a terrain imagery basemap
+\item's':  a sattilite imagery basemap
+\item'h':  a hybrid imagery basemap
+\item'r':  a roadmap imagery basemap
+}}
+
+\item{save}{logical. If TRUE, all data is saved to a HydroData folder created in users working directory. Find working directory with \code{\link[getwd()]}}
 }
 \description{
-Function to locate polygon waterbodies within an Area of Interest from the USGS Inventory of reservoirs
+\code{findWaterbodies} finds polygon waterbodies within an Area of Interest from the ESRI Global Waterbodies database
+}
+\details{
+\code{findWaterbodies} returns a named list of minimum length 1:
+\enumerate{
+\item 'wb': A \code{SpatialLinesDataFrame} of NHD flowlines and metadata
+\item 'basemap':   A \code{RasterLayer} basemap if 'basemap' is \code{TRUE}
+\item 'fiat':      A \code{SpatialPolygon} of fiat boundaries if 'boundary' is \code{TRUE}
+\item 'clip':      A \code{SpatialPolygon} of clip unit boundary if 'boundary' is \code{TRUE}
+\item 'ids':       A vector of flowline COMIDs if 'ids' is \code{TRUE}
+}
 }
 \examples{
 \dontrun{
 #Find all water bodies in San Luis Obispo, CA
 
 slo.wb = findWaterbodies(state = 'CA', county = "San Luis Obispo",
-                         keep.boundary = TRUE, keep.basemap = TRUE)
+                         boundary = TRUE, basemap = TRUE)
 
 plot(slo.wb$basemap)
 plot(slo.wb$boundary, add = T)

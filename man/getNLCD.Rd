@@ -5,7 +5,7 @@
 \title{Get Multi-Year National Land Cover data for an Area of Interest}
 \usage{
 getNLCD(state = NULL, county = NULL, clip_unit = NULL, year = NULL,
-  keep.boundary = TRUE)
+  keep.boundary = FALSE)
 }
 \arguments{
 \item{state}{a character string. Can be full name or state abbriviation}

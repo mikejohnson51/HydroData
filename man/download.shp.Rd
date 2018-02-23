@@ -9,7 +9,7 @@ download.shp(URL, type)
 \arguments{
 \item{URL}{path to data}
 
-\item{type}{description of data being downloaded}
+\item{type}{description of data being downloaded used for messaging}
 }
 \description{
 Internal HydroData function
@@ -18,7 +18,6 @@ Internal HydroData function
 \dontrun{
 download.shp(URL, type = "flowlines")
 }
-
 
 }
 \author{

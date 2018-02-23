@@ -9,10 +9,13 @@ clipMerge(dataset, bounds)
 \arguments{
 \item{dataset}{a list of rasters}
 
-\item{bounds}{a boundary to clip to}
+\item{bounds}{a clipping boundary}
 }
 \description{
-Clip raster data to a set boundary and merge
+Clip and merge raster data
+}
+\details{
+\code{clipMerge} clip raster brick(s) to a set boundary and merge
 }
 \author{
 Mike Johnson

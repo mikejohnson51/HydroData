@@ -3,7 +3,7 @@
 \docType{data}
 \name{col_elev}
 \alias{col_elev}
-\title{Color Palletes Usefull for NLCD and NED plotting}
+\title{Color Palletes Usefull for NLCD, CDL and NED plotting}
 \format{An object of class \code{character} of length 23.}
 \usage{
 col_elev

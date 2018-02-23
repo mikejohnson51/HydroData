@@ -2,37 +2,69 @@
 % Please edit documentation in R/findNID.R
 \name{findNID}
 \alias{findNID}
-\title{Locate all USACE NID Dams within Area of Interest}
+\title{Find US Army Core Dams within Area of Interest}
 \usage{
-findNID(state = NULL, county = NULL, clip_unit = NULL,
-  keep.boundary = FALSE, keep.basemap = FALSE, save = FALSE)
+findNID(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE,
+  basemap = FALSE, save = FALSE)
 }
 \arguments{
-\item{state}{a character string. Can be full name or state abbriviation}
+\item{state}{character. Provide full name(s) or two character abbriviation(s). Not case senstive}
 
-\item{county}{a character string. Can be full name or state abbriviation}
+\item{county}{character. Provide county name(s). Requires \code{state} input.}
 
-\item{clip_unit}{can be provided as a shapefile or as a vector defineing centroid and bounding box diminsion}
+\item{clip_unit}{SpatialObject* or list. For details see \code{?getClipUnit}}
 
-\item{keep.boundary}{logical. If TRUE, the AOI shapefile will be returned with gage data in a list}
+\item{boundary}{logical. If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list}
 
-\item{keep.basemap}{logical. If TRUE, the google basemap will be returned with gage data in a list}
+\item{basemap}{logical. If TRUE, a basemap will be joined to returned list from \code{\link[dismo]{gmap}}.
 
-\item{save}{logical. If TRUE, all data is written to a HydroData folder in the working directory}
+ #' If a user wants greater control over basemap apperance replace TRUE with either:
+\itemize{
+\item't':  a terrain imagery basemap
+\item's':  a sattilite imagery basemap
+\item'h':  a hybrid imagery basemap
+\item'r':  a roadmap imagery basemap
+}}
+
+\item{save}{logical. If TRUE, all data is saved to a HydroData folder created in users working directory. Find working directory with \code{\link[getwd()]}}
+}
+\value{
+All HydroData outputs are projected to \emph{'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}
 }
 \description{
-Function to locate all US Army Corps dams within an Area of Interest from the National Inventory of Dams
+\code{findNID} finds all US Army Corps Dams for an Area of Interest from the National Inventory of Dams dataset.
+This dataset is access through the \code{\link[dams]} package.
+}
+\details{
+\code{findNID} returns a named list of minimum length 1:
+\enumerate{
+\item 'dams': A \code{SpatialPointsDataFrame} of NID dams and metadata
+\item 'basemap':   A \code{RasterLayer} basemap if 'basemap' is \code{TRUE}
+\item 'fiat':      A \code{SpatialPolygon} of fiat boundaries if 'boundary' is \code{TRUE}
+\item 'clip':      A \code{SpatialPolygon} of clip unit boundary if 'boundary' is \code{TRUE}
+}
 }
 \examples{
 \dontrun{
-#Find all dams in Texas
+# Find all dams in Texas
 
-tx.dams = find_nid(state = "TX", keep.boundary = TRUE, keep.basemap = TRUE, save= TRUE)
+tx.dams = findNID(state = "TX", boundary = TRUE, basemap = 'r', save= TRUE)
 plot(tx.dams$basmap)
 plot(tx.dams$boundary, add = TRUE)
 plot(tx.dams$dams, add = TRUE)
 }
 }
+\seealso{
+\itemize{
+         \item \code{\link{getClipUnit}}
+         \item \link{getAOI}
+         \item \link[HydroData]{exploreHD}
+         }
+
+Other HydroData 'find' functions: \code{\link{findGHCN}},
+  \code{\link{findNHD}}, \code{\link{findUSGS}}
+}
 \author{
 Mike Johnson
 }
+\concept{HydroData 'find' functions}
