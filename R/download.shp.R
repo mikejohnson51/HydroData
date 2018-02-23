@@ -3,38 +3,50 @@
 #' Internal HydroData function
 #'
 #' @param URL path to data
-#' @param type description of data being downloaded
-
+#' @param type description of data being downloaded used for messaging
 #'
 #' @examples
 #' \dontrun{
 #' download.shp(URL, type = "flowlines")
 #' }
 #'
-#'
 #' @export
 #' @author
 #' Mike Johnson
 
 
-download.shp = function(URL, type){
+download.shp = function(URL, type) {
 
-  temp <- tempfile(fileext = ".zip")
-  td <- tempdir()
 
-  message("Trying URL ... \n")
+  td <- tempfile()
+  temp <- tempfile(pattern = type, fileext = ".zip")
 
-  download.file(URL, destfile =  temp, quiet = TRUE)
+  message("Trying URL ... ")
+
+  download.file(URL, destfile =  temp, quiet = F)
   unzip(temp, exdir = td, overwrite = TRUE)
 
-  sp = suppressWarnings(rgdal::readOGR(list.files(td, pattern = '.shp$', full.names = TRUE), stringsAsFactors = FALSE, verbose = FALSE))
-  message("All ", type, " loaded: ", formatC(dim(sp)[1], format="d", big.mark=","), " in total.\n")
+  sp = suppressWarnings(rgdal::readOGR(
+    list.files(td, pattern = '.shp$', full.names = TRUE),
+    stringsAsFactors = FALSE,
+    verbose = FALSE
+  ))
 
-  unlink(dir(td))
+  if (dim(sp)[1] == 0) {
+    stop ("No ", type, " found for this AOI.")
+  } else {
+    message("All ",
+            type,
+            " loaded: ",
+            formatC(dim(sp)[1], format = "d", big.mark = ","),
+            " in total.\n")
+  }
+
+
+  #unlink(td, recursive=TRUE, force = TRUE)
+  unlink(temp, recursive=TRUE, force = TRUE)
 
   return(sp)
 
 }
-
-
 

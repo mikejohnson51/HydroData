@@ -1,19 +1,48 @@
-#' Locate all USACE NID Dams within Area of Interest
+#' Find US Army Core Dams within Area of Interest
 #'
-#' Function to locate all US Army Corps dams within an Area of Interest from the National Inventory of Dams
+#' \code{findNID} finds all US Army Corps Dams for an Area of Interest from the National Inventory of Dams dataset.
+#' This dataset is access through the \code{\link[dams]} package.
 #'
-#' @param state a character string. Can be full name or state abbriviation
-#' @param county a character string. Can be full name or state abbriviation
-#' @param clip_unit can be provided as a shapefile or as a vector defineing centroid and bounding box diminsion
-#' @param keep.boundary logical. If TRUE, the AOI shapefile will be returned with gage data in a list
-#' @param keep.basemap logical. If TRUE, the google basemap will be returned with gage data in a list
-#' @param save logical. If TRUE, all data is written to a HydroData folder in the working directory
+#'
+#'  \code{findNID} returns a named list of minimum length 1:
+#' \enumerate{
+#' \item 'dams': A \code{SpatialPointsDataFrame} of NID dams and metadata
+#' \item 'basemap':   A \code{RasterLayer} basemap if 'basemap' is \code{TRUE}
+#' \item 'fiat':      A \code{SpatialPolygon} of fiat boundaries if 'boundary' is \code{TRUE}
+#' \item 'clip':      A \code{SpatialPolygon} of clip unit boundary if 'boundary' is \code{TRUE}
+#' }
+#'
+#' @param state     character. Provide full name(s) or two character abbriviation(s). Not case senstive
+#' @param county    character. Provide county name(s). Requires \code{state} input.
+#' @param clip_unit SpatialObject* or list. For details see \code{?getClipUnit}
+#' @param boundary  logical. If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list
+#' @param basemap   logical. If TRUE, a basemap will be joined to returned list from \code{\link[dismo]{gmap}}.
+#'
+#'  #' If a user wants greater control over basemap apperance replace TRUE with either:
+#' \itemize{
+#' \item't':  a terrain imagery basemap
+#' \item's':  a sattilite imagery basemap
+#' \item'h':  a hybrid imagery basemap
+#' \item'r':  a roadmap imagery basemap
+#' }
+#'
+#' @param save logical. If TRUE, all data is saved to a HydroData folder created in users working directory. Find working directory with \code{\link[getwd()]}
+#'
+#' @seealso \itemize{
+#'          \item \code{\link{getClipUnit}}
+#'          \item \link{getAOI}
+#'          \item \link[HydroData]{exploreHD}
+#'          }
+#'
+#' @family HydroData 'find' functions
+#'
+#' @return All HydroData outputs are projected to \emph{'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}
 #'
 #' @examples
 #' \dontrun{
-#' #Find all dams in Texas
+#' # Find all dams in Texas
 #'
-#' tx.dams = find_nid(state = "TX", keep.boundary = TRUE, keep.basemap = TRUE, save= TRUE)
+#' tx.dams = findNID(state = "TX", boundary = TRUE, basemap = 'r', save= TRUE)
 #' plot(tx.dams$basmap)
 #' plot(tx.dams$boundary, add = TRUE)
 #' plot(tx.dams$dams, add = TRUE)
@@ -22,8 +51,8 @@
 #' @author
 #' Mike Johnson
 
-findNID = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary = FALSE, keep.basemap = FALSE, save = FALSE){
-
+findNID = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE, basemap = FALSE, save = FALSE){
+  require(dams)
   items =  list()
   report = vector(mode = 'character')
   A = getAOI(state = state, county = county, clip_unit = clip_unit)
@@ -44,11 +73,23 @@ findNID = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary 
   sp = sp[A, ]
     message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " NID dams found in ", nameAOI(state = state, county = county, clip_unit = clip_unit))
 
-  items[['dams']] = sp ; report = append(report, "Returned list includes: NID dams shapefile")
 
+    items[['dams']] = sp
+    report = append(report, "Returned list includes: NID dams shapefile")
 
-  if(length(report) > 1) {report[length(report)] = paste("and",  tail(report, n = 1))}
+    if (basemap)  {items[['basemap']] = getBasemap(AOI = A)
+    report = append(report, "basemap")
+    }
+
+    if (boundary) {items[['boundary']] = A
+    report = append(report, "boundary")
+    }
+
+    if(length(report) > 1) {report[length(report)] = paste("and",  tail(report, n = 1))
+    }
+
     message(paste(report, collapse = ", "))
+
 
     if(save){
       save.file(data = items,
@@ -64,5 +105,6 @@ findNID = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary 
 
   return(items)
 }
+
 
 

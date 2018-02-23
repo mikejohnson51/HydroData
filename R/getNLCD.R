@@ -28,7 +28,7 @@
 #' @author
 #' Mike Johnson
 
-getNLCD = function(state = NULL, county = NULL, clip_unit = NULL, year = NULL, keep.boundary = TRUE){
+getNLCD = function(state = NULL, county = NULL, clip_unit = NULL, year = NULL, keep.boundary = FALSE){
 
 if((sum(year != 2001) == length(year) && sum(year != 2006) && length(year) && sum(year != 2011) == length(year))){
   stop("NLCD only avaiable for 2001, 2006, and 2011. Please only use these values in declaring year.")}
@@ -97,6 +97,7 @@ for(i in 1:length(urls)){
 all.files = list.files(tempd, pattern = ".tif$", full.names = TRUE)
 
 ####### Start Loop #########
+
 nlcd = list()
 
 for(i in 1:length(year)){
@@ -136,7 +137,7 @@ unlink(temp)
 unlink(tempd)
 
 if(keep.boundary == TRUE){
-  return(list(lc = nlcd, boundary = bounds))
+  return(list(nlcd, boundary = bounds))
 }else{
   return(nlcd)
 }

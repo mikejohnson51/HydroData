@@ -98,7 +98,7 @@ getNED = function(state = NULL, county = NULL, clip_unit = NULL, res = 1, keep.b
     return(list(elev = mos, boundary = bounds))
   }else{
     message("Returned object contains elevation raster")
-    return(mos)
+    return(list(elev = mos))
   }
 }
 

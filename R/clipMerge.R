@@ -1,9 +1,10 @@
 #' Clip and merge raster data
 #'
-#' Clip raster data to a set boundary and merge
+#' @details
+#'  \code{clipMerge} clip raster brick(s) to a set boundary and merge
 #'
 #' @param dataset a list of rasters
-#' @param bounds a boundary to clip to
+#' @param bounds a clipping boundary
 #' @import raster
 #' @export
 #' @author

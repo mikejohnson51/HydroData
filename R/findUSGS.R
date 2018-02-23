@@ -3,8 +3,8 @@
 #' @details
 #'  \code{fingUSGS} finds USGS NWIS stream gages within an Area of Interest. Metadata allows for easy data download via
 #'  the USGS \code{\link[dataRetrieval]{readNWISdv}} package using 'site_no' or the \code{getNWM} function using 'feature_ids'.
-#'  To better understand how to easily define an AOI for all \code{HydroData} functions please see \code{?getAOI}.
-#'  All HydroData outputs are projected to \emph{'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}
+#'  To better understand how to define an AOI for all \code{HydroData} functions please see \code{?getAOI}.
+#'
 #'
 #' \code{findUSGS} returns a named list of minimum length 1:
 #' \enumerate{
@@ -18,10 +18,10 @@
 #' @param clip_unit SpatialObject* or list. For details see \code{?getClipUnit}
 #' @param boundary  logical. If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list
 #' @param basemap   logical. If TRUE, a basemap will be joined to returned list
-#' @param save      logical. If TRUE, all data is saved to a HydroData folder creted in users working directory
+#' @param save      logical. If TRUE, all data is saved to a HydroData folder created in users working directory
 #' @param ids       logical. Returns a vector of station IDs for 'getting' data in list
 #'
-#' @return A named list with 'spatial' USGS station data and optional basemap and AOI boundary objects.
+#' @return All HydroData outputs are projected to \emph{'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}
 #' @export
 #' @seealso \itemize{
 #'          \item \code{\link{getClipUnit}}

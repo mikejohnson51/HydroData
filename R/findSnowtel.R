@@ -22,7 +22,7 @@
 #' @author
 #' Mike Johnson
 
-findsnotel = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary = FALSE, keep.basemap = FALSE, ids = FALSE, save = FALSE){
+findSnotel = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary = FALSE, keep.basemap = FALSE, ids = FALSE, save = FALSE){
 
   items =  list()
   report = vector(mode = 'character')

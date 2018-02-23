@@ -23,7 +23,7 @@
 #' Mike Johnson
 
 findReservoirs = function(state = NULL, county = NULL, clip_unit = NULL, keep.boundary = FALSE, keep.basemap = FALSE, save = FALSE){
-  do.call(file.remove, list(list.files(tempdir(), full.names = T)))
+
   items =  list()
   report = vector(mode = 'character')
 
@@ -31,7 +31,7 @@ findReservoirs = function(state = NULL, county = NULL, clip_unit = NULL, keep.bo
   message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Shapefile determined. Now loading USGS Reservoir database...")
 
   URL = 'https://water.usgs.gov/GIS/dsdl/reservoir_shp.zip'
-  sp = download.shp(URL, type = "reservoirs") %>% spTransform(A@proj4string)
+  sp = download.shp(URL, type = "reservoirs") %>% spTransform(HydroDataProj)
   sp = sp[A, ]
     message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " reservoirs found within ", nameAOI(state = state, county = county, clip_unit = clip_unit))
 

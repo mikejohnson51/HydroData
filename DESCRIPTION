@@ -10,6 +10,7 @@ Depends:
     R(>= 3.0.0)
 Imports:
     sp,
+    sf,
     tidyr,
     dplyr,
     magrittr,
@@ -37,7 +38,8 @@ Imports:
     datasets,
     stats,
     leaflet,
-    USAboundaries		 
+    USAboundaries,
+    htmlwidgets		 
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true

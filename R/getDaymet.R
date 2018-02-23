@@ -40,6 +40,7 @@ getDaymet <- function(state = NULL, county = NULL, clip_unit = NULL, tile.ids = 
 
   if(!is.null(tile.ids)) {
       tile.ids = tile.ids
+      A = daymet_tiles[daymet_tiles$TileID == tile.no, ]
       bad.ids = setdiff(tile.ids,daymet_tiles$TileID )
       if(length(bad.ids > 0)){stop( paste(bad.ids,collapse = ", "),
                                     if(length(bad.ids) > 1){" are not valid tile ids."
