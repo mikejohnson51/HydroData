@@ -34,7 +34,7 @@ install_github("mikejohnson51/HydroData")
   - The [NOAA National Water Model]() Streamflow forcasts _______
   - The [Koppen Climate Classifation Dataseet]() from _______
 
-##Defining an AOI
+## Defining an AOI
 
 The central componenet of every function in HydroData is a user defined area of interest (AOI) which can be defined in a number of ways using three core parameters: state, county, and clip_unit
 
@@ -55,7 +55,7 @@ The central componenet of every function in HydroData is a user defined area of 
  plot(sb)
 ```
 
-(3) An AOI can be defined A user supplied Spatial or Raster object:
+(3) An AOI can be defined by a user supplied Spatial* or Raster* object:
  
 ```r
  la.met = getAOI(clip_unit = rgdal::readOGR("/LA_metro"))
@@ -64,17 +64,25 @@ The central componenet of every function in HydroData is a user defined area of 
  
 ```
  
-(3) An area defined by a location a bounding box height and width and optional origin:
+(4) An area defined by a (1)centroid, (2) a bounding box height and width, and (3) an optional bounding box origin:
       The centroid can be defined by:
       
 ```r
+# Select a 100 sqmi AOI the the National Water Center at the center:
+
  nwc = getAOI(clip_unit = list("National Water Center", 10, 10))
+
+# Select a 100 sqmi AOI with a known Lat, Lon pair at the center
  
  pt = getAOI(clip_unit = list(34.41, 119.85, 10, 10))
+
+# Select a 100 sqmi AOI with the KMART near UCSB at the lower left corner
  
  goleta = getAOI(list("KMART near UCSB", 10, 10, "lowerleft"))
  
- berkley = getAOI(list("UC Berkley", 10, 10, "upper right"))
+# Select a 100 sqmi AOI with UC Berkley at the Upper right corner
+ 
+ berkley = getAOI(list("UC Berkley", 10, 10, "upperright"))
 ``` 
 
 In all of the following functions state, county, and clip_unit are offered as parameters so that you can define your search for finding and getting data.
@@ -118,14 +126,6 @@ plot(elpaso$stations, add = T, col = 'darkgreen')
 
 head(elpaso$stations)
 ```
-
-
-
- 
-
-
-Finding USGS Stations
-
 
 
 
