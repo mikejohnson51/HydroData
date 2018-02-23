@@ -127,27 +127,5 @@ plot(elpaso$stations, add = T, col = 'darkgreen')
 head(elpaso$stations)
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ![USCB](https://www.ucsb.edu/graphic-identity/downloads/wave/ucsbwave-black.png)
 
-## Installation
-
-To install the  package, you must install from GitHub using the `devtools` packages:
-
-```r
-library(devtools)
-install_github("mikejohnson51/HydroData")
-```
