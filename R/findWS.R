@@ -1,5 +1,17 @@
-
-
+#' Find Watershed boundaries in AOI
+#'
+#' @param state
+#' @param county
+#' @param clip_unit
+#' @param level
+#' @param subbasins
+#' @param HUC8
+#'
+#' @return
+#' @export
+#'
+#' @examples
+#'
 findWS = function(state = NULL, county = NULL, clip_unit = NULL, level = 10, subbasins = FALSE, HUC8 = NULL){
 
   huc = list()
