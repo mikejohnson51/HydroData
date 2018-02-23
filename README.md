@@ -1,16 +1,9 @@
 `HydroData`
 ================
 
-**HydroData** HydroData is an R package designed to help find, get, and visualize climate, hydrology, and the landscape data in a single framework developed with a core language (R) and common geospatial reference, and unifying vocabulary built around ‘finding’ and ‘getting’ data for an area of interest. In this contexts finding data referes to identifying the spatail feature classes and identifers needed to download data, and getting data refers to the process of getting tabular or raster data relating to an AOI or found location. Currently the package support access to 18 National/Global data sources:
+**HydroData** HydroData is an R package designed to help find, get, and visualize climate, hydrology, and the landscape data through a core language (R); a common geospatial reference; and unifying vocabulary built around ‘finding’ and ‘getting’ data for an area of interest. 
 
-## Installation
-
-To install the  package, you must install from GitHub using the `devtools` packages:
-
-```r
-library(devtools)
-install_github("mikejohnson51/HydroData")
-```
+'Finding data' referes to identifying the spatial feature classes and identifers needed to download data, and 'getting' data refers to the process of getting tabular or raster data relating to an AOI . Currently the package support access to 18 National/Global data sources:
 
 ## Data Sources
 
@@ -109,3 +102,13 @@ elpaso = findUSGS(state = 'CO', county = 'El Paso', basemap = T, boundary = T)
 ```
 
 ![USCB](https://www.ucsb.edu/graphic-identity/downloads/wave/ucsbwave-black.png)
+
+
+## Installation
+
+To install the  package, you must install from GitHub using the `devtools` packages:
+
+```r
+library(devtools)
+install_github("mikejohnson51/HydroData")
+```
