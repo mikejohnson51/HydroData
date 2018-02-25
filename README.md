@@ -1,7 +1,7 @@
 `HydroData`
 ================
 
-**HydroData** HydroData is an R package designed to help find, get, and visualize climate, hydrology, and the landscape data through a core language (R); a common geospatial reference; and unifying vocabulary built around ‘finding’ and ‘getting’ data for an area of interest. 
+**HydroData** is an R package designed to help (1) find, (2)get, (3)visualize and (4)format climate, hydrologic, and the landscape data through a core language (R); a common geospatial reference; and unifying vocabulary built around ‘finding’ and ‘getting’ data for an area of interest. 
 
 'Finding data' referes to identifying the spatial feature classes and identifers needed to download data, and 'getting' data refers to the process of getting tabular or raster data relating to an AOI . Currently the package support access to 18 National/Global data sources:
 
@@ -51,7 +51,6 @@ The central componenet of every function in HydroData is a user defined area of 
 ```
  
 (4) An area defined by a (1)centroid, (2) a bounding box height and width, and (3) an optional bounding box origin:
-      The centroid can be defined by:
       
 ```r
 # Select a 100 sqmi AOI the the National Water Center at the center:
@@ -77,9 +76,10 @@ In all of the following functions state, county, and clip_unit are offered as pa
 
 Much like state,county, and clip_unit are used to construct AOI defintions all HydroData functions share other commom parameters:
 
- - basemap:  When TRUE adds a basemap to a returned list
- - boundary: When TRUE adds a the spatial object defining the AOI to a returned list
- - save: When TRUE write the called data to a users disk in their working dircory in a HydroData folder
+ - basemap:  When TRUE a basemap is added to the returned list
+ - boundary: When TRUE adds a the spatial object defining the AOI to the returned list
+ - save: When TRUE all data is written to a users disk in a HydroData folder created in the users workign dirctory
+ - ids: When TRUE a vector of station/feature IDs is added to a returned list
  
 Other functions might have unique parameters such as year or resolution which will be covered in the examples however with these parameters the basics of all functions are known:
 
@@ -96,9 +96,9 @@ elpaso = findUSGS(state = 'CO', county = 'El Paso', basemap = T, boundary = T)
 #### GCHN Stations
 
 ```r
-# Find all USGS stations in El Paso County, Colorado
+# Find all GHCN stations in El Paso County, Colorado
 
-elpaso = findUSGS(state = 'CO', county = 'El Paso', basemap = T, boundary = T)
+elpaso = findGHCN(state = 'CO', county = 'El Paso', basemap = T, boundary = T)
 ```
 
 ![USCB](https://www.ucsb.edu/graphic-identity/downloads/wave/ucsbwave-black.png)
