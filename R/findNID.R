@@ -1,8 +1,7 @@
 #' Find US Army Core Dams within Area of Interest
 #'
 #' \code{findNID} finds all US Army Corps Dams for an Area of Interest from the National Inventory of Dams dataset.
-#' This dataset is access through the \code{\link[dams]} package.
-#'
+#' This dataset is access through the dams package.
 #'
 #'  \code{findNID} returns a named list of minimum length 1:
 #' \enumerate{
@@ -26,12 +25,12 @@
 #' \item'r':  a roadmap imagery basemap
 #' }
 #'
-#' @param save logical. If TRUE, all data is saved to a HydroData folder created in users working directory. Find working directory with \code{\link[getwd()]}
+#' @param save logical. If TRUE, all data is saved to a HydroData folder created in users working directory. Find working directory with \code{getwd()}
 #'
 #' @seealso \itemize{
 #'          \item \code{\link{getClipUnit}}
 #'          \item \link{getAOI}
-#'          \item \link[HydroData]{exploreHD}
+#'          \item \link[HydroData]{explore}
 #'          }
 #'
 #' @family HydroData 'find' functions
@@ -52,7 +51,7 @@
 #' Mike Johnson
 
 findNID = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE, basemap = FALSE, save = FALSE){
-  require(dams)
+  #requireName(dams)
   items =  list()
   report = vector(mode = 'character')
   A = getAOI(state = state, county = county, clip_unit = clip_unit)

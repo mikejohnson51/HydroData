@@ -1,29 +1,71 @@
+#' Explore Spatial data found with HydroData
+#'
+#' \code{explore} can be used to explore timeseries HydroData objects
+#' Namely:
+#'  findGHCN
+#'  findNHD
+#'  findReservoir
+#'  findRoads
+#'  findSnotel
+#'  findUSGS
+#'  findWaterbodies
+#'  findWS
+#'  findAirports
+#'
+#'  getCLD
+#'  getKoppen
+#'  getNED
+#'  getNLCD
+#'  getWaterUse
+#' @export
+#'
+#'
+#'
+
+
+
 explore = function(input = NULL, save = FALSE) {
+
   layers = NULL
 
+# Boundaries
   fiat = NULL
+  boundary = NULL
+
+# Vector
   nwis = NULL
   ghcn = NULL
   nhd = NULL
   nid = NULL
-  boundary = NULL
   wb = NULL
   roads = NULL
   snotel = NULL
   reservoirs = NULL
-
   WS = list()
+  airports = NULL
 
+# Raster
   lc = NULL
   elv = NULL
   crops = list()
 
-  input = unlist(input)
+input = unlist(input)
 
-  for (i in seq_along(input)) {
+for (i in seq_along(input)) {
+
+  if (any(names(input[i]) == "airports")) {
+    airports = input[i][[which(names(input[i]) == "airports")]]
+    layers = append(layers, "Airports")
+  }
+
+  if (any(names(input[i]) == "fiat")) {
+    fiat = input[i][[which(names(input[i]) == "fiat")]]
+    layers = append(layers, "fiat")
+  }
+
     if (any(names(input[i]) == "boundary")) {
       boundary = input[i][[which(names(input[i]) == "boundary")]]
-      layers = append(layers, "boundary")
+      layers = append(layers, "AOI")
     }
 
     if (any(names(input[i]) == "nwis")) {
@@ -66,17 +108,15 @@ explore = function(input = NULL, save = FALSE) {
       layers = append(layers, "Reservoirs")
     }
 
-    if (any(grepl(pattern = "huc", names(input[i])))) {
+    if (any(grepl(pattern = "^huc_", names(input[i])))) {
       title = names(input[i])
       WS[[title]] = input[i][[grepl(pattern = "huc", names(input[i]))]]
       layers = append(layers, 'WBD')
     }
 
-
-
-    #------------------------------------------------------------------------------#
-    # rasters                                                                      #
-    #------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
+# rasters                                                                      #
+#------------------------------------------------------------------------------#
 
     if (any(grepl(pattern = "lc", names(input[i])))) {
       lc = input[i][[grepl(pattern = "lc", names(input[i]))]]
@@ -94,13 +134,11 @@ explore = function(input = NULL, save = FALSE) {
       layers = append(layers, title)
     }
 
+}
 
-  }
-
-
-  #------------------------------------------------------------------------------#
-  # Basemap                                                                      #
-  #------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
+# Basemap                                                                      #
+#------------------------------------------------------------------------------#
 
   m = leaflet() %>%
     addProviderTiles(providers$CartoDB.Positron, group = "Base") %>%
@@ -114,24 +152,43 @@ explore = function(input = NULL, save = FALSE) {
       position = "bottomleft",
       primaryLengthUnit = "feet",
       primaryAreaUnit = "sqmiles",
-      activeColor = "#3D535D",
-      completedColor = "#7D4479"
+      activeColor = "red",
+      completedColor = "green"
     )
 
-  if (!is.null(boundary)) {
-    m = addPolygons(
-      m,
-      data = boundary,
-      fillColor = "transparent",
-      group = 'Fiat',
-      color = 'black'
-    )
+#------------------------------------------------------------------------------#
+# Boundaries                                                                   #
+#------------------------------------------------------------------------------#
 
+if (!is.null(boundary)) {
+    m = addPolygons(m,
+                    data = boundary,
+                    fillColor = "gray",
+                    group = 'AOI',
+                    color = 'black',
+                    stroke = TRUE,
+                    weight = 1,
+                    opacity = .9,
+                    smoothFactor = 0.7
+    )
   }
 
-  #------------------------------------------------------------------------------#
-  # USGS Stations                                                                #
-  #------------------------------------------------------------------------------#
+if (!is.null(fiat)) {
+  m = addPolygons(m,
+                  data = fiat,
+                  fillColor = "transparent",
+                  group = 'fiat',
+                  color = 'black',
+                  stroke = TRUE,
+                  weight = 3,
+                  opacity = 1,
+                  smoothFactor = 0.7
+  )
+}
+
+#------------------------------------------------------------------------------#
+# USGS Stations                                                                #
+#------------------------------------------------------------------------------#
 
   if (!is.null(nwis)) {
     data = nwis
@@ -169,12 +226,11 @@ explore = function(input = NULL, save = FALSE) {
       group = "USGS",
       clusterOptions = markerClusterOptions()
     )
-
   }
 
-  #------------------------------------------------------------------------------#
-  # GHCN Stations                                                                #
-  #------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
+# GHCN Stations                                                                #
+#------------------------------------------------------------------------------#
 
   if (!is.null(ghcn)) {
     data = ghcn
@@ -214,9 +270,9 @@ explore = function(input = NULL, save = FALSE) {
 
   }
 
-  #------------------------------------------------------------------------------#
-  # NHD Flowlines                                                                #
-  #------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
+# NHD Flowlines                                                                #
+#------------------------------------------------------------------------------#
 
   if (!is.null(nhd)) {
     COMID <- nhd$comid
@@ -228,8 +284,6 @@ explore = function(input = NULL, save = FALSE) {
       sep = "<br/>"
     )
 
-
-
     m = addPolylines(
       m,
       data = nhd,
@@ -237,19 +291,19 @@ explore = function(input = NULL, save = FALSE) {
       weight = nhd$streamorde,
       popup = label,
       group = "NHD",
+
       highlight = highlightOptions(
         weight = 10,
         color = "#666",
         dashArray = "",
         fillOpacity = 0.7,
-        bringToFront = TRUE
+        bringToFront = TRUE)?dygraph
       )
-    )
   }
 
-  #------------------------------------------------------------------------------#
-  # NID Dams                                                                     #
-  #------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
+# NID Dams                                                                     #
+#------------------------------------------------------------------------------#
 
   if (!is.null(nid)) {
     data = nid
@@ -269,7 +323,6 @@ explore = function(input = NULL, save = FALSE) {
     type = data$Dam_Type
     prim_purpose = data$Primary_Purpose
     Max_storage = data$Max_Storage
-
 
     pop <- paste(
       paste("<strong>Site ID:</strong>", ID),
@@ -292,13 +345,12 @@ explore = function(input = NULL, save = FALSE) {
       group = "NID",
       clusterOptions = markerClusterOptions()
     )
-
   }
 
 
-  #------------------------------------------------------------------------------#
-  # Water bodies                                                                 #
-  #------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
+# Water bodies                                                                 #
+#------------------------------------------------------------------------------#
 
   if (!is.null(wb)) {
     name <- wb$NAME
@@ -311,8 +363,6 @@ explore = function(input = NULL, save = FALSE) {
       paste("<strong>Area:</strong>", size, "SQMI"),
       sep = "<br/>"
     )
-
-
 
     m = addPolygons(
       m,
@@ -335,9 +385,9 @@ explore = function(input = NULL, save = FALSE) {
     )
   }
 
-  #------------------------------------------------------------------------------#
-  # TIGER                                                                       #
-  #------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
+# TIGER                                                                       #
+#------------------------------------------------------------------------------#
 
   if (!is.null(roads)) {
     nam <- roads$FULLNAME
@@ -362,10 +412,9 @@ explore = function(input = NULL, save = FALSE) {
     )
   }
 
-
-  #------------------------------------------------------------------------------#
-  # Snotel Stations                                                                #
-  #------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
+# Snotel Stations                                                              #
+#------------------------------------------------------------------------------#
 
   if (!is.null(snotel)) {
     snotelIcon = makeIcon(
@@ -400,12 +449,11 @@ explore = function(input = NULL, save = FALSE) {
       group = "Snotel",
       clusterOptions = markerClusterOptions()
     )
-
   }
 
-  #------------------------------------------------------------------------------#
-  # Reservoirs                                                                   #
-  #------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
+# Reservoirs                                                                   #
+#------------------------------------------------------------------------------#
 
   if (!is.null(reservoirs)) {
     resIcon = makeIcon(
@@ -416,13 +464,11 @@ explore = function(input = NULL, save = FALSE) {
       iconAnchorY = 10
     )
 
-
     ID <- reservoirs$RES_ID
     dam.nam <- reservoirs$DAMNAME
     res.nam  <- reservoirs$RESNAME
     riv  <- reservoirs$RIVER
     drain = reservoirs$DRAINAREA
-
 
     pop <- paste(
       paste("<strong>Reservoir ID:</strong>", ID),
@@ -446,9 +492,9 @@ explore = function(input = NULL, save = FALSE) {
 
   }
 
-  #------------------------------------------------------------------------------#
-  # Watersheds                                                                   #
-  #------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
+# Watersheds                                                                   #
+#------------------------------------------------------------------------------#
 
   if (length(WS) > 0) {
 
@@ -474,16 +520,16 @@ explore = function(input = NULL, save = FALSE) {
     }
 
     cols = unlist(WS[which(as.numeric(substring(names(WS),5,6)) == largest) ])
-    cols = unlist(cols[[1]][, grep("^HUC" , names(ss[[1]]))]@data)
+    cols = substring(unlist(cols[[1]][, grep("^HUC" , names(ss[[1]]))]@data),1,8)
     df2 <- transform(cols,id=as.numeric(factor(cols)))
     df2$X_data = as.character(df2$X_data)
 
     test = NULL
     for(i in 1:dim(name)[1]){
-      test =  append(test, df2[which(df2$X_data == name$HUC8[i]),2])
+      test =  append(test, df2[which(substring(df2$X_data,1,8) == name$HUC8[i]),2])
     }
 
-    pal <- colorFactor(palette = 'RdBu',domain = test)
+    pal <- colorFactor(palette = 'RdBu', domain = test)
 
     m = addPolygons(
       m,
@@ -505,12 +551,53 @@ explore = function(input = NULL, save = FALSE) {
         bringToFront = TRUE
       )
     )
-
   }
 
-  #------------------------------------------------------------------------------#
-  # landcover                                                                    #
-  #------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
+# Airports                                                                     #
+#------------------------------------------------------------------------------#
+
+if (!is.null(airports)) {
+
+  data = airports
+
+  apIcon = makeIcon(
+    iconUrl = "https://upload.wikimedia.org/wikipedia/commons/a/a4/Map_symbol_airport_02.png",
+    iconWidth = 40,
+    iconHeight = 20,
+    iconAnchorX = 20,
+    iconAnchorY = 10
+  )
+
+  name <- data$Name
+  digit4 <- data$Digit4 # site number
+  city <- data$City # local site name
+
+  url = paste0("https://www.wunderground.com/history/airport/", digit4, "/",  gsub("-","/", Sys.Date()), "/DailyHistory.html")
+
+  url_call = paste0('<a href=', url, '>', name, "</a>")
+
+  pop <- paste(
+    paste("<strong>Name:</strong>", url_call),
+    paste("<strong>City:</strong>", city),
+    paste("<strong>4 Diget Identifier:</strong>", digit4),
+    sep = "<br/>"
+  )
+
+  m = addMarkers(
+    m ,
+    data = data,
+    lng = data$Long,
+    lat = data$Lat,
+    icon = apIcon,
+    popup = pop,
+    group = "Airports"
+  )
+}
+
+#------------------------------------------------------------------------------#
+# landcover                                                                    #
+#------------------------------------------------------------------------------#
 
   if (!is.null(lc)) {
     lc.interest = c(0, 11)
@@ -525,11 +612,9 @@ explore = function(input = NULL, save = FALSE) {
                              group = "Land Cover")
   }
 
-
-  #------------------------------------------------------------------------------#
-  # Elevation                                                                    #
-  #------------------------------------------------------------------------------#
-
+#------------------------------------------------------------------------------#
+# Elevation                                                                    #
+#------------------------------------------------------------------------------#
 
   if (!is.null(elv)) {
     elev.interest = 0
@@ -544,11 +629,9 @@ explore = function(input = NULL, save = FALSE) {
                              group = "Elevation")
   }
 
-
-
-  #------------------------------------------------------------------------------#
-  # Crops                                                                    #
-  #------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
+# Crops                                                                        #
+#------------------------------------------------------------------------------#
 
   if (length(crops) > 0) {
     for (i in seq_along(crops)) {
@@ -564,9 +647,9 @@ explore = function(input = NULL, save = FALSE) {
     }
   }
 
-  #------------------------------------------------------------------------------#
-  # Finalize                                                                    #
-  #------------------------------------------------------------------------------#
+#------------------------------------------------------------------------------#
+# Finalize                                                                    #
+#------------------------------------------------------------------------------#
 
   m = m %>% addLayersControl(
     baseGroups = c("Base", "Imagery", "Terrain"),
@@ -579,5 +662,4 @@ explore = function(input = NULL, save = FALSE) {
   if (save) {
     htmlwidgets::saveWidget(m, file = "AOI.html")
   }
-
 }

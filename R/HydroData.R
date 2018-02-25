@@ -1,25 +1,23 @@
+#' HydroData
+#'
 #' \code{HydroData} package
 #'
 #' Access climate, landscape and hydrolgic data programatically
 #'
 #' See the README on
-#' #href{https://cran.r-project.org/package=googlesheets/README.html}{CRAN}
-#' #href{https://github.com/jennybc/googlesheets#readme}{GitHub}
 #'
 #' @docType package
 #' @name HydroData
 #'
 #' @importFrom  tidyr drop_na gather
 #'
-#' @importFrom  dplyr filter mutate %>% arrange
-#'
-#' @importFrom  sp SpatialPointsDataFrame spTransform SpatialPoints CRS SpatialPolygons spDistsN1 Polygon Polygons
+#' @importFrom  dplyr filter mutate %>% arrange select
 #'
 #' @importFrom  utils download.file unzip data type.convert
 #'
 #' @importFrom  methods as
 #'
-#' @importFrom  stats setNames
+#' @importFrom  stats setNames reshape
 #'
 #' @importFrom  dismo geocode
 #'
@@ -33,11 +31,14 @@
 #'
 #' @importFrom  lubridate ymd_hms
 #'
-#' @importFrom  leaflet leaflet colorQuantile addTiles addPolygons addLegend
-#'
 #' @importFrom  rgeos gIntersection
 #'
 #' @importFrom  USAboundaries us_counties us_states
+#'
+#'@importFrom xts xts
+#'
+
+
 
 NULL
 
@@ -51,6 +52,6 @@ if(getRversion() >= "2.15.1")  { utils::globalVariables(c("LAT", "LON",
                                                         "kopRas",
                                                         "DAY", "site_no", "YEAR", "MONTH",
                                                         "year_2000", "year_2005", "year_2010", "COUNTY", "ID",
-                                                        "PARAMETER", "Date", "."))
+                                                        "PARAMETER", "Date", ".", "ap"))
 }
 
