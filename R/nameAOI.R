@@ -19,7 +19,7 @@
 
 nameAOI = function(state = NULL, county = NULL, clip_unit = NULL){
 
-if(!is.null(clip_unit)){unit = "supplied shapefile"}
+if(!is.null(clip_unit)){unit = "define area"}
 
 if(!is.null(state)){
   if(is.null(county)){
@@ -38,9 +38,9 @@ if(!is.null(state) && !is.null(county)){
   county.map = paste(county.map, collapse = ', ')
 
     if(nchar(state == 2)){
-        unit = paste0("boundary of ", county.map ," County, ", setNames(datasets::state.name, datasets::state.abb)[state])
+        unit = paste0(" boundary of ", county.map ," County, ", setNames(datasets::state.name, datasets::state.abb)[state])
       }else{
-        unit = paste0("boundary of ", county.map ," County, ", state)
+        unit = paste0(" boundary of ", county.map ," County, ", state)
     }
 }
   return(unit)

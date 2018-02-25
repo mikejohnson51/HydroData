@@ -2,57 +2,86 @@
 % Please edit documentation in R/findWaterbodies.R
 \name{findWaterbodies}
 \alias{findWaterbodies}
-\title{Find Water Bodies within Area of Interest}
+\title{Find USA Water Bodies (Polygon)}
 \usage{
 findWaterbodies(state = NULL, county = NULL, clip_unit = NULL,
-  boundary = FALSE, basemap = FALSE, save = FALSE)
+  boundary = FALSE, basemap = FALSE, ids = FALSE, save = FALSE)
 }
 \arguments{
-\item{state}{character. Provide full name(s) or two character abbriviation(s). Not case senstive}
+\item{state}{Full name(s) or two character abbriviation(s). Not case senstive}
 
-\item{county}{character. Provide county name(s). Requires \code{state} input.}
+\item{county}{County name(s). Requires \code{state} input.}
 
-\item{clip_unit}{SpatialObject* or list. For details see \code{?getClipUnit}}
+\item{clip_unit}{SpatialObject* or list. For details see \code{getClipUnit}}
 
-\item{boundary}{logical. If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list}
+\item{boundary}{If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list}
 
-\item{basemap}{logical. If TRUE, a basemap will be joined to returned list from \code{\link[dismo]{gmap}}.
+\item{basemap}{If TRUE, a basemap will be joined to returned list
 
- #' If a user wants greater control over basemap apperance replace TRUE with either:
+ If a user wants greater control over basemap apperance replace TRUE with either:
 \itemize{
-\item't':  a terrain imagery basemap
-\item's':  a sattilite imagery basemap
-\item'h':  a hybrid imagery basemap
-\item'r':  a roadmap imagery basemap
+\item't':  google terrain basemap
+\item's':  google sattilite imagery basemap
+\item'h':  google hybrid basemap
+\item'r':  google roads basemap
 }}
 
-\item{save}{logical. If TRUE, all data is saved to a HydroData folder created in users working directory. Find working directory with \code{\link[getwd()]}}
+\item{ids}{If TRUE, returns a list of water body names in AOI}
+
+\item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
+}
+\value{
+\code{findWaterbodies} returns a named list of minimum length 1:
+
+\enumerate{
+\item 'waterbodies': A \code{SpatialLinesDataFrame*}\cr
+
+Pending parameterization, \code{findRoads} can also return:
+
+\item 'basemap':   A \code{RasterLayer*} basemap if \code{basemap = TRUE}
+\item 'boundry':   A \code{SpatialPolygon*} of AOI if \code{boundary = TRUE}
+\item 'fiat':      A \code{SpatialPolygon*} of intersected county boundaries if \code{boundary = TRUE}
+\item 'ids':       A vector of waterbody names if \code{ids = TRUE}
+}
 }
 \description{
-\code{findWaterbodies} finds polygon waterbodies within an Area of Interest from the ESRI Global Waterbodies database
-}
-\details{
-\code{findWaterbodies} returns a named list of minimum length 1:
-\enumerate{
-\item 'wb': A \code{SpatialLinesDataFrame} of NHD flowlines and metadata
-\item 'basemap':   A \code{RasterLayer} basemap if 'basemap' is \code{TRUE}
-\item 'fiat':      A \code{SpatialPolygon} of fiat boundaries if 'boundary' is \code{TRUE}
-\item 'clip':      A \code{SpatialPolygon} of clip unit boundary if 'boundary' is \code{TRUE}
-\item 'ids':       A vector of flowline COMIDs if 'ids' is \code{TRUE}
-}
+\code{findWaterboides} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
+To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip_unit}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
+Returned \code{list} can be interactivly explored via \code{\link{explore}}.\cr\cr
+All outputs are projected to \code{CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and spatial water bodies data is (\emph{down})loaded from the \href{http://open-esrifederal.opendata.arcgis.com/datasets/9dff3cf646704abd9e74265f02abeb09_0}{ESRI Federal Open Data Portal}.
 }
 \examples{
 \dontrun{
-#Find all water bodies in San Luis Obispo, CA
+# Find  water bodies in San Diego County, CA
 
-slo.wb = findWaterbodies(state = 'CA', county = "San Luis Obispo",
-                         boundary = TRUE, basemap = TRUE)
+wb = findWaterbodies(state = "CA", county = "San Diego", basemap = T, boundary = T)
 
-plot(slo.wb$basemap)
-plot(slo.wb$boundary, add = T)
-plot(slo.wb$waterbodies, add = T, col = 'blue')
+# Static Mapping
+
+plot(wb$basemap)
+plot(wb$boundary, add = T)
+plot(wb$waterbodies, add = T, col = 'blue')
+
+# Generate Interactive Map
+
+explore(wb)
 }
+}
+\seealso{
+\code{\link{getAOI}}
+
+\code{\link{findReservoir}}
+
+\code{\link{explore}}
+
+Other HydroData 'find' functions: \code{\link{findAirports}},
+  \code{\link{findClosestAirports}},
+  \code{\link{findGHCN}}, \code{\link{findNHD}},
+  \code{\link{findNID}}, \code{\link{findReservoir}},
+  \code{\link{findRoads}}, \code{\link{findSnotel}},
+  \code{\link{findUSGS}}, \code{\link{findWS}}
 }
 \author{
 Mike Johnson
 }
+\concept{HydroData 'find' functions}

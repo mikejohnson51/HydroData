@@ -2,36 +2,85 @@
 % Please edit documentation in R/findRoads.R
 \name{findRoads}
 \alias{findRoads}
-\title{Find TIGER roads within Area of Interest}
+\title{Find US Census Bureau TIGER Road Networks}
 \usage{
 findRoads(state = NULL, county = NULL, clip_unit = NULL,
-  keep.boundary = FALSE, keep.basemap = FALSE, save = FALSE)
+  boundary = FALSE, basemap = FALSE, ids = FALSE, save = FALSE)
 }
 \arguments{
-\item{state}{a character string. Can be full name or state abbriviation}
+\item{state}{Full name(s) or two character abbriviation(s). Not case senstive}
 
-\item{county}{a character string. Can be full name or state abbriviation}
+\item{county}{County name(s). Requires \code{state} input.}
 
-\item{clip_unit}{can be provided as a shapefile or as a vector defineing centroid and bounding box diminsion}
+\item{clip_unit}{SpatialObject* or list. For details see \code{getClipUnit}}
 
-\item{keep.boundary}{logical. If TRUE, the AOI shapefile will be returned with gage data in a list}
+\item{boundary}{If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list}
 
-\item{keep.basemap}{logical. If TRUE, the google basemap will be returned with gage data in a list}
+\item{basemap}{If TRUE, a basemap will be joined to returned list
 
-\item{save}{logical. If TRUE, all data is written to a HydroData folder in the working directory}
+ If a user wants greater control over basemap apperance replace TRUE with either:
+\itemize{
+\item't':  google terrain basemap
+\item's':  google sattilite imagery basemap
+\item'h':  google hybrid basemap
+\item'r':  google roads basemap
+}}
+
+\item{ids}{If TRUE, returns a list of road names in AOI}
+
+\item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
+}
+\value{
+\code{findRoads} returns a named list of minimum length 1:
+
+\enumerate{
+\item 'roads': A \code{SpatialLinesDataFrame*}\cr
+
+Pending parameterization, \code{findRoads} can also return:
+
+\item 'basemap':   A \code{RasterLayer*} basemap if \code{basemap = TRUE}
+\item 'boundry':   A \code{SpatialPolygon*} of AOI if \code{boundary = TRUE}
+\item 'fiat':      A \code{SpatialPolygon*} of intersected county boundaries if \code{boundary = TRUE}
+\item 'ids':       A vector of road names if \code{ids = TRUE}
+}
 }
 \description{
-Function to locate all TIGER roads within an Area of Interest from the US Census Bureau
+\code{findRoads} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
+To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip_unit}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
+Returned \code{list} can be interactivly explored via \code{\link{explore}}.\cr\cr
+All outputs are projected to \code{CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and road networks are (\emph{down})loaded from the 2017 \href{https://www2.census.gov/geo/tiger/TIGER2017}{US Census servers}.
 }
 \examples{
 \dontrun{
-ep.roads = find_roads(state = 'CO', county = 'el paso', keep.boundary = TRUE, keep.basemap = TRUE)
-plot(ep.roads$basemap)
-plot(ep.roads$boundary, add = T, lwd = 5 )
-plot(ep.roads$roads,    add = T )
+# Find Roads Near UCSB
+
+roads = findRoads(clip_unit = list("UCSB", 10, 10), basemap = T, boundary = T)
+
+# Static Mapping
+
+plot(roads$basemap)
+plot(roads$boundary, add = T)
+plot(roads$roads, add = T)
+
+# Generate Interactive Map
+
+explore(roads)
 }
 
+}
+\seealso{
+\code{\link{getAOI}}
+
+\code{\link{explore}}
+
+Other HydroData 'find' functions: \code{\link{findAirports}},
+  \code{\link{findClosestAirports}},
+  \code{\link{findGHCN}}, \code{\link{findNHD}},
+  \code{\link{findNID}}, \code{\link{findReservoir}},
+  \code{\link{findSnotel}}, \code{\link{findUSGS}},
+  \code{\link{findWS}}, \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson
 }
+\concept{HydroData 'find' functions}

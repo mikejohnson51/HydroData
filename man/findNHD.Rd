@@ -2,76 +2,98 @@
 % Please edit documentation in R/findNHD.R
 \name{findNHD}
 \alias{findNHD}
-\title{Find all NHD flowlines within an Area of Interest}
+\title{Find National Hydrography Data Stream Networks}
 \usage{
-findNHD(state = NULL, county = NULL, clip_unit = NULL, boundary = TRUE,
-  basemap = NULL, ids = FALSE, save = FALSE)
+findNHD(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE,
+  basemap = FALSE, ids = FALSE, save = FALSE)
 }
 \arguments{
-\item{state}{character. Provide full name(s) or two character abbriviation(s). Not case senstive}
+\item{state}{Full name(s) or two character abbriviation(s). Not case senstive}
 
-\item{county}{character. Provide county name(s). Requires \code{state} input.}
+\item{county}{County name(s). Requires \code{state} input.}
 
-\item{clip_unit}{SpatialObject* or list. For details see \code{?getClipUnit}}
+\item{clip_unit}{SpatialObject* or list. For details see \code{getClipUnit}}
 
-\item{boundary}{logical. If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list}
+\item{boundary}{If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list}
 
-\item{basemap}{logical. If TRUE, a basemap will be joined to returned list from \code{\link[dismo]{gmap}}.
+\item{basemap}{If TRUE, a basemap will be joined to returned list
 
- #' If a user wants greater control over basemap apperance replace TRUE with either:
+ If a user wants greater control over basemap apperance replace TRUE with either:
 \itemize{
-\item't':  a terrain imagery basemap
-\item's':  a sattilite imagery basemap
-\item'h':  a hybrid imagery basemap
-\item'r':  a roadmap imagery basemap
+\item't':  google terrain basemap
+\item's':  google sattilite imagery basemap
+\item'h':  google hybrid basemap
+\item'r':  google roads basemap
 }}
 
-\item{ids}{logical. If TRUE, returns a list of COMIDS for all stream reaches in AOI}
+\item{ids}{If TRUE, returns a list of COMIDS for NHD reaches}
 
-\item{save}{logical. If TRUE, all data is saved to a HydroData folder created in users working directory. Find working directory with \code{\link[getwd()]}}
+\item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
 }
 \value{
-All HydroData outputs are projected to \emph{'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}
+\code{findNHD} returns a list of minimum length 1:
+
+\enumerate{
+\item 'flowlines': A \code{SpatialLinesDataFrame}\cr
+
+
+Pending parameterization, \code{findNHD} can also return:
+
+\item 'basemap':   A \code{RasterLayer*} basemap if \code{basemap = TRUE}
+\item 'boundry':   A \code{SpatialPolygon*} of AOI if \code{boundary = TRUE}
+\item 'fiat':      A \code{SpatialPolygon*} of intersected county boundaries if \code{boundary = TRUE}
+\item 'ids':       A vector of COMIDs if \code{ids = TRUE}
+}
 }
 \description{
-\code{findNHD} finds all NHD flowlines for an Area of Interest. Metadata allows for easy data download via
- the \code{getNWM} function. To better understand how to define an AOI see \code{?getAOI}.
-}
-\details{
-\code{findNHD} returns a named list of minimum length 1:
-\enumerate{
-\item 'flowlines': A \code{SpatialLinesDataFrame} of NHD flowlines and metadata
-\item 'basemap':   A \code{RasterLayer} basemap if 'basemap' is \code{TRUE}
-\item 'fiat':      A \code{SpatialPolygon} of fiat boundaries if 'boundary' is \code{TRUE}
-\item 'clip':      A \code{SpatialPolygon} of clip unit boundary if 'boundary' is \code{TRUE}
-\item 'ids':       A vector of flowline COMIDs if 'ids' is \code{TRUE}
-}
+\code{findNHD} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
+To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip_unit}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
+Returned \code{list} can be interactivly explored via \code{\link{explore}} and COMID values (\code{ids = TRUE}) allow for National Water Model access via \code{getNWM}.\cr\cr
+All outputs are projected to \code{CRS'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and stream networks are (\emph{down})loaded from the \href{https://cida.usgs.gov}{USGS}.
 }
 \examples{
 \dontrun{
-# Find NHD data in El Paso County, Colorado
+# Find NHD data for El Paso County, Colorado
 
 el.paso = findNHD(state = 'CO',
                   county = 'El Paso',
                   boundary = TRUE,
-                  basemap = 'r')
+                  basemap = 'r',
+                  ids = TRUE)
 
-plot(el.paso$basemap)
-plot(el.paso$fiat, add = TRUE, lwd = 5)
-plot(el.paso$flowlines, add = TRUE, col = 'blue')
+# Static Mapping
 
+ plot(el.paso$basemap)
+ plot(el.paso$boundary, lwd = 5, add = T)
+ plot(el.paso$flowlines, col = 'blue', lwd = el.paso$flowlines$streamorde, add = T)
+
+# Generate Interactive Map
+
+  explore(el.paso, save = TRUE)
+
+# Get flow data for reaches
+
+flows = getNWM(ids = el.paso$ids, startDate = '2017-01-01', endDate = '2017-12-31')
+
+# Interactivly explore timeseries data
+
+inspect(flows,   save = TRUE)
 }
 
 }
 \seealso{
-\itemize{
-         \item \code{\link{getClipUnit}}
-         \item \link{getAOI}
-         \item \link[HydroData]{readNWM}
-         }
+\code{\link{getAOI}}
 
-Other HydroData 'find' functions: \code{\link{findGHCN}},
-  \code{\link{findNID}}, \code{\link{findUSGS}}
+\code{\link{getNWM}}
+
+\code{\link{explore}}
+
+Other HydroData 'find' functions: \code{\link{findAirports}},
+  \code{\link{findClosestAirports}},
+  \code{\link{findGHCN}}, \code{\link{findNID}},
+  \code{\link{findReservoir}}, \code{\link{findRoads}},
+  \code{\link{findSnotel}}, \code{\link{findUSGS}},
+  \code{\link{findWS}}, \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson

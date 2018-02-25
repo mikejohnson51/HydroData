@@ -26,14 +26,14 @@ findNID(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE,
 \item'r':  a roadmap imagery basemap
 }}
 
-\item{save}{logical. If TRUE, all data is saved to a HydroData folder created in users working directory. Find working directory with \code{\link[getwd()]}}
+\item{save}{logical. If TRUE, all data is saved to a HydroData folder created in users working directory. Find working directory with \code{getwd()}}
 }
 \value{
 All HydroData outputs are projected to \emph{'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}
 }
 \description{
 \code{findNID} finds all US Army Corps Dams for an Area of Interest from the National Inventory of Dams dataset.
-This dataset is access through the \code{\link[dams]} package.
+This dataset is access through the dams package.
 }
 \details{
 \code{findNID} returns a named list of minimum length 1:
@@ -58,11 +58,15 @@ plot(tx.dams$dams, add = TRUE)
 \itemize{
          \item \code{\link{getClipUnit}}
          \item \link{getAOI}
-         \item \link[HydroData]{exploreHD}
+         \item \link[HydroData]{explore}
          }
 
-Other HydroData 'find' functions: \code{\link{findGHCN}},
-  \code{\link{findNHD}}, \code{\link{findUSGS}}
+Other HydroData 'find' functions: \code{\link{findAirports}},
+  \code{\link{findClosestAirports}},
+  \code{\link{findGHCN}}, \code{\link{findNHD}},
+  \code{\link{findReservoir}}, \code{\link{findRoads}},
+  \code{\link{findSnotel}}, \code{\link{findUSGS}},
+  \code{\link{findWS}}, \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson

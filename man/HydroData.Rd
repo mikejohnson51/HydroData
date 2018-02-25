@@ -4,12 +4,12 @@
 \name{HydroData}
 \alias{HydroData}
 \alias{HydroData-package}
-\title{\code{HydroData} package}
+\title{HydroData}
 \description{
-Access climate, landscape and hydrolgic data programatically
+\code{HydroData} package
 }
 \details{
+Access climate, landscape and hydrolgic data programatically
+
 See the README on
-#href{https://cran.r-project.org/package=googlesheets/README.html}{CRAN}
-#href{https://github.com/jennybc/googlesheets#readme}{GitHub}
 }

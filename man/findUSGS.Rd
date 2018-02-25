@@ -2,90 +2,102 @@
 % Please edit documentation in R/findUSGS.R
 \name{findUSGS}
 \alias{findUSGS}
-\title{Find USGS Stream Gages within a defined area}
+\title{Find USGS NWIS Stream Gages}
 \usage{
 findUSGS(state = NULL, county = NULL, clip_unit = NULL,
-  boundary = FALSE, basemap = FALSE, ids = FALSE, save = FALSE)
+  boundary = FALSE, basemap = FALSE, ids = FALSE, save = FALSE,
+  comids = FALSE)
 }
 \arguments{
-\item{state}{character. Provide full name(s) or two character abbriviation(s). Not case senstive}
+\item{state}{Full name(s) or two character abbriviation(s). Not case senstive}
 
-\item{county}{character. Provide county name(s). Requires 'state' input.}
+\item{county}{County name(s). Requires \code{state} input.}
 
-\item{clip_unit}{SpatialObject* or list. For details see \code{?getClipUnit}}
+\item{clip_unit}{SpatialObject* or list. For details see \code{getClipUnit}}
 
-\item{boundary}{logical. If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list}
+\item{boundary}{If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list}
 
-\item{basemap}{logical. If TRUE, a basemap will be joined to returned list}
+\item{basemap}{If TRUE, a basemap will be joined to returned list
 
-\item{ids}{logical. Returns a vector of station IDs for 'getting' data in list}
+ If a user wants greater control over basemap apperance replace TRUE with either:
+\itemize{
+\item't':  google terrain basemap
+\item's':  google sattilite imagery basemap
+\item'h':  google hybrid basemap
+\item'r':  google roads basemap
+}}
 
-\item{save}{logical. If TRUE, all data is saved to a HydroData folder created in users working directory}
+\item{ids}{If TRUE, returns a list of station IDs in AOI}
+
+\item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
+
+\item{comids}{If TRUE, returns a list of NHD COMIDs that correspond to the station IDs}
 }
 \value{
-All HydroData outputs are projected to \emph{'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}
-}
-\description{
-Find USGS Stream Gages within a defined area
-}
-\details{
-\code{fingUSGS} finds USGS NWIS stream gages within an Area of Interest. Metadata allows for easy data download via
- the USGS \code{\link[dataRetrieval]{readNWISdv}} package using 'site_no' or the \code{getNWM} function using 'feature_ids'.
- To better understand how to define an AOI for all \code{HydroData} functions please see \code{?getAOI}.
-
-
 \code{findUSGS} returns a named list of minimum length 1:
+
 \enumerate{
 \item 'nwis':     A \code{SpatialPointsDataFrame} of stations and metadata
-\item 'basemap':  A \code{RasterLayer} basemap if basemap is \code{TRUE}
-\item 'boundary': A \code{SpatialPolygon} of defined AOI if boundary is \code{TRUE}
+Pending parameterization, \code{findRoads} can also return:
+
+\item 'basemap':   A \code{RasterLayer*} basemap if \code{basemap = TRUE}
+\item 'boundry':   A \code{SpatialPolygon*} of AOI if \code{boundary = TRUE}
+\item 'fiat':      A \code{SpatialPolygon*} of intersected county boundaries if \code{boundary = TRUE}
+\item 'ids':       A vector of road names if \code{ids = TRUE}
 }
+}
+\description{
+\code{findUSGS} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
+To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip_unit}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
+Returned \code{list} can be interactivly explored via \code{\link{explore}} \cr
+Returned ID values (\code{ids = TRUE}) allow for observed data access via \code{getUSGS} or \link[dataRetrieval]{readNWISdv} .\cr
+Returned COMID values (\code{comids = TRUE}) allow for National Water Model access via \code{getNWM}.\cr\cr
+
+All outputs are projected to \code{CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and station data was extracted from the \href{https://maps.waterdata.usgs.gov/mapper/index.html}{USGS NWIS Mapper}.
 }
 \examples{
 \dontrun{
-# Find all stations in Harris County, Texas:
-
- harris.usgs <- findUSGS(state = 'TX', county = 'harris',
-                             boundary = TRUE, basemap = TRUE, ids = TRUE,
-                             save = TRUE)
-
-# Find all stations within 10 square miles of the National Water Center:
+# Find stations within 10 square miles of the National Water Center:
 
  nwc.usgs <- findUSGS(clip_unit = list("National Water Center", 10,  10),
-                             boundary = TRUE, basemap = TRUE, ids = TRUE,
-                             save = TRUE)
+                             boundary = TRUE, basemap = TRUE, ids = TRUE)
 
-# Visualize Data:
+# Static Mapping
 
- plot(harris.usgs$basemap)
- plot(harris.usgs$boundary, add = TRUE, lwd = 5)
- plot(harris.usgs$usgs, add = TRUE, lwd = 2, col = "darkgreen")
+ plot(nwc.usgs$basemap)
+ plot(nwc.usgs$boundary, add = TRUE, lwd = 5)
+ plot(nwc.usgs$usgs, add = TRUE, lwd = 2, pch = 16,  col = "darkgreen")
 
-# Get discharge data for all stations
+# Generate Interactive Map
 
- Q <- dataRetrieval::readNWISdv(siteNumbers = harris.usgs$ids[1],
-                                    parameterCd = "00060")
+explore(nwc.usgs)
+
+# Get discharge data for all stations usign dataRetrival Package
+
+ Q <- dataRetrieval::readNWISdv(siteNumbers = nwc.usgs$ids, parameterCd = "00060")
  Q <- dataRetrieval::renameNWISColumns(Q)
 
-#Plot Discharge Data
- p <- ggplot(Q, aes(Date,Flow)) +
-         labs(x = "Date",
-              y = attr(Q,"variableInfo")$variableDescription,
-              title = paste0("Streamflow at USGS Station: ", harris.usgs$ids[1])) +
-          geom_line()
- p
+# Generate Interactive Timseries
+
+inspect(Q, param = 'Flow')
 }
 
 }
 \seealso{
-\itemize{
-         \item \code{\link{getClipUnit}}
-         \item \link{getAOI}
-         \item \link[dataRetrieval]{readNWISdv}
-         }
+\code{\link{getAOI}}
 
-Other HydroData 'find' functions: \code{\link{findGHCN}},
-  \code{\link{findNHD}}, \code{\link{findNID}}
+\code{\link{explore}}
+
+\code{\link{getUSGS}}
+
+\code{\link[dataRetrieval]{readNWISdv}}
+
+Other HydroData 'find' functions: \code{\link{findAirports}},
+  \code{\link{findClosestAirports}},
+  \code{\link{findGHCN}}, \code{\link{findNHD}},
+  \code{\link{findNID}}, \code{\link{findReservoir}},
+  \code{\link{findRoads}}, \code{\link{findSnotel}},
+  \code{\link{findWS}}, \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson

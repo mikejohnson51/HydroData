@@ -1,9 +1,11 @@
-getWU = function(year = NULL, airport_code = NULL, month = NULL, day = NULL, type = NULL){
+getWU = function(airport_code = NULL, year = NULL, month = 1:12, day = NULL){
 
-  airports = fread("/Users/mikejohnson/Desktop/ABM_data/airports.txt")
+  type = 'monthly'
 
-  if(nchar(airport_code) == 3) { airport_code = as.character(airports[which(airport_code == airports$V5),6]) }
-  if(!(airport_code %in% airports$V6)) { stop("Airport code not found") }
+  load("data/airports.rda")
+
+  if(nchar(airport_code) == 3) { airport_code = as.character(ap[which(airport_code == ap$V5),6]) }
+  if(!(airport_code %in% ap$V6)) { stop("Airport code not found") }
 
   if((type %in% c("daily", "weekly", "monthly"))){
     type = simpleCap(type)
@@ -18,7 +20,7 @@ getWU = function(year = NULL, airport_code = NULL, month = NULL, day = NULL, typ
     "DP_max",   "DP_avg",   "DP_min",   # Dew Point          (C)
     "H_max",    "H_avg",    "H_min",    # Humidity           (%)
     "SLP_max",  "SLP_avg",  "SLP_min",  # Sea Level Pressure (hPa)
-    "V_min",    "V_avg",    "V_max",    # Visibility         (km)
+    "V_max",    "V_avg",    "V_min",    # Visibility         (km)
     "Wind_max", "Wind_avg", "Wind_min", # Wind               (km/hr)
     "PPT_tot",
     "Events" )
@@ -53,35 +55,10 @@ getWU = function(year = NULL, airport_code = NULL, month = NULL, day = NULL, typ
       message( "Year ", year[i], " Month ", j,  " downloaded.")
     }
   }
-  names(df.airports) = c("Date", "Year", "Month", data.names)
+  df.airports = df.airports %>% mutate(agency_cd = "WeatherUnderground", site_no = airport_code)
+  names(df.airports) = c("Date", "Year", "Month", data.names, "agency_cd", "site_no")
   df.airports[,1] = as.Date(df.airports[,1])
   return(df.airports)
 }
 
 
-
-
-
-
-find_closest_airport = function(location = NULL, number = 5){
-  airports = fread("/Users/mikejohnson/Desktop/ABM_data/airports.txt")
-  coords = cbind(airports[,8], airports[,7])
-  air = SpatialPointsDataFrame(coords, airports)
-
-
-
-  if(class(location) == 'numeric') { point = SpatialPoints(cbind(location[1], location[2]))
-  } else { x = geocode(location)
-  point = SpatialPoints(cbind(x$longitude, x$latitude))
-  }
-
-  air@proj4string = CRS("+init=epsg:4326")
-  point@proj4string = CRS("+init=epsg:4326")
-
-  dist = spDistsN1(air, point, longlat = T)
-
-  ndx = cbind(airports[(order(dist)[1:number]), 2:8],  dist[(order(dist)[1:number])])
-  names(ndx) = c("Name", "City", "Country", "Diget3", "Diget4", "Lat", "Long", "Distance_km")
-
-  return(ndx)
-}

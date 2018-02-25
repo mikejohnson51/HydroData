@@ -32,7 +32,7 @@
 #' @author
 #' Mike Johnson
 
-readNWM = function(comids, startDate, endDate = NULL, config = "analysis_assim", time = NULL,
+getNWM = function(comids, startDate, endDate = NULL, config = "analysis_assim", time = NULL,
                    forecast = NULL, keep.flowlines = FALSE, keep.basemap = FALSE, path = NULL, interval.hr = NULL){
 
   if(class(comids) == 'numeric'){

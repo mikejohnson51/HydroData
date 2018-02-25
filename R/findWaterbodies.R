@@ -1,84 +1,116 @@
-#' Find Water Bodies within Area of Interest
+#' Find USA Water Bodies (Polygon)
 #'
-#' \code{findWaterbodies} finds polygon waterbodies within an Area of Interest from the ESRI Global Waterbodies database
+#' @description
+#' \code{findWaterboides} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
+#' To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip_unit}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
+#' Returned \code{list} can be interactivly explored via \code{\link{explore}}.\cr\cr
+#' All outputs are projected to \code{CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and spatial water bodies data is (\emph{down})loaded from the \href{http://open-esrifederal.opendata.arcgis.com/datasets/9dff3cf646704abd9e74265f02abeb09_0}{ESRI Federal Open Data Portal}.
 #'
-#'\code{findWaterbodies} returns a named list of minimum length 1:
-#' \enumerate{
-#' \item 'wb': A \code{SpatialLinesDataFrame} of NHD flowlines and metadata
-#' \item 'basemap':   A \code{RasterLayer} basemap if 'basemap' is \code{TRUE}
-#' \item 'fiat':      A \code{SpatialPolygon} of fiat boundaries if 'boundary' is \code{TRUE}
-#' \item 'clip':      A \code{SpatialPolygon} of clip unit boundary if 'boundary' is \code{TRUE}
-#' \item 'ids':       A vector of flowline COMIDs if 'ids' is \code{TRUE}
-#' }
+#' @param state    Full name(s) or two character abbriviation(s). Not case senstive
+#' @param county    County name(s). Requires \code{state} input.
+#' @param clip_unit SpatialObject* or list. For details see \code{getClipUnit}
+#' @param boundary  If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list
+#' @param basemap   If TRUE, a basemap will be joined to returned list
 #'
-#'
-#' @param state     character. Provide full name(s) or two character abbriviation(s). Not case senstive
-#' @param county    character. Provide county name(s). Requires \code{state} input.
-#' @param clip_unit SpatialObject* or list. For details see \code{?getClipUnit}
-#' @param boundary  logical. If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list
-#' @param basemap   logical. If TRUE, a basemap will be joined to returned list from \code{\link[dismo]{gmap}}.
-#'
-#'  #' If a user wants greater control over basemap apperance replace TRUE with either:
+#'  If a user wants greater control over basemap apperance replace TRUE with either:
 #' \itemize{
-#' \item't':  a terrain imagery basemap
-#' \item's':  a sattilite imagery basemap
-#' \item'h':  a hybrid imagery basemap
-#' \item'r':  a roadmap imagery basemap
+#' \item't':  google terrain basemap
+#' \item's':  google sattilite imagery basemap
+#' \item'h':  google hybrid basemap
+#' \item'r':  google roads basemap
 #' }
 #'
-#' @param save logical. If TRUE, all data is saved to a HydroData folder created in users working directory. Find working directory with \code{\link[getwd()]}
+#' @param ids  If TRUE, returns a list of water body names in AOI
+#' @param save If TRUE, data is written to a HydroData folder in users working directory.
+#'
+#' @seealso  \code{\link{getAOI}}
+#' @seealso  \code{\link{findReservoir}}
+#' @seealso  \code{\link{explore}}
+#'
+#' @family HydroData 'find' functions
+#'
+#' @return
+#' \code{findWaterbodies} returns a named list of minimum length 1:
+#'
+#' \enumerate{
+#' \item 'waterbodies': A \code{SpatialLinesDataFrame*}\cr
+#'
+#' Pending parameterization, \code{findRoads} can also return:
+#'
+#' \item 'basemap':   A \code{RasterLayer*} basemap if \code{basemap = TRUE}
+#' \item 'boundry':   A \code{SpatialPolygon*} of AOI if \code{boundary = TRUE}
+#' \item 'fiat':      A \code{SpatialPolygon*} of intersected county boundaries if \code{boundary = TRUE}
+#' \item 'ids':       A vector of waterbody names if \code{ids = TRUE}
+#' }
 #'
 #' @examples
 #' \dontrun{
-#' #Find all water bodies in San Luis Obispo, CA
+#' # Find  water bodies in San Diego County, CA
 #'
-#' slo.wb = findWaterbodies(state = 'CA', county = "San Luis Obispo",
-#'                          boundary = TRUE, basemap = TRUE)
+#' wb = findWaterbodies(state = "CA", county = "San Diego", basemap = T, boundary = T)
 #'
-#' plot(slo.wb$basemap)
-#' plot(slo.wb$boundary, add = T)
-#' plot(slo.wb$waterbodies, add = T, col = 'blue')
+#' # Static Mapping
+#'
+#' plot(wb$basemap)
+#' plot(wb$boundary, add = T)
+#' plot(wb$waterbodies, add = T, col = 'blue')
+#'
+#' # Generate Interactive Map
+#'
+#' explore(wb)
 #'}
 #' @export
 #' @author
 #' Mike Johnson
 
-findWaterbodies = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE, basemap = FALSE, save = FALSE){
+findWaterbodies = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE, basemap = FALSE, ids = FALSE, save = FALSE){
 
   items =  list()
   report = vector(mode = 'character')
 
-  A = getAOI(state = state, county = county, clip_unit = clip_unit)
+  AOI = getAOI(state = state, county = county, clip_unit = clip_unit)
   message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ".\nShapefile determined.\nLoading North American Water Bodies")
 
   URL = 'http://open-esrifederal.opendata.arcgis.com/datasets/9dff3cf646704abd9e74265f02abeb09_0.zip'
 
   sp = download.shp( URL, "water bodies") %>% spTransform(HydroDataProj)
-  sp = sp[A,]
+  sp = sp[AOI,]
     message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " water bodies found within ", nameAOI(state = state, county = county, clip_unit = clip_unit))
 
   items[['waterbodies']] = sp ; report = append(report, "Returned list includes: water bodies shapefile")
 
-  if(length(report) > 1) {report[length(report)] = paste("and",  tail(report, n = 1))}
-    message(paste(report, collapse = ", "))
-
-  if (boundary) {
-      if (!is.null(clip_unit)) {
-        items[['fiat']] = getFiatBoundary(clip_unit = sp
-        )
-        report = append(report, "fiat boundary shapefile")
-        items[['clip']] = A
-        report = append(report, "clip boundary shapefile")
+    if (!(basemap == FALSE))  {
+      if (basemap == TRUE) {
+        type = 't'
+        name = 'terrain'
       } else {
-        items[['fiat']] = A
-        report = append(report, "boundary shapefile")
+        type = basemap
       }
+
+      if (type == 't') { name = 'terrain'   }
+      if (type == 'h') { name = 'hybrid'    }
+      if (type == 's') { name = 'satellite' }
+      if (type == 'r') { name = 'roads'   }
+
+      items[['basemap']] = getBasemap(AOI = AOI, type = type)
+      report = append(report, paste(name, "basemap"))
     }
 
-    if (!(basemap == FALSE)) {
-      items[['basemap']] =  getBasemap(sp, type = basemap)     ##AOI$bmap
-      report = append(report, "basemap raster")
+
+    if (boundary) { items[['boundary']] = AOI
+    report = append(report, "AOI boundary")
+
+    if (!is.null(clip_unit)) { items[['fiat']] = getFiatBoundary(clip_unit = AOI)
+    report = append(report, "fiat boundary")
     }
+    }
+
+    if (ids) { items[['ids']] = sp$NAME
+    report = append(report, "names of water bodies")
+    }
+
+    if (length(report) > 1) { report[length(report)] = paste("and",  tail(report, n = 1)) }
+      message(paste(report, collapse = ", "))
 
     if(save){
       save.file(data    = items,
@@ -86,7 +118,7 @@ findWaterbodies = function(state = NULL, county = NULL, clip_unit = NULL, bounda
                 county  = county,
                 clip_unit = clip_unit,
                 agency  = 'ESRI',
-                source  = "FedData",
+                source  = "Global",
                 dataset = "waterbodies",
                 other   = NULL )
     }

@@ -59,7 +59,7 @@ Get a bouding box for a location
          }
 
 Other HydroData 'get' functions: \code{\link{getAOI}},
-  \code{\link{getFiatBoundary}}
+  \code{\link{getFiatBoundary}}, \code{\link{getUSGS}}
 }
 \author{
 Mike Johnson

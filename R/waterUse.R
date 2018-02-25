@@ -8,7 +8,8 @@
 #' @param year define year to download. Any combination of 2000, 2005 and 2010 accepted
 #'
 #' @examples
-#' \dontrun{wu10 = waterUse(state = "CO", year = 2010)
+#' \dontrun{
+#' wu10 = waterUse(state = "CO", year = 2010)
 #'
 #' wu.co = waterUse(statte = c("CA", "UT", "AZ", "NV"), year = c(2000, 2005, 2010))
 #'}
@@ -29,9 +30,10 @@ waterUse = function(state = NULL, county = NULL, clip_unit = NULL, year = 2010){
     message("Downloading USGS water use data for 2000")
     waterUse = fread(paste0("https://water.usgs.gov/watuse/data/2000/usco2000.txt"), sep = "\t", fill = TRUE, showProgress = FALSE)
     names(waterUse) = gsub("-", ".", names(waterUse))
+    waterUse$FIPS = sprintf("%05d",waterUse$FIPS)
     waterUse = waterUse %>%
-      select(c(which(names(waterUse) %in% wu_index$ids))) %>%
-      filter(waterUse$FIPS %in% AOI$FIP)
+      dplyr::select(c(which(names(waterUse) %in% wu_index$ids))) %>%
+      dplyr::filter(sprintf("%05d",waterUse$FIPS) %in% AOI$geoid)
     county = vector()
     for(i in 1:dim(waterUse)[1]){county[i] =  AOI$NAME[which(waterUse$FIPS[i] == AOI$FIP)]}
     waterUse = data.frame(append(waterUse, list(COUNTY=county), after=match("STATEFIPS", names(waterUse))))
@@ -44,9 +46,10 @@ waterUse = function(state = NULL, county = NULL, clip_unit = NULL, year = 2010){
     message("Downloading USGS water use data for 2005")
     waterUse = fread("https://water.usgs.gov/watuse/data/2005/usco2005.txt", sep = "\t", fill = TRUE, showProgress = FALSE)
     names(waterUse) = gsub("-", ".", names(waterUse))
+    waterUse$FIPS = sprintf("%05d",waterUse$FIPS)
     waterUse = waterUse %>%
-      select(c(which(names(waterUse) %in% wu_index$ids))) %>%
-      filter(waterUse$FIPS %in% AOI$FIP)
+      dplyr::select(c(which(names(waterUse) %in% wu_index$ids))) %>%
+      dplyr::filter(sprintf("%05d",waterUse$FIPS) %in% AOI$geoid)
     county = vector()
     for(i in 1:dim(waterUse)[1]){county[i] =  AOI$NAME[which(waterUse$FIPS[i] == AOI$FIP)]}
     waterUse = data.frame(append(waterUse, list(COUNTY=county), after=match("STATEFIPS", names(waterUse))))
@@ -60,10 +63,11 @@ waterUse = function(state = NULL, county = NULL, clip_unit = NULL, year = 2010){
     message("Downloading USGS water use data for 2010")
     waterUse = fread("https://water.usgs.gov/watuse/data/2010/usco2010.txt", sep = "\t", fill = TRUE, showProgress = FALSE)
     names(waterUse) = gsub("-", ".", names(waterUse))
+    waterUse$FIPS = sprintf("%05d",waterUse$FIPS)
     waterUse = waterUse %>%
-      select(c(which(names(waterUse) %in% wu_index$ids))) %>%
-      filter(waterUse$FIPS %in% AOI$FIP) %>%
-      mutate(COUNTY = gsub(" County", "", COUNTY))
+      dplyr::select(c(which(names(waterUse) %in% wu_index$ids))) %>%
+      dplyr::filter(waterUse$FIPS %in% AOI$geoid) %>%
+      dplyr::mutate(COUNTY = gsub(" County", "", COUNTY))
 
     waterUse10 = waterUse %>% gather(ID, year_2010, 6:(dim(waterUse)[2])) %>% mutate(year_2010 = as.numeric(year_2010))
     for(i in 1:dim(waterUse10)[1]){waterUse10[i,"DESCRIPTION"] = wu_index[which(waterUse10$ID[i] == wu_index$ids),2]}
@@ -79,10 +83,10 @@ waterUse = function(state = NULL, county = NULL, clip_unit = NULL, year = 2010){
     }else if(!exists("waterUse05")){ zz = merge(waterUse00, waterUse10, all = TRUE)
     }else if(!exists("waterUse10")){ zz = merge(waterUse00, waterUse05, all = TRUE)
     }else { zz = merge(waterUse00, waterUse05, all = TRUE)
-            zz = merge(zz, waterUse10, all= TRUE)}
+    zz = merge(zz, waterUse10, all= TRUE)}
   }
 
-  message('Complete. Annual data downlaoded for ', name.AOI, "years ", paste0(year, collapse = ", "), ".")
+  message('Complete. Annual data downlaoded for ', name.AOI, " years ", paste0(year, collapse = ", "), ".")
   return(list(data = zz, map = AOI))
 }
 
@@ -98,11 +102,11 @@ waterUse = function(state = NULL, county = NULL, clip_unit = NULL, year = 2010){
 #'
 #' @examples
 #' \dontrun{
-#' plotWu(wu10,
+#' plotWS(wu10,
 #'        variable = wu.variable$`Public Supply, surface-water withdrawals, fresh, in Mgal/d`,
 #'        plot.type = 'static', year = 2010)
 #'
-#' plotWu(wu10,
+#' plotWS(wu10,
 #'        variable = wu.variable$`Public Supply, surface-water withdrawals, fresh, in Mgal/d`,
 #'        plot.type = 'interactive', year = 2010)
 #'}
@@ -111,41 +115,64 @@ waterUse = function(state = NULL, county = NULL, clip_unit = NULL, year = 2010){
 
 plotWS = function(waterUse.obj = NULL, variable = NULL, plot.type = 'static', year = NULL){
 
-  waterUse.sp <- merge(waterUse.obj$map, waterUse.obj$data[waterUse.obj$data$DESCRIPTION %in% variable,], by.x = "NAME", by.y = "COUNTY")
+  waterUse.sp <- sp::merge(waterUse.obj$map, waterUse.obj$data[waterUse.obj$data$DESCRIPTION %in% variable, ], by.x = "geoid", by.y = "FIPS")
 
-  waterUse.sp@data
+
   if(length(year)>1){stop("Only 1 year can be ploted at a time.")} else { name =paste0("year_", year)}
 
-  breaks_qt <- classInt::classIntervals(waterUse.sp$year_2010,n = 5)
-    br <- breaks_qt$brks
-    offs <- 0.0000001
-    br[1] <- br[1] - offs
-    br[length(br)] <- br[length(br)] + offs
+  breaks_qt <- classInt::classIntervals(waterUse.sp$year_2010, n = 5)
+  br <- breaks_qt$brks
+  offs <- 0.0000001
+  br[1] <- br[1] - offs
+  br[length(br)] <- br[length(br)] + offs
 
   if(plot.type == 'static'){
     sp::spplot(waterUse.sp, name, col.regions = RColorBrewer::brewer.pal(5, "YlOrRd"), at = br, col = 'grey',  lty = 3, main = waterUse.sp@data$DESCRIPTION[1])
+
   }else if(plot.type == 'interactive'){
-      pal_fun <- colorQuantile("YlOrRd", NULL, n = 5)
+    cols = waterUse.sp@data[, name]
 
-      p_popup <- paste(sep = "<br/>",
-                       paste0("<strong>County Name </strong>", waterUse.sp$NAME),
-                       paste0("<strong>", waterUse.sp@data$DESCRIPTION[1],":</strong> ", round(waterUse.sp@data[,name],0)))
+    vals = waterUse.sp@data[, name]
 
-      leaflet(spTransform(waterUse.sp, CRS("+init=epsg:4326"))) %>%
-        addTiles() %>%
-        addPolygons(
-          stroke = TRUE,
-          color = 'black',
-          weight = 1,
-          fillColor = ~pal_fun(waterUse.sp@data[,name]),
-          fillOpacity = 0.8, smoothFactor = 0.5,
-          popup = p_popup) %>%
-        addLegend("bottomright",
-                  colors =   RColorBrewer::brewer.pal(5, "YlOrRd"),
-                  labels = paste0("up to ", as.character(round(breaks_qt$brks[-1]))),
-                  title = paste0(waterUse.sp@data$DESCRIPTION[1], " (", year,")"))
-    }
+    for( i in seq_along(cols)){ if(all(!is.na(cols[i]), cols[i] == 0)) { cols[i] = NA} }
+
+    pal_fun <- colorBin(palette = 'Blues', domain = vals, bins = br, na.color = "lightgray" )
+
+    p_popup <- paste(sep = "<br/>",
+                     paste0("<strong>Name: </strong>", paste0(waterUse.sp$name, " County")),
+                     paste0("<strong>Value: </strong>", waterUse.sp@data[,name])) %>%
+      lapply(htmltools::HTML)
+
+    m = leaflet(spTransform(waterUse.sp, CRS("+init=epsg:4326"))) %>%
+      addProviderTiles(providers$CartoDB.Positron) %>%
+      addPolygons(
+        weight = 2,
+        opacity = 1,
+        color = "white",
+        dashArray = "3",
+        fillColor = ~pal_fun(cols),
+        fillOpacity = 0.8,
+        smoothFactor = 0.5,
+        highlight = highlightOptions(
+          weight = 5,
+          color = "#666",
+          dashArray = "",
+          fillOpacity = 0.5,
+          bringToFront = TRUE),
+        label = p_popup,
+        labelOptions = labelOptions(
+          style = list("font-weight" = "normal", padding = "3px 8px"),
+          textsize = "15px",
+          direction = "auto")) %>%
+      addLegend("bottomright",
+                pal = pal_fun,
+                values = ~vals,
+                opacity = 0.7,
+                title = paste0(waterUse.sp@data$DESCRIPTION[1], " (", year,")"))
+
+    m
   }
+}
 
 
 
@@ -286,13 +313,4 @@ wu_index = data.frame(
 wu.variable = data.frame(matrix(ncol=length(wu_index$full.names), nrow = 0))
 colnames(wu.variable) = wu_index$full.names
 wu.variable[1,] = wu_index$full.names
-
-
-
-
-
-
-
-
-
 

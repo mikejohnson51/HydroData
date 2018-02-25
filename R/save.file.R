@@ -21,9 +21,6 @@ save.file = function(data = NULL,
     if (class(clip_unit[[1]]) == 'character') {
       AOI = clip_unit[[1]]
 
-      #AOI = clip_unit[[1]]
-      #AOI = suppressMessages( ggmap::geocode(AOI, output = 'more', messaging = FALSE) )
-      #AOI = paste0(gsub(" ","", AOI$administrative_area_level_2), "_", gsub(" ","",AOI$administrative_area_level_1), collapse = '_')
     }
 
     if (class(clip_unit[[1]]) == 'numeric') {
@@ -87,15 +84,16 @@ save.file = function(data = NULL,
     bmap.file = paste0(raw.dir, "/", AOI, "/", "boundary", '/basemap.tif')
     if (!file.exists(bmap.file)) {
       if (grepl("raster", class(bmap)[1], ignore.case = TRUE)) {
-        raster::writeRaster(bmap, bmap.file, options = c('TFW=YES'))
+        raster::writeRaster(bmap, bmap.file, options = c('TFW=YES'), overwrite = TRUE )
       }
     }
+
     data$basemap = NULL
   }
 
   # Save boundary file if applicable
-  if (!is.null(data$clip)) {
-    bound = data$clip
+  if (!is.null(data$boundary)) {
+    bound = data$boundary
     bound.file = paste0(raw.dir, "/", AOI, "/", "boundary")
     if (!file.exists(paste0(bound.file, "/boundary.shp"))) {
       if (grepl("spatialpolygons", class(bound)[1], ignore.case = TRUE)) {
@@ -111,19 +109,19 @@ save.file = function(data = NULL,
         rgdal::writeOGR(
           obj = bound,
           dsn = bound.file,
-          layer = "clip",
-          driver = "ESRI Shapefile"
+          layer = "boundary",
+          driver = "ESRI Shapefile", overwrite_layer = TRUE
         )
       }
     }
-    data$clip = NULL
+    data$boundary = NULL
   }
 
-  # Save boundary file if applicable
+  # Save Fiat file if applicable
   if (!is.null(data$fiat)) {
     bound = data$fiat
     bound.file = paste0(raw.dir, "/", AOI, "/", "boundary")
-    if (!file.exists(paste0(bound.file, "/boundary.shp"))) {
+    if (!file.exists(paste0(bound.file, "/fiat.shp"))) {
       if (grepl("spatialpolygons", class(bound)[1], ignore.case = TRUE)) {
         bound = as(bound, "SpatialPolygonsDataFrame")
       }
@@ -138,50 +136,47 @@ save.file = function(data = NULL,
           obj = bound,
           dsn = bound.file,
           layer = "fiat",
-          driver = "ESRI Shapefile"
+          driver = "ESRI Shapefile",
+          overwrite_layer = TRUE
         )
       }
     }
     data$fiat = NULL
   }
 
-  # Save data
+  data$ids = NULL
+
+# Save data
   for (i in 1:length(data)) {
+
+     name = names(data)
+
     if (!is.null(data[[i]])) {
       fin = data[[i]]
 
       spatial.file = paste0(raw.dir, "/", AOI, "/", agency, "/", source)
-      raster.file = paste0(raw.dir,
-                           "/",
-                           AOI,
-                           "/",
-                           agency,
-                           "/",
-                           source,
-                           "/",
+      raster.file =  paste0(raw.dir, "/", AOI, "/", agency, "/", source, "/",
                            if (!is.null(other)) {
                              paste0(other[i], "_")
                            },
-                           dataset,
+                           name[i],
                            ".tif")
 
-      if (!file.exists(paste0(spatial.file, "/", dataset, ".shp")) &
-          grepl("spatial", class(fin)[1], ignore.case = TRUE)) {
+      if (!file.exists(paste0(spatial.file, "/", name[[i]], ".shp")) & grepl("spatial", class(fin)[1], ignore.case = TRUE)) {
+
         if (grepl("spatialpolygons", class(fin)[1], ignore.case = TRUE)) {
           fin = as(fin, "SpatialPolygonsDataFrame")
         }
+
         if (grepl("spatiallines", class(fin)[1], ignore.case = TRUE)) {
           fin = as(fin, "SpatialLinesDataFrame")
         }
+
         if (grepl("spatialpoints", class(fin)[1], ignore.case = TRUE)) {
           fin = as(fin, "SpatialPointsDataFrame")
         }
-        rgdal::writeOGR(
-          obj = fin,
-          dsn = spatial.file,
-          layer = dataset,
-          driver = "ESRI Shapefile"
-        )
+
+        rgdal::writeOGR( obj = fin, dsn = spatial.file, layer = name[[i]], driver = "ESRI Shapefile", overwrite_layer = TRUE )
       }
 
       if (!file.exists(paste0(raster.file)) &
@@ -191,3 +186,5 @@ save.file = function(data = NULL,
     }
   }
 }
+
+

@@ -21,11 +21,11 @@ Function to visualize waterUse data by county in both static and interactive for
 }
 \examples{
 \dontrun{
-plotWu(wu10,
+plotWS(wu10,
        variable = wu.variable$`Public Supply, surface-water withdrawals, fresh, in Mgal/d`,
        plot.type = 'static', year = 2010)
 
-plotWu(wu10,
+plotWS(wu10,
        variable = wu.variable$`Public Supply, surface-water withdrawals, fresh, in Mgal/d`,
        plot.type = 'interactive', year = 2010)
 }

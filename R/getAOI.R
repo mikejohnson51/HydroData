@@ -56,7 +56,7 @@
 #' # Get AOI defined by 10 mile bounding box using users location as centroid
 #'     getAOI(clip_unit = c(get_ip_loc(), 10, 10))
 #'
-#' # Get AOI defined by 10 mile2 bounding box using the 'KMART near UCSB' as centroid or lower left corner
+#' # Get AOI defined by 10 mile2 bounding box using the 'KMART near UCSB' as lower left corner
 #'     getAOI(clip_unit = list('KMART near UCSB', 10, 10))
 #'     getAOI(clip_unit = list('KMART near UCSB', 10, 10, 'lowerleft'))
 #' }
