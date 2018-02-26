@@ -36,7 +36,7 @@ getDaymet <- function(state = NULL, county = NULL, clip_unit = NULL, tile.ids = 
   }
 
 
-  load("data/daymet_tiles.rda")
+  daymet_tiles = HydroData::daymet_tiles
 
   if(!is.null(tile.ids)) {
       tile.ids = tile.ids

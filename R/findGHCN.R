@@ -110,7 +110,7 @@ findGHCN = function(state = NULL,
     ". Loading global GHCN data...\n"
   )
 
-  load("data/ghcnStations.rda")
+  ghcn_stations = HydroData::ghcn_stations
 
   stations  = ghcn_stations %>% dplyr::filter(LAT <= bb[2, 2]) %>%
     dplyr::filter(LAT  >= bb[2, 1]) %>%

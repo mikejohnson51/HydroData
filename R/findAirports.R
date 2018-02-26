@@ -36,7 +36,7 @@
 
 findClosestAirports = function(location = NULL, n = 5){
 
-  load("data/airports.rda")
+  ap = HydroData::ap
   coords = cbind(ap[,7], ap[,6])
   air = SpatialPointsDataFrame(coords, ap)
 
@@ -136,7 +136,7 @@ findClosestAirports = function(location = NULL, n = 5){
 
 findAirports = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE, basemap = FALSE, ids = FALSE, save = FALSE){
 
-  load("data/airports.rda")
+  ap = HydroData::ap
   coords = cbind(ap[,7], ap[,6])
 
   ap = ap[,1:7]

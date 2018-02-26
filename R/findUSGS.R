@@ -95,6 +95,7 @@ findUSGS = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FA
   #------------------------------------------------------------------------------#
   load('data/usgsStations.rda')
 
+  usgsStations = HydroData::usgsStations
 
   sp = SpatialPointsDataFrame(cbind(usgsStations$lon_reachCent, usgsStations$lat_reachCent), usgsStations)
   sp@proj4string = AOI@proj4string

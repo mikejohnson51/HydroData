@@ -74,12 +74,11 @@ explore(nwc.usgs)
 
 # Get discharge data for all stations usign dataRetrival Package
 
- Q <- dataRetrieval::readNWISdv(siteNumbers = nwc.usgs$ids, parameterCd = "00060")
- Q <- dataRetrieval::renameNWISColumns(Q)
+ data = getUSGS(IDs = nwc.usgs$ids)
 
 # Generate Interactive Timseries
 
-inspect(Q, param = 'Flow')
+inspect(data, param = 'Flow')
 }
 
 }

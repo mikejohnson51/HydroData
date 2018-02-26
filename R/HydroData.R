@@ -37,6 +37,8 @@
 #'
 #'@importFrom xts xts
 #'
+#'@importFrom raster raster
+#'
 
 
 

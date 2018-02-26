@@ -102,7 +102,7 @@ getKoppenClass = function(state = NULL, county = NULL, clip_unit = NULL, keep.ba
 #------------------------------------------------------------------------------#
 # Load Raster Data and Define AOI                                              #
 #------------------------------------------------------------------------------#
-    load("data/koppen_raster.rda")
+    kopRas = HydroData::kopRas
 
     A      <- getAOI (state = state, county = county, clip_unit = clip_unit) %>% spTransform (projection(kopRas))
 

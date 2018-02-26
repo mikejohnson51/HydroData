@@ -19,10 +19,10 @@ getUSGS(IDs = NULL, save = FALSE, parameter = "00060")
 \description{
 \code{findUSGS} returns a list of \code{data.frame*} Object for stations of interst.\cr\cr
 
-THIS IS A SHAMELESS WRAPPER AROUND THE USGS dataRetrival \code{readNWISdv} function TO FIT THE HYDRODATA FRAMEWORK !!! \cr\cr
+THIS IS A SHAMELESS WRAPPER AROUND THE USGS dataRetrival \code{readNWISdv} function CREATED TO FIT THE HYDRODATA FRAMEWORK !!! \cr\cr
 
 By default this function will return streamflow data for a list of stations found with \code{getUSGS}
-If you want a parameter other then steamflow, see list of parameters \href{https://help.waterdata.usgs.gov/codes-and-parameters/parameters}{here}\cr
+If you want a parameter other then steamflow, see list of parameters \href{https://help.waterdata.usgs.gov/codes-and-parameters/parameters}{here}\cr\cr
 Returned \code{data.frame} can be interactivly explored via \code{\link{inspect}}
 }
 \examples{

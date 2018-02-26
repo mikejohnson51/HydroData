@@ -73,7 +73,9 @@ findSnotel = function(state = NULL, county = NULL, clip_unit = NULL, boundary = 
   AOI = getAOI(state = state, county = county, clip_unit = clip_unit)
     message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Shapefile determined. Now loading loading Snotel data...")
 
-  load('data/snotelStations.rda')
+  snotel = HydroData::snotel
+
+    load('data/snotelStations.rda')
 
   sp = SpatialPointsDataFrame(cbind(snotel$LONG, snotel$LAT), snotel)
   sp@proj4string = HydroDataProj

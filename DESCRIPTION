@@ -1,7 +1,7 @@
 Package: HydroData
 Type: Package
 Title: HydroData
-Description: Helps find, pre-process, export and visualize land surface, infrastructural and station based datasets relevant to geography, hydrology, and earth system science. 
+Description: A set of function to find, pre-process, export and visualize land surface, infrastructural and station based datasets relevant to geography, hydrology, and earth system science. 
 Version: 0.1.0
 Date: 2018-2-9
 Author: Mike Johnson [aut, cre]
@@ -10,7 +10,6 @@ Depends:
     R(>= 3.0.0),
     dygraphs,
     leaflet,
-    raster,
     sp
 Imports:
     classInt,
@@ -29,6 +28,7 @@ Imports:
     prism,
     RColorBrewer,
     RCurl,
+    raster,
     readr,
     rgdal,
     rgeos,

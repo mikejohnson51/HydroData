@@ -24,6 +24,34 @@
 
 "ap"
 
+
+#' Airports
+#'
+#' Dataset containing information global Airports
+#'
+#' @docType data
+#'
+#' @format a \code{dataframe} instance, 1 row per station with columns:
+#' \itemize{
+#' \item 'OBJECTID':      A \code{character} Object id in the dataset
+#' \item 'feature_id':    A \code{character}  NHD COMID of reach
+#' \item 'site_no':       A \code{character}      USGS site number
+#' \item 'site_name':     A \code{character}    USGS site name
+#' \item 'da_sqkm':       A \code{numeric}        Area that drains to the location in square kilometers
+#' \item 'lat_reachCent': A \code{numeric}  Latitude of NHD reach center
+#' \item 'lon_reachCent': A \code{numeric}  Longitude of NHD reach center
+#' }
+#'
+#' @source Derived from USGS and NHD datasets, provided by the National Water Center
+#'
+#' @examples
+#' \dontrun{
+#'  load("usgsStations.rda")
+#' }
+
+"ghcn_stations"
+
+
 #' USGS station information
 #'
 #' Dataset containing information about USGS stations in the United States
