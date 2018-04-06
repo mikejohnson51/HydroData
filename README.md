@@ -1,9 +1,9 @@
 `HydroData`
 ================
 
-**HydroData** is an R package designed to help (1) find, (2)get, (3)visualize and (4)format climate, hydrologic, and the landscape data through a core language (R); a common geospatial reference; and unifying vocabulary built around ‘finding’ and ‘getting’ data for an area of interest. 
+**HydroData** is an R package designed to help (1) find, (2) get, (3) visualize and (4) format climate, hydrologic, and the landscape data through a core language (R); a common geospatial reference; and unifying vocabulary built around ‘finding’ and ‘getting’ data for an area of interest. 
 
-'Finding data' referes to identifying the spatial feature classes and identifers needed to download data, and 'getting' data refers to the process of getting tabular or raster data relating to an AOI . Currently the package support access to 18 National/Global data sources:
+'Finding data' refers to identifying the spatial feature classes and identifers needed to download data, and 'getting' data refers to the process of getting tabular or raster data relating to an AOI . Currently the package support access to 18 National/Global data sources:
 
 ## Data Sources
 
@@ -22,14 +22,14 @@
   - The [TIGER road network dataset](https://www.census.gov/geo/maps-data/data/tiger.html) from the Census Bueuea
   - The [USDA Cropland Layer Dataset](https://www.nass.usda.gov/Research_and_Science/Cropland/SARS1a.php) from 1997:2017 when/where available
   - The [USGS Water Use Dataset](https://water.usgs.gov/watuse/) for 2005, 2010, and 2015 
-  - The [PRISM monthly and Annual Normal Datasets]() from Oregon State
-  - [Weather Underground daily weather records]()
-  - The [NOAA National Water Model]() Streamflow forcasts _______
-  - The [Koppen Climate Classifation Dataseet]() from _______
+  - The [PRISM monthly and Annual Normal Datasets](http://prism.oregonstate.edu) from Oregon State
+  - [Weather Underground daily weather records](https://www.wunderground.com)
+  - The [NOAA National Water Model](http://water.noaa.gov/about/nwm) Streamflow forcasts 
+  - The [Koppen Climate Classifation Dataseet](http://koeppen-geiger.vu-wien.ac.at/present.htm) 
 
 ## Defining an AOI
 
-The central componenet of every function in HydroData is a user defined area of interest (AOI) which can be defined in a number of ways using three core parameters: state, county, and clip_unit
+The central componenet of each HydroData function is a user defined area of interest (AOI) which can be defined in a number of ways using three core parameters: (1) state (2) county or (3) clip_unit
 
 (1) An AOI can be defined as a state name or abbriviation:
 
@@ -38,7 +38,7 @@ The central componenet of every function in HydroData is a user defined area of 
  TX = getAOI(state = "tx")
 ```
 
-(2) An AOI can be defined by a state, county pair:
+(2) An AOI can be defined by a state and county pair:
 
 ```r
  sb = getAOI(state = "California", county = "Santa Barbara")
@@ -50,7 +50,7 @@ The central componenet of every function in HydroData is a user defined area of 
  la.met = getAOI(clip_unit = rgdal::readOGR("/LA_metro")) 
 ```
  
-(4) An area defined by a (1)centroid, (2) a bounding box height and width, and (3) an optional bounding box origin:
+(4) An area defined by a (1) centroid, (2) bounding box height (3) bounding box width and (4) an optional bounding box origin:
       
 ```r
 # Select a 100 sqmi AOI the the National Water Center at the center:
@@ -70,27 +70,34 @@ The central componenet of every function in HydroData is a user defined area of 
  berkley = getAOI(clip_unit = list("UC Berkley", 10, 10, "upperright"))
 ``` 
 
-In all of the following functions state, county, and clip_unit are offered as parameters so that you can define your search for finding and getting data.
+In each of the following functions, state, county, and clip_unit are offered as parameters so that you can define your search for finding and getting data.
 
 ## Other Common Parameters
 
-Much like state,county, and clip_unit are used to construct AOI defintions all HydroData functions share other commom parameters:
+Much like state, county, and clip_unit are used to construct AOI defintions, all HydroData functions share other commom parameters:
 
  - basemap:  When TRUE a basemap is added to the returned list
- - boundary: When TRUE adds a the spatial object defining the AOI to the returned list
- - save: When TRUE all data is written to a users disk in a HydroData folder created in the users workign dirctory
+ - boundary: When TRUE a shapefile of the AOI is added to the returned list
+ - save: When TRUE all data is written to a HydroData folder created in the users working dirctory
  - ids: When TRUE a vector of station/feature IDs is added to a returned list
  
-Other functions might have unique parameters such as year or resolution which will be covered in the examples however with these parameters the basics of all functions are known:
+Other functions may have unique parameters such as year or resolution which will be covered in the examples however with these parameters the basics of all functions are known:
 
-## Find Data Functions
+## Find Function Examples
 
 #### USGS NWIS Gaging Stations
 
 ```r
 # Find all USGS stations in El Paso County, Colorado
 
-elpaso = findUSGS(state = 'CO', county = 'El Paso', basemap = T, boundary = T)
+elpaso = findUSGS(state = 'CO', county = 'El Paso', basemap = T, boundary = T, ids = T)
+
+# Launch leaflet map of USGS station data
+
+explore(elpaso)
+
+# Get USGS flow data for the first three stations:
+
 ```
 
 #### GCHN Stations
@@ -99,10 +106,8 @@ elpaso = findUSGS(state = 'CO', county = 'El Paso', basemap = T, boundary = T)
 # Find all GHCN stations in El Paso County, Colorado
 
 elpaso = findGHCN(state = 'CO', county = 'El Paso', basemap = T, boundary = T)
+
 ```
-
-![USCB](https://www.ucsb.edu/graphic-identity/downloads/wave/ucsbwave-black.png)
-
 
 ## Installation
 
