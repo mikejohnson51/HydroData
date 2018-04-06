@@ -92,11 +92,9 @@ Other functions may have unique parameters such as year or resolution which will
 
 elpaso = findUSGS(state = 'CO', county = 'El Paso', basemap = T, boundary = T, ids = T)
 
-# Launch leaflet map of USGS station data
+# Launch leaflet map of USGS stations: 
 
 explore(elpaso)
-
-# Get USGS flow data for the first three stations:
 
 ```
 
@@ -107,11 +105,15 @@ explore(elpaso)
 
 elpaso = findGHCN(state = 'CO', county = 'El Paso', basemap = T, boundary = T)
 
+# Launch leaflet map of GHCN stations:
+
+explore(elpaso)
+
 ```
 
 ## Installation
 
-To install the  package, you must install from GitHub using the `devtools` packages:
+Install from GitHub using the `devtools` packages:
 
 ```r
 library(devtools)
