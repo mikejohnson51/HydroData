@@ -3,10 +3,11 @@
 
 **HydroData** is an R package designed to help (1) find, (2) get, (3) visualize and (4) format climate, hydrologic, and the landscape data through a core language (R); a common geospatial reference; and unifying vocabulary built around ‘finding’ and ‘getting’ data for an area of interest. 
 
-'Finding data' refers to identifying the spatial feature classes and identifers needed to download data, and 'getting' data refers to the process of getting tabular or raster data relating to an AOI . Currently the package supports access to 18 National/Global data sources:
+'Finding data' refers to identifying the spatial feature classes and identifers needed to download data, and 'getting' data refers to the process of getting tabular or raster data relating to an AOI . Currently the package supports access to 19 National/Global data sources:
 
 ## Data Sources
 
+  - The [ USGS National Water Information System (NWIS)](https://nwis.waterdata.usgs.gov/nwis) stream gages
   - The [ USGS National Elevation Dataset (NED)](http://ned.usgs.gov) elevation data at 1 and 1/3 arc-second
   - The [ USGS National Hydrography Dataset (NHD)](http://nhd.usgs.gov) 
   - The [Global Historical Climatology Network
