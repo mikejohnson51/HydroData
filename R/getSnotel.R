@@ -2,37 +2,37 @@
 #'
 #'
 
-getSnotel = function(state = NULL, county = NULL, clip_unit = NULL, IDs = NULL){
+getSnotel = function(state = NULL, county = NULL, clip_unit = NULL, ids = NULL){
 
 vals = NULL
 
-if (any(!is.null(state), !is.null(county), !is.null(clip_unit))) {
-   hope = suppressMessages( findSnotel(clip_unit = clip_unit, ids = T) )
-   message("AOI defined.\n", length(hope$snotel), " Stations found.\nBegin downloading Snotel Data...\n" )
-   IDs = hope$ids
-}
+#if (any(!is.null(state), !is.null(county), !is.null(clip_unit))) {
+#   hope = suppressMessages( findSnotel(clip_unit = clip_unit, ids = T) )
+#   message("AOI defined.\n", length(hope$snotel), " Stations found.\nBegin downloading Snotel Data...\n" )
+#   ids = hope$ids
+#}
 
-for(i in seq_along(IDs)){
+for(i in seq_along(ids)){
 
 url = paste0("https://wcc.sc.egov.usda.gov/reportGenerator/view_csv/customSingleStationReport/daily/",
-             IDs[i],
+             ids[i],
              ":CA:SNTL%7Cid=%22%22%7Cname/POR_BEGIN,POR_END/WTEQ::value,PREC::value,TMAX::value,TMIN::value,TAVG::value,PRCP::value")
 
 val.temp = tryCatch({
   data.table::fread( url, skip = 58, header = T, showProgress = F)
 }, error = function(e){
   val.temp = NULL
-  message("     No data for station ", IDs[i])})
+  message("     No data for station ", ids[i])})
 
 if(!is.null(val.temp)){
   val.temp$agency_cd = 'NRCS'
-  val.temp$site_no = IDs[i]
+  val.temp$site_no = ids[i]
   val.temp = data.frame(val.temp, stringsAsFactors = F)
 }
 
 vals = rbind(vals, val.temp)
 
-message(dim(vals)[1], " Snotel values for station ", IDs[i], " downloaded (", i, "/", length(IDs), ")" )
+message(dim(vals)[1], " Snotel values for station ", ids[i], " downloaded (", i, "/", length(ids), ")" )
 }
 
 vals$Date = as.Date(vals$Date, format ='%Y-%m-%d' )

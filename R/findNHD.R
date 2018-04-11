@@ -131,7 +131,7 @@ findNHD = function(state = NULL,
     if (type == 't') { name = 'terrain'   }
     if (type == 'h') { name = 'hybrid'    }
     if (type == 's') { name = 'satellite' }
-    if (type == 'r') { name = 'roads'   }
+    if (type == 'r') { name = 'roads'     }
 
     items[['basemap']] = getBasemap(AOI = AOI, type = type)
     report = append(report, paste(name, "basemap"))

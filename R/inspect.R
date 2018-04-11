@@ -143,6 +143,7 @@ inspect = function(data = NULL,
   }
 
   print(t)
+  return(t)
 }
 
 

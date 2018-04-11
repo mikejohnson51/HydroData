@@ -1,4 +1,4 @@
-getWU = function(airport_code = NULL, year = NULL, month = 1:12, day = NULL){
+getWU = function(airport_code = NULL, year = NULL, month = 1:12, day = NULL, type = NULL){
 
   type = 'monthly'
 
@@ -11,7 +11,7 @@ getWU = function(airport_code = NULL, year = NULL, month = 1:12, day = NULL){
     type = simpleCap(type)
   } else { stop("'", type, "' ", "is not a valid type. Select from:\n (1) daily (2) weekly (3) monthly") }
 
-  if( type == 'Daily' ){ index = 5 } else { index = 4 }
+  if( type == 'daily' ){ index = 5 } else { index = 4 }
   if( is.null(day) ){ day = 1 }
 
   data.names = c(
@@ -55,7 +55,7 @@ getWU = function(airport_code = NULL, year = NULL, month = 1:12, day = NULL){
       message( "Year ", year[i], " Month ", j,  " downloaded.")
     }
   }
-  df.airports = df.airports %>% mutate(agency_cd = "WeatherUnderground", site_no = airport_code)
+  df.airports = df.airports %>% dplyr:: mutate(agency_cd = "WeatherUnderground", site_no = airport_code)
   names(df.airports) = c("Date", "Year", "Month", data.names, "agency_cd", "site_no")
   df.airports[,1] = as.Date(df.airports[,1])
   return(df.airports)

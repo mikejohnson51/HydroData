@@ -19,7 +19,7 @@
 
 nameAOI = function(state = NULL, county = NULL, clip_unit = NULL){
 
-if(!is.null(clip_unit)){unit = "define area"}
+if(!is.null(clip_unit)){unit = "supplied clip unit"}
 
 if(!is.null(state)){
   if(is.null(county)){

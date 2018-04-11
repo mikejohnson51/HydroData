@@ -22,8 +22,6 @@
 #'
 #'
 
-
-
 explore = function(input = NULL, save = FALSE) {
 
   layers = NULL
@@ -139,6 +137,7 @@ for (i in seq_along(input)) {
 #------------------------------------------------------------------------------#
 # Basemap                                                                      #
 #------------------------------------------------------------------------------#
+
 
   m = leaflet() %>%
     addProviderTiles(providers$CartoDB.Positron, group = "Base") %>%
@@ -297,7 +296,7 @@ if (!is.null(fiat)) {
         color = "#666",
         dashArray = "",
         fillOpacity = 0.7,
-        bringToFront = TRUE)?dygraph
+        bringToFront = TRUE)
       )
   }
 
@@ -513,28 +512,30 @@ if (!is.null(fiat)) {
     colnames(name) <-  c("NAME", paste0("HUC", t))
     name = data.frame(name, row.names = NULL)
 
-    ll = NULL
+    ll = paste("<strong>", "Displaying ", "HUC", smallest, "'s", "</strong>", "<br/>", sep = "")
 
     for(i in seq_along(name)) {
       ll = paste(ll, paste("<strong>", names(name)[i], ":</strong>", name[,i]), sep = "<br/>" )
     }
 
-    cols = unlist(WS[which(as.numeric(substring(names(WS),5,6)) == largest) ])
-    cols = substring(unlist(cols[[1]][, grep("^HUC" , names(ss[[1]]))]@data),1,8)
-    df2 <- transform(cols,id=as.numeric(factor(cols)))
-    df2$X_data = as.character(df2$X_data)
+    #cols = unlist(WS[which(as.numeric(substring(names(WS),5,6)) == largest) ])
+    #cols = substring(unlist(cols[[1]][, grep("^HUC" , names(ss[[1]]))]@data),1,8)
+    #df2 <- transform(cols,id=as.numeric(factor(cols)))
+    #df2$X_data = as.character(df2$X_data)
 
-    test = NULL
-    for(i in 1:dim(name)[1]){
-      test =  append(test, df2[which(substring(df2$X_data,1,8) == name$HUC8[i]),2])
-    }
+    #test = NULL
+    #for(i in 1:dim(name)[1]){
+    #  test =  append(test, df2[which(substring(df2$X_data,1,8) == name$HUC8[i]),2])
+    #}
 
-    pal <- colorFactor(palette = 'RdBu', domain = test)
+    #pal <- colorFactor(palette = 'RdBu', domain = test)
+
+
 
     m = addPolygons(
       m,
       data = ss[[1]],
-      fillColor = ~pal(test),
+      fillColor = "lightblue",
       color = "black",
       stroke = TRUE,
       weight = 4,
@@ -580,7 +581,7 @@ if (!is.null(airports)) {
   pop <- paste(
     paste("<strong>Name:</strong>", url_call),
     paste("<strong>City:</strong>", city),
-    paste("<strong>4 Diget Identifier:</strong>", digit4),
+    paste("<strong>4 Digit Identifier:</strong>", digit4),
     sep = "<br/>"
   )
 
@@ -657,9 +658,10 @@ if (!is.null(airports)) {
     options = layersControlOptions(collapsed = T)
   )
 
-  print(m)
-
   if (save) {
     htmlwidgets::saveWidget(m, file = "AOI.html")
   }
+
+  print(m)
+  return(m)
 }

@@ -63,112 +63,172 @@
 #' @author
 #' Mike Johnson
 
-findRoads = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE, basemap = FALSE, ids = FALSE, save = FALSE){
-
-  tempd = tempdir()
+findRoads = function(state = NULL,
+                     county = NULL,
+                     clip_unit = NULL,
+                     boundary = FALSE,
+                     basemap = FALSE,
+                     ids = FALSE,
+                     save = FALSE) {
+  #tempd = tempdir()
 
   ########## 1. Define AOI ##########
 
-    items =  list()
-    input.shp = list()
-    report = vector(mode = 'character')
+  items =  list()
+  report = vector(mode = 'character')
 
-    A = getAOI(state = state, county = county, clip_unit = clip_unit)
+  input.shp = list()
 
-    if(!is.null(clip_unit)) { AOI = getFiatBoundary(clip_unit = A)} else { AOI = A }
+  A = getAOI(state = state,
+               county = county,
+               clip_unit = clip_unit)
 
-    FIP = AOI$geoid
-    if(is.null(FIP)){ FIP = AOI$map$FIP }
-    if(is.null(FIP)){ FIP = AOI$shp$FIP }
-    FIP = sprintf("%05d", as.numeric(FIP))
-    message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Loading TIGER roads database...\n")
+
+  if (!is.null(clip_unit)) {
+    AOI = getFiatBoundary(clip_unit = A)
+  } else {
+    AOI = A
+  }
+
+  FIP = AOI$geoid
+
+  if (is.null(FIP)) {
+    FIP = AOI$map$FIP
+  }
+
+  if (is.null(FIP)) {
+    FIP = AOI$shp$FIP
+  }
+
+  FIP = sprintf("%05d", as.numeric(FIP))
+
+  message(
+    "AOI defined as the ",
+    nameAOI(
+      state = state,
+      county = county,
+      clip_unit = clip_unit
+    ),
+    ". Loading TIGER roads database...\n"
+  )
 
   ########## 2. Download Data ##########
 
-    urls = vector()
+  urls = vector()
 
-    for(i in 1:length(FIP)){
-      urls[i] = paste0("https://www2.census.gov/geo/tiger/TIGER2017/ROADS/tl_2017_", FIP[i], "_roads.zip")
-    }
+  for (i in 1:length(FIP)) {
+    urls[i] = paste0(
+      "https://www2.census.gov/geo/tiger/TIGER2017/ROADS/tl_2017_",
+      FIP[i],
+      "_roads.zip"
+    )
+  }
 
-    if(length(urls) > 1){ verb = 'are'; noun = 'files'} else {verb = 'is'; noun = 'file'}
-      message(paste("There", verb, length(urls), "TIGER", noun, "in this scene."))
+  #list.files(tempd)
+  #temp = tempfile(fileext = ".zip")
 
-    for(i in seq_along(urls)){
-      temp = tempfile(fileext = ".zip")
-      message(paste0("Downloading file ", i, " of ", length(urls)))
-      download.file(url = urls[i], destfile = temp, quiet = TRUE )
-      unzip(temp, exdir = tempd, overwrite = TRUE)
-      message(paste0("Finished downloading file ", i, " of ", length(urls)))
-    }
+  if (length(urls) > 1) {
+    verb = 'are'
+    noun = 'files'
+  } else {
+    verb = 'is'
+    noun = 'file'
+  }
+  message(paste("There", verb, length(urls), "TIGER", noun, "in this scene."))
+
+  for (i in seq_along(urls)) {
+   input.shp[[i]] = download.shp(URL = urls[1], type = paste('TIGER', i)) %>% spTransform(HydroDataProj)
+   input.shp[[i]] = input.shp[[i]][A,]
+
+  #for (i in seq_along(urls)) {
+    #message(1)
+    #temp = tempfile(fileext = ".zip")
+    #message(2)
+   # message(paste0("Downloading file (", i, "/", length(urls), ")"))
+    #download.file(url = urls[i],
+     #             destfile = temp,
+      #            quiet = TRUE)
+    #unzip(temp, exdir = tempd, overwrite = TRUE)
+    #message(paste0("Finished downloading file (", i, "/", length(urls), ")"))
+
+  }
 
   ########## 3. Process Data ##########
 
-    all.files = list.files(tempd, pattern = ".shp$", full.names = TRUE)
-    bounds =  raster::extent(A)
+  #all.files = list.files(tempd,
+   #                      pattern = paste0(FIP, "_roads.shp$"),
+    #                     full.names = TRUE)
+  #bounds =  raster::extent(A)
 
+  #for (j in seq_along(all.files)) {
+  # message("Reading in shapefile ", j)
+  #  input.shp[[j]] = rgdal::readOGR(all.files[j], verbose = FALSE) %>% spTransform(HydroDataProj)
+  #  message("Cropping shapefile ", j)
+  #  input.shp[[j]] <- input.shp[[j]][A, ]
 
-    for(j in seq_along(all.files)){
-      input.shp[[j]] = rgdal::readOGR(all.files[j]) %>% spTransform(HydroDataProj)
+    #input.shp[[j]] <- raster::crop(x = input.shp[[j]],  y = bounds)
 
-      input.shp[[j]] <- raster::crop(x = input.shp[[j]],  y = bounds)
+  #  message("Shapefile number ", j, " Finished")
+  # }
 
-      message("Shapefile number ", j," Cropped.")
+  df <- do.call("rbind", input.shp)
+
+  #unlink(temp, recursive = T)
+  #unlink(tempd, recursive = T)
+
+  items[['roads']] = df
+  report = append(report, "Returned list includes: TIGER roads shapefile")
+
+  if (!(basemap == FALSE))  {
+    if (basemap == TRUE) {
+      type = 't'
+      name = 'terrain'
+    } else {
+      type = basemap
     }
 
-    df <- do.call("rbind", input.shp)
+    if (type == 't') { name = 'terrain'   }
+    if (type == 'h') { name = 'hybrid'    }
+    if (type == 's') { name = 'satellite' }
+    if (type == 'r') { name = 'roadmap'   }
 
-    unlink(temp, recursive = T)
-    unlink(tempd, recursive = T)
-
-    items[['roads']] = df
-    report = append(report, "Returned list includes: TIGER raods shapefile")
-
-    if (!(basemap == FALSE))  {
-      if (basemap == TRUE) {
-        type = 't'
-        name = 'terrain'
-      } else {
-        type = basemap
-      }
-
-      if (type == 't') { name = 'terrain'   }
-      if (type == 'h') { name = 'hybrid'    }
-      if (type == 's') { name = 'satellite' }
-      if (type == 'r') { name = 'roadmap'   }
-
-      items[['basemap']] = getBasemap(AOI = A, type = type)
-      report = append(report, paste(name, "basemap"))
-    }
+    items[['basemap']] = getBasemap(AOI = A, type = type)
+    report = append(report, paste(name, "basemap"))
+  }
 
 
-    if (boundary) { items[['boundary']] = A
+  if (boundary) {
+    items[['boundary']] = A
     report = append(report, "AOI boundary")
 
-    if (!is.null(clip_unit)) { items[['fiat']] = getFiatBoundary(clip_unit = A)
-    report = append(report, "fiat boundary")
+    if (!is.null(clip_unit)) {
+      items[['fiat']] = getFiatBoundary(clip_unit = A)
+      report = append(report, "fiat boundary")
     }
-    }
+  }
 
-    if (ids) { items[['ids']] = df$FULLNAME
+  if (ids) {
+    items[['ids']] = df$FULLNAME
     report = append(report, "list of COMIDs")
-    }
+  }
 
+  if (length(report) > 1) {
+    report[length(report)] = paste("and", tail(report, n = 1))
+  }
+  message(paste(report, collapse = ", "))
 
-    if(length(report) > 1) {report[length(report)] = paste("and", tail(report, n = 1))}
-      message(paste(report, collapse = ", "))
+  if (save) {
+    save.file(
+      data = items,
+      state = state,
+      county = county,
+      clip_unit = clip_unit,
+      agency  = 'USCensus',
+      source  = "TIGER",
+      dataset = "roads",
+      other   = NULL
+    )
+  }
 
-    if(save){
-        save.file(data = items,
-                  state = state,
-                  county = county,
-                  clip_unit = clip_unit,
-                  agency  = 'USCensus',
-                  source  = "TIGER",
-                  dataset = "roads",
-                  other   = NULL )
-    }
-
-    return(items)
+  return(items)
 }
-
