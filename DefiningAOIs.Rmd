@@ -1,0 +1,95 @@
+---
+title: "Define an AOI"
+author: "Mike Johnson"
+date: "4/12/2018"
+output: html_document
+---
+
+```{r, include = F}
+#file.remove(tempdir())
+
+devtools::load_all(".")
+library(dismo)
+library(dataRetrieval)
+
+```
+
+The core functionalities of the HydroData package rely on a user defining an area of interest. The package offers a number of way to do this which will be described in the following examples:
+
+```{r}
+CA = getAOI(state = 'CA')
+
+leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = CA,fillColor = "transparent", color = "black", weight = 4)
+
+
+```
+
+Multiple States can be selected:
+
+```{r}
+WestCoast = getAOI(state = c("Oregon", "Washington", "CA"))
+
+leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = WestCoast,fillColor = "transparent", color = "black", weight = 4)
+
+```
+
+Selection by County
+
+```{r}
+SB = getAOI(state = "CA", county = "Santa Barbara")
+
+leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = SB,fillColor = "transparent", color = "black", weight = 4)
+
+```
+
+Selecting Multiple Counties
+
+```{r}
+centralCoast = getAOI(state ="CA", county = c("Santa Barbara", "San Luis Obispo", "Ventura"))
+
+leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = centralCoast,fillColor = "transparent", color = "black", weight = 4)
+
+```
+
+
+
+Using Clip Unit
+
+Clip unit has five potetnial inputs (1) Location (2) Bounding box height (miles) (3) Boundign box width (miles) (4) location origin
+The first three of these are required while the fourth is optional with a default of center. These will be covered in the following examples: 
+
+## (1) Location
+
+Location can be defined by a name or lat long pair
+
+Grand Canyon Example 
+
+```{r}
+GC = getAOI(clip_unit = list("grand canyon", 10, 10))
+
+leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = GC,fillColor = "transparent", color = "black", weight = 4)
+
+
+GC = getAOI(clip_unit = list(36.0544, -112.1401, 10, 10))
+
+leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = GC,fillColor = "transparent", color = "black", weight = 4)
+```
+
+
+## Bounding box
+
+The next two values needed are a bounding box height and width where the first entery relates to height and the second relates to width: 
+
+```{r}
+ucsb.tall = getAOI(clip_unit = list("UCSB", 30, 10))
+
+leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = ucsb.tall,fillColor = "transparent", color = "black", weight = 4)
+
+
+ucsb.wide = getAOI(clip_unit = list("UCSB", 10, 30))
+
+leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = ucsb.wide, fillColor = "transparent", color = "black", weight = 4)
+```
+
+The final argument is the how the location is treated when drawing the bounding box of a specified size. The options include 
+

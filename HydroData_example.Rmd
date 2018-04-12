@@ -1,0 +1,222 @@
+---
+title: "HydroData Example's"
+output: html_document
+---
+
+### Here are some examples of the HydroData Package -- April 12, 2018.
+
+#### Examples in this vingette include
+
+1) USGS streamflow
+2) GHCN
+3) NHD
+4) NLCD
+5) SNOTEL
+6) Weather Underground
+7) WBD
+8) NED
+9) TIGER roads
+10) Airports
+
+#### NOT shown (but available in package) 
+
+11) Daymet
+12) Waterbodies
+13) Reservoirs
+14) CLD
+15) PRISM
+16) Koppen
+17) NWM
+18) USGS water use
+19) NID
+
+```{r, include = F}
+#file.remove(tempdir())
+
+devtools::load_all(".")
+library(dismo)
+library(dataRetrieval)
+
+```
+
+### Find USGS Gages near UCSB (in a 20 mile square area...)
+
+```{r find_USGS_stations}
+ ucsb.usgs = findUSGS(clip_unit = list("ucsb", 20, 20), ids = T, save = T)
+```
+ 
+The save = TRUE parameter saves the shapefile to the user working directory (with respect to the query) for later use in R or Arc: 
+ 
+ ![](/Users/mikejohnson/Documents/GitHub/Screenshot 2018-04-09 16.36.27.png)
+
+### Explore USGS stations
+
+```{r explore_USGS_stations}
+explore(ucsb.usgs, save = T)
+```
+
+
+The save = TRUE parameter saves the map to the user working directory  for later reference or sharing: 
+ 
+ ![](/Users/mikejohnson/Documents/GitHub/Screenshot 2018-04-09 16.44.25.png)
+ 
+
+
+### Find GHCN PRCP records near UCSB
+
+```{r find_GHCN_stations}
+ucsb.ppt = findGHCN(clip_unit = list('ucsb', 20, 20), param = "PRCP", ids = T)
+```
+
+### Explore GHCN PRCP stations near UCSB
+
+```{r explore_GHCN_stations}
+explore(ucsb.ppt)
+```
+
+### Get Flow Records from the USGS stations 
+####(shameless wrapper of the USGS dataRetrival function as indicated in documentation):
+
+```{r get_streamflow}
+ucsb.flow = getUSGS(ucsb.usgs$ids)
+head(ucsb.flow)
+```
+
+### Get PRCP Records from the first three GHCN stations:
+
+```{r get_prcp}
+ucsb.ppt = getGHCN(ucsb.ppt$ids[1:3], parameters = "PRCP")
+head(ucsb.ppt$PRCP)
+```
+
+### Visualize the Flows
+
+```{r visualize_streamflow}
+inspect(ucsb.flow, param = "Flow")
+```
+
+### Visualize Rainfall
+
+```{r visualize_rainfall}
+inspect(ucsb.ppt$PRCP, param = "PRCP")
+```
+
+### NHD Example
+
+Here we will access a non-point feature
+
+```{r get_NHD}
+ucsb.nhd = findNHD(clip_unit = list('ucsb', 20, 20))
+```
+
+### Visualize Flowlines and USGS stations together
+```{r visualize_streams_and_stations}
+explore(list(ucsb.usgs, ucsb.nhd))
+```
+
+## Land cover/Raster Example
+
+```{r get_landcover}
+lc = getNLCD(clip_unit = list("ucsb", 10, 10), year = 2011)
+```
+
+Explore Land cover and USGS stations
+
+```{r overlay_raster_points}
+explore(list(lc, ucsb.usgs))
+```
+
+## Alternative Means of Describing an Area of Interest
+
+### By STATE
+
+#### Find SNOTEL stations in California
+
+```{r find_snotel}
+ca.snotel = findSnotel(state = 'CA', boundary = T, ids = T)
+
+explore(ca.snotel)
+```
+
+#### Visualize the Snow Water Equivilent for first three stations:
+
+```{r get_swe_data}
+snow.data = getSnotel(ids = ca.snotel$ids[1:3])
+head(snow.data)
+
+inspect(snow.data, param = 'SWE')
+```
+
+
+### By COUNTY 
+
+#### Find Airports in Tuscaloosa County, Alabama
+
+```{r find_airports}
+al.ap = findAirports(state = 'AL', county = 'Tuscaloosa', boundary = T)
+
+explore(al.ap)
+```
+
+#### Get WeatherUndergorund Data for airport:
+
+```{r get_wind_data}
+al.data = getWU(airport_code = al.ap$airports$Digit4, year = 2015, month = 1:12, type = 'daily')
+
+head(al.data)
+```
+
+#### Visualize average daily wind velocity
+
+```{r}
+inspect(al.data, param = "Wind_avg" )
+```
+
+### Change timesetep to monthly
+
+```{r monthly_wind}
+inspect(al.data, param = "Wind_avg", timestep = 'monthly' )
+```
+
+### By a user-supplied shapefile (here all Los Angeles communities subset to Santa Monica)
+
+```{r Santa_Monica}
+LA = rgdal::readOGR("/Users/mikejohnson/Documents/GitHub/Communities1/Communities.shp")
+SM = LA[LA$LABEL_CITY == 'Santa Monica',] %>% spTransform(HydroDataProj)
+
+leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = SM,fillColor = "transparent", color = "black", weight = 4)
+
+```
+
+#### Find all HUC 10 units intersecting Santa Monica
+
+```{r}
+watersheds = findWS(clip_unit = SM, level = 10)
+
+explore(watersheds)
+```
+
+#### Find Elevation data for the Ballona Creek Watershed (HUC10)
+
+```{r}
+sm.elev = getNED(clip_unit = watersheds$huc_10[1,], res = 1)
+```
+
+### Plot and 'analyze' elevation data for the Ballona Creek Watershed (HUC10)
+
+```{r}
+explore(sm.elev)
+
+hist(sm.elev$elev, xlab = 'Elevation (m)', main = paste("Elevation Distribution", watersheds$huc_10[1,]$NAME, "Watershed"), col = 'black')
+
+```
+
+#### Find the roads of Santa Monica
+
+```{r}
+sm.roads = findRoads(clip_unit = list("Santa Monica", 2, 2))
+```
+
+```{r}
+explore(sm.roads)
+```
