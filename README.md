@@ -28,7 +28,7 @@
   - The [PRISM monthly and Annual Normal Datasets](http://prism.oregonstate.edu) from Oregon State
   - [Weather Underground daily weather records](https://www.wunderground.com)
   - The [NOAA National Water Model](http://water.noaa.gov/about/nwm) Streamflow forcasts 
-  - The [Koppen Climate Classifation Dataseet](http://koeppen-geiger.vu-wien.ac.at/present.htm) 
+  - The [Koppen Climate Classifation Dataset](http://koeppen-geiger.vu-wien.ac.at/present.htm) 
 
 ## Defining an AOI
 
