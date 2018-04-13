@@ -23,7 +23,7 @@ if(!is.null(clip_unit)){unit = "supplied clip unit"}
 
 if(!is.null(state)){
   if(is.null(county)){
-    if(nchar(state == 2)){
+    if(nchar(state) == 2){
       unit = paste0("boundary of ", setNames(datasets::state.name, datasets::state.abb)[state])
     }else{
       unit = paste0("boundary of ", state)

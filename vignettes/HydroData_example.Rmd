@@ -31,12 +31,9 @@ output: html_document
 19) NID
 
 ```{r, include = F}
-#file.remove(tempdir())
-
 devtools::load_all(".")
 library(dismo)
 library(dataRetrieval)
-
 ```
 
 ### Find USGS Gages near UCSB (in a 20 mile square area...)

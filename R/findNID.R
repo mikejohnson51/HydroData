@@ -51,7 +51,7 @@
 #' Mike Johnson
 
 findNID = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE, basemap = FALSE, save = FALSE){
-  #requireName(dams)
+  require(dams)
   items =  list()
   report = vector(mode = 'character')
   A = getAOI(state = state, county = county, clip_unit = clip_unit)
@@ -60,10 +60,11 @@ findNID = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FAL
     data(nid_cleaned, envir = environment())
 
   dams = nid_cleaned %>%
-         filter(!State  %in% c("AK", "HI", "GU", "PR")) %>%
-         drop_na(Longitude, Latitude)
+         #filter(!state  %in% c("AK", "HI", "GU", "PR")) %>%
+         tidyr::drop_na(Longitude, Latitude)
 
-  rm(nid_cleaned)
+
+  #rm(nid_cleaned)
 
   sp = SpatialPointsDataFrame(cbind(dams$Longitude, dams$Latitude), data = dams)
     message("All dams in CONUS loaded: ", formatC(dim(sp)[1], format="d", big.mark=","), " dams in total")
