@@ -1,6 +1,9 @@
 `HydroData`
 ================
 
+[![travis](https://travis-ci.org/mikejohnson51/HydroData.svg?branch=master)](https://travis-ci.org/mikejohnson51/HydroData)  
+[![Coverage Status](https://coveralls.io/repos/github/mikejohnson51/HydroData/badge.svg?branch=master)](https://coveralls.io/github/mikejohnson51/HydroData?branch=master)  
+
 **HydroData** is an R package designed to help (1) find, (2) get, (3) visualize and (4) format climate, hydrologic, and the landscape data through a core language (R); a common geospatial reference; and unifying vocabulary built around ‘finding’ and ‘getting’ data for an area of interest. 
 
 'Finding data' refers to identifying the spatial feature classes and identifers needed to download data, and 'getting' data refers to the process of getting tabular or raster data relating to an [AOI](https://rawgit.com/mikejohnson51/HydroData/master/vignettes/DefiningAOIs.html) . Currently the package supports access to 19 National/Global data sources. Some of which are highlighted in this [vignette](https://rawgit.com/mikejohnson51/HydroData/master/vignettes/HydroData_example.html):
