@@ -29,3 +29,13 @@
   - [Weather Underground daily weather records](https://www.wunderground.com)
   - The [NOAA National Water Model](http://water.noaa.gov/about/nwm) Streamflow forcasts 
   - The [Koppen Climate Classifation Dataset](http://koeppen-geiger.vu-wien.ac.at/present.htm) 
+  
+To download, install from GitHub using the `devtools` packages:
+
+```r
+library(devtools)
+install_github("USGS-R/dataRetrieval")
+```
+
+Please feel free to offer suggestions for improvement, ask for datasets to be included, or to ask general questions!
+
