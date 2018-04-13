@@ -1,5 +1,7 @@
-`HydroData`
-================
+# HydroData #
+
+[![travis](https://travis-ci.org/mikejohnson51/HydroData.svg?branch=master)](https://travis-ci.org/mikejohnson51/HydroData)  
+[![Coverage Status](https://coveralls.io/repos/github/mikejohnson51/HydroData/badge.svg?branch=master)](https://coveralls.io/github/mikejohnson51/HydroData?branch=master)  
 
 **HydroData** is an R package designed to help (1) find, (2) get, (3) visualize and (4) format climate, hydrologic, and the landscape data through a core language (R); a common geospatial reference; and unifying vocabulary built around ‘finding’ and ‘getting’ data for an area of interest. 
 
@@ -26,7 +28,7 @@
   - The [PRISM monthly and Annual Normal Datasets](http://prism.oregonstate.edu) from Oregon State
   - [Weather Underground daily weather records](https://www.wunderground.com)
   - The [NOAA National Water Model](http://water.noaa.gov/about/nwm) Streamflow forcasts 
-  - The [Koppen Climate Classifation Dataseet](http://koeppen-geiger.vu-wien.ac.at/present.htm) 
+  - The [Koppen Climate Classifation Dataset](http://koeppen-geiger.vu-wien.ac.at/present.htm) 
 
 ## Defining an AOI
 
