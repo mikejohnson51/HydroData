@@ -1,5 +1,5 @@
 ---
-title: "Define an AOI"
+title: "Defining a HydroData AOI"
 author: "Mike Johnson"
 date: "4/12/2018"
 output: html_document
@@ -14,12 +14,14 @@ library(dataRetrieval)
 
 ```
 
-The core functionalities of the HydroData package rely on a user defining an area of interest. The package offers a number of way to do this which will be described in the following examples:
+HydroData is an R package that lets user find and get earth systems data for an area of interest (AOI). The core user inputs then are their AOI. HydroData offers three paramaters that allow users to define an area of interest according to a state, county, bounding box, or input spatial file. The following document provides example on how to use these parameters to define an AOI for data extraction:
+
+### Defining an AOI by state name 
 
 ```{r}
 CA = getAOI(state = 'CA')
 
-leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = CA,fillColor = "transparent", color = "black", weight = 4)
+leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = CA,fillColor = "red", color = 'black', weight = .1)
 
 
 ```
@@ -91,5 +93,38 @@ ucsb.wide = getAOI(clip_unit = list("UCSB", 10, 30))
 leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = ucsb.wide, fillColor = "transparent", color = "black", weight = 4)
 ```
 
-The final argument is the how the location is treated when drawing the bounding box of a specified size. The options include 
+### By User Shapefile
+
+```{r}
+LA = rgdal::readOGR("/Users/mikejohnson/Documents/GitHub/Communities1/Communities.shp")
+SM = LA[LA$LABEL_CITY == 'Santa Monica',] %>% spTransform(HydroDataProj)
+
+leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = SM,fillColor = "transparent", color = "black", weight = 4)
+
+```
+
+
+
+The final argument is the how the location is used to draw the bounding box of a specified size. The options include 'center' , 'lowerleft', 'lowerright', 'upperleft', 'upperright':
+
+
+```{r}
+nwc.c = getAOI(clip_unit =  list("National Water Center, AL", 10, 10, "center"))
+nwc.ul = getAOI(clip_unit = list("National Water Center, AL", 10, 10, "upperleft"))
+nwc.ur = getAOI(clip_unit = list("National Water Center, AL", 10, 10, "upperright"))
+nwc.ll = getAOI(clip_unit = list("National Water Center, AL", 10, 10, "lowerleft"))
+nwc.lr = getAOI(clip_unit = list("National Water Center, AL", 10, 10, "lowerright"))
+nwc = dismo::geocode("national water center, al")
+
+leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% 
+  addPolygons(data = nwc.c,  fillColor = "red", color = "black", weight = 4) %>% 
+  addPolygons(data = nwc.ul, fillColor = "blue", color = "black", weight = 4) %>% 
+  addPolygons(data = nwc.ur, fillColor = "green", color = "black", weight = 4) %>% 
+  addPolygons(data = nwc.ll, fillColor = "yellow", color = "black", weight = 4) %>% 
+  addPolygons(data = nwc.lr, fillColor = "orange", color = "black", weight = 4) %>% 
+  addMarkers(lat = nwc$latitude[1], lng = nwc$longitude[1])
+```
+
+
+
 
