@@ -6,6 +6,7 @@
 
 language: r
 cache: packages
+sudo: required
 dist: trusty
 
 matrix:
@@ -16,15 +17,10 @@ matrix:
       r: devel
       env: R_CODECOV=true
 
-addons:
-  apt:
-    packages:
-    - libcurl4-openssl-dev
-    - libudunits2-dev
-    - libgeos-dev
-    - libgdal-dev
-    - netcdf-bin
-    - libproj-dev
+before_install:
+  - sudo add-apt-repository ppa:ubuntugis/ppa --yes
+  - sudo apt-get --yes --force-yes update -qq
+  - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev libcurl4-openssl-dev netcdf-bin
 
 env:
    global:

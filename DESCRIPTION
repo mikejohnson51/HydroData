@@ -36,6 +36,7 @@ Imports:
     rjson,
     rvest,
     stats,
+    sf,
     tidyr,
     USAboundaries,
     utils,
