@@ -34,7 +34,7 @@ To download, install from GitHub using the `devtools` packages:
 
 ```r
 library(devtools)
-install_github("USGS-R/dataRetrieval")
+install_github("mikejohnson51/HydroData")
 ```
 
 Please feel free to offer suggestions for improvement, ask for datasets to be included, or to ask general questions!
