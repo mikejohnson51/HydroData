@@ -3,9 +3,9 @@
 [![travis](https://travis-ci.org/mikejohnson51/HydroData.svg?branch=master)](https://travis-ci.org/mikejohnson51/HydroData)  
 [![Coverage Status](https://coveralls.io/repos/github/mikejohnson51/HydroData/badge.svg?branch=master)](https://coveralls.io/github/mikejohnson51/HydroData?branch=master)  
 
-**HydroData** is an R package designed to help (1) find, (2) get, (3) visualize and (4) format climate, hydrologic, and the landscape data through a core language (R); a common geospatial reference; and unifying vocabulary built around ‘finding’ and ‘getting’ data for an area of interest. 
+**HydroData** is designed to help (1) find, (2) get, (3) visualize and (4) format disparate earthsystems data through a core language (R); a common geospatial reference; and unifying vocabulary built around ‘finding’ and ‘getting’ data for an area of interest. The primary input needed from users is a defined AOI. Examples for doing this can be found [here](https://rawgit.com/mikejohnson51/HydroData/master/vignettes/DefiningAOIs.html) .
 
-'Finding data' refers to identifying the spatial feature classes and identifers needed to download data, and 'getting' data refers to the process of getting tabular or raster data relating to an [AOI](https://rawgit.com/mikejohnson51/HydroData/master/vignettes/DefiningAOIs.html) . Currently the package supports access to 19 National/Global data sources. Some of which are highlighted in this [vignette](https://rawgit.com/mikejohnson51/HydroData/master/vignettes/HydroData_example.html):
+'Finding data' for an AOI refers to identifying the spatial feature classes and ID numbers needed to download data. 'Getting' data refers to the process of downloading tabular or raster data relating to an set of staion or AOI. The package supports access to 19 National/Global data sources. Most of which are highlighted in this [vignette](https://rawgit.com/mikejohnson51/HydroData/master/vignettes/HydroData_example.html):
 
 ## Data Sources
 
@@ -29,96 +29,3 @@
   - [Weather Underground daily weather records](https://www.wunderground.com)
   - The [NOAA National Water Model](http://water.noaa.gov/about/nwm) Streamflow forcasts 
   - The [Koppen Climate Classifation Dataset](http://koeppen-geiger.vu-wien.ac.at/present.htm) 
-
-## Defining an AOI
-
-The central componenet of each HydroData function is a user defined area of interest (AOI) which can be defined in a number of ways using three core parameters: (1) state (2) county or (3) clip_unit
-
-(1) An AOI can be defined as a state name or abbriviation:
-
-```r
- CA = getAOI(state = "California")
- TX = getAOI(state = "tx")
-```
-
-(2) An AOI can be defined by a state and county pair:
-
-```r
- sb = getAOI(state = "California", county = "Santa Barbara")
-```
-
-(3) An AOI can be defined by a user supplied Spatial* or Raster* object:
- 
-```r
- la.met = getAOI(clip_unit = rgdal::readOGR("/LA_metro")) 
-```
- 
-(4) An area defined by a (1) centroid, (2) bounding box height (3) bounding box width and (4) an optional bounding box origin:
-      
-```r
-# Select a 100 sqmi AOI the the National Water Center at the center:
-
- nwc = getAOI(clip_unit = list("National Water Center", 10, 10))
-
-# Select a 100 sqmi AOI with a known Lat, Lon pair at the center
- 
- pt = getAOI(clip_unit = list(34.41, 119.85, 10, 10))
-
-# Select a 100 sqmi AOI with the KMART near UCSB at the lower left corner
- 
- goleta = getAOI(clip_unit = list("KMART near UCSB", 10, 10, "lowerleft"))
- 
-# Select a 100 sqmi AOI with UC Berkley at the Upper right corner
- 
- berkley = getAOI(clip_unit = list("UC Berkley", 10, 10, "upperright"))
-``` 
-
-In each of the following functions, state, county, and clip_unit are offered as parameters so that you can define your search for finding and getting data.
-
-## Other Common Parameters
-
-Much like state, county, and clip_unit are used to construct AOI defintions, all HydroData functions share other commom parameters:
-
- - basemap:  When TRUE a basemap is added to the returned list
- - boundary: When TRUE a shapefile of the AOI is added to the returned list
- - save: When TRUE all data is written to a HydroData folder created in the users working dirctory
- - ids: When TRUE a vector of station/feature IDs is added to a returned list
- 
-Other functions may have unique parameters such as year or resolution which will be covered in the examples however with these parameters the basics of all functions are known:
-
-## Find Function Examples
-
-#### USGS NWIS Gaging Stations
-
-```r
-# Find all USGS stations in El Paso County, Colorado
-
-elpaso = findUSGS(state = 'CO', county = 'El Paso', basemap = T, boundary = T, ids = T)
-
-# Launch leaflet map of USGS stations: 
-
-explore(elpaso)
-
-```
-
-#### GCHN Stations
-
-```r
-# Find all GHCN stations in El Paso County, Colorado
-
-elpaso = findGHCN(state = 'CO', county = 'El Paso', basemap = T, boundary = T)
-
-# Launch leaflet map of GHCN stations:
-
-explore(elpaso)
-
-```
-
-## Installation
-
-Install from GitHub using the `devtools` packages:
-
-```r
-library(devtools)
-install_github("mikejohnson51/HydroData")
-```
