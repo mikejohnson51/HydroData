@@ -7,7 +7,11 @@
 setAxis(data, dates, param, timestep)
 }
 \arguments{
-\item{timestep}{}
+\item{data}{data input}
+
+\item{param}{parameter to name}
+
+\item{timestep}{timestep to aggregate to}
 }
 \description{
 set Axis

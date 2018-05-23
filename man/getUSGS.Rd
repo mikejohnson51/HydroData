@@ -53,7 +53,8 @@ Returned \code{data.frame} can be interactivly explored via \code{\link{inspect}
 \code{\link{inspect}}
 
 Other HydroData 'get' functions: \code{\link{getAOI}},
-  \code{\link{getClipUnit}}, \code{\link{getFiatBoundary}}
+  \code{\link{getClipUnit}}, \code{\link{getDaymet_pixel}},
+  \code{\link{getFiatBoundary}}
 }
 \author{
 Mike Johnson

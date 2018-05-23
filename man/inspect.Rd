@@ -7,7 +7,13 @@
 inspect(data = NULL, timestep = "daily", param = NULL, save = FALSE)
 }
 \arguments{
-\item{save}{}
+\item{data}{data source to visualize}
+
+\item{timestep}{time step to aggregate to, options include "daily", "monthly", "yearly"}
+
+\item{param}{the parameter to visualize, must match a column name in the data input}
+
+\item{save}{should the HTML dygraph be save to the users disk. Default FALSE}
 }
 \description{
 \code{inspect} can be used to explore timeseries HydroData objects
@@ -16,4 +22,5 @@ Namely:
  getWU
  getNWM
  getGHCN
+ getDaymet_point
 }

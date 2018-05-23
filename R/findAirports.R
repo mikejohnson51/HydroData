@@ -45,7 +45,7 @@ findClosestAirports = function(location = NULL, n = 5){
   } else if (class(location) == 'data.frame') {
     point = SpatialPoints(cbind(location$lon, location$lat))
   } else { x = dismo::geocode(location)
-  point = SpatialPoints(cbind(x$longitude, x$latitude))
+    point = SpatialPoints(cbind(x$longitude, x$latitude))
   }
 
   air@proj4string = CRS("+init=epsg:4326")
@@ -174,7 +174,6 @@ findAirports = function(state = NULL, county = NULL, clip_unit = NULL, boundary 
     report = append(report, paste(name, "basemap"))
   }
 
-
   if (boundary) { items[['boundary']] = AOI
   report = append(report, "AOI boundary")
 
@@ -200,6 +199,8 @@ findAirports = function(state = NULL, county = NULL, clip_unit = NULL, boundary 
               dataset = "airports",
               other   = NULL )
   }
+
+  class(items) = "HydroData"
 
   return(items)
 }

@@ -4,7 +4,7 @@
 \alias{getSnotel}
 \title{Get Snotel Data}
 \usage{
-getSnotel(state = NULL, county = NULL, clip_unit = NULL, IDs = NULL)
+getSnotel(state = NULL, county = NULL, clip_unit = NULL, ids = NULL)
 }
 \description{
 Get Snotel Data

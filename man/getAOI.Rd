@@ -77,6 +77,7 @@ functions. Understanding the flexibility of \code{getAOI} allows you to 'find' a
          }
 
 Other HydroData 'get' functions: \code{\link{getClipUnit}},
+  \code{\link{getDaymet_pixel}},
   \code{\link{getFiatBoundary}}, \code{\link{getUSGS}}
 }
 \author{

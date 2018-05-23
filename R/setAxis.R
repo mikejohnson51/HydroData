@@ -1,13 +1,10 @@
 #' set Axis
 #'
-#' @param data
-#' @param param
-#' @param timestep
-#'
-#' @return
+#' @param data data input
+#' @param param parameter to name
+#' @param timestep timestep to aggregate to
 #' @export
-#'
-#' @examples
+
 
 setAxis = function(data, dates,  param, timestep ){
 
@@ -51,6 +48,19 @@ setAxis = function(data, dates,  param, timestep ){
   if(grepl("tmin", param)){ variable = "Minimum Temperture"; units = '(1/10 (C))'; agency = "GHCN"}
   if(grepl("snow", param)){ variable = "Snowfall"; units = '(mm)';        agency = "GHCN"}
   if(grepl("snwd", param)){ variable = "Snow Depth"; units = '(mm)';        agency = "GHCN"}
+
+  }
+
+  ## DAYMET
+
+  if(data$agency_cd[1] == "DAYMET"){
+
+    if(grepl("prcp", param)){ variable = "Precipitaiton"; units = '(mm)';      agency = "DAYMET"}
+    if(grepl("dayl", param)){ variable = "Day Length"; units = '(sec)'; agency = "DAYMET"}
+    if(grepl("srad", param)){ variable = "Solar Radiation"; units = '(w/m2)'; agency = "DAYMET"}
+    if(grepl("swe", param)){ variable = "Snow Water Equivilent"; units = '(kg/m2)';        agency = "DAYMET"}
+    if(grepl("tmax", param)){ variable = "Maximum Air Temperature"; units = '(C)';        agency = "DAYMET"}
+    if(grepl("tmin", param)){ variable = "Minimum Air Temperature"; units = '(C)';        agency = "DAYMET"}
 
   }
 

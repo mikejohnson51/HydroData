@@ -6,11 +6,12 @@
 #'  getWU
 #'  getNWM
 #'  getGHCN
+#'  getDaymet_point
 #'
-#' @param data
-#' @param timestep
-#' @param param
-#' @param save
+#' @param data data source to visualize
+#' @param timestep time step to aggregate to, options include "daily", "monthly", "yearly"
+#' @param param the parameter to visualize, must match a column name in the data input
+#' @param save should the HTML dygraph be save to the users disk. Default FALSE
 #'
 #' @export
 #'
