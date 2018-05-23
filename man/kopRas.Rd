@@ -16,7 +16,7 @@ kopRas
 }
 \examples{
 \dontrun{
- load("koppen_raster.rda")
+ kop = HydroData::kopRas
 }
 }
 \references{

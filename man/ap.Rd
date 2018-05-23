@@ -6,26 +6,27 @@
 \title{Airports}
 \format{a \code{dataframe} instance, 1 row per station with columns:
 \itemize{
-\item 'OBJECTID':      A \code{character} Object id in the dataset
-\item 'feature_id':    A \code{character}  NHD COMID of reach
-\item 'site_no':       A \code{character}      USGS site number
-\item 'site_name':     A \code{character}    USGS site name
-\item 'da_sqkm':       A \code{numeric}        Area that drains to the location in square kilometers
-\item 'lat_reachCent': A \code{numeric}  Latitude of NHD reach center
-\item 'lon_reachCent': A \code{numeric}  Longitude of NHD reach center
+\item 'name':    A \code{character}  Name of airport. May or may not contain the City name.
+\item 'city':    A \code{character}  Main city served by airport. May be spelled differently from Name.
+\item 'country': A \code{character}  Country or territory where airport is located.
+\item 'IATA':    A \code{character}  3-letter IATA code
+\item 'ICAO':    A \code{numeric}    4-letter ICAO code
+\item 'lat':     A \code{numeric}    Latitude of airport
+\item 'lon':     A \code{numeric}    Longitude of airport
 }}
 \source{
-Derived from USGS and NHD datasets, provided by the National Water Center
+\href{https://openflights.org/data.html}{OpenFlights}
 }
 \usage{
 ap
 }
 \description{
-Dataset containing information global Airports
+Dataset containing information global Airports subset to the Daymet Domain
 }
 \examples{
 \dontrun{
- load("usgsStations.rda")
+ airports = HydroData::ap
 }
+
 }
 \keyword{datasets}

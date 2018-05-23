@@ -33,4 +33,3 @@ getBasemap(AOI = NULL, type = NULL)
 \author{
 Mike Johnson
 }
-\concept{HydroData 'get' function}

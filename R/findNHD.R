@@ -84,6 +84,7 @@ findNHD = function(state = NULL,
                    basemap = FALSE,
                    ids = FALSE,
                    save = FALSE) {
+
   items =  list()
   report = vector(mode = 'character')
   AOI = getAOI(state = state,
@@ -115,7 +116,6 @@ findNHD = function(state = NULL,
 
   sl = download.shp(URL = URL, type = 'NHD flowlines') %>% spTransform(HydroDataProj)
   sl = sl[AOI, ]
-
 
   items[['flowlines']] = sl
   report = append(report, "Returned list includes: flowline shapefile")
@@ -167,6 +167,7 @@ findNHD = function(state = NULL,
       )
     }
 
+    class(items) = "HydroData"
     return(items)
     }
 

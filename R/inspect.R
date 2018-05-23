@@ -15,7 +15,6 @@
 #'
 #' @export
 #'
-#' @examples
 
 inspect = function(data = NULL,
                    timestep = 'daily',

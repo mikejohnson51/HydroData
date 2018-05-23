@@ -23,7 +23,7 @@ daymet_tiles
 }
 \examples{
 \dontrun{
- load("daymet_tiles.rda")
+ tiles = HydroData::daymet_tiles
 }
 }
 \keyword{datasets}

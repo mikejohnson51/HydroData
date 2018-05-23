@@ -1,9 +1,9 @@
 #' Download, unzip and read shapefile from URL
 #'
-#' Internal HydroData function
-#'
 #' @param URL path to data
 #' @param type description of data being downloaded used for messaging
+#'
+#' @family HydroData 'helper' function
 #'
 #' @examples
 #' \dontrun{
@@ -17,8 +17,7 @@
 
 download.shp = function(URL, type) {
 
-
-  td <- tempfile()
+  td   <- tempfile()
   temp <- tempfile(pattern = type, fileext = ".zip")
 
   message("Trying URL ... ")
@@ -42,8 +41,6 @@ download.shp = function(URL, type) {
             " in total.\n")
   }
 
-
-  #unlink(td, recursive=TRUE, force = TRUE)
   unlink(temp, recursive=TRUE, force = TRUE)
 
   return(sp)

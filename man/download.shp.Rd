@@ -12,13 +12,16 @@ download.shp(URL, type)
 \item{type}{description of data being downloaded used for messaging}
 }
 \description{
-Internal HydroData function
+Download, unzip and read shapefile from URL
 }
 \examples{
 \dontrun{
 download.shp(URL, type = "flowlines")
 }
 
+}
+\seealso{
+Other HydroData 'helper' function: \code{\link{clipMerge}}
 }
 \author{
 Mike Johnson

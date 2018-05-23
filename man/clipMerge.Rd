@@ -2,20 +2,23 @@
 % Please edit documentation in R/clipMerge.R
 \name{clipMerge}
 \alias{clipMerge}
-\title{Clip and merge raster data}
+\title{Clip and Merge raster data}
 \usage{
 clipMerge(dataset, bounds)
 }
 \arguments{
-\item{dataset}{a list of rasters}
+\item{dataset}{a raster stack or brick}
 
 \item{bounds}{a clipping boundary}
 }
 \description{
-Clip and merge raster data
+Clip and Merge raster data
 }
 \details{
 \code{clipMerge} clip raster brick(s) to a set boundary and merge
+}
+\seealso{
+Other HydroData 'helper' function: \code{\link{download.shp}}
 }
 \author{
 Mike Johnson

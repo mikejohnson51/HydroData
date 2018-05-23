@@ -3,29 +3,31 @@
 \docType{data}
 \name{ghcn_stations}
 \alias{ghcn_stations}
-\title{Airports}
+\title{Global Historical Climatology Network (GHCN) daily data}
 \format{a \code{dataframe} instance, 1 row per station with columns:
 \itemize{
-\item 'OBJECTID':      A \code{character} Object id in the dataset
-\item 'feature_id':    A \code{character}  NHD COMID of reach
-\item 'site_no':       A \code{character}      USGS site number
-\item 'site_name':     A \code{character}    USGS site name
-\item 'da_sqkm':       A \code{numeric}        Area that drains to the location in square kilometers
-\item 'lat_reachCent': A \code{numeric}  Latitude of NHD reach center
-\item 'lon_reachCent': A \code{numeric}  Longitude of NHD reach center
+\item 'ID':         A \code{character} Station ID
+\item 'NAME':       A \code{character} Station name
+\item 'LAT':        A \code{numeric}   Station latitude
+\item 'LON':        A \code{numeric}   Station longitude
+\item 'PARAMETER':  A \code{character} Parameter being recorded
+\item 'START_YEAR': A \code{integer}   Latitude of NHD reach center
+\item 'END_YEAR':   A \code{integer}   Longitude of NHD reach center
 }}
 \source{
-Derived from USGS and NHD datasets, provided by the National Water Center
+\href{
+https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn}{
+NOAA National Centers for Environmental Information}
 }
 \usage{
 ghcn_stations
 }
 \description{
-Dataset containing information global Airports
+Dataset containing the GCHN daily station network
 }
 \examples{
 \dontrun{
- load("usgsStations.rda")
+ gchn = HydroData::ghcn_stations
 }
 }
 \keyword{datasets}

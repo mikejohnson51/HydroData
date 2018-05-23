@@ -187,5 +187,6 @@ findGHCN = function(state = NULL,
     )
   }
 
+  class(items) = "HydroData"
   return(items)
 }

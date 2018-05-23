@@ -24,11 +24,11 @@
 snotel
 }
 \description{
-\code{snotel} information regarding the metadata of NRCS SNOTEL stations
+\code{snotel}NRCS SNOTEL station metadata
 }
 \examples{
 \dontrun{
- load("snotelStations.rda")
+ tiles = HydroData::snotelStations.rda
 }
 }
 \keyword{datasets}

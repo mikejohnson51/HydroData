@@ -1,11 +1,12 @@
 getWU = function(airport_code = NULL, year = NULL, month = 1:12, day = NULL, type = NULL){
 
   type = 'monthly'
+  airport_code = toupper(airport_code)
 
-  load("data/airports.rda")
+  ap = HydroData::ap
 
-  if(nchar(airport_code) == 3) { airport_code = as.character(ap[which(airport_code == ap$V5),6]) }
-  if(!(airport_code %in% ap$V6)) { stop("Airport code not found") }
+  if(nchar(airport_code) == 3) { airport_code = ap$ICAO[which(airport_code == ap$IATA)] }
+  if(!(airport_code %in% ap$ICAO)) { stop("Airport code not found") }
 
   if((type %in% c("daily", "weekly", "monthly"))){
     type = simpleCap(type)
