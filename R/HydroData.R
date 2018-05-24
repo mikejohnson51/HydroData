@@ -11,6 +11,7 @@
 #'
 #' @importFrom  tidyr drop_na gather
 #'
+#' @importFrom sf as_Spatial st_geometry
 #' @importFrom  dplyr filter mutate %>% arrange select
 #'
 #' @importFrom  utils download.file unzip data type.convert
@@ -38,7 +39,7 @@
 #'@importFrom   xts xts
 #'
 #'@importFrom   raster raster
-#'
+
 
 
 
