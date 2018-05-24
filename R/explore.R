@@ -1,6 +1,7 @@
-#' Explore Spatial data found with HydroData
+#' Explore Spatial HydroData Objects
 #'
-#' \code{explore} can be used to explore timeseries HydroData objects
+#' @description
+#' \code{explore} can be used to explore spatial HydroData objects obtained from
 #' Namely:
 #'  findGHCN
 #'  findNHD
@@ -11,16 +12,30 @@
 #'  findWaterbodies
 #'  findWS
 #'  findAirports
-#'
 #'  getCLD
 #'  getKoppen
 #'  getNED
 #'  getNLCD
 #'  getWaterUse
+#'
+#' @param input a single, or list, of HydroData objects
+#' @param save  (logical) should the leaflet HTML be saved to disk?
+#'
+#' @family HydroData 'viz' functions
+#'
+#' @return leaflet map object
+#'
+#' @examples
+#' \dontrun{
+#' # Find USGS station near UCSB
+#'
+#' ucsb.nwis = findUSGS(clip_unit = list("UCSB", 10, 10))
+#' explore(ucsb.nwis)
+#' }
+#'
 #' @export
-#'
-#'
-#'
+#' @author
+#' Mike Johnson
 
 explore = function(input = NULL, save = FALSE) {
 

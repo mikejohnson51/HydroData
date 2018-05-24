@@ -24,3 +24,9 @@ Namely:
  getGHCN
  getDaymet_point
 }
+\seealso{
+Other HydroData 'viz' functions: \code{\link{explore}}
+}
+\author{
+Mike Johnson
+}

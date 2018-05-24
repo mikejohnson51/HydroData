@@ -13,8 +13,10 @@
 #' @param param the parameter to visualize, must match a column name in the data input
 #' @param save should the HTML dygraph be save to the users disk. Default FALSE
 #'
-#' @export
+#' @family HydroData 'viz' functions
 #'
+#' @export
+#' @author Mike Johnson
 
 inspect = function(data = NULL,
                    timestep = 'daily',

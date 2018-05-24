@@ -1,11 +1,11 @@
 #' Find US Army Core Dams within Area of Interest
 #'
-#' \code{findNID} finds all US Army Corps Dams for an Area of Interest from the National Inventory of Dams dataset.
+#' @description  \code{findNID} finds all US Army Corps Dams for an Area of Interest from the National Inventory of Dams dataset.
 #' This dataset is access through the dams package.
 #'
 #'  \code{findNID} returns a named list of minimum length 1:
 #' \enumerate{
-#' \item 'dams': A \code{SpatialPointsDataFrame} of NID dams and metadata
+#' \item 'dams':      A \code{SpatialPointsDataFrame} of NID dams and metadata
 #' \item 'basemap':   A \code{RasterLayer} basemap if 'basemap' is \code{TRUE}
 #' \item 'fiat':      A \code{SpatialPolygon} of fiat boundaries if 'boundary' is \code{TRUE}
 #' \item 'clip':      A \code{SpatialPolygon} of clip unit boundary if 'boundary' is \code{TRUE}
@@ -51,28 +51,24 @@
 #' Mike Johnson
 
 findNID = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE, basemap = FALSE, save = FALSE){
+
   require(dams)
   items =  list()
   report = vector(mode = 'character')
+
   A = getAOI(state = state, county = county, clip_unit = clip_unit)
     message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Shapefile determined. Now loading loading NID database...")
 
-    data(nid_cleaned, envir = environment())
+  data(nid_cleaned, envir = environment())
 
-  dams = nid_cleaned %>%
-         #filter(!state  %in% c("AK", "HI", "GU", "PR")) %>%
-         tidyr::drop_na(Longitude, Latitude)
-
-
-  #rm(nid_cleaned)
+  dams = nid_cleaned %>% tidyr::drop_na(Longitude, Latitude)
 
   sp = SpatialPointsDataFrame(cbind(dams$Longitude, dams$Latitude), data = dams)
-    message("All dams in CONUS loaded: ", formatC(dim(sp)[1], format="d", big.mark=","), " dams in total")
+  message("All dams in CONUS loaded: ", formatC(dim(sp)[1], format="d", big.mark=","), " dams in total")
 
-  sp@proj4string = A@proj4string
+  sp@proj4string = HydroDataProj
   sp = sp[A, ]
-    message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " NID dams found in ", nameAOI(state = state, county = county, clip_unit = clip_unit))
-
+  message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " NID dams found in ", nameAOI(state = state, county = county, clip_unit = clip_unit))
 
     items[['dams']] = sp
     report = append(report, "Returned list includes: NID dams shapefile")
