@@ -11,7 +11,7 @@
 #'
 #' @family HydroData 'helper' functions
 #'
-#' @return
+#' @return a list of HydroData components
 #' @export
 #' @author Mike Johnson
 

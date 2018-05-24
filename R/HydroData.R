@@ -11,8 +11,6 @@
 #'
 #' @importFrom  tidyr drop_na gather
 #'
-#' @importFrom  sf as_Spatial st_geometry
-#'
 #' @importFrom  dplyr filter mutate %>% arrange select
 #'
 #' @importFrom  utils download.file unzip data type.convert
@@ -41,9 +39,7 @@
 #'
 #'@importFrom   raster raster
 #'
-#' @importClassesFrom sf sf sfc_MULTIPOLYGON
-#'
-#'@export
+
 
 
 NULL

@@ -42,55 +42,77 @@
 
 getFiatBoundary <- function(state = NULL, county = NULL, clip_unit = NULL) {
 
+
+
+
+  #map = as(us_counties(map_date = NULL, resolution = "high", states = NULL), "Spatial") %>% spTransform(HydroDataProj)
+
+
+
+
   if(!is.null(clip_unit)){
+
     A = getAOI(state = NULL, county = NULL, clip_unit = clip_unit)
 
-    s = USAboundaries::us_states(map_date = NULL, resolution = "high", states = state)
-    states = sf::as_Spatial(sf::st_geometry(s), IDs = as.character(1:nrow(s)))
-    df = s
-    df$geometry <- NULL
-    df <- as.data.frame(df)
-    row.names(df) = NULL
-    states <- sp::SpatialPolygonsDataFrame(states, data = df) %>% spTransform(HydroDataProj)
+    map = as(us_states(map_date = NULL, resolution = "high", states = NULL), "Spatial") %>% spTransform(HydroDataProj)
 
-    states = states[A, ]
+    map = map[A, ]
 
-    c = USAboundaries::us_counties(map_date = NULL, resolution = "high", states = map$name)
-    counties = sf::as_Spatial(sf::st_geometry(c), IDs = as.character(1:nrow(c)))
-    df = c
-    df$geometry <- NULL
-    df <- as.data.frame(df)
-    row.names(df) = NULL
-    counties <- sp::SpatialPolygonsDataFrame(counties, data = df) %>% spTransform(HydroDataProj)
+    map = as(us_counties(map_date = NULL, resolution = "high", states = map$name), "Spatial") %>% spTransform(HydroDataProj)
 
-    map = counties[A, ]
+    map = map[A, ]
+
+
+
+
+    #return(map)
 
   } else {
 
-    c = USAboundaries::us_counties(map_date = NULL, resolution = "high", states = state)
-    counties = sf::as_Spatial(sf::st_geometry(c), IDs = as.character(1:nrow(c)))
-    df = c
-    df$geometry <- NULL
-    df <- as.data.frame(df)
-    row.names(df) = NULL
-    counties <- sp::SpatialPolygonsDataFrame(counties, data = df) %>% spTransform(HydroDataProj)
 
-    map <- sp::SpatialPolygonsDataFrame(counties, data = df) %>% spTransform(HydroDataProj)
+
+
+    map = as(us_counties(map_date = NULL, resolution = "high", states = state), "Spatial") %>% spTransform(HydroDataProj)
+
+
+
 
     if(!is.null(county)){
+
       county.map <- vector(mode = "character")
+
       for (i in 1:length(county)) { county.map <- append(county.map, simpleCap(tolower(county[i]))) }
+
+
+
 
       bad.counties  = setdiff(county.map, map$name)
 
+
+
+
       if(nchar(state) == 2){state = setNames(state.name, state.abb)[toupper(state)][1]}
+
+
+
 
       if(length(bad.counties) > 0){stop(paste(bad.counties, collapse = ", "), " not a valid county in ", state, ".")}
 
+
+
+
       map <- map[map$name %in% county.map, ]
+
     }
+
   }
 
+
+
+
   return(map)
+
+
+
 
 }

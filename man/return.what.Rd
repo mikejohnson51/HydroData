@@ -21,6 +21,9 @@ return.what(items, report, AOI, basemap, boundary, clip_unit, ids)
 
 \item{ids}{the ids call}
 }
+\value{
+a list of HydroData components
+}
 \description{
 A function defining what should be returned in a HydroData object
 }
