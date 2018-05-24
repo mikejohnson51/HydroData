@@ -98,30 +98,29 @@ findGHCN = function(state = NULL,
                     ids = FALSE,
                     save = FALSE) {
 
-  items =  list()
-  report = vector(mode = 'character')
-
   AOI = getAOI(state = state,
-             county = county,
-             clip_unit = clip_unit)
+               county = county,
+               clip_unit = clip_unit)
   bb = AOI@bbox
   message ("AOI defined as the ",
-    nameAOI (state = state, county = county, clip_unit = clip_unit),
-    ". Loading global GHCN data...\n"
+            nameAOI (state = state, county = county, clip_unit = clip_unit),
+            ". Loading global GHCN data...\n"
   )
 
   ghcn_stations = HydroData::ghcn_stations
 
-  stations  = ghcn_stations %>% dplyr::filter(LAT <= bb[2, 2]) %>%
+  stations  = ghcn_stations %>%
+    dplyr::filter(LAT <= bb[2, 2]) %>%
     dplyr::filter(LAT  >= bb[2, 1]) %>%
-    dplyr::filter(LON >= bb[1, 1]) %>% dplyr::filter(LON <= bb[1, 2])
+    dplyr::filter(LON >= bb[1, 1]) %>%
+    dplyr::filter(LON <= bb[1, 2])
 
   if(!is.null(parameters)) {
     parameters = toupper(parameters)
     stations = stations %>% dplyr::filter(PARAMETER %in% parameters)
   }
 
-  if (length(stations) == 0) {
+  if (dim(stations)[1] == 0) {
     stop("0 stations found in specified AOI.")
   }
 
@@ -129,50 +128,15 @@ findGHCN = function(state = NULL,
   sp@proj4string = HydroDataProj
   sp = sp[AOI,]
 
-
-
   message(length(sp), " GHCN stations found in ",
           nameAOI (state = state, county = county, clip_unit = clip_unit))
 
 
+  items = list('ghcn' = sp)
+  report = "Returned list includes: NOAA GHCN shapefile"
 
-  items[['ghcn']] = sp
-  report = append(report, "Returned list includes: NOAA GHCN shapefile")
+  items = return.what(items, report, AOI, basemap, boundary, clip_unit, ids)
 
-
-  if (!(basemap == FALSE))  {
-    if (basemap == TRUE) {
-      type = 't'
-      name = 'terrain'
-    } else {
-      type = basemap
-    }
-
-    if (type == 't') { name = 'terrain'   }
-    if (type == 'h') { name = 'hybrid'    }
-    if (type == 's') { name = 'satellite' }
-    if (type == 'r') { name = 'roads'   }
-
-    items[['basemap']] = getBasemap(AOI = AOI, type = type)
-    report = append(report, paste(name, "basemap"))
-  }
-
-
-  if (boundary) { items[['boundary']] = AOI
-  report = append(report, "AOI boundary")
-
-  if (!is.null(clip_unit)) { items[['fiat']] = getFiatBoundary(clip_unit = AOI)
-  report = append(report, "fiat boundary")
-  }
-  }
-
-  if (ids) { items[['ids']] = sp$ID
-  report = append(report, "list of station IDs")
-  }
-
-  if (length(report) > 1) { report[length(report)] = paste("and",  tail(report, n = 1)) }
-
-  message(paste(report, collapse = ", "))
 
   if (save) {
     save.file(
@@ -190,3 +154,4 @@ findGHCN = function(state = NULL,
   class(items) = "HydroData"
   return(items)
 }
+
