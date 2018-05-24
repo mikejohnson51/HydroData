@@ -11,6 +11,8 @@
 #'
 #' @importFrom  tidyr drop_na gather
 #'
+#' @importFrom  sf as_Spatial st_geometry
+#'
 #' @importFrom  dplyr filter mutate %>% arrange select
 #'
 #' @importFrom  utils download.file unzip data type.convert
@@ -35,11 +37,13 @@
 #'
 #' @importFrom  USAboundaries us_counties us_states
 #'
-#'@importFrom xts xts
+#'@importFrom   xts xts
 #'
-#'@importFrom raster raster
+#'@importFrom   raster raster
 #'
-
+#' @importClassesFrom sf sf sfc_MULTIPOLYGON
+#'
+#'@export
 
 
 NULL

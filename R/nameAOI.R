@@ -15,11 +15,12 @@
 #' @export
 #'
 #' @author
+#'
 #' Mike Johnson
 
 nameAOI = function(state = NULL, county = NULL, clip_unit = NULL){
 
-if(!is.null(clip_unit)){unit = "supplied clip unit"}
+if(!is.null(clip_unit)){unit = name.clip.unit(clip_unit)}
 
 if(!is.null(state)){
   if(is.null(county)){

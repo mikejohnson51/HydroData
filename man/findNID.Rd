@@ -34,11 +34,10 @@ All HydroData outputs are projected to \emph{'+proj=longlat +ellps=GRS80 +towgs8
 \description{
 \code{findNID} finds all US Army Corps Dams for an Area of Interest from the National Inventory of Dams dataset.
 This dataset is access through the dams package.
-}
-\details{
-\code{findNID} returns a named list of minimum length 1:
+
+ \code{findNID} returns a named list of minimum length 1:
 \enumerate{
-\item 'dams': A \code{SpatialPointsDataFrame} of NID dams and metadata
+\item 'dams':      A \code{SpatialPointsDataFrame} of NID dams and metadata
 \item 'basemap':   A \code{RasterLayer} basemap if 'basemap' is \code{TRUE}
 \item 'fiat':      A \code{SpatialPolygon} of fiat boundaries if 'boundary' is \code{TRUE}
 \item 'clip':      A \code{SpatialPolygon} of clip unit boundary if 'boundary' is \code{TRUE}
@@ -71,3 +70,4 @@ Other HydroData 'find' functions: \code{\link{findAirports}},
 \author{
 Mike Johnson
 }
+\concept{HydroData 'find' functions}

@@ -23,3 +23,4 @@ Other HydroData 'helper' function: \code{\link{download.shp}}
 \author{
 Mike Johnson
 }
+\concept{HydroData 'helper' function}

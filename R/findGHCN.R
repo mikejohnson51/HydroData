@@ -132,7 +132,9 @@ findGHCN = function(state = NULL,
           nameAOI (state = state, county = county, clip_unit = clip_unit))
 
 
-  items = list('ghcn' = sp)
+  items = list(name = nameAOI(state = state, county = county, clip_unit = clip_unit),
+               souce = "NOAA GHCN",
+               'ghcn' = sp)
   report = "Returned list includes: NOAA GHCN shapefile"
 
   items = return.what(items, report, AOI, basemap, boundary, clip_unit, ids)

@@ -1,3 +1,19 @@
+#' Choose what to return for HydroData Calls
+#'
+#' @description  A function defining what should be returned in a HydroData object
+#' @param items an items list
+#' @param report a report vector
+#' @param AOI the defined AOI
+#' @param basemap the basemap call
+#' @param boundary the boundary call
+#' @param clip_unit the clip_unit defintion
+#' @param ids the ids call
+#'
+#' @family HydroData 'helper' functions
+#'
+#' @return
+#' @export
+#' @author Mike Johnson
 
 return.what = function(items, report, AOI, basemap, boundary, clip_unit, ids ){
 
