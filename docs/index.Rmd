@@ -10,11 +10,7 @@ devtools::load_all()
 
 ## Introduction
 
-All environmental and hydrologic research begins with data; the question of what data is available; and the challenge of gathering it.  
-
-HydroData is designed to help users find, get, visualize and use a range of Earth Systems data. The package provides functions to automatically download data from 19 sources; interactively visualize and share data within R and/or a browser; and to export data for external use in GIS.
-
-This R package makes it easy to wrangle, integrate, 
+All environmental and hydrologic research begins with data; the question of what data is available; and the challenge of gathering it. HydroData is designed to help users find, get, visualize and use a range of Earth Systems data by providing functions to automatically download; interactive with and share data.
 
 ### Features
 

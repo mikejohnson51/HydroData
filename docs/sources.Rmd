@@ -5,7 +5,11 @@ pagetitle: HydroData
 ## HydroData Data Repositories
 
 
-* Access to 19 data sources from the R
+HydroData offers access to 19 data sources. These can be found 
+
+
+
+
   - The [ USGS National Water Information System (NWIS)](https://nwis.waterdata.usgs.gov/nwis) stream gages
   - The [ USGS National Elevation Dataset (NED)](http://ned.usgs.gov) elevation data at 1 and 1/3 arc-second
   - The [ USGS National Hydrography Dataset (NHD)](http://nhd.usgs.gov) 
