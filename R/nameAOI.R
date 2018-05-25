@@ -20,20 +20,25 @@
 
 nameAOI = function(state = NULL, county = NULL, clip_unit = NULL){
 
+unit = NULL
+
 if(!is.null(clip_unit)){unit = name.clip.unit(clip_unit)}
 
-if(!is.null(state)){
-  if(is.null(county)){
-    if(nchar(state) == 2){
-      unit = paste0("boundary of ", setNames(datasets::state.name, datasets::state.abb)[state])
+if(all(!is.null(state), is.null(county))){
+  for(i in seq_along(state)){
+    if(nchar(state[i]) == 2){
+      unit = append(unit, setNames(datasets::state.name, datasets::state.abb)[state[i]])
     }else{
-      unit = paste0("boundary of ", state)
-      }
+      unit = append(unit, state[i])
     }
   }
+  unit = paste0("boundary of ", paste(unit, collapse = ", "))
 
-if(!is.null(state) && !is.null(county)){
+}
+
+if(!is.null(county)){
   county.map = vector(mode= 'character')
+
   for(i in 1:length(county)){county.map = append(county.map, simpleCap(tolower(county[i])))}
   if(length(county.map) > 1) {county.map[length(county.map)] = paste("and", tail(county.map, n = 1))}
   county.map = paste(county.map, collapse = ', ')
