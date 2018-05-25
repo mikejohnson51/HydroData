@@ -13,6 +13,16 @@ define.clip.unit = function(clip_unit){
 # Clip Unit Defintion  (getClipUnit() for 3,4, or 5 inputs)                    #
 #------------------------------------------------------------------------------#
 
+if (grepl( pattern = "Spatial", class(clip_unit), ignore.case = T, fixed = F )) {
+  x = mean(clip_unit@bbox[1,])
+  y = mean(clip_unit@bbox[2,])
+
+  location <- c(y, x)
+  h        <- round(abs(clip_unit@bbox[2,1] - clip_unit@bbox[2, 2]) * 69,0)
+  w        <- round((abs(clip_unit@bbox[1,1] - clip_unit@bbox[1, 2]) * 69) * (cos(y * pi/180)),0)
+  o        <- 'center'
+}
+
 # AOI defined by location and bounding box width and height
 
 if (length(clip_unit) == 3) {

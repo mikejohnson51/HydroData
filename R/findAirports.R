@@ -127,68 +127,37 @@ findClosestAirports = function(location = NULL, n = 5){
 #' @author
 #' Mike Johnson
 
-
 findAirports = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE, basemap = FALSE, ids = FALSE, save = FALSE){
 
   ap = HydroData::ap
-  coords = cbind(ap$lon, ap$lat)
 
-  air = SpatialPointsDataFrame(coords, ap)
-  air@proj4string = HydroDataProj
+  air = SpatialPointsDataFrame(cbind(ap$lon, ap$lat), ap, proj4string = HydroDataProj)
 
-  items =  list()
-  report = vector(mode = 'character')
-
-  AOI = getAOI(state = state, county = county, clip_unit = clip_unit)
-  message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ".\nShapefile determined.\nLoading Aiport Database")
+  AOI = getAOI(state, county, clip_unit)
 
   sp = air[AOI, ]
 
-  message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " airports found within ", nameAOI(state = state, county = county, clip_unit = clip_unit))
+  if (length(sp) == 0) { stop("0 airports found in AOI") }
 
-  items[['airports']] = sp ; report = append(report, "Returned list includes: airport shapefile")
+  message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " airports found")
 
-  if (!(basemap == FALSE))  {
-    if (basemap == TRUE) {
-      type = 't'
-      name = 'terrain'
-    } else {
-      type = basemap
-    }
+  items = list(name = nameAOI(state, county, clip_unit),
+               source = "Open Flights",
+               airports =  sp)
 
-    if (type == 't') { name = 'terrain'   }
-    if (type == 'h') { name = 'hybrid'    }
-    if (type == 's') { name = 'satellite' }
-    if (type == 'r') { name = 'roads'   }
+  report = "Returned list includes: airport shapefile"
 
-    items[['basemap']] = getBasemap(AOI = AOI, type = type)
-    report = append(report, paste(name, "basemap"))
-  }
-
-  if (boundary) { items[['boundary']] = AOI
-  report = append(report, "AOI boundary")
-
-  if (!is.null(clip_unit)) { items[['fiat']] = getFiatBoundary(clip_unit = AOI)
-  report = append(report, "fiat boundary")
-  }
-  }
-
-  if (ids) { items[['ids']] = sp$Digit4
-  report = append(report, "four digit airport identifiers")
-  }
-
-  if (length(report) > 1) { report[length(report)] = paste("and",  tail(report, n = 1)) }
-  message(paste(report, collapse = ", "))
+  items = return.what(sp, items, report, AOI, basemap, boundary, clip_unit, ids = if(ids){ids = "ICAO"} )
 
   if(save){
-    save.file(data    = items,
-              state   = state,
-              county  = county,
+    save.file(data      = items,
+              state     = state,
+              county    = county,
               clip_unit = clip_unit,
-              agency  = 'NCAR',
-              source  = "NCAR",
-              dataset = "airports",
-              other   = NULL )
+              agency    = 'NCAR',
+              source    = "NCAR",
+              dataset   = "airports",
+              other     = NULL )
   }
 
   class(items) = "HydroData"

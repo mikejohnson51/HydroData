@@ -5,7 +5,7 @@
 \title{Find NOAA Maintained GHCN Stations}
 \usage{
 findGHCN(state = NULL, county = NULL, clip_unit = NULL,
-  boundary = FALSE, basemap = FALSE, parameters = NULL, ids = FALSE,
+  parameters = NULL, boundary = FALSE, basemap = FALSE, ids = FALSE,
   save = FALSE)
 }
 \arguments{
@@ -14,6 +14,17 @@ findGHCN(state = NULL, county = NULL, clip_unit = NULL,
 \item{county}{County name(s). Requires \code{state} input.}
 
 \item{clip_unit}{SpatialObject* or list. For details see \code{getClipUnit}}
+
+\item{parameters}{Select the variable of interest.The five core elemets are:\cr
+PRCP = Precipitation (tenths of mm)\cr
+SNOW = Snowfall (mm)\cr
+SNWD = Snow depth (mm)\cr
+TMAX = Maximum temperature (tenths of degrees C)\cr
+TMIN = Minimum temperature (tenths of degrees C)\cr
+
+To see the other options consult the GHCN documentation \href{ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt}{here}\cr
+If \code{parameters = NULL}, all recorded parameters in AOI will be returned
+\cr}
 
 \item{boundary}{If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list}
 
@@ -26,17 +37,6 @@ findGHCN(state = NULL, county = NULL, clip_unit = NULL,
 \item'h':  google hybrid basemap
 \item'r':  google roads basemap
 }}
-
-\item{parameters}{Select the variable of interest.The five core elemets are:\cr
-PRCP = Precipitation (tenths of mm)\cr
-SNOW = Snowfall (mm)\cr
-SNWD = Snow depth (mm)\cr
-TMAX = Maximum temperature (tenths of degrees C)\cr
-TMIN = Minimum temperature (tenths of degrees C)\cr
-
-To see the other options consult the GHCN documentation \href{ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt}{here}\cr
-If \code{parameters = NULL}, all recorded parameters in AOI will be returned
-\cr}
 
 \item{ids}{If TRUE, returns a list of IDs for selected stations}
 
@@ -101,13 +101,12 @@ plot(el.paso$ghcn, add = T)
 \code{\link{explore}}
 
 Other HydroData 'find' functions: \code{\link{findAirports}},
-  \code{\link{findClosestAirports}}, \code{\link{findNHD}},
-  \code{\link{findNID}}, \code{\link{findReservoir}},
-  \code{\link{findRoads}}, \code{\link{findSnotel}},
-  \code{\link{findUSGS}}, \code{\link{findWS}},
+  \code{\link{findClosestAirports}}, \code{\link{findHUC}},
+  \code{\link{findNHD}}, \code{\link{findNID}},
+  \code{\link{findReservoir}}, \code{\link{findRoads}},
+  \code{\link{findSnotel}}, \code{\link{findUSGS}},
   \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson
 }
-\concept{HydroData 'find' functions}

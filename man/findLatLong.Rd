@@ -10,7 +10,7 @@ findLatLong()
 A lat, long pair \code{data.frame} Object
 }
 \description{
-Not a good idea for reproducable code but helpful for finding and recording you location
+Not a good idea for reproducable code but helpful for finding and recording your location
 }
 \examples{
 \dontrun{

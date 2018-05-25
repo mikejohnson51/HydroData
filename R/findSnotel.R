@@ -67,56 +67,25 @@
 
 findSnotel = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE, basemap = FALSE, ids = FALSE, save = FALSE){
 
-  items =  list()
-  report = vector(mode = 'character')
-
-  AOI = getAOI(state = state, county = county, clip_unit = clip_unit)
-    message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Shapefile determined. Now loading loading Snotel data...")
+  AOI = getAOI(state, county, clip_unit)
 
   snotel = HydroData::snotel
 
-    load('data/snotelStations.rda')
+  sp = SpatialPointsDataFrame(cbind(snotel$LONG, snotel$LAT), snotel, proj4string = HydroDataProj)
 
-  sp = SpatialPointsDataFrame(cbind(snotel$LONG, snotel$LAT), snotel)
-  sp@proj4string = HydroDataProj
   sp = sp[AOI,]
-  rm(snotel)
-    message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " snotel stations found within ", nameAOI(state = state, county = county, clip_unit = clip_unit))
 
-  items[['snotel']] = sp ; report = append(report, "Returned list includes: snotel shapefile")
+  if (length(sp) == 0) { stop("0 stations found in AOI") }
 
-  if (!(basemap == FALSE))  {
-    if (basemap == TRUE) {
-      type = 't'
-      name = 'terrain'
-    } else {
-      type = basemap
-    }
+  message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " snotel stations found within AOI")
 
-    if (type == 't') { name = 'terrain'   }
-    if (type == 'h') { name = 'hybrid'    }
-    if (type == 's') { name = 'satellite' }
-    if (type == 'r') { name = 'roadmap'   }
+  items = list( name = nameAOI(state, county, clip_unit),
+                source = "NRCS Snotel",
+                snotel = sp)
 
-    items[['basemap']] = getBasemap(AOI = AOI, type = type)
-    report = append(report, paste(name, "basemap"))
-  }
+  report ="Returned list includes: snotel shapefile"
 
-
-  if (boundary) { items[['boundary']] = AOI
-  report = append(report, "AOI boundary")
-
-  if (!is.null(clip_unit)) { items[['fiat']] = getFiatBoundary(clip_unit = AOI)
-  report = append(report, "fiat boundary")
-  }
-  }
-
-  if (ids) { items[['ids']] = sp$ID
-  report = append(report, "list of station IDs")
-  }
-
-  if(length(report) > 1) {report[length(report)] = paste("and",  tail(report, n = 1))}
-    message(paste(report, collapse = ", "))
+  items = return.what(sp, items, report, AOI, basemap, boundary, clip_unit, ids = if(ids){ids = 'ID'})
 
   if(save){
       save.file(data = items,
@@ -129,6 +98,7 @@ findSnotel = function(state = NULL, county = NULL, clip_unit = NULL, boundary = 
                 other   = NULL )
   }
 
+  class(items) = "HydroData"
   return(items)
 }
 

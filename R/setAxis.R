@@ -1,6 +1,7 @@
 #' set Axis
 #'
 #' @param data data input
+#' @param dates dates present in data
 #' @param param parameter to name
 #' @param timestep timestep to aggregate to
 #' @export
@@ -13,7 +14,7 @@ setAxis = function(data, dates,  param, timestep ){
   units    = NULL
   agency   = NULL
   stat     = NULL
-  ref = NULL
+  ref      = NULL
 
 
   ## Weather Underground

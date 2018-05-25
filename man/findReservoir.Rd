@@ -45,7 +45,7 @@ Pending parameterization, \code{findReservoir} can also return:
 }
 }
 \description{
-\code{findReservoir} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
+\code{findReservoir} returns a list of \code{SpatialPointsDataframe*} Objects cropped to an Area of Interest.\cr\cr
 To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip_unit}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
 Returned \code{list} can be interactivly explored via \code{\link{explore}}.\cr\cr
 All outputs are projected to \code{CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and reservoir data is (\emph{down})loadeded from the \href{https://water.usgs.gov/GIS}{USGS GIS portal}
@@ -75,12 +75,11 @@ explore(tx.res)
 
 Other HydroData 'find' functions: \code{\link{findAirports}},
   \code{\link{findClosestAirports}},
-  \code{\link{findGHCN}}, \code{\link{findNHD}},
-  \code{\link{findNID}}, \code{\link{findRoads}},
-  \code{\link{findSnotel}}, \code{\link{findUSGS}},
-  \code{\link{findWS}}, \code{\link{findWaterbodies}}
+  \code{\link{findGHCN}}, \code{\link{findHUC}},
+  \code{\link{findNHD}}, \code{\link{findNID}},
+  \code{\link{findRoads}}, \code{\link{findSnotel}},
+  \code{\link{findUSGS}}, \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson
 }
-\concept{HydroData 'find' functions}

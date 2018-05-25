@@ -1,7 +1,7 @@
 #' Find your Lat, long from IP Address
 #'
 #' @description
-#' Not a good idea for reproducable code but helpful for finding and recording you location
+#' Not a good idea for reproducable code but helpful for finding and recording your location
 #'
 #' @seealso \code{getClipUnit}
 #' @seealso \code{getAOI}

@@ -22,4 +22,3 @@ Other HydroData 'helper' functions: \code{\link{define.clip.unit}},
 \author{
 Mike Johnson
 }
-\concept{HydroData 'helper' functions}

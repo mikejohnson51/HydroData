@@ -4,9 +4,11 @@
 \alias{return.what}
 \title{Choose what to return for HydroData Calls}
 \usage{
-return.what(items, report, AOI, basemap, boundary, clip_unit, ids)
+return.what(sp, items, report, AOI, basemap, boundary, clip_unit, ids)
 }
 \arguments{
+\item{sp}{Spatial object}
+
 \item{items}{an items list}
 
 \item{report}{a report vector}
@@ -34,4 +36,3 @@ Other HydroData 'helper' functions: \code{\link{define.clip.unit}},
 \author{
 Mike Johnson
 }
-\concept{HydroData 'helper' functions}

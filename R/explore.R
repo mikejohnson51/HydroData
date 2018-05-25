@@ -585,9 +585,9 @@ if (!is.null(airports)) {
     iconAnchorY = 10
   )
 
-  name <- data$Name
-  digit4 <- data$Digit4 # site number
-  city <- data$City # local site name
+  name <- data$name
+  digit4 <- data$ICAO # site number
+  city <- data$city # local site name
 
   url = paste0("https://www.wunderground.com/history/airport/", digit4, "/",  gsub("-","/", Sys.Date()), "/DailyHistory.html")
 
@@ -603,8 +603,8 @@ if (!is.null(airports)) {
   m = addMarkers(
     m ,
     data = data,
-    lng = data$Long,
-    lat = data$Lat,
+    lng = data$lon,
+    lat = data$lat,
     icon = apIcon,
     popup = pop,
     group = "Airports"

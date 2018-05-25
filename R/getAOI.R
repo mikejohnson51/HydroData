@@ -74,6 +74,7 @@
 getAOI = function(state = NULL,
                   county = NULL,
                   clip_unit = NULL) {
+
   #------------------------------------------------------------------------------#
   # Error Catching                                                               #
   #------------------------------------------------------------------------------#
@@ -115,8 +116,7 @@ getAOI = function(state = NULL,
 
   if (is.null(clip_unit) && !is.null(state)) {
     shp <- getFiatBoundary(state = state, county = county)
-
-    return(shp)
+    #return(shp)
   }
 
   # AOI by user shapefile
@@ -125,12 +125,11 @@ getAOI = function(state = NULL,
     pattern = "Raster",
     class(clip_unit),
     ignore.case = T,
-    fixed = F
-  )) {
-    shp =  rasterToPolygons(clip_unit) %>%
-      spTransform(HydroDataProj)
-    return(shp)
-  }
+    fixed = F))
+    {
+    shp =  rasterToPolygons(clip_unit) %>% spTransform(HydroDataProj)
+    #return(shp)
+    }
 
   if (grepl(
     pattern = "Spatial",
@@ -138,28 +137,27 @@ getAOI = function(state = NULL,
     ignore.case = T,
     fixed = F
   )) {
-    shp =  clip_unit %>%
-      spTransform(HydroDataProj)
-    return(shp)
+    shp =  clip_unit %>% spTransform(HydroDataProj)
   }
 
   #------------------------------------------------------------------------------#
   # Clip Unit Defintion  (getClipUnit() for 3,4, or 5 inputs)                    #
   #------------------------------------------------------------------------------#
 
- fin= define.clip.unit(clip_unit)
+  if(!exists("shp")){
+     fin = define.clip.unit(clip_unit)
 
-   shp <-
-    getClipUnit(
-      location = fin$location,
-      width = fin$w,
-      height = fin$h,
-      origin = fin$o
-    )
+   shp <- getClipUnit(location = fin$location,
+                      width = fin$w,
+                      height = fin$h,
+                      origin = fin$o)
+  }
 
   #------------------------------------------------------------------------------#
   # Return AOI                                                                   #
   #------------------------------------------------------------------------------#
+
+  message("AOI defined as ", firstLower(nameAOI(state, county, clip_unit)))
 
   return(shp)
 

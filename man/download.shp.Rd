@@ -26,4 +26,3 @@ Other HydroData 'helper' function: \code{\link{clipMerge}}
 \author{
 Mike Johnson
 }
-\concept{HydroData 'helper' function}

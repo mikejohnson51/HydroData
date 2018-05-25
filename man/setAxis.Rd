@@ -9,6 +9,8 @@ setAxis(data, dates, param, timestep)
 \arguments{
 \item{data}{data input}
 
+\item{dates}{dates present in data}
+
 \item{param}{parameter to name}
 
 \item{timestep}{timestep to aggregate to}

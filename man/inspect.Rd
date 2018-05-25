@@ -30,4 +30,3 @@ Other HydroData 'viz' functions: \code{\link{explore}}
 \author{
 Mike Johnson
 }
-\concept{HydroData 'viz' functions}

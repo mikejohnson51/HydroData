@@ -71,7 +71,7 @@
 #'
 #' # Interactivly explore timeseries data
 #'
-#' inspect(flows,   save = TRUE)
+#' inspect(flows, save = TRUE)
 #' }
 #'
 #' @export
@@ -85,74 +85,28 @@ findNHD = function(state = NULL,
                    ids = FALSE,
                    save = FALSE) {
 
-  items =  list()
-  report = vector(mode = 'character')
-  AOI = getAOI(state = state,
-               county = county,
-               clip_unit = clip_unit)
-  message(
-    "AOI defined as the ",
-    nameAOI(
-      state = state,
-      county = county,
-      clip_unit = clip_unit
-    ),
-    ". Shapefile determined. Now loading NHD flowline data...\n"
-  )
-
-  bb = AOI@bbox
+  AOI = getAOI(state, county, clip_unit)
 
   URL = paste0(
     "https://cida.usgs.gov/nwc/geoserver/nhdplus/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=nhdplus:nhdflowline_network&srsName=EPSG:4326&bbox=",
-    min(bb[2, ]),
-    ",",
-    min(bb[1, ]),
-    ",",
-    max(bb[2, ]),
-    ",",
-    max(bb[1, ]),
-    "&outputFormat=SHAPE-ZIP"
+    min(AOI@bbox[2, ]), ",",
+    min(AOI@bbox[1, ]), ",",
+    max(AOI@bbox[2, ]), ",",
+    max(AOI@bbox[1, ]), "&outputFormat=SHAPE-ZIP"
   )
 
-  sl = download.shp(URL = URL, type = 'NHD flowlines') %>% spTransform(HydroDataProj)
+  sl = download.shp(URL = URL, type = 'NHD flowlines')
   sl = sl[AOI, ]
 
-  items[['flowlines']] = sl
-  report = append(report, "Returned list includes: flowline shapefile")
+  if (length(sl) == 0) { stop("0 flowlines found in AOI") }
 
-  if (!(basemap == FALSE))  {
-    if (basemap == TRUE) {
-      type = 't'
-      name = 'terrain'
-    } else {
-      type = basemap
-    }
+  items = list( name = nameAOI(state, county, clip_unit),
+                source = "USGS CIDA",
+                flowlines = sl)
 
-    if (type == 't') { name = 'terrain'   }
-    if (type == 'h') { name = 'hybrid'    }
-    if (type == 's') { name = 'satellite' }
-    if (type == 'r') { name = 'roads'     }
+  report = "Returned list includes: flowline shapefile"
 
-    items[['basemap']] = getBasemap(AOI = AOI, type = type)
-    report = append(report, paste(name, "basemap"))
-  }
-
-
-  if (boundary) { items[['boundary']] = AOI
-  report = append(report, "AOI boundary")
-
-  if (!is.null(clip_unit)) { items[['fiat']] = getFiatBoundary(clip_unit = AOI)
-  report = append(report, "fiat boundary")
-  }
-  }
-
-  if (ids) { items[['ids']] = as.numeric(sl$comid)
-  report = append(report, "list of COMIDs")
-  }
-
-  if (length(report) > 1) { report[length(report)] = paste("and",  tail(report, n = 1)) }
-
-  message(paste(report, collapse = ", "))
+  items = return.what(sp = sl, items, report, AOI, basemap, boundary, clip_unit, ids = if(ids){ids = 'comid'})
 
     if (save) {
       save.file(
@@ -168,6 +122,7 @@ findNHD = function(state = NULL,
     }
 
     class(items) = "HydroData"
+
     return(items)
-    }
+}
 

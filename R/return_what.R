@@ -1,6 +1,8 @@
 #' Choose what to return for HydroData Calls
 #'
 #' @description  A function defining what should be returned in a HydroData object
+#'
+#' @param sp Spatial object
 #' @param items an items list
 #' @param report a report vector
 #' @param AOI the defined AOI
@@ -15,7 +17,7 @@
 #' @export
 #' @author Mike Johnson
 
-return.what = function(items, report, AOI, basemap, boundary, clip_unit, ids ){
+return.what = function(sp, items, report, AOI, basemap, boundary, clip_unit, ids ){
 
 
 if (!(basemap == FALSE))  {
@@ -43,9 +45,12 @@ if (!(basemap == FALSE))  {
   }
   }
 
-  if (ids) { items[['ids']] = sp$ID
-  report = append(report, "list of station IDs")
+  if (!is.null(ids)) {
+    items[['ids']] = sp@data[,ids]
+    report = append(report, "list of station IDs")
   }
+
+
 
   if (length(report) > 1) { report[length(report)] = paste("and",  tail(report, n = 1)) }
 

@@ -63,56 +63,27 @@
 #' @author
 #' Mike Johnson
 
+
 findWaterbodies = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE, basemap = FALSE, ids = FALSE, save = FALSE){
 
-  items =  list()
-  report = vector(mode = 'character')
-
   AOI = getAOI(state = state, county = county, clip_unit = clip_unit)
-  message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ".\nShapefile determined.\nLoading North American Water Bodies")
 
-  URL = 'http://open-esrifederal.opendata.arcgis.com/datasets/9dff3cf646704abd9e74265f02abeb09_0.zip'
-
-  sp = download.shp( URL, "water bodies") %>% spTransform(HydroDataProj)
+  sp = download.shp('http://open-esrifederal.opendata.arcgis.com/datasets/9dff3cf646704abd9e74265f02abeb09_0.zip', "water bodies")
   sp = sp[AOI,]
-    message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " water bodies found within ", nameAOI(state = state, county = county, clip_unit = clip_unit))
 
-  items[['waterbodies']] = sp ; report = append(report, "Returned list includes: water bodies shapefile")
+  if (length(sp) == 0) { stop("0 waterbodies found in AOI") }
 
-    if (!(basemap == FALSE))  {
-      if (basemap == TRUE) {
-        type = 't'
-        name = 'terrain'
-      } else {
-        type = basemap
-      }
+  message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " water bodies found within AOI")
 
-      if (type == 't') { name = 'terrain'   }
-      if (type == 'h') { name = 'hybrid'    }
-      if (type == 's') { name = 'satellite' }
-      if (type == 'r') { name = 'roads'   }
+  items = list(name = nameAOI(state, county, clip_unit),
+               source = "ESRI",
+               waterbodies = sp)
 
-      items[['basemap']] = getBasemap(AOI = AOI, type = type)
-      report = append(report, paste(name, "basemap"))
-    }
+  report = "Returned list includes: ESRI waterbodies polygon shapefile"
 
+  items = return.what(sp, items, report, AOI, basemap, boundary, clip_unit, ids = if(ids){ids = 'NAME'})
 
-    if (boundary) { items[['boundary']] = AOI
-    report = append(report, "AOI boundary")
-
-    if (!is.null(clip_unit)) { items[['fiat']] = getFiatBoundary(clip_unit = AOI)
-    report = append(report, "fiat boundary")
-    }
-    }
-
-    if (ids) { items[['ids']] = sp$NAME
-    report = append(report, "names of water bodies")
-    }
-
-    if (length(report) > 1) { report[length(report)] = paste("and",  tail(report, n = 1)) }
-      message(paste(report, collapse = ", "))
-
-    if(save){
+  if(save){
       save.file(data    = items,
                 state   = state,
                 county  = county,
@@ -123,9 +94,9 @@ findWaterbodies = function(state = NULL, county = NULL, clip_unit = NULL, bounda
                 other   = NULL )
     }
 
+  class(items) = "HydroData"
   return(items)
 }
-
 
 
 

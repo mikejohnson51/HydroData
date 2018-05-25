@@ -93,12 +93,11 @@ inspect(data, param = 'Flow')
 
 Other HydroData 'find' functions: \code{\link{findAirports}},
   \code{\link{findClosestAirports}},
-  \code{\link{findGHCN}}, \code{\link{findNHD}},
-  \code{\link{findNID}}, \code{\link{findReservoir}},
-  \code{\link{findRoads}}, \code{\link{findSnotel}},
-  \code{\link{findWS}}, \code{\link{findWaterbodies}}
+  \code{\link{findGHCN}}, \code{\link{findHUC}},
+  \code{\link{findNHD}}, \code{\link{findNID}},
+  \code{\link{findReservoir}}, \code{\link{findRoads}},
+  \code{\link{findSnotel}}, \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson
 }
-\concept{HydroData 'find' functions}

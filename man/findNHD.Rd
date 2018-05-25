@@ -77,7 +77,7 @@ flows = getNWM(ids = el.paso$ids, startDate = '2017-01-01', endDate = '2017-12-3
 
 # Interactivly explore timeseries data
 
-inspect(flows,   save = TRUE)
+inspect(flows, save = TRUE)
 }
 
 }
@@ -90,12 +90,11 @@ inspect(flows,   save = TRUE)
 
 Other HydroData 'find' functions: \code{\link{findAirports}},
   \code{\link{findClosestAirports}},
-  \code{\link{findGHCN}}, \code{\link{findNID}},
-  \code{\link{findReservoir}}, \code{\link{findRoads}},
-  \code{\link{findSnotel}}, \code{\link{findUSGS}},
-  \code{\link{findWS}}, \code{\link{findWaterbodies}}
+  \code{\link{findGHCN}}, \code{\link{findHUC}},
+  \code{\link{findNID}}, \code{\link{findReservoir}},
+  \code{\link{findRoads}}, \code{\link{findSnotel}},
+  \code{\link{findUSGS}}, \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson
 }
-\concept{HydroData 'find' functions}

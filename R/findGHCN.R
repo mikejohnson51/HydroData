@@ -92,53 +92,42 @@
 findGHCN = function(state = NULL,
                     county = NULL,
                     clip_unit = NULL,
+                    parameters = NULL,
                     boundary = FALSE,
                     basemap = FALSE,
-                    parameters = NULL,
                     ids = FALSE,
                     save = FALSE) {
 
-  AOI = getAOI(state = state,
-               county = county,
-               clip_unit = clip_unit)
-  bb = AOI@bbox
-  message ("AOI defined as the ",
-            nameAOI (state = state, county = county, clip_unit = clip_unit),
-            ". Loading global GHCN data...\n"
-  )
+  AOI = getAOI(state, county, clip_unit)
 
   ghcn_stations = HydroData::ghcn_stations
 
   stations  = ghcn_stations %>%
-    dplyr::filter(LAT <= bb[2, 2]) %>%
-    dplyr::filter(LAT  >= bb[2, 1]) %>%
-    dplyr::filter(LON >= bb[1, 1]) %>%
-    dplyr::filter(LON <= bb[1, 2])
+    dplyr::filter(LAT  <= AOI@bbox[2, 2]) %>%
+    dplyr::filter(LAT  >= AOI@bbox[2, 1]) %>%
+    dplyr::filter(LON  >= AOI@bbox[1, 1]) %>%
+    dplyr::filter(LON  <= AOI@bbox[1, 2])
 
   if(!is.null(parameters)) {
     parameters = toupper(parameters)
     stations = stations %>% dplyr::filter(PARAMETER %in% parameters)
   }
 
-  if (dim(stations)[1] == 0) {
-    stop("0 stations found in specified AOI.")
-  }
+  if (dim(stations)[1] == 0) { stop("0 stations found in AOI") }
 
-  sp = SpatialPointsDataFrame(cbind(stations$LON, stations$LAT), stations)
-  sp@proj4string = HydroDataProj
+  sp = SpatialPointsDataFrame(cbind(stations$LON, stations$LAT), stations, proj4string = HydroDataProj)
+
   sp = sp[AOI,]
 
-  message(length(sp), " GHCN stations found in ",
-          nameAOI (state = state, county = county, clip_unit = clip_unit))
+  message(length(sp), " GHCN stations found")
 
-
-  items = list(name = nameAOI(state = state, county = county, clip_unit = clip_unit),
+  items = list(name = nameAOI(state, county, clip_unit),
                souce = "NOAA GHCN",
-               'ghcn' = sp)
+               ghcn = sp)
+
   report = "Returned list includes: NOAA GHCN shapefile"
 
-  items = return.what(items, report, AOI, basemap, boundary, clip_unit, ids)
-
+  items = return.what(sp, items, report, AOI, basemap, boundary, clip_unit, ids = if(ids){ids = 'ID'})
 
   if (save) {
     save.file(
@@ -154,6 +143,7 @@ findGHCN = function(state = NULL,
   }
 
   class(items) = "HydroData"
+
   return(items)
 }
 

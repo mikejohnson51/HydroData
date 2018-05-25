@@ -3,6 +3,8 @@
 #' @param URL path to data
 #' @param type description of data being downloaded used for messaging
 #'
+#' @returns a \code{Spatial*} object projected to \code{HydroDataProj} from a URL
+#'
 #' @family HydroData 'helper' function
 #'
 #' @examples
@@ -22,21 +24,22 @@ download.shp = function(URL, type) {
 
   message("Trying URL ... ")
 
-  download.file(URL, destfile =  temp, quiet = F)
+  download.file(URL, destfile =  temp, quiet = T)
   unzip(temp, exdir = td, overwrite = TRUE)
 
-  sp = suppressWarnings(rgdal::readOGR(
+  sp = suppressWarnings(
+    rgdal::readOGR(
     list.files(td, pattern = '.shp$', full.names = TRUE),
     stringsAsFactors = FALSE,
-    verbose = FALSE
-  ))
+    verbose = FALSE,
+    pointDropZ = TRUE
+  ) ) %>% spTransform(HydroDataProj)
 
   if (dim(sp)[1] == 0) {
     stop ("No ", type, " found for this AOI.")
   } else {
-    message("All ",
-            type,
-            " loaded: ",
+
+    message("All ", type," loaded: ",
             formatC(dim(sp)[1], format = "d", big.mark = ","),
             " in total.\n")
   }
@@ -46,4 +49,5 @@ download.shp = function(URL, type) {
   return(sp)
 
 }
+
 

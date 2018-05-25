@@ -39,6 +39,9 @@
 #'
 #' @author
 #' Mike Johnson
+#'
+
+
 
 getFiatBoundary <- function(state = NULL, county = NULL, clip_unit = NULL) {
 
@@ -55,7 +58,7 @@ getFiatBoundary <- function(state = NULL, county = NULL, clip_unit = NULL) {
 
     states = states[A, ]
 
-    c = USAboundaries::us_counties(map_date = NULL, resolution = "high", states = map$name)
+    c = USAboundaries::us_counties(map_date = NULL, resolution = "high", states = states$name)
     counties = sf::as_Spatial(sf::st_geometry(c), IDs = as.character(1:nrow(c)))
     df = c
     df$geometry <- NULL

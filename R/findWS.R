@@ -32,7 +32,7 @@
 #' @family HydroData 'find' functions
 #'
 #' @return
-#' \code{findWS} returns a named list of minimum length 1:
+#' \code{findHUC} returns a named list of minimum length 1:
 #'
 #' \enumerate{
 #' \item 'huc_': A \code{SpatialPolygonDataFrame*} for each requested HUC level defined by \code{level} and \code{subbasins} \cr
@@ -73,126 +73,87 @@
 #' Mike Johnson
 
 
-findWS = function(state = NULL,
+findHUC = function(state = NULL,
                   county = NULL,
                   clip_unit = NULL,
-                  boundary = FALSE,
-                  basemap = FALSE,
-                  ids = FALSE,
                   level = 10,
                   subbasins = FALSE,
                   HUC8 = NULL,
+                  boundary = FALSE,
+                  basemap = FALSE,
+                  ids = FALSE,
                   save = FALSE){
 
-  data =  list()
-  report = vector(mode = 'character')
-
-  #huc = list()
-  urls = NULL
   td <-  tempfile()
+  data = list(name = nameAOI(state, county, clip_unit), source = "WBD")
 
   if(!is.null(HUC8)) {
     HUC8 = HUC8
   } else {
-    AOI = getAOI(state = state, county = county, clip_unit = clip_unit)
+    AOI = getAOI(state, county, clip_unit)
     message("Determining intersecting HUC8 units...")
-    flow = suppressMessages(  findNHD(clip_unit = AOI, boundary = F) )
-
+    flow = suppressMessages(  findNHD(clip_unit = AOI) )
     HUC8 = unique(substr(flow$flowlines$reachcode, 1, 8))
-    rm(flow)
   }
 
   message("There are ", length(HUC8), " HUC8 units in this AOI: ", paste(HUC8, collapse = ", "))
 
  if(subbasins){
-   items =  seq(level,12, 2)
+   level =  seq(level,12, 2)
  } else {
-    items = level
+    level = level
 }
 
-if(!(length(HUC8) > 1) ) {
+urls = paste0("https://prd-tnm.s3.amazonaws.com/StagedProducts/Hydrography/NHD/HU8/HighResolution/Shape/NHD_H_", HUC8 ,"_HU8_Shape.zip")
 
+if(length(HUC8) == 1 ) {
 
   temp <-  tempfile(pattern = "WBD", fileext = ".zip")
-
-  urls = paste0("https://prd-tnm.s3.amazonaws.com/StagedProducts/Hydrography/NHD/HU8/HighResolution/Shape/NHD_H_", HUC8 ,"_HU8_Shape.zip")
-
-  download.file(url = urls, destfile =  temp)
+  download.file(url = urls, destfile =  temp, quiet = TRUE)
   unzip(temp, exdir = td, overwrite = TRUE)
 
-for( i in seq_along(items)){
-      shp = rgdal::readOGR(paste0(td,'/Shape/WBDHU', items[i],".shp"), stringsAsFactors = F, verbose = F) %>% spTransform(HydroDataProj)
-      data[[paste0("huc_", items[i])]] = shp[AOI, ]
-}
-  unlink(temp, recursive = T)
-  #unlink(td, recursive = T)
+  list.files(paste0(td,'/Shape'))
 
- } else {
+for( i in seq_along(level)){
+      shp = rgdal::readOGR(paste0(td,'/Shape/WBDHU', level[i],".shp"), stringsAsFactors = F, verbose = F) %>% spTransform(HydroDataProj)
+      data[[paste0("huc_", level[i])]] = shp[AOI, ]
+}
+
+unlink(temp, recursive = T)
+
+} else {
 
     series  = list()
-    urls = paste0("https://prd-tnm.s3.amazonaws.com/StagedProducts/Hydrography/NHD/HU8/HighResolution/Shape/NHD_H_", HUC8 ,"_HU8_Shape.zip")
 
   for(i in seq_along(urls)){
 
     temp = tempfile(pattern = "WBD", fileext = ".zip")
-      download.file(url =  urls[i], destfile =  temp, quiet = F)
+    download.file(url =  urls[i], destfile =  temp, quiet = T)
+    unzip(temp, exdir = td, overwrite = TRUE)
 
-      unzip(temp, exdir = td, overwrite = TRUE)
+    for( j in seq_along(level)){
+        shp = rgdal::readOGR(paste0(td,'/Shape/WBDHU', level[j],".shp"), stringsAsFactors = F, verbose = F) %>% spTransform(HydroDataProj)
+        data[[paste0("huc_", level[j])]] = shp[AOI, ]
+    }
 
-      for( j in seq_along(items)){
-        shp = rgdal::readOGR(paste0(td,'/Shape/WBDHU', items[j],".shp"), stringsAsFactors = F, verbose = F) %>% spTransform(HydroDataProj)
-        data[[paste0("huc_", items[j])]] = shp[AOI, ]
-      }
-
-      series[[paste0('hu_',HUC8[i])]] = data
+    series[[paste0('hu_', HUC8[i])]] = data
 
     }
 
     all.files = unlist(series)
 
-    for( j in seq_along(items)){
-      data[[paste0("huc_", items[j])]] <- do.call(rbind, all.files[grepl(pattern = paste0(items[j], "$"), names(all.files))])
+    for( j in seq_along(level)){
+      data[[paste0("huc_", level[j])]] <- do.call(rbind, all.files[grepl(pattern = paste0(level[j], "$"), names(all.files))])
     }
- }
+}
 
-  ########################
+report = paste0("Returning ", paste0("HUC", level, collapse = ", "), " shapefiles")
+items = return.what(sp, items = data, report, AOI, basemap, boundary, clip_unit, ids = NULL )
 
-
-
-  if (!(basemap == FALSE))  {
-    if (basemap == TRUE) {
-      type = 't'
-      name = 'terrain'
-    } else {
-      type = basemap
-    }
-
-    if (type == 't') { name = 'terrain'   }
-    if (type == 'h') { name = 'hybrid'    }
-    if (type == 's') { name = 'satellite' }
-    if (type == 'r') { name = 'roadmap'   }
-
-    data[['basemap']] = getBasemap(AOI = data[[1]], type = type)
-    report = append(report, paste(name, "basemap"))
-  }
+if(ids){data[["ids"]] = HUC8}
 
 
-  if (boundary) { data[['boundary']] = AOI
-  report = append(report, "AOI boundary")
-
-  if (!is.null(clip_unit)) { data[['fiat']] = getFiatBoundary(clip_unit = data[[1]])
-  report = append(report, "fiat boundary")
-  }
-  }
-
-  if (ids) { data[['ids']] = HUC8
-  report = append(report, "list of HUC8's")
-  }
-
-  if(length(report) > 1) {report[length(report)] = paste("and", tail(report, n = 1))}
-  message(paste(report, collapse = ", "))
-
-  if(save){
+if(save){
     save.file(data = data,
               state = state,
               county = county,
@@ -203,7 +164,8 @@ for( i in seq_along(items)){
               other   = NULL )
   }
 
-  return(data)
+class(items) = "HydroData"
+return(items)
 
 }
 

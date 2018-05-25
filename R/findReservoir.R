@@ -1,7 +1,7 @@
 #' Find USGS recorded USA Reservoirs (Point Data)
 #'
 #' @description
-#' \code{findReservoir} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
+#' \code{findReservoir} returns a list of \code{SpatialPointsDataframe*} Objects cropped to an Area of Interest.\cr\cr
 #' To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip_unit}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
 #' Returned \code{list} can be interactivly explored via \code{\link{explore}}.\cr\cr
 #' All outputs are projected to \code{CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and reservoir data is (\emph{down})loadeded from the \href{https://water.usgs.gov/GIS}{USGS GIS portal}
@@ -71,88 +71,25 @@ findReservoir = function(state = NULL,
                          basemap = FALSE,
                          save = FALSE,
                          ids = FALSE) {
-  items =  list()
-  report = vector(mode = 'character')
 
-  AOI = getAOI(state = state,
-               county = county,
-               clip_unit = clip_unit)
-  message(
-    "AOI defined as the ",
-    nameAOI(
-      state = state,
-      county = county,
-      clip_unit = clip_unit
-    ),
-    ". Shapefile determined. Now loading USGS Reservoir database..."
-  )
+  AOI = getAOI(state, county, clip_unit)
 
-  URL = 'https://water.usgs.gov/GIS/dsdl/reservoir_shp.zip'
-  sp = download.shp(URL, type = "reservoirs") %>% spTransform(HydroDataProj)
+  sp = download.shp('https://water.usgs.gov/GIS/dsdl/reservoir_shp.zip', type = "reservoirs")
+
   sp = sp[AOI,]
-  message(
-    formatC(
-      as.numeric(length(sp)),
-      format = "d",
-      big.mark = ","
-    ),
-    " reservoirs found within ",
-    nameAOI(
-      state = state,
-      county = county,
-      clip_unit = clip_unit
-    )
-  )
 
-  items[['reservoirs']] = sp
-  report = append(report, "Returned list includes: Reservoir shapefile")
+  if (length(sp) == 0) { stop("0 reservoirs found in AOI") }
 
+  message(formatC(as.numeric(length(sp)), format = "d", big.mark = ","), " reservoirs found")
 
-  if (!(basemap == FALSE))  {
-    if (basemap == TRUE) {
-      type = 't'
-      name = 'terrain'
-    } else {
-      type = basemap
-    }
+  items = list(name = nameAOI(state,county,clip_unit),
+               source = 'USGS',
+               reservoirs = sp
+               )
 
-    if (type == 't') {
-      name = 'terrain'
-    }
-    if (type == 'h') {
-      name = 'hybrid'
-    }
-    if (type == 's') {
-      name = 'satellite'
-    }
-    if (type == 'r') {
-      name = 'roads'
-    }
+  report = "Returned list includes: Reservoir shapefile"
 
-    items[['basemap']] = getBasemap(AOI = AOI, type = type)
-    report = append(report, paste(name, "basemap"))
-  }
-
-  if (boundary) {
-    items[['boundary']] = AOI
-    report = append(report, "AOI boundary")
-
-    if (!is.null(clip_unit)) {
-      items[['fiat']] = getFiatBoundary(clip_unit = AOI)
-      report = append(report, "fiat boundary")
-    }
-  }
-
-  if (ids) {
-    items[['ids']] = sp$RESNAME
-    report = append(report, "list of reservoir names")
-  }
-
-  if (length(report) > 1) {
-    report[length(report)] = paste("and",  tail(report, n = 1))
-  }
-
-  message(paste(report, collapse = ", "))
+  items = return.what(sp, items, report, AOI, basemap, boundary, clip_unit, ids = if(ids){ids = "RESNAME"} )
 
   if (save) {
     save.file(
@@ -167,5 +104,6 @@ findReservoir = function(state = NULL,
     )
   }
 
+  class(items) = 'HydroData'
   return(items)
 }

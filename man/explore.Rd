@@ -47,4 +47,3 @@ Other HydroData 'viz' functions: \code{\link{inspect}}
 \author{
 Mike Johnson
 }
-\concept{HydroData 'viz' functions}

@@ -52,40 +52,26 @@
 
 findNID = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE, basemap = FALSE, save = FALSE){
 
-  require(dams)
-  items =  list()
-  report = vector(mode = 'character')
+  dams = dams::nid_cleaned %>% tidyr::drop_na(Longitude, Latitude)
 
-  A = getAOI(state = state, county = county, clip_unit = clip_unit)
-    message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Shapefile determined. Now loading loading NID database...")
+  AOI = getAOI(state, county, clip_unit)
 
-  data(nid_cleaned, envir = environment())
-
-  dams = nid_cleaned %>% tidyr::drop_na(Longitude, Latitude)
-
-  sp = SpatialPointsDataFrame(cbind(dams$Longitude, dams$Latitude), data = dams)
+  sp = SpatialPointsDataFrame(cbind(dams$Longitude, dams$Latitude), data = dams, proj4string = HydroDataProj)
   message("All dams in CONUS loaded: ", formatC(dim(sp)[1], format="d", big.mark=","), " dams in total")
 
-  sp@proj4string = HydroDataProj
-  sp = sp[A, ]
-  message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " NID dams found in ", nameAOI(state = state, county = county, clip_unit = clip_unit))
+  sp = sp[AOI, ]
 
-    items[['dams']] = sp
-    report = append(report, "Returned list includes: NID dams shapefile")
+  if (length(sp) == 0) { stop("0 dams found in AOI") }
 
-    if (basemap)  {items[['basemap']] = getBasemap(AOI = A)
-    report = append(report, "basemap")
-    }
+  message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " NID dams found")
 
-    if (boundary) {items[['boundary']] = A
-    report = append(report, "boundary")
-    }
+  items = list(name = nameAOI(state, county, clip_unit),
+               source = "USACE NID",
+               dams = sp)
 
-    if(length(report) > 1) {report[length(report)] = paste("and",  tail(report, n = 1))
-    }
+  report = "Returned list includes: NID dams shapefile"
 
-    message(paste(report, collapse = ", "))
-
+  items = return.what(sp, items, report, AOI, basemap, boundary, clip_unit, ids = NULL)
 
     if(save){
       save.file(data = items,
@@ -98,7 +84,7 @@ findNID = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FAL
                 other   = NULL )
     }
 
-
+  class(items) = "HydroData"
   return(items)
 }
 

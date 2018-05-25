@@ -79,83 +79,26 @@
 #'
 
 findUSGS = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE, basemap = FALSE, ids = FALSE, save = FALSE, comids = FALSE){
-  #------------------------------------------------------------------------------#
-  # Define AOI and reporters                                                     #
-  #------------------------------------------------------------------------------#
-  items =  list()
-  report = vector(mode = 'character')
 
-  AOI  = getAOI(state = state, county = county, clip_unit = clip_unit)
-
-  message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ".
-           Now loading loading CONUS USGS data...")
-
-  #------------------------------------------------------------------------------#
-  # Load Data from data folder                                                   #
-  #------------------------------------------------------------------------------#
-  load('data/usgsStations.rda')
+  AOI  = getAOI(state, county, clip_unit)
 
   usgsStations = HydroData::usgsStations
 
-  sp = SpatialPointsDataFrame(cbind(usgsStations$lon_reachCent, usgsStations$lat_reachCent), usgsStations)
-  sp@proj4string = AOI@proj4string
+  sp = SpatialPointsDataFrame(cbind(usgsStations$lon_reachCent, usgsStations$lat_reachCent), usgsStations, proj4string = HydroDataProj)
+
   sp = sp[AOI,]
 
-  message("All USGS Data loaded: ", formatC(dim(sp)[1], format="d", big.mark=","), " gages in total")
-  rm(usgsStations)
+  if (length(sp) == 0) { stop("0 USGS stations found in AOI") }
 
-  message(formatC(as.numeric(length(sp)), format="d", big.mark=","),
-          " USGS gages found within ", nameAOI(state = state, county = county, clip_unit = clip_unit))
+  message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " USGS gages found within AOI")
 
-  #------------------------------------------------------------------------------#
-  # Format list to return based on user input                                    #
-  #------------------------------------------------------------------------------#
+  items = list(name = nameAOI(state, county, clip_unit),
+               source = "USGS NWIS",
+               nwis = sp)
 
-  items[['nwis']] = sp
-    report = append(report, "Returned list includes: USGS NWIS shapefile")
+  report = "Returned list includes: USGS NWIS shapefile"
 
-  if (!(basemap == FALSE))  {
-    if (basemap == TRUE) {
-      type = 't'
-      name = 'terrain'
-    } else {
-      type = basemap
-    }
-
-    if (type == 't') { name = 'terrain'   }
-    if (type == 'h') { name = 'hybrid'    }
-    if (type == 's') { name = 'satellite' }
-    if (type == 'r') { name = 'roads'   }
-
-    items[['basemap']] = getBasemap(AOI = AOI, type = type)
-      report = append(report, paste(name, "basemap"))
-  }
-
-
-  if (boundary) { items[['boundary']] = AOI
-      report = append(report, "AOI boundary")
-
-    if (!is.null(clip_unit)) { items[['fiat']] = getFiatBoundary(clip_unit = AOI)
-        report = append(report, "fiat boundary")
-    }
-  }
-
-  if (ids) { items[['ids']] = sprintf("%08d", as.numeric(sp$site_no))
-      report = append(report, "list of station IDs")
-  }
-
-  if (comids) { items[['comids']] = sprintf("%08d", as.numeric(sp$feature_id))
-    report = append(report, "list of NHD comids")
-  }
-
-  if (length(report) > 1) { report[length(report)] = paste("and",  tail(report, n = 1)) }
-
-  message(paste(report, collapse = ", "))
-
-
-  #------------------------------------------------------------------------------#
-  # Optional Save                                                               #
-  #------------------------------------------------------------------------------#
+  items = return.what(sp, items, report, AOI, basemap, boundary, clip_unit, ids = if(ids){ids = 'feature_id'})
 
   if(save){
 
@@ -167,14 +110,11 @@ findUSGS = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FA
               source    = "NWIS",
               dataset   = "nwis",
               other     =  NULL )
-
   }
 
-  #------------------------------------------------------------------------------#
-  # Return files                                                                 #
-  #------------------------------------------------------------------------------#
+class(items) = "HydroData"
+return(items)
 
-  return(items)
 }
 
 
