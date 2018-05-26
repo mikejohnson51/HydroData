@@ -1,12 +1,12 @@
 ---
-pagetitle: HydroData
+pagetitle: HydroData for R
 ---
 
 ```{r echo = FALSE, results='hide', warning=FALSE,message=FALSE}
 devtools::load_all()
 ```
 
-##Defining a HydroData Area of Interest (AOI)
+## Defining a HydroData Area of Interest (AOI)
 
 **HydroData** is an R package that lets users find, download and explore earth system data for an area of interest (AOI). To do this a user must define an Area of Interest. **HydroData** offers three paramaters for doing so include  *state*, *county*, and *clip_unit*. The following document provides examples on how to use these parameters to define an AOI for data extraction:
 
