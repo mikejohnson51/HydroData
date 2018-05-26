@@ -94,6 +94,7 @@ findUSGS = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FA
 
   items = list(name = nameAOI(state, county, clip_unit),
                source = "USGS NWIS",
+               proj = HydroDataProj,
                nwis = sp)
 
   report = "Returned list includes: USGS NWIS shapefile"

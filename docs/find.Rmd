@@ -1,0 +1,51 @@
+---
+pagetitle: HydroData
+---
+
+```{r echo = FALSE, results='hide', warning=FALSE,message=FALSE}
+devtools::load_all()
+```
+
+## Finding Stations 
+
+Finding data for an Area of Interest (AOI) often requires finding what observation stations are avialable. The `Hydrodata` **find** functions can locate stations from six major networks including:
+
+1.  Airport Weather Stations (Open Flights)
+2.  Global Historic Climatology Network (NOAA)
+3.  National Water Information System (USGS)
+4.  National Inventory of Dams (USACE)
+5.  Snow Telemetry (SNRCS)
+6.  Reservoirs (USGS)
+
+If you have not yet learned how AOI queries are defined in `HydroData` I sugest reviewing the [AOI page](aoi.html) first. 
+
+What follows are basic examples for quering information from thes
+
+### Finding Airports
+
+Airports offer a network of daily meterological observation stations. [Open flights](   ) has global metadata for 7,184 airports, the majority of which report information to WeatherUnderground. 
+
+Here's a basic example for subseting the Open for all airports in El Paso County, Colorado:
+
+```{r}
+findAirports(state = 'CO', county = "El Paso") %>% explore()
+
+```
+
+Interacting with this map can show where/if airports exist within an AOI. 
+
+By clicking on each icon you can see the name, city, and four digit ICAO identifier associated with each airport. 
+
+Clicking of the name will direct you to the WeatherUnderground webpage assocaited with airport where.
+
+To get data from these airport stations you can use the `getWU()` function which is covered in greater detail in the "GETTING TABULAR DATA" page. 
+
+
+```{r, messages = FALSE}
+ap = findAirports(state = 'CO', county = "El Paso", ids = TRUE)
+
+ap$ids
+```
+
+
+### Finding Global Historic Climatology Network

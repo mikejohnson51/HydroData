@@ -1,0 +1,105 @@
+---
+pagetitle: HydroData
+---
+
+```{r echo = FALSE, results='hide', warning=FALSE,message=FALSE}
+devtools::load_all()
+```
+
+## The HydroData object
+
+All `HydroData` **find** and **get** functions return a object of class `HydroData`. This page covers the key components of this class which, at its core, is a list of features related to the query that defined the object.
+
+All objects range is size from 4 to 8 elements:
+
+### Features
+
+* AOI Description (*default*)
+* Source of data (*default*)
+* Project (if spatial) (*default*)
+* Data (*default*)
+
+
+* Basemaps (*optional*)
+* AOI shapefile (*optional*)
+* Fiat boundary shapefile (*optional*)
+* IDs of critical station information (*optional*)
+
+### Getting a HydroData Object
+
+In this basic example we will query a `HydroData` object containing all USGS stations in a 100 square mile region centered on UCSB. If you have not yet learned how AOI queries are defined in `HydroData` I sugest reviewing the [AOI page](aoi.html) first. 
+
+```{r}
+usgs = findUSGS(clip_unit = list("UCSB", 10, 10), basemap = T, boundary = T, ids = T)
+```
+
+### Name 
+
+The first element of a HydroData object is a text string in plain english describing the location of the AOI.
+
+```{r}
+usgs$name
+```
+
+
+### Source
+
+The second element is a text string detailing the source of the data contained in the object.
+
+```{r}
+usgs$source
+```
+
+### Projection
+
+The third element is the projection of the HydroData object, if it is spatial.
+
+```{r}
+usgs$proj
+```
+
+### Data
+
+The fourth element is the actual data queried. This data can be a data.frame, sp, or raster object.
+
+```{r}
+usgs$nwis
+plot(usgs$nwis)
+
+```
+
+### Basemaps
+
+```{r}
+plot(usgs$basemap)
+```
+
+
+
+### IDs
+
+```{r}
+usgs$ids
+```
+
+
+### AOI shapefile
+
+```{r}
+plot(usgs$boundary)
+```
+
+### Intersecting Fiat Boundary 
+
+```{r}
+plot(usgs$fiat)
+```
+
+
+### Overall 
+
+```{r}
+str(usgs, max = 1)
+```
+
+
