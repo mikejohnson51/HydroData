@@ -51,7 +51,5 @@ findUSGS(state = 'CA', county = "Santa Barbara") %>% explore()
 
 Before exploring the rest of this site, I suggest checking out the [sources](sources.html) page to get a better idea of where data comes from, and the [Defining an AOI](aoi.html) page as it describes the core of a HydroData query. 
 
-I then suggest checking out [HydroData Object](hydrodata.html) page to get a sense of the structure of all HydroData objects; the [finding data](find.html) page to get a better sense of what data stations and spatial features `HydroData` can help you find. The [getting data](get.html) page to get a better sense of what data `HydroData` can help you get and finally the [Additional features](additional.html) page to understand what  features are offered in the package.
-
-
+I then suggest checking out [HydroData Object](hydrodata.html) page to get a sense of the structure of all HydroData objects; the [finding data](find.html) page to get a better sense of what data stations and spatial features `HydroData` can help you find. The [getting data](get.html) page to get a better sense of what data `HydroData` can help you get.
 

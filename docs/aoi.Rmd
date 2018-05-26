@@ -1,40 +1,40 @@
 ---
-title: "Defining a HydroData Area of Interest (AOI)"
-output: html_document
+pagetitle: HydroData
 ---
 
-```{r, include = F}
-devtools::load_all(".")
-library(sf)
+```{r echo = FALSE, results='hide', warning=FALSE,message=FALSE}
+devtools::load_all()
 ```
 
-**HydroData** is an R package that lets users find, download and explore earth system data for an area of interest (AOI). The core input the user needs is their AOI. **HydroData** offers three paramaters to define an AOI. These include  *state*, *county*, and *clip_unit*. The following document provides examples on how to use these parameters to define an AOI for data extraction:
+##Defining a HydroData Area of Interest (AOI)
 
-## *Method 1*: Defining an AOI by *state*   
+**HydroData** is an R package that lets users find, download and explore earth system data for an area of interest (AOI). To do this a user must define an Area of Interest. **HydroData** offers three paramaters for doing so include  *state*, *county*, and *clip_unit*. The following document provides examples on how to use these parameters to define an AOI for data extraction:
 
-#### A *state* name or abbrivaiation can be used to define an AOI.
+###*Method 1*: Defining an AOI by *state*   
+
+A *state* name or abbrivaiation can be used to define an AOI.
 
 ```{r}
 CA = getAOI(state = 'CA')
 ```
 
 ```{r, echo = FALSE}
-leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = CA,fillColor = "transparent", color = 'red', weight = 1)
+leaflet(option=leafletOptions(zoomControl= FALSE, minZoom = 5, maxZoom = 5)) %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = CA,fillColor = "transparent", color = 'red', weight = 1)
 ```
 
-#### Multiple *states* can also be queried:
+Multiple *states* can also be queried:
 
 ```{r}
 WestCoast = getAOI(state = c("Oregon", "Washington", "CA"))
 ```
 
 ```{r, echo = FALSE}
-leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = WestCoast,fillColor = "transparent", color = "red", weight = 1)
+leaflet(option=leafletOptions(zoomControl= FALSE, minZoom = 4, maxZoom = 4)) %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = WestCoast,fillColor = "transparent", color = "red", weight = 1)
 ```
 
-##*Method 2*: Defining an AOI by *County*  
+###*Method 2*: Defining an AOI by *County*  
 
-#### Defining an AOI by *county* requires a *state* as well
+Defining an AOI by *county* requires a *state* as well
 
 ```{r}
 EP = getAOI(state = "CO", county = "El Paso")
@@ -44,21 +44,20 @@ EP = getAOI(state = "CO", county = "El Paso")
 leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = EP,fillColor = "red", color = "red", weight = 4)
 ```
 
-#### Multiple *counties* can also be queried:
+Multiple *counties* can also be queried:
 
 ```{r}
 centralCoast = getAOI(state ="CA", county = c("Santa Barbara", "San Luis Obispo", "Ventura"))
 ```
 
 ```{r, echo = FALSE}
-leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = centralCoast,fillColor = "transparent", color = "red", weight = 1)
+leaflet(option=leafletOptions(zoomControl= FALSE, minZoom = 7, maxZoom = 7)) %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = centralCoast,fillColor = "transparent", color = "red", weight = 2)
 ```
 
 
+###*Method 3*: The clip_unit
 
-##*Method 3*: The clip_unit
-
-In HydroData a clip_unit is a region that can be used to subset data. Most commonly, this is a bounding box or a user supplied shapefile - both of which can be input as a clip_unit. To build a bounding box in HydroData clip unit has five potential inputs:
+In `HydroData` a clip_unit is a region that can be used to subset data. Most commonly, this is a bounding box or a user supplied shapefile - both of which can be input as a clip_unit. To build a bounding box in HydroData clip unit has five potential inputs:
 
 (1) Location   
 (2) Bounding box height (miles)   
@@ -67,15 +66,15 @@ In HydroData a clip_unit is a region that can be used to subset data. Most commo
 
 Inputs must be provided as a list, and order DOES matter. Examples for each input follow: 
 
-### The *clip_unit* list()
+####The *clip_unit* list()
 
-#### 1. Location
+####1. Location
 
 A Location is the first  input for a clip_unit list. It can be given as a colloquial name or as a lat, long pair. Names are geocoded via the Google API and the dismo package.   
 
-#### Grand Canyon (Location example):
+####Grand Canyon (Location example):
 
-Here we look at the Grand Canyon, using both the name and the lat,long found with a Google search.Notice the slightly different locations are generated:
+Here we look at the Grand Canyon, using both the name and the lat,long found with a Google search. Notice slightly different locations are generated:
 
 ```{r}
 GC_name = getAOI(clip_unit = list("grand canyon", 10, 10))
@@ -93,11 +92,12 @@ icon.r <- makeAwesomeIcon(icon = 'home', markerColor = 'red')
 icon.b <- makeAwesomeIcon(icon = 'home', markerColor = 'blue')
 
 
-leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% 
+leaflet(option=leafletOptions(zoomControl= FALSE, minZoom = 11, maxZoom = 11)) %>% addProviderTiles(providers$CartoDB.Positron) %>% 
   addPolygons(data = GC_name,fillColor = "transparent", color = "blue", weight = 4) %>% 
   addPolygons(data = GC_lat_lon,fillColor = "transparent", color = "red", weight = 4) %>% 
   addAwesomeMarkers(icon = icon.b, lat = gc$latitude[1], lng = gc$longitude[1], popup = API) %>% 
   addAwesomeMarkers(icon = icon.r, lat = 36.0544 , lng = -112.1401, popup = latlon)
+
 ```
 
 
@@ -114,7 +114,7 @@ nwc = dismo::geocode("National Water Center, AL")
 ```
 
 ```{r, echo = FALSE}
-leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% 
+leaflet(option=leafletOptions(zoomControl= FALSE, minZoom = 10, maxZoom = 10)) %>% addProviderTiles(providers$CartoDB.Positron) %>% 
   addPolygons(data = nwc.tall,fillColor = "transparent", color = "blue", weight = 4, label = "Tall: list('National Water Center, AL', 30, 10)") %>%  
   addPolygons(data = nwc.wide, fillColor = "transparent", color = "red", weight = 4, label = "Wide: list('National Water Center, AL', 30, 10)") %>% 
   addAwesomeMarkers(icon = icon.r, lat = nwc$latitude[1], lng = nwc$longitude[1], popup = "National Water Center")
@@ -135,7 +135,7 @@ ucsb.lr = getAOI(clip_unit = list("UCSB", 10, 10, "lowerright"))
 ```
 
 ```{r, echo = FALSE}
-leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% 
+leaflet(option=leafletOptions(zoomControl= FALSE, minZoom = 10, maxZoom = 10)) %>% addProviderTiles(providers$CartoDB.Positron) %>% 
   addPolygons(data = ucsb.ul, fillColor = "transparent", color = "black", weight = 4, label = "upperleft") %>% 
   addPolygons(data = ucsb.ur, fillColor = "transparent", color = "black", weight = 4, label = "upperright") %>% 
   addPolygons(data = ucsb.ll, fillColor = "transparent", color = "black", weight = 4, label = "lowerleft") %>% 
@@ -151,48 +151,14 @@ While overkill here... It is worth noting that a shapefile can be used as input 
 #### Santa Monica (user shapefile example):
 
 ```{r}
-LA = rgdal::readOGR("/Users/mikejohnson/Documents/GitHub/Communities1/Communities.shp")
+LA = rgdal::readOGR("shp/LA.shp", verbose = FALSE)
 SM = LA[LA$LABEL_CITY == 'Santa Monica',] %>% spTransform(HydroDataProj)
 
 AOI = getAOI(clip_unit = SM)
 ```
 
 ```{r, echo = FALSE}
-leaflet() %>% addProviderTiles(providers$CartoDB.Positron) %>% 
+leaflet(option=leafletOptions(zoomControl= FALSE, minZoom = 13, maxZoom = 13)) %>% addProviderTiles(providers$CartoDB.Positron) %>% 
   addPolygons(data = AOI,fillColor = "red", color = "red", weight = 4, label = "Santa Monica")
-```
-
-## Practical Examples: 
-
-Up until this point, example have been shown using getAOI(). This function is built into every HydroData function allowing users to define their AOI in a consistent fashion for every data type they want. Three examples following showing how AOI's are defined within the context of function and more example can be found at the [vignette here.](https://rawgit.com/mikejohnson51/HydroData/master/vignettes/HydroData_example.html)
-
-#### Find all Army Corps Dams from the Natonal Inventory of Dams within Texas using state:
-
-```{r}
-
-dams = findNID(state = 'Texas')
-
-explore(dams)
-
-```
-
-### Find all water bodies intersecting a 100 square mile area to the northwest of Cheyenne Wyoming using a clip_unit list():  
-
-```{r}
-
-lakes = findWaterbodies(clip_unit = list("Cheyenne, Wyoming", 100, 100, origin = "lowerright"))
-
-explore(lakes) %>% addPolygons(data = getAOI(clip_unit = list("Cheyenne, Wyoming", 100, 100, origin = "lowerright")), fillColor = 'transparent', color = 'black')
-
-```
-
-#### Find all GHCN station recording precipitation in Santa Monica using a shapefile:
-
-
-```{r}
-prcp = findGHCN(clip_unit = SM, parameters = 'PRCP')
-
-explore(prcp) %>% addPolygons(data = SM, fillColor = "transparent", color = 'black')
-
 ```
 

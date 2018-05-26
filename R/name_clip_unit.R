@@ -8,12 +8,13 @@
 #' @export
 
 
+
 name.clip.unit = function(clip_unit){
 
 test = define.clip.unit(clip_unit)
 
 if(class(test$location) == 'numeric'){
- test$location =  paste(paste(test$location, collapse = "/"), "(lat/lon)")
+ test$location =  paste(paste(round(test$location,2), collapse = "/"), "(lat/lon)")
 }
 
 if(test$o == 'center'){
