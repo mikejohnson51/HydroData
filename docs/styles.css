@@ -64,7 +64,10 @@ footer {
     margin-top: 180px;
     margin-left: auto;
     margin-right: auto;
-    width: 700px;
+  }
+
+  .main-container {
+    max-width: none !important;
   }
 
   .main-container h1.main-headline {
