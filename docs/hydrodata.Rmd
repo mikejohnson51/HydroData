@@ -8,98 +8,114 @@ devtools::load_all()
 
 ## The HydroData object
 
-All `HydroData` **find** and **get** functions return a object of class `HydroData`. This page covers the key components of this class which, at its core, is a list of features related to the query that defined the object.
-
-All objects range is size from 4 to 8 elements:
-
-### Features
-
-* AOI Description (*default*)
-* Source of data (*default*)
-* Project (if spatial) (*default*)
-* Data (*default*)
-
-
-* Basemaps (*optional*)
-* AOI shapefile (*optional*)
-* Fiat boundary shapefile (*optional*)
-* IDs of critical station information (*optional*)
+All `HydroData` **find** and **get** functions return objects of class `HydroData`. This page covers the key components of this class which, at its core, are a list of features related to the query defining the object. All objects range is size from 4 to 9 elements and include (1) metadata (2) data (3) ancillary elements.
 
 ### Getting a HydroData Object
 
-In this basic example we will query a `HydroData` object containing all USGS stations in a 100 square mile region centered on UCSB. If you have not yet learned how AOI queries are defined in `HydroData` I sugest reviewing the [AOI page](aoi.html) first. 
+In this example, we query a `HydroData` object for all USGS stations within a 100 square mile (10 by 10 miles) region centered on UCSB. If you haven't reviewed how AOI queries are defined in `HydroData` I sugest skimming the [AOI page](aoi.html) first. 
 
-```{r}
-usgs = findUSGS(clip_unit = list("UCSB", 10, 10), basemap = T, boundary = T, ids = T)
+```{r, message = FALSE}
+usgs = findUSGS(clip_unit = list("UCSB", 10, 10), basemap = TRUE, boundary = TRUE, ids = T)
 ```
 
-### Name 
+### Metadata
 
-The first element of a HydroData object is a text string in plain english describing the location of the AOI.
+All `HydroData` objects are defined by a core metadata includes
+
+* An AOI Description (*default*)
+* The source of data (*default*)
+* A projection CRS object (*default* if spatial) 
+* A time period (*default* if Observation)
+* Parameter list (*default* if Observation)
+
+The first element of a HydroData object is a plain-english text string describing the location of the AOI. It is indexed under the **name** element:
 
 ```{r}
 usgs$name
 ```
 
-
-### Source
-
-The second element is a text string detailing the source of the data contained in the object.
+The second element is a text string detailing the source of the data in the `HydroData` object. It is indexed under the **source** element:
 
 ```{r}
 usgs$source
 ```
 
-### Projection
-
-The third element is the projection of the HydroData object, if it is spatial.
+If the `HydroData` object contains `spatial` or `raster` data, the third element is the data projection. It is indexed under the **proj** element:
 
 ```{r}
 usgs$proj
 ```
 
+If the `HydroData` object contains observation data (`data.frame`), the third element is the data time span, and the fourth element is the parameters in the data. These are indexed under the **timespan** and **param** elements respectivly:
+
 ### Data
 
-The fourth element is the actual data queried. This data can be a data.frame, sp, or raster object.
+The data element holds the actual data queried and can be in the for. This data can be a `data.frame`, `sp`, or `raster` object.
 
 ```{r}
-usgs$nwis
-plot(usgs$nwis)
-
+str(usgs$nwis, max = 2)
 ```
 
-### Basemaps
+```{r, echo = FALSE}
+leaflet(option=leafletOptions(zoomControl= FALSE, minZoom = 12, maxZoom = 12)) %>% addProviderTiles(providers$CartoDB.Positron) %>% addMarkers(data = usgs$nwis)
+```
+
+### Ancillary Elements
+
+Four different ancillary elements can be added to a `HydroData` query using the optional parameters and include:
+
+* A basemap
+* An AOI shapefile 
+* A shapefile of intersecting counties
+* IDs of station information
+
+If the parameter `basemap = TRUE` a basemap will be added to the `HydroData` object. Four different map types can be added depending on the parameter specifification.
+
+  * 't': a terrain imagery basemap (Default if `basemap = TRUE`)
+  * 's': a sattilite imagery basemap (eg `basemap = ';s`)
+  * 'h': a hybrid imagery basemap
+  * 'r': a roadmap imagery basemap
+  
+An example of each of these can be seen in the image below for this example: 
+
+![](img/basemaps.png)
+
+If the parameter `boundary = TRUE` then two addtional elements will be added to the `HydroData` object:  
+(1) a shapefile of the AOI described under 'name' and   
+(2) a shapefile of the intersecting counties.
+
+The AOI shapefile is stored under the 'boundary' element:
 
 ```{r}
-plot(usgs$basemap)
+usgs$boundary
 ```
 
+```{r, echo = FALSE}
+leaflet(option=leafletOptions(zoomControl= FALSE, minZoom = 10, maxZoom = 10)) %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = usgs$boundary,fillColor = "transparent", color = 'red', weight = 3)
+```
 
+and the intersecting county, or fiat boundaries, are stored under the 'fiat' element
+```{r}
+usgs$fiat
+```
 
-### IDs
+```{r, echo = FALSE}
+leaflet(option=leafletOptions(zoomControl= FALSE, minZoom = 8, maxZoom = 8)) %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = usgs$fiat,fillColor = "transparent", color = 'red', weight = 3)
+```
+
 
 ```{r}
 usgs$ids
 ```
 
-
-### AOI shapefile
-
-```{r}
-plot(usgs$boundary)
-```
-
-### Intersecting Fiat Boundary 
-
-```{r}
-plot(usgs$fiat)
-```
-
-
 ### Overall 
+
+The complete structure of this example `HydroData` object querying USGS stations within a 100 square mile region centered on UCSB can be seen using `str()`. In total, the complete object is 12.7 MB.
 
 ```{r}
 str(usgs, max = 1)
 ```
 
+### Next Steps
 
+After understadning what a `HydroData` object is, and what it can store/query, I suggest checking out how queries can be built for [Finding Observation Station](find.html), [Getting Observation data](get_tab.html),  [Getting Vector data](get_vec.html), and [Getting Raster Data](get_rast.html).
