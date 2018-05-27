@@ -1,5 +1,5 @@
 ---
-pagetitle: HydroData
+pagetitle: HydroData for R
 ---
 
 ```{r echo = FALSE, results='hide', warning=FALSE,message=FALSE}
@@ -27,25 +27,59 @@ Airports offer a network of daily meterological observation stations. [Open flig
 
 Here's a basic example for subseting the Open for all airports in El Paso County, Colorado:
 
-```{r}
-findAirports(state = 'CO', county = "El Paso") %>% explore()
+```{r, message = F}
+ap = findAirports(clip_unit = list("UCSB", 10, 10), ids = TRUE)
+explore(ap)
 
 ```
-
 Interacting with this map can show where/if airports exist within an AOI. 
 
 By clicking on each icon you can see the name, city, and four digit ICAO identifier associated with each airport. 
 
 Clicking of the name will direct you to the WeatherUnderground webpage assocaited with airport where.
 
-To get data from these airport stations you can use the `getWU()` function which is covered in greater detail in the "GETTING TABULAR DATA" page. 
+To get data from these airport stations you can use the `getWU()` function which is covered in greater detail in the [Get Observation Data](get_tab.html) page. 
 
-
-```{r, messages = FALSE}
-ap = findAirports(state = 'CO', county = "El Paso", ids = TRUE)
-
+```{r}
 ap$ids
 ```
 
 
 ### Finding Global Historic Climatology Network
+
+```{r, message = F}
+findGHCN(clip_unit = list("UCSB", 10, 10)) %>% explore()
+```
+
+Filtering GHCH HydroData object by parameter
+
+```{r, echo = TRUE, message = F}
+findGHCN(clip_unit = list("UCSB", 10, 10),  param = "PRCP") %>% explore()
+```
+
+### National Water Information System (USGS)
+
+```{r, message = F}
+findUSGS(clip_unit = list("UCSB", 10, 10)) %>% explore()
+```
+
+
+### National Inventory of Dams (USACE)
+
+```{r, message = F}
+findNID(clip_unit = list("UCSB", 10, 10)) %>% explore()
+```
+
+### Snow Telemetry (SNRCS)
+
+```{r, message = F}
+findSnotel(state = "CA", county = "Modoc") %>% explore()
+```
+
+### Reservoirs (USGS)
+
+```{r, message = F}
+findReservoir(clip_unit = list("UCSB", 30, 30)) %>% explore()
+```
+
+

@@ -1,5 +1,5 @@
 ---
-pagetitle: HydroData
+pagetitle: HydroData for R
 ---
 
 ```{r echo = FALSE, results='hide', warning=FALSE,message=FALSE}
@@ -12,11 +12,11 @@ All environmental and hydrologic research begins with data; the question of what
 
 ### Features
 
-* Access to 19 data sources from a consistent query
+* Access to 19 data sources with a consistent query
 * Helps *find* where data is available and  *get* the data you want
 * Consistent data formats, projections, and documentation within all `HydroData` object
 * Interactive mapping and plotting via `leaflet` and `dygraphs`
-* Embed maps and data in [R Markdown](http://rmarkdown.rstudio.com/) and [Shiny](http://shiny.rstudio.com/) apps or export HTML files for easy documentation, reproducabilty, and sharing.
+* Embed maps and data in [R Markdown](http://rmarkdown.rstudio.com/); [Shiny](http://shiny.rstudio.com/); or export HTML files for easy documentation, reproducabilty, and sharing.
 * Export data for analysis in other platforms like python, ArcMap or QGIS
 
 ### Installation
@@ -38,7 +38,7 @@ You use HydroData with these basic steps:
 2. "Find" and "Get" data for that AOI using functions (e.g. `findUSGS`, `getNED`)
 3. Explore spatial and time series data interactively (e.g. `explore`, `inspect`)
 4. Repeat as desired.
-5. Analysis data within the R or export for analysis in platform of choice
+5. Analysis data or export for analysis in platform of choice
 
 Here's a basic example for all finding USGS stream flow gages in Santa Barbara County, California:
 

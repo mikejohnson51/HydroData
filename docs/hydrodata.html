@@ -11,7 +11,7 @@
 
 
 
-<title>HydroData</title>
+<title>HydroData for R</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -203,16 +203,16 @@ $(document).ready(function () {
 <h3>Getting a HydroData Object</h3>
 <p>In this basic example we will query a <code>HydroData</code> object containing all USGS stations in a 100 square mile region centered on UCSB. If you have not yet learned how AOI queries are defined in <code>HydroData</code> I sugest reviewing the <a href="aoi.html">AOI page</a> first.</p>
 <pre class="r"><code>usgs = findUSGS(clip_unit = list(&quot;UCSB&quot;, 10, 10), basemap = T, boundary = T, ids = T)</code></pre>
-<pre><code>## AOI defined as a 10 mile tall by 10 mile wide region centered on (the) UCSB</code></pre>
+<pre><code>## AOI defined as a 10 mile tall by 10 mile wide region centered on (the)  UCSB</code></pre>
 <pre><code>## 3 USGS gages found within AOI</code></pre>
-<pre><code>## AOI defined as a 10 mile tall by 10 mile wide region centered on (the) 34.41/-119.85 (lat/lon)</code></pre>
+<pre><code>## AOI defined as a 10 mile tall by 10 mile wide region centered on 34.41/-119.85 (lat/lon)</code></pre>
 <pre><code>## Returned list includes: USGS NWIS shapefile, terrain basemap, AOI boundary, fiat boundary, and list of station IDs</code></pre>
 </div>
 <div id="name" class="section level3">
 <h3>Name</h3>
 <p>The first element of a HydroData object is a text string in plain english describing the location of the AOI.</p>
 <pre class="r"><code>usgs$name</code></pre>
-<pre><code>## [1] &quot;A 10 mile tall by 10 mile wide region centered on (the) UCSB&quot;</code></pre>
+<pre><code>## [1] &quot;A 10 mile tall by 10 mile wide region centered on (the)  UCSB&quot;</code></pre>
 </div>
 <div id="source" class="section level3">
 <h3>Source</h3>
@@ -266,7 +266,7 @@ $(document).ready(function () {
 <h3>Overall</h3>
 <pre class="r"><code>str(usgs, max = 1)</code></pre>
 <pre><code>## List of 8
-##  $ name    : chr &quot;A 10 mile tall by 10 mile wide region centered on (the) UCSB&quot;
+##  $ name    : chr &quot;A 10 mile tall by 10 mile wide region centered on (the)  UCSB&quot;
 ##  $ source  : chr &quot;USGS NWIS&quot;
 ##  $ proj    :Formal class &#39;CRS&#39; [package &quot;sp&quot;] with 1 slot
 ##  $ nwis    :Formal class &#39;SpatialPointsDataFrame&#39; [package &quot;sp&quot;] with 5 slots

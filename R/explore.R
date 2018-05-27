@@ -161,7 +161,8 @@ for (i in seq_along(input)) {
 
     addScaleBar("bottomleft") %>%
     addMiniMap(tiles = providers$OpenStreetMap.BlackAndWhite,
-               toggleDisplay = TRUE) %>%
+               toggleDisplay = TRUE,
+               minimized = TRUE) %>%
     addMeasure(
       position = "bottomleft",
       primaryLengthUnit = "feet",

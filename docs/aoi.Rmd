@@ -2,7 +2,7 @@
 pagetitle: HydroData for R
 ---
 
-```{r echo = FALSE, results='hide', warning=FALSE,message=FALSE}
+```{r echo = FALSE, results='hide', warning= FALSE,message=FALSE}
 devtools::load_all()
 ```
 
