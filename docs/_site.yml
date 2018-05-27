@@ -1,13 +1,15 @@
-output_dir: "."
+output_dir: '.'
 output:
   html_document:
     theme: flatly
-    self_contained: no
-    lib_dir: libs
     fig_width: 5.5
     fig_height: 3.5
     fig_retina: 1
     includes:
-        before_body: includes/before_body.html
-        after_body:  includes/after_body.html
+      before_body: includes/before_body.html
+      after_body: includes/after_body.html
     css: styles.css
+    lib_dir: site_libs
+    self_contained: no
+name: docs
+
