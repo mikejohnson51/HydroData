@@ -78,34 +78,26 @@ getAOI = function(state = NULL,
   #------------------------------------------------------------------------------#
   # Error Catching                                                               #
   #------------------------------------------------------------------------------#
-  if (!is.null(state) && !is.null(clip_unit)) {
-    stop("Only 'state' or 'clip_unit' can be used. Set the other to NULL")
+  if (!is.null(state)) {
+    if (!is.null(clip_unit)) {
+      stop("Only 'state' or 'clip_unit' can be used. Set the other to NULL")
+    }
+    for (value in state) {
+      if (!is.character(value)) {
+        stop("State must be a character value. Try surrounding in qoutes...")
+      }
+      if (!(toupper(value) %in% datasets::state.abb || tolower(value) %in% tolower(datasets::state.name))) {
+        stop("State not recongized. Full names or abbreviations can be used. Please check spelling.")
+      }
+    }
   }
-
-  if (is.null(state) &&
-      is.null(clip_unit) && !is.null(county)) {
-    stop("The use of 'county' requires the 'state' parameter be used as well.")
-  }
-
-  if (is.null(state) && is.null(clip_unit)) {
-    stop("Requires a 'clip_unit' or 'state' parameter to execute")
-  }
-
-  if (!is.null(clip_unit) &&
-      (!is.null(state) || !is.null(county))) {
-    stop("If providing 'clip_unit', leave 'state' and 'county' as 'NULL'")
-  }
-
-  if (!is.null(state) && !is.character(state)) {
-    stop("State must be a character value. Try surrounding in qoutes...")
-  }
-
-  if (!is.null(state) &&
-      !(toupper(state) %in% datasets::state.abb ||
-        state %in% datasets::state.name)) {
-    stop(
-      "State not recongized. Full names or abbreviations can be used. Please check spelling."
-    )
+  else {
+    if (!is.null(county)) {
+      stop("The use of 'county' requires the 'state' parameter be used as well.")
+    }
+    if (is.null(clip_unit)) {
+      stop("Requires a 'clip_unit' or 'state' parameter to execute")
+    }
   }
 
   #-----------------------------------------------------------------------------------#
