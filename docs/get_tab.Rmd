@@ -3,15 +3,65 @@ pagetitle: HydroData for R
 ---
 
 ```{r echo = FALSE, results='hide', warning=FALSE,message=FALSE}
-#devtools::load_all()
+devtools::load_all()
 ```
 
 ##Getting Observation Data 
 
+### Get GHCN Observation Data
+
+```{r}
+ghcn = findGHCN(clip_unit = list("UCSB", 10, 10), param = "TMAX", ids = T)
+
+data = getGHCN(IDs = ghcn$ids[1])
+
+str(data, max = 1)
+```
+
+```{r}
+head(data$TMAX)
+```
+
+### Get Snotel meterological and snow pack data
+
+```{r}
+snow = findSnotel(state = "CA", county = "Modoc", ids = T)
+
+data = getSnotel(IDs = snow$ids[1])
+```
+
+```{r}
+head(data)
+```
+
+### Get USGS NWIS data
 
 
+```{r}
+usgs = findUSGS(clip_unit = list("UCSB", 10, 10), ids = T)
+flow = getUSGS(IDs = usgs$ids[2])
+```
 
+```{r}
+head(flow)
+```
 
+### Get Airport based WeatherUnderground Data
 
-![](img/construction.png)
+```{r, message=FALSE}
+ap = findAirports(clip_unit = list("UCSB", 10, 10), ids = T)
+weather = getWU(airport_code = ap$ids[1], year = 2017)
+```
+
+```{r}
+head(weather)
+```
+
+### Get USGS County Water Use data
+
+```{r}
+use = waterUse(state = "CA", county = "Santa Barbara", year = 2010)
+head(use$data)
+```
+
 

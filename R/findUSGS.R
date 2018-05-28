@@ -99,7 +99,7 @@ findUSGS = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FA
 
   report = "Returned list includes: USGS NWIS shapefile"
 
-  items = return.what(sp, items, report, AOI, basemap, boundary, clip_unit, ids = if(ids){ids = 'feature_id'})
+  items = return.what(sp, items, report, AOI, basemap, boundary, clip_unit, ids = if(ids){ids = 'site_no'})
 
   if(save){
 

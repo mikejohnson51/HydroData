@@ -186,9 +186,113 @@ $(document).ready(function () {
 
 <div id="getting-observation-data" class="section level2">
 <h2>Getting Observation Data</h2>
-<div class="figure">
-<img src="img/construction.png" />
+<div id="get-ghcn-observation-data" class="section level3">
+<h3>Get GHCN Observation Data</h3>
+<pre class="r"><code>ghcn = findGHCN(clip_unit = list(&quot;UCSB&quot;, 10, 10), param = &quot;TMAX&quot;, ids = T)</code></pre>
+<pre><code>## AOI defined as a 10 mile tall by 10 mile wide region centered on (the)  UCSB</code></pre>
+<pre><code>## 3 GHCN stations found</code></pre>
+<pre><code>## Returned list includes: NOAA GHCN shapefile, and list of station IDs</code></pre>
+<pre class="r"><code>data = getGHCN(IDs = ghcn$ids[1])
 
+str(data, max = 1)</code></pre>
+<pre><code>## List of 5
+##  $ PRCP:&#39;data.frame&#39;:    27301 obs. of  4 variables:
+##  $ TMAX:&#39;data.frame&#39;:    27301 obs. of  4 variables:
+##  $ TMIN:&#39;data.frame&#39;:    27301 obs. of  4 variables:
+##  $ SNOW:&#39;data.frame&#39;:    21853 obs. of  4 variables:
+##  $ SNWD:&#39;data.frame&#39;:    22036 obs. of  4 variables:</code></pre>
+<pre class="r"><code>head(data$TMAX)</code></pre>
+<pre><code>##   agency_cd     site_no       Date tmax
+## 1      NOAA USW00023190 1941-01-01   NA
+## 2      NOAA USW00023190 1941-01-02  183
+## 3      NOAA USW00023190 1941-01-03  178
+## 4      NOAA USW00023190 1941-01-04  189
+## 5      NOAA USW00023190 1941-01-05  167
+## 6      NOAA USW00023190 1941-01-06  167</code></pre>
+</div>
+<div id="get-snotel-meterological-and-snow-pack-data" class="section level3">
+<h3>Get Snotel meterological and snow pack data</h3>
+<pre class="r"><code>snow = findSnotel(state = &quot;CA&quot;, county = &quot;Modoc&quot;, ids = T)</code></pre>
+<pre><code>## AOI defined as  boundary of Modoc County, California</code></pre>
+<pre><code>## 5 snotel stations found within AOI</code></pre>
+<pre><code>## Returned list includes: snotel shapefile, and list of station IDs</code></pre>
+<pre class="r"><code>data = getSnotel(IDs = snow$ids[1])</code></pre>
+<pre><code>## 12310 Snotel values for station 301 downloaded (1/1)</code></pre>
+<pre class="r"><code>head(data)</code></pre>
+<pre><code>##   agency_cd site_no       Date SWE PRCP.ACC TMAX TMIN TAVG PRCP.INC
+## 1      NRCS     301 1984-09-13  NA       NA   32   32   32       NA
+## 2      NRCS     301 1984-09-14  NA       NA   NA   NA   NA       NA
+## 3      NRCS     301 1984-09-15  NA       NA   NA   NA   NA       NA
+## 4      NRCS     301 1984-09-16  NA       NA   NA   NA   NA       NA
+## 5      NRCS     301 1984-09-17  NA       NA   32   32   32       NA
+## 6      NRCS     301 1984-09-18  NA       NA   NA   NA   NA       NA</code></pre>
+</div>
+<div id="get-usgs-nwis-data" class="section level3">
+<h3>Get USGS NWIS data</h3>
+<pre class="r"><code>usgs = findUSGS(clip_unit = list(&quot;UCSB&quot;, 10, 10), ids = T)</code></pre>
+<pre><code>## AOI defined as a 10 mile tall by 10 mile wide region centered on (the)  UCSB</code></pre>
+<pre><code>## 3 USGS gages found within AOI</code></pre>
+<pre><code>## Returned list includes: USGS NWIS shapefile, and list of station IDs</code></pre>
+<pre class="r"><code>flow = getUSGS(IDs = usgs$ids[2])</code></pre>
+<pre class="r"><code>head(flow)</code></pre>
+<pre><code>##   agency_cd  site_no       Date Flow Flow_cd
+## 1      USGS 11120000 1941-10-01    0       A
+## 2      USGS 11120000 1941-10-02    0       A
+## 3      USGS 11120000 1941-10-03    0       A
+## 4      USGS 11120000 1941-10-04    0       A
+## 5      USGS 11120000 1941-10-05    0       A
+## 6      USGS 11120000 1941-10-06    0       A</code></pre>
+</div>
+<div id="get-airport-based-weatherunderground-data" class="section level3">
+<h3>Get Airport based WeatherUnderground Data</h3>
+<pre class="r"><code>ap = findAirports(clip_unit = list(&quot;UCSB&quot;, 10, 10), ids = T)
+weather = getWU(airport_code = ap$ids[1], year = 2017)</code></pre>
+<pre class="r"><code>head(weather)</code></pre>
+<pre><code>##         Date Year Month Day T_max T_avg T_min DP_max DP_avg DP_min H_max
+## 1 2017-01-01 2017     1   1    60    50    41     44     40     36    86
+## 2 2017-01-02 2017     1   2    55    50    46     48     45     42    96
+## 3 2017-01-03 2017     1   3    57    52    46     51     47     44    93
+## 4 2017-01-04 2017     1   4    55    54    53     56     54     49   100
+## 5 2017-01-05 2017     1   5    66    58    46     59     54     41   100
+## 6 2017-01-06 2017     1   6    60    50    41     49     44     39    96
+##   H_avg H_min SLP_max SLP_avg SLP_min V_max V_avg V_min Wind_max Wind_avg
+## 1    67    49   29.99   29.92   29.88    10    10    10        8        3
+## 2    81    66   30.17   30.07   29.99    10    10    10       10        2
+## 3    80    64   30.18   30.14   30.10    10    10    10        9        4
+## 4    97    80   30.16   30.09   30.03    10     4     1        8        4
+## 5    92    61   30.02   29.97   29.90    10     5     1       15        2
+## 6    78    53   30.14   30.05   29.97    10    10    10        9        3
+##   Wind_min PPT_tot Events          agency_cd site_no
+## 1       NA    0.00        WeatherUnderground    KSBA
+## 2       NA    0.00        WeatherUnderground    KSBA
+## 3       NA    0.00        WeatherUnderground    KSBA
+## 4       NA    0.64   Rain WeatherUnderground    KSBA
+## 5       21    0.09   Rain WeatherUnderground    KSBA
+## 6       NA    0.01   Rain WeatherUnderground    KSBA</code></pre>
+</div>
+<div id="get-usgs-county-water-use-data" class="section level3">
+<h3>Get USGS County Water Use data</h3>
+<pre class="r"><code>use = waterUse(state = &quot;CA&quot;, county = &quot;Santa Barbara&quot;, year = 2010)</code></pre>
+<pre><code>## AOI defined as  boundary of Santa Barbara County, California</code></pre>
+<pre><code>## AOI defined as the  boundary of Santa Barbara County, California. Shapefile determined. Now (down)loading USGS water use data...</code></pre>
+<pre><code>## Downloading USGS water use data for 2010</code></pre>
+<pre><code>## All data downloaded. Now subsetting...</code></pre>
+<pre><code>## Complete. Annual data downlaoded for  boundary of Santa Barbara County, California years 2010.</code></pre>
+<pre class="r"><code>head(use$data)</code></pre>
+<pre><code>##   STATE STATEFIPS        COUNTY COUNTYFIPS  FIPS        ID year_2010
+## 1    CA         6 Santa Barbara         83 06083 TP.TotPop   423.895
+## 2    CA         6 Santa Barbara         83 06083  PS.GWPop    91.100
+## 3    CA         6 Santa Barbara         83 06083  PS.SWPop   292.930
+## 4    CA         6 Santa Barbara         83 06083  PS.TOPop   384.030
+## 5    CA         6 Santa Barbara         83 06083  PS.WGWFr    23.990
+## 6    CA         6 Santa Barbara         83 06083  PS.WGWSa     0.000
+##                                                       DESCRIPTION
+## 1                        Total population of county, in thousands
+## 2   Public Supply, population served by groundwater, in thousands
+## 3 Public Supply, population served by surface water, in thousands
+## 4            Public Supply, total population served, in thousands
+## 5        Public Supply, groundwater withdrawals, fresh, in Mgal/d
+## 6       Public Supply, groundwater withdrawals, saline, in Mgal/d</code></pre>
 </div>
 </div>
 

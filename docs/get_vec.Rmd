@@ -3,14 +3,55 @@ pagetitle: HydroData for R
 ---
 
 ```{r echo = FALSE, results='hide', warning=FALSE,message=FALSE}
-#devtools::load_all()
+devtools::load_all()
 ```
 
 ##Getting Vector Data 
 
+get_nhd
+
+```{r}
+nhd = findNHD(clip_unit = list("UCSB", 10, 10))
+str(nhd, max = 1)
+```
+
+```{r}
+explore(nhd)
+```
 
 
+get_huc
 
+```{r}
+huc10 = findHUC(clip_unit = list("UCSB", 10, 10))
+str(nhd, max = 1)
+```
+
+```{r}
+explore(huc10)
+```
+
+get_waterbodies
+
+```{r}
+wb = findWaterbodies(clip_unit = list("UCSB", 20, 20))
+str(wb, max = 1)
+```
+
+```{r}
+explore(wb)
+```
+
+get_roads
+
+```{r}
+tiger = findRoads(clip_unit = list("UCSB", 10, 10))
+str(tiger, max = 1)
+```
+
+```{r}
+explore(tiger)
+```
 
 
 ![](img/construction.png)
