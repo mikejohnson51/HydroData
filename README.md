@@ -1,4 +1,8 @@
-# [HydroData](http://mikejohnson51.github.io/HydroData/) #
+# HydroData #
+
+Solarized dark             |  Solarized Ocean
+:-------------------------:|:-------------------------:
+[![travis](https://travis-ci.org/mikejohnson51/HydroData.svg?branch=master)](https://travis-ci.org/mikejohnson51/HydroData)  |  [![Coverage Status](https://coveralls.io/repos/github/mikejohnson51/HydroData/badge.svg?branch=master)](https://coveralls.io/github/mikejohnson51/HydroData?branch=master)  
 
 [![travis](https://travis-ci.org/mikejohnson51/HydroData.svg?branch=master)](https://travis-ci.org/mikejohnson51/HydroData)  
 [![Coverage Status](https://coveralls.io/repos/github/mikejohnson51/HydroData/badge.svg?branch=master)](https://coveralls.io/github/mikejohnson51/HydroData?branch=master)  
