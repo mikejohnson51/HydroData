@@ -14,4 +14,4 @@ install_github("mikejohnson51/HydroData")
 
 ## Documentation
 
-In addition to standard R documentation using `?`, we have an extensive documention and examples page [here](http://mikejohnson51.github.io/HydroData). Please feel free to use [Github issues](https://github.com/mikejohnson51/HydroData/issues) to file bug reports or feature requests.
+In addition to standard R documentation using `?`,  there is an extensive documention and examples page [here](http://mikejohnson51.github.io/HydroData). Please feel free to use [Github issues](https://github.com/mikejohnson51/HydroData/issues) to file bug reports or feature requests.
