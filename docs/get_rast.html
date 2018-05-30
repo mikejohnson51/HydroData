@@ -186,9 +186,67 @@ $(document).ready(function () {
 
 <div id="getting-raster-data" class="section level2">
 <h2>Getting Raster Data</h2>
-<div class="figure">
-<img src="img/construction.png" />
-
+<div id="crop-layers-form-usda" class="section level3">
+<h3>Crop Layers form USDA</h3>
+<pre class="r"><code>CLD = getCLD(clip_unit = list(&quot;University of Alabama&quot;, 10, 10), year = 2016)</code></pre>
+<pre><code>## [1] &quot;try 2 ...&quot;
+## [1] &quot;try 3 ...&quot;
+## [1] &quot;try 4 ...&quot;
+## [1] &quot;try 5 ...&quot;</code></pre>
+<pre class="r"><code>str(CLD, max = 1)</code></pre>
+<pre><code>## List of 4
+##  $ name  : chr &quot;A 10 mile tall by 10 mile wide region centered on (the)  University of Alabama&quot;
+##  $ source: chr &quot;USDA Cropland Data Layers&quot;
+##  $ proj  :Formal class &#39;CRS&#39; [package &quot;sp&quot;] with 1 slot
+##  $ cld   :Formal class &#39;RasterStack&#39; [package &quot;raster&quot;] with 11 slots
+##  - attr(*, &quot;class&quot;)= chr &quot;HydroData&quot;</code></pre>
+<p><left> <a ><img alt = '' width='400' src='img/cld.png' /></a> </left></p>
+</div>
+<div id="national-elevation-dataset" class="section level3">
+<h3>National Elevation Dataset</h3>
+<pre class="r"><code>ned = getNED(clip_unit = list(&quot;UCSB&quot;, 10, 10))</code></pre>
+<pre><code>## [1] &quot;try 2 ...&quot;
+## [1] &quot;try 3 ...&quot;</code></pre>
+<pre class="r"><code>str(ned, max = 1)</code></pre>
+<pre><code>## List of 4
+##  $ name  : chr &quot;A 10 mile tall by 10 mile wide region centered on (the)  UCSB&quot;
+##  $ source: chr &quot;USGS National Elevation Dataset&quot;
+##  $ proj  :Formal class &#39;CRS&#39; [package &quot;sp&quot;] with 1 slot
+##  $ ned   :List of 1
+##  - attr(*, &quot;class&quot;)= chr &quot;HydroData&quot;</code></pre>
+<p><left> <a ><img alt = '' width='400' src='img/ned.png' /></a> </left></p>
+</div>
+<div id="get-national-land-cover-data" class="section level3">
+<h3>Get National Land Cover Data</h3>
+<pre class="r"><code>nlcd = getNLCD(clip_unit = list(&quot;UCSB&quot;, 10, 10))
+str(nlcd, max = 1)</code></pre>
+<pre><code>## List of 4
+##  $ name  : chr &quot;A 10 mile tall by 10 mile wide region centered on (the)  UCSB&quot;
+##  $ source: chr &quot;USGS National Land Cover Dataset&quot;
+##  $ proj  :Formal class &#39;CRS&#39; [package &quot;sp&quot;] with 1 slot
+##  $ nlcd  :Formal class &#39;RasterStack&#39; [package &quot;raster&quot;] with 11 slots
+##  - attr(*, &quot;class&quot;)= chr &quot;HydroData&quot;</code></pre>
+<p><left> <a ><img alt = '' width='400' src='img/nlcd.png' /></a> </left></p>
+</div>
+<div id="get-koppen-classification" class="section level3">
+<h3>Get Koppen Classification</h3>
+<pre class="r"><code>kop = getKoppen(state = &quot;CA&quot;, county = c(&quot;Santa Barbara&quot;, &quot;Ventura&quot;, &quot;San Luis Obispo&quot;), boundary = T)
+str(kop, max = 1)</code></pre>
+<pre><code>## List of 7
+##  $ name    : chr &quot; boundary of Santa Barbara, Ventura, and San Luis Obispo County, California&quot;
+##  $ source  : chr &quot;Koppen Climate Classification&quot;
+##  $ proj    :Formal class &#39;CRS&#39; [package &quot;sp&quot;] with 1 slot
+##  $ raster  :Formal class &#39;RasterLayer&#39; [package &quot;raster&quot;] with 12 slots
+##  $ points  :Formal class &#39;SpatialPointsDataFrame&#39; [package &quot;sp&quot;] with 5 slots
+##  $ summary :&#39;data.frame&#39;:    4 obs. of  4 variables:
+##  $ boundary:Formal class &#39;SpatialPolygonsDataFrame&#39; [package &quot;sp&quot;] with 5 slots</code></pre>
+<p><left> <a ><img alt = '' width='800' src='img/kop.png' /></a> </left></p>
+<pre class="r"><code>kop$summary</code></pre>
+<pre><code>##   KG class               description freq
+## 1 13   Csb Warm-summer Mediterranean 0.93
+## 2  6   BSk     Cold semi-arid steppe 0.04
+## 4 12   Csa  Hot-summer Mediterranean 0.02
+## 3 14   Csc Cool-summer Mediterranean 0.01</code></pre>
 </div>
 </div>
 

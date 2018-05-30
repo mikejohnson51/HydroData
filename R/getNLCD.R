@@ -27,15 +27,23 @@
 #'
 #' @author
 #' Mike Johnson
+#'
 
-getNLCD = function(state = NULL, county = NULL, clip_unit = NULL, year = NULL, keep.boundary = FALSE){
 
-if((sum(year != 2001) == length(year) && sum(year != 2006) && length(year) && sum(year != 2011) == length(year))){
-  stop("NLCD only avaiable for 2001, 2006, and 2011. Please only use these values in declaring year.")}
+year = c(2006, 2011)
+state = NULL
+county = NULL
+clip_unit = list("UCSB", 10,10)
 
-AOI = getAOI(state = state, county = county, clip_unit = clip_unit)
+getNLCD = function(state = NULL, county = NULL, clip_unit = NULL, year = 2011, boundary = FALSE, basemap = FALSE){
 
-message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Shapefile determined. Now loading NLCD data for ", paste0(year, collapse = ", "),".")
+fin = list()
+all.rast = list()
+s =stack()
+
+  if(!any(year %in% c(2001,2006,2011))){ stop("NLCD only avaiable for 2001, 2006, and 2011.")}
+
+AOI = getAOI(state, county, clip_unit)
 
   USAbb = c(48,66,24,123)
   bb = matrix(AOI@bbox, ncol = 2)
@@ -49,7 +57,6 @@ message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit
   lon.f = sprintf('%03d', lon[k])
 
   lat.bb = c(floor(bb[2,1]), ceiling(bb[2,2]))
-
   lat = seq(USAbb[3], USAbb[1], 3)
     i = which.max(1/(lat.bb[1] - lat))
     j = sum((lat.bb[2] - lat) > 0)
@@ -62,7 +69,7 @@ urls = vector()
 
 for(i in 1:dim(mat)[1]){
   for(j in 1:length(year)){
-  urls = append(urls, paste0('https://s3-us-west-2.amazonaws.com/prd-tnm/StagedProducts/NLCD/data/',
+  urls = append(urls, paste0('https://prd-tnm.s3.amazonaws.com/StagedProducts/NLCD/data/',
                    year[j],
                    '/landcover/3x3/NLCD',
                    year[j],
@@ -74,7 +81,7 @@ for(i in 1:dim(mat)[1]){
   }
 }
 
-if(length(urls) > 1){
+if(length(urls)/length(year) > 1){
   verb = 'are'
   noun = 'rasters'
 } else {
@@ -82,65 +89,39 @@ if(length(urls) > 1){
   noun = 'raster'
 }
 
-message(paste("There", verb, length(urls)/length(year), "NLCD", noun, "in this scene per year.", length(urls), " tiles reuquested..."))
+message(paste("There", verb, length(urls)/length(year), "NLCD", noun, "in this scene per year."))
 
-temp = tempfile()
-tempd = tempdir()
 
-for(i in 1:length(urls)){
-  message(paste0("Downloading raster ", i, " of ", length(urls)))
-  download.file(url = urls[i], destfile = temp, quiet = TRUE)
-  suppressWarnings(unzip(temp, exdir = tempd, overwrite = TRUE))
-  message(paste0("Finished downloading raster ", i, " of ", length(urls)))
+for(j in seq_along(year)){
+
+xxx = grep(year[j], urls, value=TRUE)
+
+for(i in seq_along(xxx)){
+  message(paste0("Downloading ", year[j], " raster (", i, "/", length(xxx), ")"))
+  check = download.url(url = xxx[i])
+  if(check$code != 200){stop("Download Failed, please try again")}
+  message(paste0("Finished downloading raster ", i, " of ", length(xxx)))
+  rast = unzip_crop(AOI = AOI, path = check$destfile, file.type = "tif")
+  all.rast[[i]] = rast
 }
 
-all.files = list.files(tempd, pattern = ".tif$", full.names = TRUE)
+s = addLayer(s, mosaic.hd(all.rast))
 
-####### Start Loop #########
-
-nlcd = list()
-
-for(i in 1:length(year)){
-
-xxx = grep(year[i], all.files, value=TRUE)
-input.rasters <- lapply(xxx, raster)
-bounds = spTransform(AOI, input.rasters[[1]]@crs)
-
-for(j in 1:length(input.rasters)){
-  if(!is.null(intersect(extent(input.rasters[[j]]),extent(bounds)))){
-    input.rasters[[j]] <- crop(input.rasters[[j]], bounds)
-    message("Raster number ", j," Cropped.")
-  } else {
-    message("Raster ", j, " not needed")
-  }
 }
 
-if(length(input.rasters) > 1){
-  message("Mosaicing raster for ", year[i])
-  utils::flush.console()
+names(s) = paste0("yr_", year)
 
-  input.rasters$fun <- max
-  input.rasters$na.rm <- TRUE
+items = list( name = nameAOI(state, county, clip_unit),
+              source = "USGS National Land Cover Dataset",
+              proj = s[[1]]@crs,
+              nlcd = s)
 
-  mos = do.call(mosaic, input.rasters)
+report = paste0("Returned object contains land cover raster")
 
-  nlcd[[paste0("lc_", year[i])]] = mos
+items = return.what(items = items, report = report, AOI = AOI, basemap = basemap, boundary = boundary, clip_unit= clip_unit, ids = NULL)
 
-  gc()
-
-} else {
-  nlcd[[paste0("lc_", year[i])]] = input.rasters[[1]]
-}
-}
-
-unlink(temp)
-unlink(tempd)
-
-if(keep.boundary == TRUE){
-  return(list(nlcd, boundary = bounds))
-}else{
-  return(nlcd)
-}
+class(items) = "HydroData"
+return(items)
 }
 
 

@@ -10,7 +10,7 @@ devtools::load_all()
 
 ### Get GHCN Observation Data
 
-```{r}
+```{r,message = FALSE}
 ghcn = findGHCN(clip_unit = list("UCSB", 10, 10), param = "TMAX", ids = T)
 
 data = getGHCN(IDs = ghcn$ids[1])
@@ -35,7 +35,6 @@ head(data)
 ```
 
 ### Get USGS NWIS data
-
 
 ```{r}
 usgs = findUSGS(clip_unit = list("UCSB", 10, 10), ids = T)

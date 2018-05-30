@@ -58,6 +58,8 @@ getClipUnit = function(location = NULL, width = NULL, height = NULL, origin = NU
       location = c(location$lat, location$lon)
     }
 
+  ?dismo::geocode()
+
     if(origin == "center"){
       df = (height/2)/69                               # north/south
       dl = ((width/2)/69) / cos(location[1] * pi/180)  # east/west

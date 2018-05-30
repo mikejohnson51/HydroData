@@ -5,11 +5,11 @@
 #' @param state a character string. Can be full name or state abbriviation
 #' @param county a character string. Can be full name or state abbriviation
 #' @param clip_unit can be provided as a shapefile or vector defining centroid and bounding box height and width in miles
-#' @param keep.basemap logical. If TRUE, the google basemap will be returned with gage data in a list
+#' @param basemap logical. If TRUE, the google basemap will be returned with gage data in a list
 #
 #' @examples
 #' \dontrun{
-#' co.koppen = getKoppenClass(state = "CA")
+#' co.koppen = getKoppen(state = "CA")
 #'}
 #' @return
 #'
@@ -37,12 +37,11 @@
 ##                                                                                            ##
 ################################################################################################
 
-getKoppenClass = function(state = NULL, county = NULL, clip_unit = NULL, keep.basemap = FALSE){
+getKoppen = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE, basemap = FALSE){
 
 #------------------------------------------------------------------------------#
 # Define Classification, description and color data                            #
 #------------------------------------------------------------------------------#
-
 
    class       <- c( 'Af',  'Am',  'As',  'Aw',
                      'BSh', 'BSk', 'BWh', 'BWk',
@@ -104,22 +103,21 @@ getKoppenClass = function(state = NULL, county = NULL, clip_unit = NULL, keep.ba
 #------------------------------------------------------------------------------#
     kopRas = HydroData::kopRas
 
-    A      <- getAOI (state = state, county = county, clip_unit = clip_unit) %>% spTransform (projection(kopRas))
+    A      <- getAOI (state, county, clip_unit) %>% spTransform (kopRas@crs)
 
 #------------------------------------------------------------------------------#
 # Format and Manipulate Data for AOI                                           #
 #------------------------------------------------------------------------------#
 
-    crop.r    <-  crop(kopRas, A, snap = 'out' )
-    ras.poly  <- rasterToPolygons(crop.r)
+    crop.r    <-  raster::crop(kopRas, A, snap = 'out' )
+    ras.poly  <- raster::rasterToPolygons(crop.r)
     ras.poly  <- ras.poly[!(ras.poly$layer == 32), ]
     clip.ras.poly <- ras.poly[A, ]
-    r             <- rasterize(clip.ras.poly, crop.r, "layer")
+    r             <- raster::rasterize(clip.ras.poly, crop.r, "layer")
 
     r@legend@colortable <-  climate.colors
 
-    z <- rasterToPoints(r, spatial=T)
-    #z <- spTransform(z, CRS=projection(r))
+    z <- raster::rasterToPoints(r, spatial=T)
     z <- as.data.frame(z);
     z <-  subset(z, z[1]!=32);
 
@@ -135,7 +133,7 @@ getKoppenClass = function(state = NULL, county = NULL, clip_unit = NULL, keep.ba
     sp = SpatialPointsDataFrame(cbind(pts$lat, pts$lon), data = pts)
     sp@proj4string = r@crs
 
-    freq = data.frame(freq(r, useNA= 'no'))
+    freq = data.frame(raster::freq(r, useNA= 'no'))
     freq <- freq[!(freq$value==32),]
 
     df <- data.frame(KG = unique(pts$KG), class = unique(pts$class), description = unique(pts$description))
@@ -150,7 +148,18 @@ getKoppenClass = function(state = NULL, county = NULL, clip_unit = NULL, keep.ba
     # SpatialPointsDataFrame sp is a point feature class
     # Summary is a data frame reporting all classification, descriptions and frequecy
 
-    return(list(raster = r, sp = sp, summary = df))
+    items = list( name = nameAOI(state, county, clip_unit),
+                  source = "Koppen Climate Classification",
+                    proj = r@crs,
+                    raster = r,
+                    points = sp,
+                    summary = df)
+
+      report = paste0("Returned object contains Koppen raster, points, and summary")
+
+      items = return.what(sp, items = items, report, AOI = A, basemap = basemap, boundary = boundary, clip_unit= clip_unit, ids = NULL)
+
+      return(items)
 }
 
 

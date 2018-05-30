@@ -19,7 +19,7 @@ Finding data for an Area of Interest (AOI) often requires finding what observati
 
 If you have not yet learned how AOI queries are defined in `HydroData` I sugest reviewing the [AOI page](aoi.html) first. 
 
-What follows are basic examples for quering information from thes
+What follows are basic examples for quering information from these 6 sources for a region centered on the University of California, Santa Barbara (UCSB).
 
 ### Finding Airports
 
@@ -81,5 +81,8 @@ findSnotel(state = "CA", county = "Modoc") %>% explore()
 ```{r, message = F}
 findReservoir(clip_unit = list("UCSB", 30, 30)) %>% explore()
 ```
+### Next Steps
+
+While this section empahsizes finding key stations within an AOI, and getting there unique identifiation code via `ids = TRUE` the [Getting Observation Data](get_tab.html) page focusing on using these ids to query timeseries, observation data. 
 
 

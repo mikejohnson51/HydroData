@@ -8,19 +8,21 @@ devtools::load_all()
 
 ##Getting Vector Data 
 
-get_nhd
 
-```{r}
+
+###Getting National Hydrography Dataset Flowlines
+
+```{r, message=FALSE}
 nhd = findNHD(clip_unit = list("UCSB", 10, 10))
 str(nhd, max = 1)
 ```
 
-```{r}
+```{r, echo = FALSE}
 explore(nhd)
 ```
 
 
-get_huc
+###National Hydrography Dataset Watershed Boundaries
 
 ```{r}
 huc10 = findHUC(clip_unit = list("UCSB", 10, 10))
@@ -31,27 +33,28 @@ str(nhd, max = 1)
 explore(huc10)
 ```
 
-get_waterbodies
+### Get World Waterbodies
 
-```{r}
+The polygons represent the open water rivers, lakes, seas, and oceans of the world.
+
+```{r, message= FALSE}
 wb = findWaterbodies(clip_unit = list("UCSB", 20, 20))
 str(wb, max = 1)
 ```
 
-```{r}
+```{r, echo = FALSE}
 explore(wb)
 ```
 
-get_roads
+### Get US Census TIGER Road Networks
 
-```{r}
+```{r, message = FALSE}
 tiger = findRoads(clip_unit = list("UCSB", 10, 10))
 str(tiger, max = 1)
 ```
 
-```{r}
+```{r, echo = FALSE}
 explore(tiger)
 ```
 
 
-![](img/construction.png)

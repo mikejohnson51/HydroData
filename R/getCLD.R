@@ -1,15 +1,11 @@
-getCLD = function(state = NULL, county = NULL, clip_unit = NULL, year = NULL, keep.boundary = FALSE, save = FALSE){
+getCLD = function(state = NULL, county = NULL, clip_unit = NULL, year = NULL, boundary = FALSE, basemap = FALSE, save = FALSE){
 
-      urls = vector()
-      tempd = tempdir()
+    crops = list()
+    all.files = NULL
 
-      bad.years = vector()
-      crops = list()
+   if(year > 2017 || year < 2008){stop("USDA CropScape Data only avaiable between 2008 and 2017. Please select a year within this range.")}
 
-   if(year > 2017 || year < 2008){stop("USDA CropScape Data only avaiable between 2008 and 2017. Please only use these values in declaring year.")}
-
-   AOI = getAOI(state = state, county = county, clip_unit = clip_unit)
-      message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Now loading CropScape data for ", paste0(year, collapse = ", "),".")
+   AOI = getAOI(state, county, clip_unit)
 
    p = CRS("+proj=aea +lat_1=29.5 +lat_2=45.5 +lat_0=23 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs")
 
@@ -17,46 +13,44 @@ getCLD = function(state = NULL, county = NULL, clip_unit = NULL, year = NULL, ke
 
    bb = paste(shp.p@bbox[1,1],shp.p@bbox[2,1], shp.p@bbox[1,2],shp.p@bbox[2,2], sep = ',')
 
-   for(i in 1:length(year)){ urls = append(urls, paste0("https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLFile?year=",year[i],"&bbox=", bb)) }
+   urls = paste0("https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLFile?year=",year,"&bbox=", bb)
 
-   for(j in 1:length(urls)){
+   for(j in seq_along(year)){
 
-     URL = RCurl::getURL(urls[j])
+     res = curl::curl_fetch_memory(urls[j])
 
-    if(grepl('fault', URL)){
-        for(i in 2008:2017){
-          if(grepl('fault', RCurl::getURL(paste0("https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLFile?year=",i,"&bbox=",bb)))){
-              bad.years = append(bad.years, i)
-          }else{
-              stop(paste('Crop data only avaliable for', paste0(setdiff(c(2008:2017), bad.years), collapse = ", "), "within the", nameAOI(state = state, county = county, clip_unit = clip_unit)))
-          }
-       }
-      }else{
-        src = as.character(XML::xmlToDataFrame(URL)$text)
-        path = paste0(tempd,"/", year[j], ".tif")
+        src = strsplit(rawToChar(res$content), "returnURL>")
+        src2 = grep("https", src[[1]], value = T)
+        src3 = gsub("(tif).*","\\1",src2)
 
-        utils::download.file(url = src , destfile = path, quiet = FALSE, mode = 'wb')
-
+        check = download.url(url = src3, mode = "binary")
+        if(check$code != 200){stop("Download Failed, please try again")}
         message("CropScape data downloaded for ", year[j])
-      }
+        all.files = append(all.files, check$destfile)
    }
 
-    all.files = list.files(tempd, pattern = ".tif$", full.names = TRUE)
+
 
     for(i in 1:length(all.files)){
-      crops[[paste0('CLD_', year[i])]] = raster(all.files[i])
+      crops[[paste0('cld_', year[i])]] = raster::raster(all.files[i])
     }
 
-    b = brick(crops)
-    b = projectRaster(b, crs = HydroDataProj, method = 'ngb')
-    b = crop(b, AOI)
-    b = stack(b)
+    b = raster::brick(crops) %>% raster::projectRaster(crs = HydroDataProj, method = 'ngb') %>% raster::crop(AOI) %>% raster::stack()
 
     for(i in 1:dim(b)[3]){
-      colortable(b[[i]]) <- col_crops$color
+      raster::colortable(b[[i]]) <- col_crops$color
     }
 
-    unlink(tempd, recursive = TRUE)
+   items = list( name = nameAOI(state, county, clip_unit),
+                                 source = "USDA Cropland Data Layers",
+                                 proj = b@crs,
+                                 cld = b)
+
+   report = paste0("Returned list includes: ", paste(year, collapse = ", "), " Croplands Data Layer")
+
+   items = return.what(sp , items = items, report, AOI = AOI, basemap = basemap, boundary = boundary, clip_unit= clip_unit, ids = NULL)
+
+    #unlink(tempd, recursive = TRUE)
 
       if(save){
         save.file(data = crops,
@@ -69,10 +63,9 @@ getCLD = function(state = NULL, county = NULL, clip_unit = NULL, year = NULL, ke
                   other   = year )
       }
 
-    list = unstack(b)
-    names(list) <- names(crops)
+    class(items) = "HydroData"
 
-      return(list)
+    return(items)
 }
 
 

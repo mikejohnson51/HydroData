@@ -2,15 +2,62 @@
 pagetitle: HydroData for R
 ---
 
-```{r echo = FALSE, results='hide', warning=FALSE,message=FALSE}
-#devtools::load_all()
+```{r load_package, echo = FALSE, results='hide', warning=FALSE,message=FALSE}
+devtools::load_all()
 ```
 
 ##Getting Raster Data 
 
+### Crop Layers form USDA
+
+```{r CLD, message = FALSE}
+CLD = getCLD(clip_unit = list("University of Alabama", 10, 10), year = 2016)
+str(CLD, max = 1)
+```
+
+<left>
+<a ><img alt = '' width='400' src='img/cld.png' /></a>
+</left>
+
+### National Elevation Dataset
+
+```{r NED, message = FALSE}
+ned = getNED(clip_unit = list("UCSB", 10, 10))
+str(ned, max = 1)
+```
+
+<left>
+<a ><img alt = '' width='400' src='img/ned.png' /></a>
+</left>
+
+### Get National Land Cover Data
+
+```{r NLCD, message=FALSE}
+nlcd = getNLCD(clip_unit = list("UCSB", 10, 10))
+str(nlcd, max = 1)
+```
+
+<left>
+<a ><img alt = '' width='400' src='img/nlcd.png' /></a>
+</left>
+
+### Get Koppen Classification
+
+```{r Koppen, message=FALSE}
+kop = getKoppen(state = "CA", county = c("Santa Barbara", "Ventura", "San Luis Obispo"), boundary = T)
+str(kop, max = 1)
+```
+
+
+<left>
+<a ><img alt = '' width='800' src='img/kop.png' /></a>
+</left>
+
+```{r}
+kop$summary
+```
 
 
 
 
 
-![](img/construction.png)

@@ -5,7 +5,7 @@
 \title{Get NED data for an Area of Interest}
 \usage{
 getNED(state = NULL, county = NULL, clip_unit = NULL, res = 1,
-  keep.boundary = FALSE)
+  boundary = FALSE, basemap = FALSE)
 }
 \arguments{
 \item{state}{a character string. Can be full name or state abbriviation}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/name_clip_unit.R
 \name{name.clip.unit}
 \alias{name.clip.unit}
-\title{Interprete the English description of a clip unit input}
+\title{Interprete the plain-english description of a clip unit}
 \usage{
 name.clip.unit(clip_unit)
 }
@@ -13,7 +13,7 @@ name.clip.unit(clip_unit)
 a string describing the clipt unit in plain english
 }
 \description{
-Interprete the English description of a clip unit input
+Interprete the plain-english description of a clip unit
 }
 \seealso{
 Other HydroData 'helper' functions: \code{\link{define.clip.unit}},

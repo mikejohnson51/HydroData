@@ -10,7 +10,8 @@ Depends:
     R(>= 3.3.0),
     dygraphs,
     leaflet,
-    sp
+    sp,
+    raster
 Imports:
     classInt,
     dams,
@@ -29,7 +30,6 @@ Imports:
     prism,
     RColorBrewer,
     RCurl,
-    raster,
     readr,
     rgdal,
     rgeos,

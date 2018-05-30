@@ -18,23 +18,18 @@
 #' @author
 #' Mike Johnson
 
-getNED = function(state = NULL, county = NULL, clip_unit = NULL, res = 1, keep.boundary = FALSE){
 
-  if(!(res %in% c(1,13))){stop("Resoultion must be either 1 (1 arc second) or 13 (1/3 arc second).\n  Please use one of those values.")}
+getNED = function(state = NULL, county = NULL, clip_unit = NULL, res = 1, boundary = FALSE, basemap = FALSE){
 
-  ######### 1. Define Area of Interst #########
+  if(!(res %in% c(1,13))){stop("Resoultion must be either 1 (1 arc second) or 13 (1/3 arc second).")}
 
-  AOI = getAOI(state = state, county = county, clip_unit = clip_unit)
+  all.rast = list()
+  AOI = getAOI(state, county, clip_unit)
   bb = AOI@bbox
-
-  # Defined by upper left Coordinates
 
   lon = head(sprintf("%03d", abs(seq(floor(bb[1,1]), ceiling(bb[1,2]), by = 1))), -1)
   lat = head(seq(ceiling(bb[2,2]), floor(bb[2,1]), by = -1), -1)
   mat = expand.grid(lat,lon)
-  message("AOI defined as the ", nameAOI(state = state, county = county, clip_unit = clip_unit), ". Shapefile determined. Now loading ", res, " arc second NED data...")
-
-  ########## 2. Download Data ##########
 
   urls = vector()
 
@@ -52,53 +47,27 @@ getNED = function(state = NULL, county = NULL, clip_unit = NULL, res = 1, keep.b
 
   message(paste("There", verb, length(urls), "NED", noun, "in this scene."))
 
-  temp = tempfile()
-  tempd = tempdir()
-
-  for(i in 1:length(urls)){
+  for(i in seq_along(urls)){
     message(paste0("Downloading raster ", i, " of ", length(urls)))
-    download.file(url = urls[i], destfile = temp, quiet = TRUE )
-    unzip(temp, exdir = tempd, overwrite = TRUE)
-    message(paste0("Finished downloading raster ", i, " of ", length(urls)))
+      check = download.url(url = urls[i])
+      if(check$code != 200){stop("Download Failed, please try again")}
+      message(paste0("Finished downloading raster ", i, " of ", length(urls)))
+    rast = unzip_crop(AOI = AOI, path = check$destfile)
+    all.rast[[i]] = rast
   }
 
-  ########## 3. Process Data ##########
+  fin = mosaic.hd(all.rast)
 
-  input.rasters <- lapply(list.files(tempd, pattern = ".img", full.names = TRUE), raster)
-  bounds = spTransform(AOI, input.rasters[[1]]@crs)
+  items = list( name = nameAOI(state, county, clip_unit),
+                source = "USGS National Elevation Dataset",
+                proj = fin[[1]]@crs,
+                ned = fin)
 
-  for(j in 1:length(input.rasters)){
-    if(!is.null(intersect(extent(input.rasters[[j]]),extent(bounds)))){
-      input.rasters[[j]] <- crop(input.rasters[[j]], bounds)
-      message("Raster number ", j," Cropped.")
-    } else {
-      message("Raster ", j, " not needed")
-    }
-  }
+  report = paste0("Returned object contains ", res," arc sec elevation raster")
 
-  if(length(input.rasters) > 1){
-    message("Mosaicing raster...")
-    utils::flush.console()
+  items = return.what(sp , items = items, report, AOI = AOI, basemap = basemap, boundary = boundary, clip_unit= clip_unit, ids = NULL)
 
-    input.rasters$fun <- max
-    input.rasters$na.rm <- TRUE
-
-    mos = do.call(mosaic, input.rasters)
-
-    gc()
-  } else {
-    mos = input.rasters[[1]]
-  }
-
-  unlink(temp)
-  unlink(tempd)
-
-  if(keep.boundary == TRUE){
-    message("Returned object contains elevation raster and boundary shapefile")
-    return(list(elev = mos, boundary = bounds))
-  }else{
-    message("Returned object contains elevation raster")
-    return(list(elev = mos))
-  }
+  class(items) = "HydroData"
+  return(items)
 }
 

@@ -8,6 +8,12 @@ pagetitle: HydroData for R
 
 ## Visualize Data
 
+## Four three corners of Explore
 
+## Zoom around explore
+
+## Slider date inspect
+
+## See values inspect
 
 ![](img/construction.png)

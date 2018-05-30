@@ -188,11 +188,9 @@ $(document).ready(function () {
 <h2>Getting Observation Data</h2>
 <div id="get-ghcn-observation-data" class="section level3">
 <h3>Get GHCN Observation Data</h3>
-<pre class="r"><code>ghcn = findGHCN(clip_unit = list(&quot;UCSB&quot;, 10, 10), param = &quot;TMAX&quot;, ids = T)</code></pre>
-<pre><code>## AOI defined as a 10 mile tall by 10 mile wide region centered on (the)  UCSB</code></pre>
-<pre><code>## 3 GHCN stations found</code></pre>
-<pre><code>## Returned list includes: NOAA GHCN shapefile, and list of station IDs</code></pre>
-<pre class="r"><code>data = getGHCN(IDs = ghcn$ids[1])
+<pre class="r"><code>ghcn = findGHCN(clip_unit = list(&quot;UCSB&quot;, 10, 10), param = &quot;TMAX&quot;, ids = T)
+
+data = getGHCN(IDs = ghcn$ids[1])
 
 str(data, max = 1)</code></pre>
 <pre><code>## List of 5
@@ -217,7 +215,7 @@ str(data, max = 1)</code></pre>
 <pre><code>## 5 snotel stations found within AOI</code></pre>
 <pre><code>## Returned list includes: snotel shapefile, and list of station IDs</code></pre>
 <pre class="r"><code>data = getSnotel(IDs = snow$ids[1])</code></pre>
-<pre><code>## 12310 Snotel values for station 301 downloaded (1/1)</code></pre>
+<pre><code>## 12312 Snotel values for station 301 downloaded (1/1)</code></pre>
 <pre class="r"><code>head(data)</code></pre>
 <pre><code>##   agency_cd site_no       Date SWE PRCP.ACC TMAX TMIN TAVG PRCP.INC
 ## 1      NRCS     301 1984-09-13  NA       NA   32   32   32       NA
@@ -245,8 +243,10 @@ str(data, max = 1)</code></pre>
 </div>
 <div id="get-airport-based-weatherunderground-data" class="section level3">
 <h3>Get Airport based WeatherUnderground Data</h3>
-<pre class="r"><code>ap = findAirports(clip_unit = list(&quot;UCSB&quot;, 10, 10), ids = T)
-weather = getWU(airport_code = ap$ids[1], year = 2017)</code></pre>
+<pre class="r"><code>ap = findAirports(clip_unit = list(&quot;UCSB&quot;, 10, 10), ids = T)</code></pre>
+<pre><code>## [1] &quot;try 2 ...&quot;
+## [1] &quot;try 3 ...&quot;</code></pre>
+<pre class="r"><code>weather = getWU(airport_code = ap$ids[1], year = 2017)</code></pre>
 <pre class="r"><code>head(weather)</code></pre>
 <pre><code>##         Date Year Month Day T_max T_avg T_min DP_max DP_avg DP_min H_max
 ## 1 2017-01-01 2017     1   1    60    50    41     44     40     36    86
