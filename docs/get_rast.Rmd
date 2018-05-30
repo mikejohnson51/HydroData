@@ -48,7 +48,6 @@ kop = getKoppen(state = "CA", county = c("Santa Barbara", "Ventura", "San Luis O
 str(kop, max = 1)
 ```
 
-
 <left>
 <a ><img alt = '' width='800' src='img/kop.png' /></a>
 </left>

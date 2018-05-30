@@ -49,7 +49,7 @@ head(flow)
 
 ```{r, message=FALSE}
 ap = findAirports(clip_unit = list("UCSB", 10, 10), ids = T)
-weather = getWU(airport_code = ap$ids[1], year = 2017)
+weather = getWU(IDs = ap$ids[1], year = 2017)
 ```
 
 ```{r}

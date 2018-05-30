@@ -1,12 +1,12 @@
-getWU = function(airport_code = NULL, year = NULL, month = 1:12, day = NULL, type = NULL){
+getWU = function(IDs = NULL, year = NULL, month = 1:12, day = NULL, type = NULL){
 
   type = 'monthly'
-  airport_code = toupper(airport_code)
+  IDs = toupper(IDs)
 
   ap = HydroData::ap
 
-  if(nchar(airport_code) == 3) { airport_code = ap$ICAO[which(airport_code == ap$IATA)] }
-  if(!(airport_code %in% ap$ICAO)) { stop("Airport code not found") }
+  if(nchar(IDs) == 3) { IDs = ap$ICAO[which(IDs == ap$IATA)] }
+  if(!(IDs %in% ap$ICAO)) { stop("Airport code not found") }
 
   if((type %in% c("daily", "weekly", "monthly"))){
     type = simpleCap(type)
@@ -32,7 +32,7 @@ getWU = function(airport_code = NULL, year = NULL, month = 1:12, day = NULL, typ
     for( j in seq_along(month)) {
 
       df = xml2::read_html(paste0("https://www.wunderground.com/history/airport/",
-                                  toupper(airport_code), "/",
+                                  toupper(IDs), "/",
                                   year[i], "/", month[j], "/", day, "/",
                                   paste0(type, "History"),
                                   ".html?req_city=&req_state=&req_statename=&reqdb.zip=&reqdb.magic=&reqdb.wmo=")) %>%
@@ -56,7 +56,8 @@ getWU = function(airport_code = NULL, year = NULL, month = 1:12, day = NULL, typ
       message( "Year ", year[i], " Month ", j,  " downloaded.")
     }
   }
-  df.airports = df.airports %>% dplyr:: mutate(agency_cd = "WeatherUnderground", site_no = airport_code)
+
+  df.airports = df.airports %>% dplyr:: mutate(agency_cd = "WeatherUnderground", site_no = IDs)
   names(df.airports) = c("Date", "Year", "Month", data.names, "agency_cd", "site_no")
   df.airports[,1] = as.Date(df.airports[,1])
   return(df.airports)

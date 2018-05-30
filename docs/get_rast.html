@@ -188,12 +188,8 @@ $(document).ready(function () {
 <h2>Getting Raster Data</h2>
 <div id="crop-layers-form-usda" class="section level3">
 <h3>Crop Layers form USDA</h3>
-<pre class="r"><code>CLD = getCLD(clip_unit = list(&quot;University of Alabama&quot;, 10, 10), year = 2016)</code></pre>
-<pre><code>## [1] &quot;try 2 ...&quot;
-## [1] &quot;try 3 ...&quot;
-## [1] &quot;try 4 ...&quot;
-## [1] &quot;try 5 ...&quot;</code></pre>
-<pre class="r"><code>str(CLD, max = 1)</code></pre>
+<pre class="r"><code>CLD = getCLD(clip_unit = list(&quot;University of Alabama&quot;, 10, 10), year = 2016)
+str(CLD, max = 1)</code></pre>
 <pre><code>## List of 4
 ##  $ name  : chr &quot;A 10 mile tall by 10 mile wide region centered on (the)  University of Alabama&quot;
 ##  $ source: chr &quot;USDA Cropland Data Layers&quot;
@@ -204,10 +200,8 @@ $(document).ready(function () {
 </div>
 <div id="national-elevation-dataset" class="section level3">
 <h3>National Elevation Dataset</h3>
-<pre class="r"><code>ned = getNED(clip_unit = list(&quot;UCSB&quot;, 10, 10))</code></pre>
-<pre><code>## [1] &quot;try 2 ...&quot;
-## [1] &quot;try 3 ...&quot;</code></pre>
-<pre class="r"><code>str(ned, max = 1)</code></pre>
+<pre class="r"><code>ned = getNED(clip_unit = list(&quot;UCSB&quot;, 10, 10))
+str(ned, max = 1)</code></pre>
 <pre><code>## List of 4
 ##  $ name  : chr &quot;A 10 mile tall by 10 mile wide region centered on (the)  UCSB&quot;
 ##  $ source: chr &quot;USGS National Elevation Dataset&quot;
