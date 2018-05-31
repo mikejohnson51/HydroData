@@ -4,15 +4,21 @@ pagetitle: HydroData for R
 
 ```{r echo = FALSE, results='hide', warning=FALSE,message=FALSE}
 devtools::load_all()
+col  = '#1fb28a'
+col1 = '#212f3f'
 ```
 
 ## The HydroData object
 
-All `HydroData` **find** and **get** functions return objects of class `HydroData`. This page covers the key components of this class which, at its core, are a list of features related to the query defining the object. All objects range is size from 4 to 9 elements and include (1) metadata (2) data (3) ancillary elements.
+All `HydroData` **find** and **get** functions return objects of class `HydroData`. This page covers the key components of this class which, at its core, is a list of features related to the query defining the object. All objects range is size from 4 to 9 elements and include (1) metadata (2) data (3) ancillary elements.
 
 ### Getting a HydroData Object
 
-In this example, we query a `HydroData` object for all USGS stations within a 100 square mile (10 by 10 miles) region centered on UCSB. If you haven't reviewed how AOI queries are defined in `HydroData` I sugest skimming the [AOI page](aoi.html) first. 
+In this example, we query a `HydroData` object for all USGS stations within a 100 square mile (10 by 10 miles) region centered on UCSB. If you haven't reviewed how AOI queries are defined  I suggest first skimming the [Defining an AOI](aoi.html) page. 
+
+<br>
+
+Query the `HydroData` Object:
 
 ```{r, message = FALSE}
 usgs = findUSGS(clip_unit = list("UCSB", 10, 10), basemap = TRUE, boundary = TRUE, ids = T)
@@ -20,89 +26,105 @@ usgs = findUSGS(clip_unit = list("UCSB", 10, 10), basemap = TRUE, boundary = TRU
 
 ### Metadata
 
-All `HydroData` objects are defined by a core metadata includes
+All `HydroData` objects include core metadata:
 
 * An AOI Description (*default*)
-* The source of data (*default*)
+* The source of the data (*default*)
 * A projection CRS object (*default* if spatial) 
 * A time period (*default* if Observation)
 * Parameter list (*default* if Observation)
 
-The first element of a HydroData object is a plain-english text string describing the location of the AOI. It is indexed under the **name** element:
+The **name** element of a `HydroData` object contains a plain-English text string describing the location of the AOI. 
 
 ```{r}
 usgs$name
 ```
 
-The second element is a text string detailing the source of the data in the `HydroData` object. It is indexed under the **source** element:
+<br> 
+
+The **source** element contains a text string describing the source of the data.
 
 ```{r}
 usgs$source
 ```
 
-If the `HydroData` object contains `spatial` or `raster` data, the third element is the data projection. It is indexed under the **proj** element:
+If the `HydroData` object contains `spatial` or `raster` data, a **proj** element will be added.
 
 ```{r}
 usgs$proj
 ```
 
-If the `HydroData` object contains observation data (`data.frame`), the third element is the data time span, and the fourth element is the parameters in the data. These are indexed under the **timespan** and **param** elements respectivly:
+However, if the `HydroData` object contains observation data (`data.frame`), a **timespane** and **param** element will be added detailing the time period and parameters contained in the object.
 
 ### Data
 
-The data element holds the actual data queried and can be in the for. This data can be a `data.frame`, `sp`, or `raster` object.
+The data element holds the actual data queried and can be in the form of a `data.frame`, `sp`, or `raster` object.
 
 ```{r}
 str(usgs$nwis, max = 2)
 ```
 
 ```{r, echo = FALSE}
-leaflet(option=leafletOptions(zoomControl= FALSE, minZoom = 12, maxZoom = 12)) %>% addProviderTiles(providers$CartoDB.Positron) %>% addMarkers(data = usgs$nwis)
+
+icon.b <- makeAwesomeIcon(icon = 'home', iconColor = col,  markerColor = 'gray')
+leaflet(option=leafletOptions(zoomControl= FALSE, minZoom = 13, maxZoom = 13)) %>% 
+  addProviderTiles(providers$CartoDB.Positron) %>%
+    addAwesomeMarkers(icon = icon.b, lat = usgs$nwis$lat_reachCent , lng = usgs$nwis$lon_reachCent)
+
 ```
 
 ### Ancillary Elements
 
-Four different ancillary elements can be added to a `HydroData` query using the optional parameters and include:
+Four ancillary elements can be added to a `HydroData` query using the optional function parameters thees include:
 
 * A basemap
 * An AOI shapefile 
 * A shapefile of intersecting counties
-* IDs of station information
+* Critical station IDs/names
 
-If the parameter `basemap = TRUE` a basemap will be added to the `HydroData` object. Four different map types can be added depending on the parameter specifification.
+If `basemap = TRUE` in any function, a basemap will be added to the `HydroData` object. Four different map types can be added depending on what `basemap =` is set to.
 
   * 't': a terrain imagery basemap (Default if `basemap = TRUE`)
-  * 's': a sattilite imagery basemap (eg `basemap = ';s`)
+  * 's': a satellite imagery basemap (eg `basemap = 's'`)
   * 'h': a hybrid imagery basemap
-  * 'r': a roadmap imagery basemap
+  * 'r': a road map basemap
   
-An example of each of these can be seen in the image below for this example: 
+<br>
+  
+The basemap will be indexed under **basemap** and an example of each type can be seen below:
 
-![](img/basemaps.png)
+<br>
+<left>
+<a ><img alt = '' width='800' src='img/basemaps.png' /></a>
+</left>
+<br>
+<br>
 
-If the parameter `boundary = TRUE` then two addtional elements will be added to the `HydroData` object:  
-(1) a shapefile of the AOI described under 'name' and   
-(2) a shapefile of the intersecting counties.
-
-The AOI shapefile is stored under the 'boundary' element:
+If `boundary = TRUE`, a shapefile of the AOI and a shapefile of the intersecting counties will be added (*if differenet*). The AOI shapefile is stored under the **boundary** element,
 
 ```{r}
 usgs$boundary
 ```
 
 ```{r, echo = FALSE}
-leaflet(option=leafletOptions(zoomControl= FALSE, minZoom = 10, maxZoom = 10)) %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = usgs$boundary,fillColor = "transparent", color = 'red', weight = 3)
+leaflet(option=leafletOptions(zoomControl= FALSE, minZoom = 10, maxZoom = 10)) %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = usgs$boundary,fillColor = col, color = col1, weight = 3)
 ```
 
-and the intersecting county, or fiat boundaries, are stored under the 'fiat' element
+<br>
+
+and the intersecting county, or fiat boundaries, are stored under the **fiat** element.
+
 ```{r}
 usgs$fiat
 ```
 
 ```{r, echo = FALSE}
-leaflet(option=leafletOptions(zoomControl= FALSE, minZoom = 8, maxZoom = 8)) %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = usgs$fiat,fillColor = "transparent", color = 'red', weight = 3)
+leaflet(option=leafletOptions(zoomControl= FALSE, minZoom = 7, maxZoom = 7)) %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = usgs$fiat,fillColor = col, color = col1, weight = 3)
 ```
 
+<br>
+
+Finally if `ids = TRUE` then the key identifiers for each element will be stored. For example, in a USGS station `HydroData` object, the gage IDs will be stored. Primarily this layer is to provide easier access to identifying features for use in [get observatio function](get_tab.html).
 
 ```{r}
 usgs$ids
@@ -110,7 +132,7 @@ usgs$ids
 
 ### Overall 
 
-The complete structure of this example `HydroData` object querying USGS stations within a 100 square mile region centered on UCSB can be seen using `str()`. In total, the complete object is 12.7 MB.
+The complete structure of this example `HydroData` object can be seen using `str()` and in total, the complete object is 12.7 MB.
 
 ```{r}
 str(usgs, max = 1)
@@ -118,4 +140,4 @@ str(usgs, max = 1)
 
 ### Next Steps
 
-After understadning what a `HydroData` object is, and what it can store/query, I suggest checking out how queries can be built for [Finding Observation Station](find.html), [Getting Observation data](get_tab.html),  [Getting Vector data](get_vec.html), and [Getting Raster Data](get_rast.html).
+After understanding what a `HydroData` object is, and what it can store/query, I suggest checking out how queries can be built for [Finding Observation Station](find.html), [Getting Observation data](get_tab.html),  [Getting Vector data](get_vec.html), and [Getting Raster Data](get_rast.html).

@@ -4,18 +4,31 @@ pagetitle: HydroData for R
 
 ```{r echo = FALSE, results='hide', warning=FALSE,message=FALSE}
 devtools::load_all()
+library(knitr)
+library(kableExtra)
 ```
 
 ## Finding Stations 
 
-Finding data for an Area of Interest (AOI) often requires finding what observation stations are avialable. The `Hydrodata` **find** functions can locate stations from six major networks including:
+Finding data for an Area of Interest (AOI) often requires finding what observation stations are avialable. The `Hydrodata` **find** functions can locate stations from six major networks as listed below.
 
-1.  Airport Weather Stations (Open Flights)
-2.  Global Historic Climatology Network (NOAA)
-3.  National Water Information System (USGS)
-4.  National Inventory of Dams (USACE)
-5.  Snow Telemetry (SNRCS)
-6.  Reservoirs (USGS)
+```{r echo = F, message = F}
+text_tbl <- data.frame(
+`Stations` = c("Airport Weather Stations", "Global Historic Climatology Network", "National Water Information System","National Inventory of Dams", "Snow Telemetry", "Reservoirs"),
+ Source = c("Open Flights", "NOAA", "USGS", "USACE", "NRCS", "USGS"),
+ Function = c("findAirports( )", "findGHCN( )", "findUSGS( )", "findNID( )", "findSnotel( )", "findReservoir( )" )
+) 
+
+rownames(text_tbl) = paste0(c(1:6), ".")
+
+text_tbl$Function <- cell_spec(text_tbl$Function, background ="lightgray", color = "black")
+
+
+kable(text_tbl, escape = F, format = "html") %>%
+   kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
+
+```
+
 
 If you have not yet learned how AOI queries are defined in `HydroData` I sugest reviewing the [AOI page](aoi.html) first. 
 
@@ -23,7 +36,7 @@ What follows are basic examples for quering information from these 6 sources for
 
 ### Finding Airports
 
-Airports offer a network of daily meterological observation stations. [Open flights](   ) has global metadata for 7,184 airports, the majority of which report information to WeatherUnderground. 
+Airports offer a network of daily meterological observation stations which are accessable via WeatherUnderground. [Open flights](   ) has global metadata for 7,184 airports, the majority of which report information to WeatherUnderground. 
 
 Here's a basic example for subseting the Open for all airports in El Paso County, Colorado:
 
@@ -32,32 +45,38 @@ ap = findAirports(clip_unit = list("UCSB", 10, 10), ids = TRUE)
 explore(ap)
 
 ```
-Interacting with this map can show where/if airports exist within an AOI. 
-
-By clicking on each icon you can see the name, city, and four digit ICAO identifier associated with each airport. 
-
-Clicking of the name will direct you to the WeatherUnderground webpage assocaited with airport where.
+Interacting with this map can show where/if airports exist within an AOI. By clicking on each icon you can see the name, city, and four digit ICAO identifier associated with each airport. Further, each nameis hyperlinked to the  WeatherUnderground webpage assocaited with airport.
 
 To get data from these airport stations you can use the `getWU()` function which is covered in greater detail in the [Get Observation Data](get_tab.html) page. 
 
 ```{r}
 ap$ids
+
+unique(HydroData::ghcn_stations$START_YEAR)
 ```
 
 
 ### Finding Global Historic Climatology Network
 
+The [GHCN (Global Historical Climatology Network)](  ) is an integrated database of daily climate summaries from land surface stations across the globe. `HydroData` offers access to data for 105,394 stations, offering over 137 unique measurments, the majority of which report information to WeatherUnderground. 
+
+Some stations go back till 1836!
+
+Here's a basic example for subseting all GHCN stations near UCSB.
+
 ```{r, message = F}
 findGHCN(clip_unit = list("UCSB", 10, 10)) %>% explore()
 ```
 
-Filtering GHCH HydroData object by parameter
+You can also filter GHCH queries by parameter.
 
 ```{r, echo = TRUE, message = F}
 findGHCN(clip_unit = list("UCSB", 10, 10),  param = "PRCP") %>% explore()
 ```
 
 ### National Water Information System (USGS)
+
+The U.S. Geological Survey's (USGS) National Water Information System (NWIS) is a comprehensive and distributed application that supports the acquisition, processing, and long-term storage of water data.
 
 ```{r, message = F}
 findUSGS(clip_unit = list("UCSB", 10, 10)) %>% explore()
