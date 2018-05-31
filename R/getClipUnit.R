@@ -54,11 +54,14 @@ getClipUnit = function(location = NULL, width = NULL, height = NULL, origin = NU
     if(is.null(origin)){ origin = 'center' }
 
     if(class(location) == "character"){
-      location = suppressMessages( dismo::geocode(location, output = 'latlon') )
-      location = c(location$lat, location$lon)
-    }
 
-  ?dismo::geocode()
+      trash <-  capture.output(
+        suppressMessages(
+          loc <-  dismo::geocode(location, output = 'latlon' )
+          )
+        )
+      location = c(loc$lat, loc$lon)
+     }
 
     if(origin == "center"){
       df = (height/2)/69                               # north/south

@@ -8,48 +8,60 @@ devtools::load_all()
 
 ## Introduction
 
-All environmental and hydrologic research begins with data; the question of what data is available; and the challenge of gathering it. HydroData is designed to help users find, get, visualize and use a range of Earth Systems data providing functions to automatically download; interact with; and share data.
+All environmental and hydrologic research begins with data; the question of what data is available; and the challenge of getting it in a format that is useful. `HydroData` is designed to help users find, get, and visualize a range of earth systems data providing functions to automatically download; interact with; and share data.
+<br>
 
 ### Features
 
-* Access to 19 data sources with a consistent query
+* Access to 19 data sources through a consistent query
 * Helps *find* where data is available and  *get* the data you want
-* Consistent data formats, projections, and documentation within all `HydroData` object
+* Harmonious data formats, projections, and documentation within all `HydroData` objects
 * Interactive mapping and plotting via `leaflet` and `dygraphs`
-* Embed maps and data in [R Markdown](http://rmarkdown.rstudio.com/); [Shiny](http://shiny.rstudio.com/); or export HTML files for easy documentation, reproducabilty, and sharing.
-* Export data for analysis in other platforms like python, ArcMap or QGIS
+* Embed maps and data in [Rmarkdown](http://rmarkdown.rstudio.com/); [Shiny](http://shiny.rstudio.com/); or  HTML documents for easy documentation, reproducabilty, and sharing.
+* Ability to export data for use in other platforms like Python, ArcMap or QGIS
+<br>
 
 ### Installation
 
-To install this package, run this command at your R prompt:
-
+To install `HydroData`, run this command at your R prompt:
+<br>
 ```{r eval=FALSE}
-# to install the development version from Github, run
 devtools::install_github("mikejohnson51/HydroData")
 ```
 
-Once installed, you can use this package in the R console, within [R Markdown](http://rmarkdown.rstudio.com/) documents, and within [Shiny](http://shiny.rstudio.com/) applications.
+Once installed, you can use the package in the R console, within [R Markdown](http://rmarkdown.rstudio.com/) and  [Shiny](http://shiny.rstudio.com/) applications.
+<br>
 
 ### Basic Usage
 
-You use HydroData with these basic steps:
+You use `HydroData` with these basic steps:
 
-1. Define your Area of Interest (AOI).
+1. Define an Area of Interest (AOI).
 2. "Find" and "Get" data for that AOI using functions (e.g. `findUSGS`, `getNED`)
-3. Explore spatial and time series data interactively (e.g. `explore`, `inspect`)
+3. Explore spatial and time series data interactively (e.g. `explore`,  `inspect`)
 4. Repeat as desired.
-5. Analysis data or export for analysis in platform of choice
+5. Analyze data or export for external use
 
+<br>
 Here's a basic example for all finding USGS stream flow gages in Santa Barbara County, California:
+<br>
 
-```{r width = 120, height = 30}
+```{r, message = FALSE}
 library(HydroData)
 findUSGS(state = 'CA', county = "Santa Barbara") %>% explore()
 ```
 
 ### Next Steps
 
-Before exploring the rest of this site, I suggest checking out the [sources](sources.html) page to get a better idea of where data comes from, and the [Defining an AOI](aoi.html) page as it describes the core of a HydroData query. 
-
-I then suggest checking out [HydroData Object](hydrodata.html) page to get a sense of the structure of all HydroData objects; the [finding data](find.html) page to get a better sense of what data stations and spatial features `HydroData` can help you find. The [getting data](get.html) page to get a better sense of what data `HydroData` can help you get.
+Before exploring the rest of this site, I suggest checking out the [sources](sources.html) page to get a better idea of what data is available and where data comes from, and the [Defining an AOI](aoi.html) page as it describes the core of a `HydroData` query. <br>
+<br>
+I then suggest checking out [HydroData Object](hydrodata.html) page to become familiar with the structure of all `HydroData` objects, and then the [find Station](find.html), [get obsevation data](get_tab.html), [get vector data](get_vec.html), [get raster data](get_rast.html),  to get a better sense of what data stations and spatial features `HydroData` can help you find. 
+<br>
+<br>
+Finally, I would suggest checking out the [vizualization page](viz.html) to get a better sense of how to explore and 
+inspect `HydroData` objects interactively. 
+<br>
+<br>
+Please feel free to use [Github issues](https://github.com/mikejohnson51/HydroData/issues) to file bug reports or feature requests or <a href="mailto:mike.johnson@geog.ucsb.edu?Subject=HydroData%20Inquiry" target="_top">email me</a> directly with questions or collaboration ideas. 
+<br>
 
