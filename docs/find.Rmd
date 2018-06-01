@@ -95,7 +95,8 @@ findSnotel(state = "CA", county = "Modoc") %>% explore()
 ```{r, message = F}
 findReservoir(clip_unit = list("UCSB", 30, 30)) %>% explore()
 ```
-### Next Steps
+
+###Next Steps
 
 While this section empahsizes finding key stations within an AOI, and getting there unique identifiation code via `ids = TRUE` the [Getting Observation Data](get_tab.html) page focusing on using these ids to query timeseries, observation data. 
 
