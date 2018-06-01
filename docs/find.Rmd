@@ -4,7 +4,6 @@ pagetitle: HydroData for R
 
 ```{r echo = FALSE, results='hide', warning=FALSE,message=FALSE}
 devtools::load_all()
-library(knitr)
 library(kableExtra)
 ```
 
@@ -29,40 +28,34 @@ kable(text_tbl, escape = F, format = "html") %>%
 
 ```
 
-
 If you have not yet learned how AOI queries are defined in `HydroData` I sugest reviewing the [AOI page](aoi.html) first. 
 
 What follows are basic examples for quering information from these 6 sources for a region centered on the University of California, Santa Barbara (UCSB).
 
 ### Finding Airports
 
-Airports offer a network of daily meterological observation stations which are accessable via WeatherUnderground. [Open flights](   ) has global metadata for 7,184 airports, the majority of which report information to WeatherUnderground. 
+Airports offer a network of daily meterological observation stations which are accessable via WeatherUnderground. [Open flights](https://openflights.org/data.html) has global metadata for 7,184 airports, the majority of which report information to WeatherUnderground. 
 
 Here's a basic example for subseting the Open for all airports in El Paso County, Colorado:
 
 ```{r, message = F}
 ap = findAirports(clip_unit = list("UCSB", 10, 10), ids = TRUE)
 explore(ap)
-
 ```
+
 Interacting with this map can show where/if airports exist within an AOI. By clicking on each icon you can see the name, city, and four digit ICAO identifier associated with each airport. Further, each nameis hyperlinked to the  WeatherUnderground webpage assocaited with airport.
 
 To get data from these airport stations you can use the `getWU()` function which is covered in greater detail in the [Get Observation Data](get_tab.html) page. 
 
 ```{r}
 ap$ids
-
-unique(HydroData::ghcn_stations$START_YEAR)
 ```
-
 
 ### Finding Global Historic Climatology Network
 
-The [GHCN (Global Historical Climatology Network)](  ) is an integrated database of daily climate summaries from land surface stations across the globe. `HydroData` offers access to data for 105,394 stations, offering over 137 unique measurments, the majority of which report information to WeatherUnderground. 
+The [GHCN (Global Historical Climatology Network)](https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn) is an integrated database of daily climate summaries from land surface stations across the globe. `HydroData` offers access to data for 105,394 stations, offering over 137 unique measurments, with some reporting back to 1836!
 
-Some stations go back till 1836!
-
-Here's a basic example for subseting all GHCN stations near UCSB.
+Here's a basic example for find GHCN stations near UCSB.
 
 ```{r, message = F}
 findGHCN(clip_unit = list("UCSB", 10, 10)) %>% explore()

@@ -187,6 +187,100 @@ $(document).ready(function () {
 
 <div id="getting-observation-data" class="section level2">
 <h2>Getting Observation Data</h2>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Stations
+</th>
+<th style="text-align:left;">
+Source
+</th>
+<th style="text-align:left;">
+Function
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<ol style="list-style-type: decimal">
+<li></td>
+<td style="text-align:left;">
+WeatherUnderground
+</td>
+<td style="text-align:left;">
+WeatherUnderground
+</td>
+<td style="text-align:left;">
+<span style="     color: black;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: lightgray;">getWU( )</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<ol start="2" style="list-style-type: decimal">
+<li></td>
+<td style="text-align:left;">
+Global Historic Climatology Network
+</td>
+<td style="text-align:left;">
+NOAA
+</td>
+<td style="text-align:left;">
+<span style="     color: black;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: lightgray;">getGHCN( )</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<ol start="3" style="list-style-type: decimal">
+<li></td>
+<td style="text-align:left;">
+Snow Telemetry
+</td>
+<td style="text-align:left;">
+NRCS
+</td>
+<td style="text-align:left;">
+<span style="     color: black;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: lightgray;">getUSGS( )</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<ol start="4" style="list-style-type: decimal">
+<li></td>
+<td style="text-align:left;">
+National Water Information System
+</td>
+<td style="text-align:left;">
+USGS
+</td>
+<td style="text-align:left;">
+<span style="     color: black;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: lightgray;">getSnotel( )</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<ol start="5" style="list-style-type: decimal">
+<li></td>
+<td style="text-align:left;">
+Water Use
+</td>
+<td style="text-align:left;">
+USGS
+</td>
+<td style="text-align:left;">
+<span style="     color: black;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: lightgray;">getWaterUse( )</span>
+</td>
+</tr>
+</tbody>
+</table></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol>
 <div id="get-ghcn-observation-data" class="section level3">
 <h3>Get GHCN Observation Data</h3>
 <pre class="r"><code>ghcn = findGHCN(clip_unit = list(&quot;UCSB&quot;, 10, 10), param = &quot;TMIN&quot;, ids = T)
@@ -351,7 +445,7 @@ USW00023190
 2018-05-29
 </td>
 <td style="text-align:right;">
-NA
+128
 </td>
 </tr>
 <tr>
@@ -398,7 +492,7 @@ NA
 <pre><code>## 5 snotel stations found within AOI</code></pre>
 <pre><code>## Returned list includes: snotel shapefile, and list of station IDs</code></pre>
 <pre class="r"><code>data = getSnotel(IDs = snow$ids[1])</code></pre>
-<pre><code>## 12313 Snotel values for station 301 downloaded (1/1)</code></pre>
+<pre><code>## 12314 Snotel values for station 301 downloaded (1/1)</code></pre>
 <table class="table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -638,27 +732,7 @@ Flow_cd
 <tbody>
 <tr>
 <td style="text-align:left;">
-73410
-</td>
-<td style="text-align:left;">
-USGS
-</td>
-<td style="text-align:left;">
-11120500
-</td>
-<td style="text-align:left;">
-2018-05-24
-</td>
-<td style="text-align:right;">
-0.01
-</td>
-<td style="text-align:left;">
-P
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-73411
+73413
 </td>
 <td style="text-align:left;">
 USGS
@@ -678,7 +752,7 @@ P
 </tr>
 <tr>
 <td style="text-align:left;">
-73412
+73414
 </td>
 <td style="text-align:left;">
 USGS
@@ -698,7 +772,7 @@ P
 </tr>
 <tr>
 <td style="text-align:left;">
-73413
+73415
 </td>
 <td style="text-align:left;">
 USGS
@@ -718,7 +792,7 @@ P
 </tr>
 <tr>
 <td style="text-align:left;">
-73414
+73416
 </td>
 <td style="text-align:left;">
 USGS
@@ -738,7 +812,7 @@ P
 </tr>
 <tr>
 <td style="text-align:left;">
-73415
+73417
 </td>
 <td style="text-align:left;">
 USGS
@@ -748,6 +822,26 @@ USGS
 </td>
 <td style="text-align:left;">
 2018-05-29
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:left;">
+P
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+73418
+</td>
+<td style="text-align:left;">
+USGS
+</td>
+<td style="text-align:left;">
+11120500
+</td>
+<td style="text-align:left;">
+2018-05-30
 </td>
 <td style="text-align:right;">
 0.00

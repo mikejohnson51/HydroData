@@ -34,8 +34,10 @@
 findLatLong = function(){
 
   ret <- rjson::fromJSON(readLines('http://freegeoip.net/json/', warn=FALSE))
-
   coord = data.frame(lat = ret$latitude, lon = ret$longitude)
 
 return(coord)
 }
+
+
+

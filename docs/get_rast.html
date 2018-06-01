@@ -22,6 +22,7 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
@@ -186,6 +187,85 @@ $(document).ready(function () {
 
 <div id="getting-raster-data" class="section level2">
 <h2>Getting Raster Data</h2>
+<table class="table table-striped table-hover table-responsive" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+Data
+</th>
+<th style="text-align:left;">
+Source
+</th>
+<th style="text-align:left;">
+Function
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+<ol style="list-style-type: decimal">
+<li></td>
+<td style="text-align:left;">
+Cropland Data Layers
+</td>
+<td style="text-align:left;">
+USDA
+</td>
+<td style="text-align:left;">
+<span style="     color: black;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: lightgray;">getNHD( )</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<ol start="2" style="list-style-type: decimal">
+<li></td>
+<td style="text-align:left;">
+National Elevation Dataset
+</td>
+<td style="text-align:left;">
+USGS
+</td>
+<td style="text-align:left;">
+<span style="     color: black;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: lightgray;">getHUC( )</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<ol start="3" style="list-style-type: decimal">
+<li></td>
+<td style="text-align:left;">
+National Landcover Dataset
+</td>
+<td style="text-align:left;">
+USGS
+</td>
+<td style="text-align:left;">
+<span style="     color: black;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: lightgray;">getWaterbodies( )</span>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+<ol start="4" style="list-style-type: decimal">
+<li></td>
+<td style="text-align:left;">
+Koppen Climate Classification
+</td>
+<td style="text-align:left;">
+Center for Climate Change and Infectious Disease
+</td>
+<td style="text-align:left;">
+<span style="     color: black;border-radius: 4px; padding-right: 4px; padding-left: 4px; background-color: lightgray;">getRoads( )</span>
+</td>
+</tr>
+</tbody>
+</table></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol>
 <div id="crop-layers-form-usda" class="section level3">
 <h3>Crop Layers form USDA</h3>
 <pre class="r"><code>CLD = getCLD(clip_unit = list(&quot;University of Alabama&quot;, 10, 10), year = 2016)

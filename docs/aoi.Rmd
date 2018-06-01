@@ -102,7 +102,7 @@ GC_name = getAOI(clip_unit = list("grand canyon", 10, 10))
 GC_lat_lon = getAOI(clip_unit = list(36.0544, -112.1401, 10, 10))
 ```
 
-```{r, echo = FALSE}
+```{r echo = FALSE}
 
 latlon = "<strong>Query by Lat Long</strong>"
 API = "<strong>Query by Name</strong>"
