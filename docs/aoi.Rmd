@@ -1,5 +1,6 @@
 ---
 pagetitle: HydroData for R
+theme: flatly
 ---
 
 ```{r echo = FALSE, results='hide', warning= FALSE,message=FALSE}
