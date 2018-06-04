@@ -310,7 +310,6 @@ if (!is.null(fiat)) {
       highlight = highlightOptions(
         weight = 10,
         color = "#666",
-        dashArray = "",
         fillOpacity = 0.7,
         bringToFront = TRUE)
       )
@@ -393,7 +392,6 @@ if (!is.null(fiat)) {
       highlight = highlightOptions(
         weight = 5,
         color = "darkred",
-        dashArray = "",
         fillOpacity = 0.7,
         bringToFront = TRUE
       )
@@ -420,7 +418,6 @@ if (!is.null(fiat)) {
       highlight = highlightOptions(
         weight = 10,
         color = "#666",
-        dashArray = "",
         fillOpacity = 0.7,
         bringToFront = TRUE
       )
@@ -563,7 +560,6 @@ if (!is.null(fiat)) {
       highlight = highlightOptions(
         weight = 5,
         color = "darkred",
-        dashArray = "",
         fillOpacity = 0.7,
         bringToFront = TRUE
       )
