@@ -10,21 +10,21 @@
 #' Mike Johnson
 #' @export
 
-
 getGHCN = function(IDs = NULL,
                    parameters = NULL,
-                   years = NULL) {
-  DATA = list()
+                   years = NULL,
+                   save = FALSE) {
+
 
   if (is.null(parameters)) {
-      p <- c("PRCP", "TMAX", "TMIN", "SNOW","SNWD")
-    } else {
-      p = toupper(parameters)
-    }
+    p <- c("PRCP", "TMAX", "TMIN", "SNOW","SNWD")
+  } else {
+    p = toupper(parameters)
+  }
 
- # Download and rbind all files ...
+  # Download and rbind all files ...
 
-# filter by Param
+  # filter by Param
   daily = NULL
 
   for (i in seq_along(IDs)) {
@@ -34,7 +34,7 @@ getGHCN = function(IDs = NULL,
             ".dly",
             sep = "")
     dest3 = tempfile()
-    download.file(url, destfile = dest3)
+    download.file(url, destfile = dest3, quiet = TRUE)
 
     daily.temp = readr::read_fwf(
       dest3,
@@ -49,51 +49,60 @@ getGHCN = function(IDs = NULL,
     daily = rbind(daily, daily.temp)
   }
 
-## Check for Errors
+  ## Check for Errors
 
-    daily = daily %>% dplyr::filter(PARAMETER %in% toupper(p))
+  daily = daily %>% dplyr::filter(PARAMETER %in% toupper(p))
 
 
-    missing.elements <- setdiff(toupper(p), unique(daily$PARAMETER))
+  missing.elements <- setdiff(toupper(p), unique(daily$PARAMETER))
 
-    if (length(missing.elements) > 0){
-      warning(paste(missing.elements, collapse = ", "),
-              "not avaialable for stations...")
+  if (length(missing.elements) > 0){
+    warning(paste(missing.elements, collapse = ", "),
+            " not avaialable for stations...")
+  }
+
+  if (!is.null(years)) {
+    daily = daily %>% filter(YEAR %in% years)
+  }
+
+  # Set missing values from -9999 to NA
+  daily[daily == -9999] <- NA
+
+
+  ## Separate by element
+  param = p[!(p %in% missing.elements)]
+
+  long = suppressWarnings( reshape(daily,
+                                    idvar = c("site_no", "YEAR", "MONTH", "PARAMETER"),
+                                    timevar = "DAY",
+                                    v.names = "Value",
+                                    varying = list(names(daily)[5:35]),
+                                    direction = 'long',
+                                    new.row.names = NULL)) %>%
+    dplyr::mutate(Date = as.Date(with( daily, paste(YEAR, MONTH, DAY, sep = "-")), "%Y-%m-%d"),agency_code = "NOAA") %>%
+    dplyr::arrange(PARAMETER, Date)  %>%
+    dplyr::select(-YEAR,-MONTH,-DAY)
+
+  wide <- reshape(as.data.frame(long), v.names = "Value", idvar = c("site_no", "Date"),
+                  timevar = "PARAMETER", direction = "wide")
+
+  wide = wide[!is.na(wide$Date),]
+
+  colnames(wide) = c("site_no", "Date", "agency_cd", param)
+
+  if(save){
+      save.file(
+        data = wide,
+        state = state,
+        county = county,
+        clip_unit = clip_unit,
+        agency  = 'NOAA',
+        source  = "GHCN",
+        dataset = "GCHN",
+        other   = param
+      )
     }
 
-    if (!is.null(years)) {
-      daily = daily %>% filter(YEAR %in% years)
-    }
-
-    # Set missing values from -9999 to NA
-    daily[daily == -9999] <- NA
-
-
-## Separate by element
-    param = p
-    fin <- lapply(p, function(param) {
-      ## Select parameters of interset
-      test =   daily %>%
-        dplyr::filter(PARAMETER == param) %>%
-        dplyr::select_(quote(-PARAMETER))
-
-      test = tidyr::gather(test, DAY, param,-site_no,-YEAR,-MONTH)
-      test = data.frame(test)
-
-      test2 = test %>%  dplyr::mutate(Date = as.Date(with(
-        test, paste(YEAR, MONTH, DAY, sep = "-")
-      ), "%Y-%m-%d"),
-      agency_code = "NOAA") %>%
-        dplyr::arrange(Date) # %>% dplyr::select(-YEAR,-MONTH,-DAY) %>%
-
-      test2 = test2[!is.na(test2$Date),]
-      test2 =  test2[c(1, 7, 6, 5)]
-      names(test2) = c("site_no", "agency_cd", "Date" , tolower(eval(param)))
-      test2 = test2[c("agency_cd", "site_no", "Date", tolower(eval(param)))]
-      return(test2)
-    })
-
-    names(fin) <- paste0(p)
-    return(fin)
+  return(wide)
 }
 

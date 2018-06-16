@@ -11,6 +11,8 @@ col1 = '#212f3f'
 
 ##Getting Observation Data 
 
+In the previous section we saw how the `HydroData` package can help find stations within an area of interest (AOI), alog with their unique identifying codes. In this section, we'll see how the `HydroData` package can help downlaod data from these stations. Data downlaod is faciliatied from 5 repositiries and can be called via the following functions. Each call requires the identification code from their respective networks:
+
 ```{r echo = FALSE, message = FALSE}
 text_tbl <- data.frame(
 `Stations` = c("WeatherUnderground", "Global Historic Climatology Network", "Snow Telemetry", "National Water Information System", "Water Use"),
@@ -27,13 +29,16 @@ kable(text_tbl, escape = F, format = "html") %>%
    kable_styling(bootstrap_options = c("striped", "hover", "responsive"))
 ```
 
-
 ### Get GHCN Observation Data
 
+To downlaod data from the [GHCN (Global Historical Climatology Network)](https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn) users can use thte `getGHCN()`. As input this function requires a vecotor of station IDs. They can be filtered according to parameter type and/or year -- the deafults for both is to include all parmeters and years avaialbe for each station. In this basic example we will idnetify the stations recording minimum temperture in a 10 mile by 10 mile region surrounding UCSB. We will then download the corresponding data for the first of these stations:
+
 ```{r, message = FALSE}
+# Find stations in AOI
 ghcn = findGHCN(clip_unit = list("UCSB", 10, 10), param = "TMIN", ids = T)
+
+# Get data for the first of these stations
 data = getGHCN(IDs = ghcn$ids[1])
-str(data, max = 1)
 ```
 
 ```{r, echo = FALSE}
@@ -43,8 +48,13 @@ kable(tail(data$TMIN, 10)) %>%
 
 ### Get Snotel meterological and snow pack data
 
+To get data from the NRCS SNOTEL network the same basic premise is followed: One must identify stations of interest, get their associated IDs and  call the appropriate get function. For this example, we will get data for the first station listed in Modoc County, California.
+
 ```{r}
+# Find available stations
 snow = findSnotel(state = "CA", county = "Modoc", ids = T)
+
+# Download data for the first of these ...
 data = getSnotel(IDs = snow$ids[1])
 ```
 
@@ -53,11 +63,13 @@ kable(head(data)) %>%
   kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
 ```
 
-### ### Get USGS Gages Information from NWIS server
+### Get USGS Gages Information from NWIS server
+
+To get data from the USGS NWIS systems we again follow the same premise. This time however we show how **find** and **get** functions can be nested to download all data is an AOI:
 
 ```{r, message = FALSE}
-usgs = findUSGS(clip_unit = list("UCSB", 10, 10), ids = T)
-flow = getUSGS(IDs = usgs$ids)
+
+flow = getUSGS(IDs = findUSGS(clip_unit = list("UCSB", 10, 10), ids = T)$ids)
 ```
 
 ```{r, echo = FALSE}
@@ -74,7 +86,8 @@ weather = getWU(IDs = ap$ids[1], year = 2017)
 
 ```{r, echo = FALSE}
 kable(head(weather)) %>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>%      scroll_box(width = "100%", height = "200px")
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive")) %>% 
+  scroll_box(width = "100%", height = "200px")
 ```
 
 ### Get USGS County Water Use data

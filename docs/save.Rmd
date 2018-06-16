@@ -8,6 +8,22 @@ pagetitle: HydroData for R
 
 ##Saving and Exporting
 
+`HydroData` facilitates the export of data and visulizations in either Shapefile, tiff, csv or HTML5 form (depending on its type). Each of these can be instigated using the `save` parameter in all **find**, **get**, and **viz** functions. An example of each is documented on this page.
+
+## Format 
+
+All data, regardless of the format, will be saved in a *HydroData* folder generated in the users working directory. For those new to R, the working directory can be found using `getwd()`.
+Within each Hydrodata folder an AOI subfolder is created nmaed by the AOI query used to generate it. Within each AOI folder will be subfolders for each issueing agency, and >>>>
+
+## Exporting Spatial Objects (spatial & raster)
+
+For this example lets save the HUC 
+
+## Exporting Observation Data (csv)
+
+## Exporting Maps and Timeseries
+
+
 
 
 

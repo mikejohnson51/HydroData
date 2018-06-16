@@ -2,7 +2,7 @@
 pagetitle: HydroData for R
 ---
 
-```{r echo = FALSE, results='hide', warning=FALSE,message=FALSE}
+```{r library, echo = FALSE, results='hide', warning=FALSE,message=FALSE}
 devtools::load_all()
 library(kableExtra)
 col  = '#1fb28a'
@@ -11,16 +11,16 @@ col1 = '#212f3f'
 
 ## Finding Stations 
 
-Finding data for an Area of Interest (AOI) often requires finding what observation stations are avialable. The `Hydrodata` **find** functions can locate stations from six major networks as listed below.
+Finding data for an Area of Interest (AOI) often requires finding available observation stations. The `Hydrodata` **find** functions can locate stations from the five major networks listed below.
 
-```{r echo = F, message = F}
+```{r Table, echo = F, message = F}
 text_tbl <- data.frame(
-`Stations` = c("Airport Weather Stations", "Global Historic Climatology Network", "National Water Information System","National Inventory of Dams", "Snow Telemetry", "Reservoirs"),
- Source = c("Open Flights", "NOAA", "USGS", "USACE", "NRCS", "USGS"),
- Function = c("findAirports( )", "findGHCN( )", "findUSGS( )", "findNID( )", "findSnotel( )", "findReservoir( )" )
+`Stations` = c("Airport Weather Stations", "Global Historic Climatology Network", "National Water Information System","National Inventory of Dams", "Snow Telemetry"),
+ Source = c("Open Flights", "NOAA", "USGS", "USACE", "NRCS"),
+ Function = c("findAirports( )", "findGHCN( )", "findUSGS( )", "findNID( )", "findSnotel( )")
 ) 
 
-rownames(text_tbl) = paste0(c(1:6), ".")
+rownames(text_tbl) = paste0(c(1:5), ".")
 
 text_tbl$Function <- cell_spec(text_tbl$Function, background ="lightgray", color = col1)
 
@@ -30,24 +30,26 @@ kable(text_tbl, escape = F, format = "html") %>%
 
 ```
 
-If you have not yet learned how AOI queries are defined in `HydroData` I sugest reviewing the [AOI page](aoi.html) first. 
+What follows are basic examples for querying information from these 5 sources for a region centered on the University of California, Santa Barbara (UCSB) (seen below). 
 
-What follows are basic examples for quering information from these 6 sources for a region centered on the University of California, Santa Barbara (UCSB).
+```{r AOI, echo = FALSE, message = FALSE}
+AOI = getAOI(clip_unit = list("UCSB", 10, 10))
+
+leaflet(option=leafletOptions(zoomControl= FALSE, minZoom = 11, maxZoom = 11)) %>% addProviderTiles(providers$CartoDB.Positron) %>% addPolygons(data = AOI,fillColor = col, color = col1, weight = 2)
+```
+
+If you haven't reviewed how to query a `HydroData` AOI, I suggest do so first [here](aoi.html). 
 
 ### Finding Airports
 
-Airports offer a network of daily meterological observation stations which are accessable via WeatherUnderground. [Open flights](https://openflights.org/data.html) has global metadata for 7,184 airports, the majority of which report information to WeatherUnderground. 
-
-Here's a basic example for subseting the Open for all airports in El Paso County, Colorado:
+Airports offer a network of daily meteorological observation stations made are accessible via WeatherUnderground. [Open flights](https://openflights.org/data.html) has global metadata for 7,184 airports, the majority of which report information to WeatherUnderground. Here's a basic example for subseting the Open Flights data set for our AOI:
 
 ```{r, message = F}
 ap = findAirports(clip_unit = list("UCSB", 10, 10), ids = TRUE)
 explore(ap)
 ```
 
-Interacting with this map can show where/if airports exist within an AOI. By clicking on each icon you can see the name, city, and four digit ICAO identifier associated with each airport. Further, each nameis hyperlinked to the  WeatherUnderground webpage assocaited with airport.
-
-To get data from these airport stations you can use the `getWU()` function which is covered in greater detail in the [Get Observation Data](get_tab.html) page. 
+Interacting with this map can show where/if airports exist. Clicking on each icon reveals the name (hyper linked to corresponding WeatherUnderground webpage), city, and four digit ICAO identifier associated with each airport. To get data from these stations you can use the `getWU()` function which is covered in greater detail on the [Get Observation Data](get_tab.html) page. 
 
 ```{r}
 ap$ids
@@ -55,49 +57,65 @@ ap$ids
 
 ### Finding Global Historic Climatology Network
 
-The [GHCN (Global Historical Climatology Network)](https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn) is an integrated database of daily climate summaries from land surface stations across the globe. `HydroData` offers access to data for 105,394 stations, offering over 137 unique measurments, with some reporting back to 1836!
-
-Here's a basic example for find GHCN stations near UCSB.
+The [GHCN (Global Historical Climatology Network)](https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn) is an integrated database of daily climate summaries from land surface stations across the globe. `HydroData` offers access to data for 105,394 stations, offering over 137 unique measurements, with some reporting back to 1836! Here's a basic example for the available stations in our AOI.
 
 ```{r, message = F}
-findGHCN(clip_unit = list("UCSB", 10, 10)) %>% explore()
+sta = findGHCN(clip_unit = list("UCSB", 10, 10)) 
 ```
 
-You can also filter GHCH queries by parameter.
+First, we can check check the names of the stations using the name slot:
+
+```{r}
+unique(sta$ghcn$NAME)
+```
+
+We can also find what parameters are offered in this area using the parameters slot: 
+
+```{r}
+unique(sta$ghcn$PARAMETER)
+```
+
+Any parameter element can be used to subset the existing HydroData object OR define a new query. Here we can look search only for the stations in our AOI reporting rainfall.
 
 ```{r, echo = TRUE, message = F}
 findGHCN(clip_unit = list("UCSB", 10, 10),  param = "PRCP") %>% explore()
 ```
 
+As we saw with the airport example, interacting with this map can show where/if GHCN stations exist in the AOI. Clicking on each icon reveals the site ID, name, parameter offered, and years of available data. To get data from these stations you can use the `getGHCN()` function which is covered in greater detail on the [Get Observation Data](get_tab.html) page. 
+
 ### National Water Information System (USGS)
 
-The U.S. Geological Survey's (USGS) National Water Information System (NWIS) is a comprehensive and distributed application that supports the acquisition, processing, and long-term storage of water data.
+The U.S. Geological Survey's (USGS) National Water Information System (NWIS) is a comprehensive and distributed application supporting the acquisition, processing, and long-term storage of water data. The backbone of this system is a network of gages. `HydroData` offers access to 6,897 of these. Here's a basic example for finding these stations for our AOI.
 
 ```{r, message = F}
 findUSGS(clip_unit = list("UCSB", 10, 10)) %>% explore()
 ```
 
+Interacting with this map can show where/if USGS stations exist within the AOI. Clicking on each icon reveals the site number (hyper linked to the corresponding NWIS webpage), site name and the respective NHD COMID. To get data from these stations you can use the `getUSGS()` function which is a `HydroData` wrapper around the USGS `dataRetrivial::readNWISdv` function. The use of this fucntion is covered in greater detail on the [Get Observation Data](get_tab.html) page. 
 
 ### National Inventory of Dams (USACE)
+
+The National Inventory of Dams (NID) is a congressionally authorized database documenting dams in the United States and its territories. It is maintained and published by the US Army Corps of Engineers and contains information about a dam's location, size, purpose, type, last inspection and regulatory facts. `HydroData` package offers access to 73,999 of these dams via Joseph Stachelek's `dams` package.
 
 ```{r, message = F}
 findNID(clip_unit = list("UCSB", 10, 10)) %>% explore()
 ```
 
+Interacting with this map can show where/if dams stations exist within the AOI. Clicking on each icon reveals the dams site ID, name, blacked river, owner, type, primary purpose and maximum storage volume. In the case of the UCSB AOI we find three dams all of which are primarily used for irrigation
+
 ### Snow Telemetry (SNRCS)
 
+SNOTEL is an automated system of snow pack and related climate sensors operated by the Natural Resources Conservation Service (NRCS)in the Western United States. All SNOTEL sites measure snow water content, accumulated precipitation, and air temperature. Some sites also measure snow depth, soil moisture and temperature, wind speed, solar radiation, humidity, and atmospheric pressure. `HydroData` offers access to 876 of these stations across 13 states. A basic example querying stations in Modoc County, CA follows:
+
 ```{r, message = F}
+
 findSnotel(state = "CA", county = "Modoc") %>% explore()
 ```
 
-### Reservoirs (USGS)
-
-```{r, message = F}
-findReservoir(clip_unit = list("UCSB", 30, 30)) %>% explore()
-```
+Interacting with this map can show where/if USGS stations exist within the AOI. Clicking on each icon reveals the site ID, name, elevation and date of first record. The `getSnotel()` function can be used to extract data for these stations and is covered in greater detail on the [Get Observation Data](get_tab.html) page. 
 
 ###Next Steps
 
-While this section empahsizes finding key stations within an AOI, and getting there unique identifiation code via `ids = TRUE` the [Getting Observation Data](get_tab.html) page focusing on using these ids to query timeseries, observation data. 
+While this section emphasizes finding stations within an AOI, and getting there unique identification code via `ids = TRUE` the [Getting Observation Data](get_tab.html) page focusing on using these ids to query time series, observation data. 
 
 

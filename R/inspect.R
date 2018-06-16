@@ -18,6 +18,7 @@
 #' @export
 #' @author Mike Johnson
 
+
 inspect = function(data = NULL,
                    timestep = 'daily',
                    param = NULL,
@@ -31,7 +32,7 @@ inspect = function(data = NULL,
     test3 = data[[eval(tolower(param))]]
     names(test3) = tolower(names(test3))
 
-  } else{
+  } else {
     test3 = data
     names(test3) = tolower(names(test3))
   }
@@ -103,7 +104,7 @@ inspect = function(data = NULL,
     )
   }
 
-  vals = vals %>% select(site_no, eval(param), date.agg)
+  vals = vals %>% dplyr::select(site_no, eval(param), date.agg)
 
   hhh = reshape(
     data = vals,

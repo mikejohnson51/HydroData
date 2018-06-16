@@ -7,33 +7,25 @@ save.file = function(data = NULL,
                      dataset = NULL,
                      other = NULL) {
 
-
   #### Define AOI name ###
-  if (!is.null(county) & length(county) < 3) {
-    AOI   = paste0(paste0(gsub(" ", "", county), collapse = "_"),
+  if (all(!is.null(county), length(county) < 3)) {
+    AOI   = paste0(paste0(gsub(" ", " ", county), collapse = "_"),
                    if (!is.null(county)) {
                      "_"
                    },
                    paste0(state, collapse = "_"))
-  } else if (!is.null(state) & length(state) < 3) {
+  } else if (all(!is.null(state), length(state) < 3)) {
     AOI = paste0(state, collapse = "_")
+
   } else if (!is.null(clip_unit)) {
     if (class(clip_unit[[1]]) == 'character') {
-      AOI = clip_unit[[1]]
-
-    }
-
-    if (class(clip_unit[[1]]) == 'numeric') {
-      AOI = suppressMessages(ggmap::revgeocode(
-        location = c(clip_unit[[2]], clip_unit[[1]]),
-        output = 'more'
-      ))
-      AOI = paste0(
-        gsub(" ", "", AOI$administrative_area_level_2),
-        "_",
-        gsub(" ", "", AOI$administrative_area_level_1),
-        collapse = '_'
-      )
+      AOI = paste(clip_unit[[1]], clip_unit[[2]], clip_unit[[3]], sep  = "_")
+    } else{
+      AOI = paste(round(clip_unit[[1]], 2),
+                  round(clip_unit[[2]], 2),
+                  clip_unit[[3]],
+                  clip_unit[[4]],
+                  sep  = "_")
     }
   }
 
@@ -84,7 +76,10 @@ save.file = function(data = NULL,
     bmap.file = paste0(raw.dir, "/", AOI, "/", "boundary", '/basemap.tif')
     if (!file.exists(bmap.file)) {
       if (grepl("raster", class(bmap)[1], ignore.case = TRUE)) {
-        raster::writeRaster(bmap, bmap.file, options = c('TFW=YES'), overwrite = TRUE )
+        raster::writeRaster(bmap,
+                            bmap.file,
+                            options = c('TFW=YES'),
+                            overwrite = TRUE)
       }
     }
 
@@ -110,7 +105,8 @@ save.file = function(data = NULL,
           obj = bound,
           dsn = bound.file,
           layer = "boundary",
-          driver = "ESRI Shapefile", overwrite_layer = TRUE
+          driver = "ESRI Shapefile",
+          overwrite_layer = TRUE
         )
       }
     }
@@ -146,23 +142,33 @@ save.file = function(data = NULL,
 
   data$ids = NULL
 
-# Save data
+  # Save data
   for (i in 1:length(data)) {
-
-     name = names(data)
+    name = names(data)
 
     if (!is.null(data[[i]])) {
       fin = data[[i]]
 
       spatial.file = paste0(raw.dir, "/", AOI, "/", agency, "/", source)
-      raster.file =  paste0(raw.dir, "/", AOI, "/", agency, "/", source, "/",
-                           if (!is.null(other)) {
-                             paste0(other[i], "_")
-                           },
-                           name[i],
-                           ".tif")
 
-      if (!file.exists(paste0(spatial.file, "/", name[[i]], ".shp")) & grepl("spatial", class(fin)[1], ignore.case = TRUE)) {
+      raster.file =  paste0(raw.dir,
+                            "/",
+                            AOI,
+                            "/",
+                            agency,
+                            "/",
+                            source,
+                            "/",
+                            if (!is.null(other)) {
+                              paste0(other[i], "_")
+                            },
+                            name[i],
+                            ".tif")
+
+      timeseries.file = paste0(raw.dir, "/", AOI, "/", agency, "/", source)
+
+      if (all(!file.exists(paste0(spatial.file, "/", name[[i]], ".shp")),
+          grepl("spatial", class(fin)[1], ignore.case = TRUE))) {
 
         if (grepl("spatialpolygons", class(fin)[1], ignore.case = TRUE)) {
           fin = as(fin, "SpatialPolygonsDataFrame")
@@ -176,15 +182,20 @@ save.file = function(data = NULL,
           fin = as(fin, "SpatialPointsDataFrame")
         }
 
-        rgdal::writeOGR( obj = fin, dsn = spatial.file, layer = name[[i]], driver = "ESRI Shapefile", overwrite_layer = TRUE )
-      }
+        rgdal::writeOGR(
+          obj = fin,
+          dsn = spatial.file,
+          layer = name[[i]],
+          driver = "ESRI Shapefile",
+          overwrite_layer = TRUE
+        )
 
-      if (!file.exists(paste0(raster.file)) &
-          grepl("raster", class(fin)[1], ignore.case = TRUE)) {
+      } else if (!file.exists(paste0(raster.file)) &
+                 grepl("raster", class(fin)[1], ignore.case = TRUE)) {
         raster::writeRaster(fin, raster.file, options = c('TFW=YES'))
+      } else if (class(data) == 'data.frame') {
+        write.csv(data, file = paste0(timeseries.file, "/", source,"_", paste0(other, collapse = "_"),".csv"))
       }
     }
   }
 }
-
-

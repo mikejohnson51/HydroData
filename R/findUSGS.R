@@ -88,7 +88,7 @@ findUSGS = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FA
 
   sp = sp[AOI,]
 
-  if (length(sp) == 0) { stop("0 USGS stations found in AOI") }
+  if (length(sp) == 0) { stop("0 stations found in AOI") }
 
   message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " USGS gages found within AOI")
 
