@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1530580412004.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "9E89D410",
+    "lastKnownWriteTime" : 1530584474,
+    "last_content_update" : 1530584474625,
+    "path" : "~/Documents/GitHub/refresh/R/utility_return_what.R",
+    "project_path" : "R/utility_return_what.R",
+    "properties" : {
+        "cursorPosition" : "22,27",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}

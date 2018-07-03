@@ -5,7 +5,7 @@
 \title{Find Airports}
 \usage{
 findAirports(state = NULL, county = NULL, clip_unit = NULL,
-  boundary = FALSE, basemap = FALSE, ids = FALSE, save = FALSE)
+  boundary = FALSE, ids = FALSE, save = FALSE)
 }
 \arguments{
 \item{state}{Full name(s) or two character abbriviation(s). Not case senstive}
@@ -16,6 +16,10 @@ findAirports(state = NULL, county = NULL, clip_unit = NULL,
 
 \item{boundary}{If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list}
 
+\item{ids}{If TRUE, returns a list of road names in AOI}
+
+\item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
+
 \item{basemap}{If TRUE, a basemap will be joined to returned list
 
  If a user wants greater control over basemap apperance replace TRUE with either:
@@ -25,10 +29,6 @@ findAirports(state = NULL, county = NULL, clip_unit = NULL,
 \item'h':  google hybrid basemap
 \item'r':  google roads basemap
 }}
-
-\item{ids}{If TRUE, returns a list of road names in AOI}
-
-\item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
 }
 \value{
 \code{findAirports} returns a named list of minimum length 1:
@@ -74,13 +74,6 @@ explore(ap)
 \code{\link{getWU}}
 
 \code{\link{explore}}
-
-Other HydroData 'find' functions: \code{\link{findClosestAirports}},
-  \code{\link{findGHCN}}, \code{\link{findHUC}},
-  \code{\link{findNHD}}, \code{\link{findNID}},
-  \code{\link{findReservoir}}, \code{\link{findRoads}},
-  \code{\link{findSnotel}}, \code{\link{findUSGS}},
-  \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson

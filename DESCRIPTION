@@ -1,52 +1,25 @@
 Package: HydroData
 Type: Package
 Title: HydroData
-Description: A set of function to find, pre-process, export and visualize land surface, infrastructural and station based datasets relevant to geography, hydrology, and earth system science. 
+Description: A set of functions to find, pre-process, export and visualize land surface, infrastructural and station based datasets relevant to geography, hydrology, and earth system science. 
 Version: 0.1.0
 Date: 2018-2-9
 Author: Mike Johnson [aut, cre]
 Maintainer: Mike Johnson <mike.johnson@geog.ucsb.edu>
 Depends:
     R(>= 3.3.0),
-    dygraphs,
-    leaflet,
-    sp,
-    raster
+    USAboundariesData
 Imports:
-    classInt,
-    dams,
-    datasets,
-    data.table,
+    AOI,
     dismo,
-    dplyr,
-    dataRetrieval,
-    ggmap,
-    htmltools,
-    htmlwidgets,
-    lubridate,
-    maptools,
     methods,
-    ncdf4,
-    prism,
-    RColorBrewer,
-    RCurl,
-    readr,
-    rgdal,
-    rgeos,
-    rjson,
-    rvest,
-    stats,
-    sf (>= 0.6-0),
-    tidyr,
-    USAboundaries,
+    sp,
     utils,
-    XML,
-    xml2,
-    xts,
-    zoo
-Suggests: testthat
-VignetteBuilder: utils
+    raster,
+    rgdal
+Remotes: mikejohnson51/AOI
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.0.1
+Suggests: testthat

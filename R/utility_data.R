@@ -1,0 +1,26 @@
+#' Airports
+#'
+#' Dataset containing information global Airports subset to the Daymet Domain
+#'
+#' @docType data
+#'
+#' @format a \code{dataframe} instance, 1 row per station with columns:
+#' \itemize{
+#' \item 'name':    A \code{character}  Name of airport. May or may not contain the City name.
+#' \item 'city':    A \code{character}  Main city served by airport. May be spelled differently from Name.
+#' \item 'country': A \code{character}  Country or territory where airport is located.
+#' \item 'IATA':    A \code{character}  3-letter IATA code
+#' \item 'ICAO':    A \code{numeric}    4-letter ICAO code
+#' \item 'lat':     A \code{numeric}    Latitude of airport
+#' \item 'lon':     A \code{numeric}    Longitude of airport
+#' }
+#'
+#' @source  \href{https://openflights.org/data.html}{OpenFlights}
+#'
+#' @examples
+#' \dontrun{
+#'  airports = HydroData::ap
+#' }
+#'
+
+"ap"

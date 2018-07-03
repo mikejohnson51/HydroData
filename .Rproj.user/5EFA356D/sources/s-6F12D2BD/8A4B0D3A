@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1530577709937.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4138604300",
+    "id" : "8A4B0D3A",
+    "lastKnownWriteTime" : 1530602919,
+    "last_content_update" : 1530602919856,
+    "path" : "~/Documents/GitHub/refresh/R/findAirports.R",
+    "project_path" : "R/findAirports.R",
+    "properties" : {
+        "cursorPosition" : "0,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : true,
+    "source_window" : "",
+    "type" : "r_source"
+}
