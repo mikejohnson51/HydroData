@@ -85,22 +85,6 @@ save.file = function(data = NULL,
     )
   }
 
-  # Save basemap if applicable
-  if (!is.null(data$basemap)) {
-    bmap = data$basemap
-    bmap.file = paste0(raw.dir, "/", AOI, "/", "boundary", '/basemap.tif')
-    if (!file.exists(bmap.file)) {
-      if (grepl("raster", class(bmap)[1], ignore.case = TRUE)) {
-        raster::writeRaster(bmap,
-                            bmap.file,
-                            options = c('TFW=YES'),
-                            overwrite = TRUE)
-      }
-    }
-
-    data$basemap = NULL
-  }
-
   # Save boundary file if applicable
   if (!is.null(data$boundary)) {
     bound = data$boundary
