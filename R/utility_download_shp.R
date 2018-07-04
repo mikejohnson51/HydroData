@@ -28,22 +28,20 @@ download.shp = function(URL, type) {
 
   sp = tryCatch(
     {
-      xx <- rgdal::readOGR(
+      xx <- suppressWarnings(rgdal::readOGR(
         list.files(td, pattern = '.shp$', full.names = TRUE),
         stringsAsFactors = FALSE,
         verbose = FALSE,
         pointDropZ = TRUE
-      ) %>% spTransform(AOI::HydroDataProj)
+      ) %>% spTransform(AOI::HydroDataProj))
     },
     error=function(e) {
       return(NULL)
-    },
-    warning=function(w) {
-      return(xx)
     }
   )
 
-  if(is.null(sp)){paste0("0 ", type, " found")} else {
+  if(is.null(sp)){
+    message(paste0("0 ", type, " found"))} else {
 
   message("All ", type," loaded: ",
             formatC(

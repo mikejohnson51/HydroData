@@ -97,9 +97,10 @@ findNHD = function(state = NULL,
   )
 
   sl = download.shp(URL = URL, type = 'NHD')
-  sl = sl[AOI, ]
 
-  if (length(sl) == 0) { stop("0 flowlines found in AOI") }
+  if (is.null(sl)) { stop("0 flowlines found in AOI") }
+
+  sl = sl[AOI, ]
 
   items = list( name = nameAOI(state, county, clip_unit),
                 source = "USGS CIDA",
