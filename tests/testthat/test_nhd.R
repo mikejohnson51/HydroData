@@ -6,6 +6,7 @@ test_that("findNHD throws correct errors", {
 
 test_that("check NHD routines", {
   clip <- try(findNHD(clip_unit = list("UCSB", 10, 10), save = TRUE))
+
   vec = c(is.list(clip))
   print(!inherits(vec,"try-error"))
   check = !inherits(vec,"try-error")

@@ -78,6 +78,7 @@
 #' @author Mike Johnson
 #'
 
+
 findNHD = function(state = NULL,
                    county = NULL,
                    clip_unit = NULL,

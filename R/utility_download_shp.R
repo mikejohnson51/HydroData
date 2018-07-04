@@ -39,6 +39,7 @@ download.shp = function(URL, type) {
       return(NULL)
     },
     warning=function(w) {
+      return(xx)
     }
   )
 
