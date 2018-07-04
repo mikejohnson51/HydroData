@@ -75,7 +75,7 @@ explore(ap)
 
 \code{\link{explore}}
 
-Other HydroData 'find' functions: \code{\link{state}}
+Other HydroData 'find' functions: \code{\link{findGHCN}}
 }
 \author{
 Mike Johnson

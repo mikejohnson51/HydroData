@@ -1,4 +1,4 @@
-context("getAOI")
+context("findAirports")
 
 test_that("getAOI throws correct errors", {
   expect_error(findAirports(clip_unit = list("UCSB", .3,.3)), "0 airports found in AOI")

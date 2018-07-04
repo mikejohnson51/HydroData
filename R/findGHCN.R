@@ -90,10 +90,6 @@
 #' Mike Johnson
 #'
 
-state = NULL
-county = NULL
-clip_unit = list("UCSB", 10, 10)
-
 findGHCN = function(state = NULL,
                     county = NULL,
                     clip_unit = NULL,
