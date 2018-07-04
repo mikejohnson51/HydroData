@@ -5,7 +5,7 @@ test_that("getAOI throws correct errors", {
 })
 
 test_that("check Airport routines", {
-  state <- try(findGHCN(state = "Colorado", save = TRUE))
+  state <- try(findGHCN(state = "Colorado", param = "PRCP", save = FALSE))
   county <- try(findGHCN(state = "Colorado", county = "El Paso", save = TRUE))
   clip <- try(findGHCN(clip_unit = list("UCSB", 40, 40)))
   ids <- try(findGHCN(clip_unit = list("UCSB", 40, 40), ids = TRUE))
