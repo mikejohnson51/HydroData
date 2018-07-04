@@ -100,7 +100,8 @@ plot(el.paso$ghcn, add = T)
 
 \code{\link{explore}}
 
-Other HydroData 'find' functions: \code{\link{findAirports}}
+Other HydroData 'find' functions: \code{\link{findAirports}},
+  \code{\link{findNHD}}
 }
 \author{
 Mike Johnson

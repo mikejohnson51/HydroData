@@ -24,3 +24,31 @@
 #'
 
 "ap"
+
+#' Global Historical Climatology Network (GHCN) daily data
+#'
+#' Dataset containing the GCHN daily station network
+#'
+#' @docType data
+#'
+#' @format a \code{dataframe} instance, 1 row per station with columns:
+#' \itemize{
+#' \item 'ID':         A \code{character} Station ID
+#' \item 'NAME':       A \code{character} Station name
+#' \item 'LAT':        A \code{numeric}   Station latitude
+#' \item 'LON':        A \code{numeric}   Station longitude
+#' \item 'PARAMETER':  A \code{character} Parameter being recorded
+#' \item 'START_YEAR': A \code{integer}   Latitude of NHD reach center
+#' \item 'END_YEAR':   A \code{integer}   Longitude of NHD reach center
+#' }
+#'
+#' @source \href{
+#' https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn}{
+#' NOAA National Centers for Environmental Information}
+#'
+#' @examples
+#' \dontrun{
+#'  gchn = HydroData::ghcn_stations
+#' }
+
+"ghcn_stations"
