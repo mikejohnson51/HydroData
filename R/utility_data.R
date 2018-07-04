@@ -52,3 +52,28 @@
 #' }
 
 "ghcn_stations"
+
+
+#' NHD COMIDs outlets
+#'
+#' Dataset containing the NHD outlets
+#'
+#' @docType data
+#'
+#' @format a \code{dataframe} instance, 1 row per station with columns:
+#' \itemize{
+#' \item 'COMID':         A \code{integer} Station COMID
+#' \item 'LAT':        A \code{numeric}   Station latitude
+#' \item 'LON':        A \code{numeric}   Station longitude
+#' }
+#'
+#' @source \href{
+#' https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn}{
+#' NOAA National Centers for Environmental Information}
+#'
+#' @examples
+#' \dontrun{
+#'  gchn = HydroData::comids
+#' }
+
+"nhd_outlet"

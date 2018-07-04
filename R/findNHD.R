@@ -78,7 +78,6 @@
 #' @author Mike Johnson
 #'
 
-
 findNHD = function(state = NULL,
                    county = NULL,
                    clip_unit = NULL,
@@ -98,17 +97,19 @@ findNHD = function(state = NULL,
 
   sl = download.shp(URL = URL, type = 'NHD')
 
-  if (is.null(sl)) { stop("0 flowlines found in AOI") }
-
   sl = sl[AOI, ]
 
-  items = list( name = nameAOI(state, county, clip_unit),
+  if(length(sl) == 0){ stop("0 flowlines found in this AOI") }
+
+  items = list( name = AOI::nameAOI(state, county, clip_unit),
                 source = "USGS CIDA",
                 flowlines = sl)
 
   report = "Returned list includes: flowline shapefile"
 
   items = return.what(sp = sl, items, report, AOI, boundary, clip_unit, ids = if(ids){ids = 'comid'})
+
+  if(length(sl) == 0) { stop("0 flowlines found in this AOI") }
 
     if (save) {
       save.file(
@@ -127,4 +128,5 @@ findNHD = function(state = NULL,
 
     return(items)
 }
+
 

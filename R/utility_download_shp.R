@@ -34,6 +34,7 @@ download.shp = function(URL, type) {
         verbose = FALSE,
         pointDropZ = TRUE
       ) %>% spTransform(AOI::HydroDataProj))
+
     },
     error=function(e) {
       return(NULL)

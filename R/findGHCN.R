@@ -113,7 +113,7 @@ findGHCN = function(state = NULL,
     stations = stations %>% dplyr::filter(PARAMETER %in% parameters)
   }
 
-  if (dim(stations)[1] == 0) { stop("0 stations found in AOI") }
+  if(dim(stations)[1] == 0) { stop("0 stations found in AOI") }
 
   sp = sp::SpatialPointsDataFrame(cbind(stations$LON, stations$LAT), stations, proj4string = AOI::HydroDataProj)
 
