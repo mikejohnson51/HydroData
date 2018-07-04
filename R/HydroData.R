@@ -9,15 +9,13 @@
 #' @docType package
 #' @name HydroData
 #'
-#' @importFrom AOI getAOI nameAOI HydroDataProj state.abb state.name
+#' @importFrom AOI getAOI nameAOI HydroDataProj state.abb state.name simpleCap
 #' @importFrom dismo geocode
-#' @importFrom sp spDistsN1 SpatialPoints SpatialPointsDataFrame CRS plot
+#' @importFrom sp SpatialPoints SpatialPointsDataFrame CRS plot
 #' @importFrom methods as
 #' @importFrom utils tail write.csv
 #' @importFrom raster writeRaster
 #' @importFrom rgdal writeOGR
-
-
 
 NULL
 

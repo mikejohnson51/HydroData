@@ -74,6 +74,8 @@ explore(ap)
 \code{\link{getWU}}
 
 \code{\link{explore}}
+
+Other HydroData 'find' functions: \code{\link{state}}
 }
 \author{
 Mike Johnson
