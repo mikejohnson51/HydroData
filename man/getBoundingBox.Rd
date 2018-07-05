@@ -16,5 +16,5 @@ a \code{SpatialPolygon} bounding area of input points \code{x}
 A function to define a minimum bounding box for a set of points
 }
 \seealso{
-Other HydroData 'utility' function: \code{\link{download.shp}}
+Other HydroData 'utility' function: \code{\link{download_shp}}
 }

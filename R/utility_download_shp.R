@@ -16,7 +16,7 @@
 #' Mike Johnson
 
 
-download.shp = function(URL, type) {
+download_shp = function(URL, type) {
 
   td   <- tempfile()
   temp <- tempfile(pattern = type, fileext = ".zip")
@@ -26,30 +26,28 @@ download.shp = function(URL, type) {
   download.file(URL, destfile =  temp, quiet = T)
   unzip(temp, exdir = td, overwrite = TRUE)
 
-  sp = tryCatch(
-    {
-      xx <- suppressWarnings(rgdal::readOGR(
+  sp <- tryCatch({suppressWarnings(rgdal::readOGR(
         list.files(td, pattern = '.shp$', full.names = TRUE),
         stringsAsFactors = FALSE,
         verbose = FALSE,
-        pointDropZ = TRUE
-      ) %>% spTransform(AOI::HydroDataProj))
+        pointDropZ = TRUE))},
+        error = function(e){
+          return(NULL)
+        }
+      )
 
-    },
-    error=function(e) {
-      return(NULL)
-    }
-  )
 
-  if(is.null(sp)){
-    message(paste0("0 ", type, " found"))} else {
+  if(is.null(sp)){ stop(paste0("0 ", type, " found"))} else {
 
   message("All ", type," loaded: ",
             formatC(
               dim(sp)[1],
               format = "d", big.mark = ","),
             " in total.\n")
-  }
+
+    sp = sp::spTransform(sp, AOI::HydroDataProj)
+    }
+
 
 
   unlink(temp, recursive=TRUE, force = TRUE)

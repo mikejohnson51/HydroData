@@ -30,4 +30,6 @@ findNearestCOMID = function(location = NULL, n = 5){
   return(list(data = ndx, extent = bb))
 }
 
+?data
+
 

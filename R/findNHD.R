@@ -95,11 +95,11 @@ findNHD = function(state = NULL,
     max(AOI@bbox[1, ]), "&outputFormat=SHAPE-ZIP"
   )
 
-  sl = download.shp(URL = URL, type = 'NHD')
+  sl = download_shp(URL = URL, type = 'NHD')
 
   sl = sl[AOI, ]
 
-  if(length(sl) == 0){ stop("0 flowlines found in this AOI") }
+  ##if(length(sl) == 0){ stop("0 flowlines found in this AOI") }
 
   items = list( name = AOI::nameAOI(state, county, clip_unit),
                 source = "USGS CIDA",
@@ -109,7 +109,7 @@ findNHD = function(state = NULL,
 
   items = return.what(sp = sl, items, report, AOI, boundary, clip_unit, ids = if(ids){ids = 'comid'})
 
-  if(length(sl) == 0) { stop("0 flowlines found in this AOI") }
+  #if(length(sl) == 0) { stop("0 flowlines found in this AOI") }
 
     if (save) {
       save.file(
