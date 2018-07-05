@@ -6,7 +6,7 @@ test_that("findNHD throws correct errors", {
 
 test_that("check NHD routines", {
   clip  <- findNHD(clip_unit = list("Denver", 10, 10), save = TRUE)
-  clip1 <- findNHD(clip_unit = list("Denver", 10, 10), save = FALSE)
+  clip1 <- findNHD(clip_unit = list("Denver", 10, 10), save = FALSE, ids = T)
 
   vec = c(is.list(clip), is.list(clip1))
   print(!inherits(vec,"try-error"))
@@ -16,8 +16,9 @@ test_that("check NHD routines", {
 
 test_that("check closest COMID routines", {
   clip  <- try(findNearestCOMID(location = c(37, -113), n = 5))
+  clip1 <- try(findNearestCOMID("UCSB", n = 10))
 
-  vec = c(is.list(clip))
+  vec = c(is.list(clip), is.list(clip1))
   print(!inherits(vec,"try-error"))
   check = !inherits(vec,"try-error")
   expect_true(check)
