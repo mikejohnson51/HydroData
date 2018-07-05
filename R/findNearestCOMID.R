@@ -14,8 +14,6 @@ findNearestCOMID = function(location = NULL, n = 5){
   sp = SpatialPointsDataFrame(coords = cbind(df$lat, df$long), df, proj4string = CRS("+init=epsg:4326"))
 
   if(class(location) == 'numeric') { point = SpatialPoints(cbind(location[1], location[2]))
-  } else if (class(location) == 'data.frame') {
-    point = SpatialPoints(cbind(location$lon, location$lat), CRS("+init=epsg:4326"))
   } else { x = dismo::geocode(location)
     point = SpatialPoints(cbind(x$longitude, x$latitude), proj4string = CRS("+init=epsg:4326") )
   }
