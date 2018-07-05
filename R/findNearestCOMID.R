@@ -11,7 +11,7 @@ findNearestCOMID = function(location = NULL, n = 5){
 
   df = HydroData::nhd_outlet
 
-  sp = SpatialPointsDataFrame(coords = cbind(df$lat, df$long), df, proj4string = AOI::HydroDataProj)
+  sp = SpatialPointsDataFrame(coords = cbind(df$long, df$lat), df, proj4string = AOI::HydroDataProj)
 
   if(class(location) == 'numeric') { point = SpatialPoints(cbind(location[1], location[2]))
   } else { x = dismo::geocode(location)
@@ -27,7 +27,4 @@ findNearestCOMID = function(location = NULL, n = 5){
 
   return(list(data = ndx, extent = bb))
 }
-
-
-
 

@@ -11,7 +11,9 @@ findNearestAirports = function(location = NULL, n = 5){
 
   df = HydroData::ap
 
-  sp = SpatialPointsDataFrame(coords = cbind(df$lat, df$lon), df, proj4string = AOI::HydroDataProj)
+  sp = SpatialPointsDataFrame(coords = cbind(df$lon, df$lat), df, proj4string = AOI::HydroDataProj)
+
+  sp::plot(sp)
 
   if(class(location) == 'numeric') { point = SpatialPoints(cbind(location[1], location[2]))
   } else {
@@ -22,7 +24,8 @@ findNearestAirports = function(location = NULL, n = 5){
   dist = spDistsN1(sp, point, longlat = T)
 
   ndx = cbind(df[(order(dist)[1:n]), ],  dist[(order(dist)[1:n])])
-  names(ndx) = c(names(df), "Distance_km")
+  names(ndx) = c("name",    "city",    "country", "IATA",    "ICAO",   "lat",     "long",     "elev",
+                 "tz",      "tzname", "Distance_km")
 
   bb = getBoundingBox(ndx)
 
