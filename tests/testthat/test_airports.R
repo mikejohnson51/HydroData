@@ -1,6 +1,6 @@
 context("findAirports")
 
-test_that("getAOI throws correct errors", {
+test_that("findAirport throws correct errors", {
   expect_error(findAirports(clip_unit = list("UCSB", .3,.3)), "0 airports found in AOI")
 })
 
@@ -19,4 +19,13 @@ test_that("check Airport routines", {
   expect_true(check)
 })
 
+test_that("check closest Airport routines", {
+  clip  <- try(findNearestAirports(location = c(37, -113), n = 5))
+  clip1 <- try(findNearestAirports("UCSB", n = 10))
+
+  vec = c(is.list(clip), is.list(clip1))
+  print(!inherits(vec,"try-error"))
+  check = !inherits(vec,"try-error")
+  expect_true(check)
+})
 
