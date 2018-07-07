@@ -13,6 +13,7 @@ Imports:
     AOI,
     dismo,
     methods,
+    sf,
     sp,
     utils,
     raster,
