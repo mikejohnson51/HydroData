@@ -85,21 +85,7 @@ findNHD = function(state = NULL,
                    ids = FALSE,
                    save = FALSE) {
 
-  AOI = AOI::getAOI(state, county, clip_unit)
-
-  URL = paste0(
-    "https://cida.usgs.gov/nwc/geoserver/nhdplus/ows?service=WFS&version=2.0.0&request=GetFeature&typeNames=nhdplus:nhdflowline_network&srsName=EPSG:4326&bbox=",
-    min(AOI@bbox[2, ]), ",",
-    min(AOI@bbox[1, ]), ",",
-    max(AOI@bbox[2, ]), ",",
-    max(AOI@bbox[1, ]), "&outputFormat=SHAPE-ZIP"
-  )
-
-  sl = download_shp(URL = URL, type = 'NHD')
-
-  sl = sl[AOI, ]
-
-  ##if(length(sl) == 0){ stop("0 flowlines found in this AOI") }
+  sl = AOI::getAOI(state, county, clip_unit) %>% query_cida(type = 'nhdflowline_network')
 
   items = list( name = AOI::nameAOI(state, county, clip_unit),
                 source = "USGS CIDA",
@@ -109,24 +95,18 @@ findNHD = function(state = NULL,
 
   items = return.what(sp = sl, items, report, AOI, boundary, clip_unit, ids = if(ids){ids = 'comid'})
 
-  #if(length(sl) == 0) { stop("0 flowlines found in this AOI") }
+  if (save) {
+    save.file(
+      data = items,
+      state = state,
+      county = county,
+      clip_unit = clip_unit,
+      agency  = 'USGS',
+      source  = "NHD",
+      dataset = "flowlines",
+      other   = NULL
+    )
+  }
 
-    if (save) {
-      save.file(
-        data = items,
-        state = state,
-        county = county,
-        clip_unit = clip_unit,
-        agency  = 'USGS',
-        source  = "NHD",
-        dataset = "flowlines",
-        other   = NULL
-      )
-    }
-
-    class(items) = "HydroData"
-
-    return(items)
+  return(items)
 }
-
-

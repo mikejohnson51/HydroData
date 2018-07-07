@@ -1,7 +1,7 @@
 context("findNHD")
 
 test_that("findNHD throws correct errors", {
-  expect_error(findNHD(clip_unit = list("UCSB", .3,.3)), "0 NHD found")
+  expect_error(findNHD(clip_unit = list("UCSB", .3,.3)), "O features found in this AOI.")
 })
 
 test_that("check NHD routines", {

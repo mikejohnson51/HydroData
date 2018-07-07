@@ -97,8 +97,6 @@ findAirports = function(state = NULL, county = NULL, clip_unit = NULL, boundary 
               other     = NULL )
   }
 
-  class(items) = "HydroData"
-
   return(items)
 }
 

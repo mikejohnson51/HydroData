@@ -11,11 +11,13 @@
 #'
 #' @importFrom AOI getAOI nameAOI HydroDataProj state.abb state.name simpleCap
 #' @importFrom dismo geocode
-#' @importFrom sp SpatialPoints SpatialPointsDataFrame CRS plot spDistsN1 Polygons Polygon spTransform SpatialPolygons
 #' @importFrom methods as
-#' @importFrom utils tail write.csv
 #' @importFrom raster writeRaster
-#' @importFrom rgdal writeOGR
+#' @importFrom rgdal  writeOGR
+#' @importFrom sf st_zm read_sf
+#' @importFrom sp SpatialPoints SpatialPointsDataFrame CRS plot spDistsN1 Polygons Polygon spTransform SpatialPolygons
+#' @importFrom utils tail write.csv
+#'
 
 NULL
 

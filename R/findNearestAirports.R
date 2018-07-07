@@ -13,8 +13,6 @@ findNearestAirports = function(location = NULL, n = 5){
 
   sp = SpatialPointsDataFrame(coords = cbind(df$lon, df$lat), df, proj4string = AOI::HydroDataProj)
 
-  sp::plot(sp)
-
   if(class(location) == 'numeric') { point = SpatialPoints(cbind(location[1], location[2]))
   } else {
     x = dismo::geocode(location)

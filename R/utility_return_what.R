@@ -46,6 +46,9 @@ return.what = function(sp,
   }
 
   message(paste(report, collapse = ", "))
+
+  class(items) = "HydroData"
+
   return(items)
 
 }
