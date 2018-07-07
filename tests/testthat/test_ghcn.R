@@ -24,10 +24,11 @@ test_that("check GHCN routines", {
 
 test_that("check closest GHCN routines", {
   clip  <- try(findNearestGHCN(location = c(37, -113), n = 5, PARAM = "PRCP"))
-  clip1 <- try(findNearestAirports("UCSB", n = 10))
+  clip1 <- try(findNearestGHCN("UCSB", n = 10))
 
   vec = c(is.list(clip), is.list(clip1))
   print(!inherits(vec,"try-error"))
   check = !inherits(vec,"try-error")
   expect_true(check)
 })
+
