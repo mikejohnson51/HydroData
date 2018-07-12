@@ -4,23 +4,17 @@
 \alias{findAirports}
 \title{Find Airports}
 \usage{
-findAirports(state = NULL, county = NULL, clip_unit = NULL,
-  boundary = FALSE, ids = FALSE, save = FALSE)
+findAirports(state = NULL, county = NULL, clip = NULL, boundary = FALSE,
+  ids = FALSE, save = FALSE)
 }
 \arguments{
 \item{state}{Full name(s) or two character abbriviation(s). Not case senstive}
 
 \item{county}{County name(s). Requires \code{state} input.}
 
-\item{clip_unit}{SpatialObject* or list. For details see \code{getClipUnit}}
+\item{clip}{SpatialObject* or list. For details see \code{getClipUnit}}
 
-\item{boundary}{If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list}
-
-\item{ids}{If TRUE, returns a list of road names in AOI}
-
-\item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
-
-\item{basemap}{If TRUE, a basemap will be joined to returned list
+\item{boundary}{If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list
 
  If a user wants greater control over basemap apperance replace TRUE with either:
 \itemize{
@@ -29,6 +23,10 @@ findAirports(state = NULL, county = NULL, clip_unit = NULL,
 \item'h':  google hybrid basemap
 \item'r':  google roads basemap
 }}
+
+\item{ids}{If TRUE, returns a list of road names in AOI}
+
+\item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
 }
 \value{
 \code{findAirports} returns a named list of minimum length 1:
@@ -38,7 +36,6 @@ findAirports(state = NULL, county = NULL, clip_unit = NULL,
 
 Pending parameterization, \code{findAirports} can also return:
 
-\item 'basemap':   A \code{RasterLayer*} basemap if \code{basemap = TRUE}
 \item 'boundry':   A \code{SpatialPolygon*} of AOI if \code{boundary = TRUE}
 \item 'fiat':      A \code{SpatialPolygon*} of intersected county boundaries if \code{boundary = TRUE}
 \item 'ids':       A vector of 4 digit Airport Codes if \code{ids = TRUE}
@@ -46,7 +43,7 @@ Pending parameterization, \code{findAirports} can also return:
 }
 \description{
 \code{findAirports} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
-To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip_unit}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
+To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
 Returned \code{list} can be interactivly explored via \code{\link{explore}} and ID values (\code{ids = TRUE}) allow for Weather Underground data access via \code{getWU}.\cr\cr
 All outputs are projected to \code{CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}
 }
@@ -58,7 +55,6 @@ ap = findAirports(state = "CO", county = "El Paso", basemap = T, boundary = T)
 
 # Static Mapping
 
-plot(ap$basemap)
 plot(ap$boundary, add = T, lwd = 3)
 plot(ap$airports, add = T, pch = 16, cex = 2)
 
@@ -76,7 +72,8 @@ explore(ap)
 \code{\link{explore}}
 
 Other HydroData 'find' functions: \code{\link{findGHCN}},
-  \code{\link{findNHD}}
+  \code{\link{findNHD}}, \code{\link{findNID}},
+  \code{\link{findSnotel}}, \code{\link{findUSGS}}
 }
 \author{
 Mike Johnson

@@ -3,7 +3,7 @@
 #' @param data What data to write
 #' @param state State abb
 #' @param county country call
-#' @param clip_unit clip unit call
+#' @param clip clip unit call
 #' @param agency what agency maintains the data
 #' @param source what is the source of the data
 #' @param dataset what is the dataset that is subset
@@ -16,7 +16,7 @@
 save.file = function(data = NULL,
                      state = NULL,
                      county = NULL,
-                     clip_unit = NULL,
+                     clip = NULL,
                      agency = NULL,
                      source = NULL,
                      dataset = NULL,
@@ -32,14 +32,14 @@ save.file = function(data = NULL,
   } else if (all(!is.null(state), length(state) < 3)) {
     AOI = paste0(state, collapse = "_")
 
-  } else if (!is.null(clip_unit)) {
-    if (class(clip_unit[[1]]) == 'character') {
-      AOI = paste(clip_unit[[1]], clip_unit[[2]], clip_unit[[3]], sep  = "_")
+  } else if (!is.null(clip)) {
+    if (class(clip[[1]]) == 'character') {
+      AOI = paste(clip[[1]], clip[[2]], clip[[3]], sep  = "_")
     } else{
-      AOI = paste(round(clip_unit[[1]], 2),
-                  round(clip_unit[[2]], 2),
-                  clip_unit[[3]],
-                  clip_unit[[4]],
+      AOI = paste(round(clip[[1]], 2),
+                  round(clip[[2]], 2),
+                  clip[[3]],
+                  clip[[4]],
                   sep  = "_")
     }
   }

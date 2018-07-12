@@ -1,12 +1,12 @@
 context("findNHD")
 
 test_that("findNHD throws correct errors", {
-  expect_error(findNHD(clip_unit = list("UCSB", .3,.3)), "O features found in this AOI.")
+  expect_error(findNHD(clip = list("UCSB", .3,.3)), "O features found in this AOI.")
 })
 
 test_that("check NHD routines", {
-  clip  <- findNHD(clip_unit = list("Denver", 10, 10), save = TRUE)
-  clip1 <- findNHD(clip_unit = list("Denver", 10, 10), save = FALSE, ids = T)
+  clip  <- findNHD(clip = list("Denver", 10, 10), save = TRUE)
+  clip1 <- findNHD(clip = list("Denver", 10, 10), save = FALSE, ids = T)
 
   vec = c(is.list(clip), is.list(clip1))
   print(!inherits(vec,"try-error"))

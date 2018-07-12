@@ -2,6 +2,7 @@
 #'
 #' @param AOI and AOI object generated with the AOI package, or a bounding box
 #' @param type the WBD or nhdplus object to return
+#' @param spatial return `sp` (default) if \code{FALSE} return `sf`
 #'
 #' @return a \code{Spatial} object
 #' @export
@@ -43,7 +44,7 @@ sl = tryCatch({sf::st_zm(sf::read_sf(url))},
 
 if(any(is.null(sl), nrow(sl) ==0)) {stop("O features found in this AOI.")}
 
-if(spatial) {sl = as(sl, "Spatial")}
+if(spatial) {sl = sf::as_Spatial(sl)}
 
 return(sl)
 

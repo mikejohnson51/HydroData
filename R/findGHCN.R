@@ -2,13 +2,13 @@
 #'
 #' @description
 #' \code{findGHCN} finds Global Historical Climatology Network (GHCN) stations within Area of Interest.
-#' To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip_unit}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
+#' To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
 #' Returned \code{list} can be interactivly explored via \code{\link{explore}} and ID values (\code{ids = TRUE}) allow for GHCN data access via \code{getGHCN}.\cr\cr
 #' All outputs are projected to \code{CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and station metadata is (\emph{down})load from a \href{ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt}{NOAA FTP}.
 #'
 #' @param state     Full name(s) or two character abbriviation(s). Not case senstive
 #' @param county    County name(s). Requires \code{state} input.
-#' @param clip_unit SpatialObject* or list. For details see \code{getClipUnit}
+#' @param clip SpatialObject* or list. For details see \code{getClipUnit}
 #' @param boundary  If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list
 #' @param basemap   If TRUE, a basemap will be joined to returned list
 #'
@@ -92,14 +92,14 @@
 
 findGHCN = function(state = NULL,
                     county = NULL,
-                    clip_unit = NULL,
+                    clip = NULL,
                     parameters = NULL,
                     boundary = FALSE,
                     basemap = FALSE,
                     ids = FALSE,
                     save = FALSE) {
 
-  AOI = AOI::getAOI(state, county, clip_unit)
+  AOI = AOI::getAOI(state, county, clip)
 
   stations = HydroData::ghcn_stations
 
@@ -109,32 +109,31 @@ findGHCN = function(state = NULL,
   stations = stations[which(stations$LON <= AOI@bbox[1, 2]),]
 
   if(!is.null(parameters)) {
-    parameters = toupper(parameters)
-    stations = stations %>% dplyr::filter(PARAMETER %in% parameters)
+    stations = stations[stations$PARAMETER %in% toupper(parameters), ]
   }
 
   if(dim(stations)[1] == 0) { stop("0 stations found in AOI") }
 
-  sp = sp::SpatialPointsDataFrame(cbind(stations$LON, stations$LAT), stations, proj4string = AOI::HydroDataProj)
+  sp = sp::SpatialPointsDataFrame(cbind(stations$LON, stations$LAT), stations, proj4string = AOI::aoiProj)
 
   sp = sp[AOI,]
 
   message(length(sp), " GHCN stations found")
 
-  items = list(name = AOI::nameAOI(state, county, clip_unit),
+  items = list(name = AOI::nameAOI(state, county, clip),
                souce = "NOAA GHCN",
                ghcn = sp)
 
   report = "Returned list includes: NOAA GHCN shapefile"
 
-  items = return.what(sp, items, report, AOI, boundary, clip_unit, ids = if(ids){ids = 'ID'})
+  items = return.what(sp, items, report, AOI, boundary, clip, ids = if(ids){ids = 'ID'})
 
   if (save) {
     save.file(
       data = items,
       state = state,
       county = county,
-      clip_unit = clip_unit,
+      clip = clip,
       agency  = 'NOAA',
       source  = "GHCN",
       dataset = "ghcn",

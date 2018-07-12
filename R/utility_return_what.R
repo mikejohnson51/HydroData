@@ -6,9 +6,8 @@
 #' @param items an items list
 #' @param report a report vector
 #' @param AOI the defined AOI
-#' @param basemap the basemap call
 #' @param boundary the boundary call
-#' @param clip_unit the clip_unit defintion
+#' @param clip the clip defintion
 #' @param ids the ids call
 #'
 #' @family HydroData 'helper' functions
@@ -22,14 +21,14 @@ return.what = function(sp,
                        report,
                        AOI,
                        boundary,
-                       clip_unit,
+                       clip,
                        ids) {
   if (boundary) {
     items[['boundary']] = AOI
     report = append(report, "AOI boundary")
 
-    if (!is.null(clip_unit)) {
-      items[['fiat']] = AOI::getFiatBoundary(clip_unit = AOI)
+    if (!is.null(clip)) {
+      items[['fiat']] = AOI::getFiat(clip = AOI)
       report = append(report, "fiat boundary")
     }
   }

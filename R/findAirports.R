@@ -2,15 +2,14 @@
 #'
 #' @description
 #' \code{findAirports} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
-#' To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip_unit}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
+#' To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
 #' Returned \code{list} can be interactivly explored via \code{\link{explore}} and ID values (\code{ids = TRUE}) allow for Weather Underground data access via \code{getWU}.\cr\cr
 #' All outputs are projected to \code{CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}
 #'
 #' @param state    Full name(s) or two character abbriviation(s). Not case senstive
 #' @param county    County name(s). Requires \code{state} input.
-#' @param clip_unit SpatialObject* or list. For details see \code{getClipUnit}
+#' @param clip SpatialObject* or list. For details see \code{getClipUnit}
 #' @param boundary  If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list
-#' @param basemap   If TRUE, a basemap will be joined to returned list
 #'
 #'  If a user wants greater control over basemap apperance replace TRUE with either:
 #' \itemize{
@@ -37,7 +36,6 @@
 #'
 #' Pending parameterization, \code{findAirports} can also return:
 #'
-#' \item 'basemap':   A \code{RasterLayer*} basemap if \code{basemap = TRUE}
 #' \item 'boundry':   A \code{SpatialPolygon*} of AOI if \code{boundary = TRUE}
 #' \item 'fiat':      A \code{SpatialPolygon*} of intersected county boundaries if \code{boundary = TRUE}
 #' \item 'ids':       A vector of 4 digit Airport Codes if \code{ids = TRUE}
@@ -51,7 +49,6 @@
 #'
 #' # Static Mapping
 #'
-#' plot(ap$basemap)
 #' plot(ap$boundary, add = T, lwd = 3)
 #' plot(ap$airports, add = T, pch = 16, cex = 2)
 #'
@@ -64,13 +61,13 @@
 #' @author
 #' Mike Johnson
 
-findAirports = function(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE, ids = FALSE, save = FALSE){
+findAirports = function(state = NULL, county = NULL, clip = NULL, boundary = FALSE, ids = FALSE, save = FALSE){
 
   ap = HydroData::ap
 
-  air = sp::SpatialPointsDataFrame(coords = cbind(ap$lon, ap$lat), data = as.data.frame(ap), proj4string = AOI::HydroDataProj)
+  air = sp::SpatialPointsDataFrame(coords = cbind(ap$lon, ap$lat), data = as.data.frame(ap), proj4string = AOI::aoiProj)
 
-  AOI = AOI::getAOI(state, county, clip_unit)
+  AOI = AOI::getAOI(state, county, clip)
 
   sp = air[AOI, ]
 
@@ -78,19 +75,19 @@ findAirports = function(state = NULL, county = NULL, clip_unit = NULL, boundary 
 
   message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " airports found")
 
-  items = list(name = AOI::nameAOI(state, county, clip_unit),
+  items = list(name = AOI::nameAOI(state, county, clip),
                source = "Open Flights",
                airports =  sp)
 
   report = "Returned list includes: airport shapefile"
 
-  items = return.what(sp, items, report, AOI, boundary, clip_unit, ids = if(ids){ids = "ICAO"} )
+  items = return.what(sp, items, report, AOI, boundary, clip, ids = if(ids){ids = "ICAO"} )
 
   if(save){
     save.file(data      = items,
               state     = state,
               county    = county,
-              clip_unit = clip_unit,
+              clip = clip,
               agency    = 'NCAR',
               source    = "NCAR",
               dataset   = "airports",

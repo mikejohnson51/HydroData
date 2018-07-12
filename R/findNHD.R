@@ -2,15 +2,14 @@
 #'
 #' @description
 #' \code{findNHD} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
-#' To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip_unit}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
+#' To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
 #' Returned \code{list} can be interactivly explored via \code{\link{explore}} and COMID values (\code{ids = TRUE}) allow for National Water Model access via \code{getNWM}.\cr\cr
 #' All outputs are projected to \code{CRS'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and stream networks are (\emph{down})loaded from the \href{https://cida.usgs.gov}{USGS}.
 #'
 #' @param state     Full name(s) or two character abbriviation(s). Not case senstive
 #' @param county    County name(s). Requires \code{state} input.
-#' @param clip_unit SpatialObject* or list. For details see \code{getClipUnit}
+#' @param clip SpatialObject* or list. For details see \code{getClipUnit}
 #' @param boundary  If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list
-#' @param basemap   If TRUE, a basemap will be joined to returned list
 #'
 #'  If a user wants greater control over basemap apperance replace TRUE with either:
 #' \itemize{
@@ -80,27 +79,28 @@
 
 findNHD = function(state = NULL,
                    county = NULL,
-                   clip_unit = NULL,
+                   clip = NULL,
                    boundary = FALSE,
                    ids = FALSE,
                    save = FALSE) {
 
-  sl = AOI::getAOI(state, county, clip_unit) %>% query_cida(type = 'nhdflowline_network')
+  AOI = AOI::getAOI(state, county, clip)
+  sl = query_cida(AOI, type = 'nhdflowline_network')
 
-  items = list( name = AOI::nameAOI(state, county, clip_unit),
+  items = list( name = AOI::nameAOI(state, county, clip),
                 source = "USGS CIDA",
                 flowlines = sl)
 
   report = "Returned list includes: flowline shapefile"
 
-  items = return.what(sp = sl, items, report, AOI, boundary, clip_unit, ids = if(ids){ids = 'comid'})
+  items = return.what(sp = sl, items, report, AOI, boundary, clip, ids = if(ids){ids = 'comid'})
 
   if (save) {
     save.file(
       data = items,
       state = state,
       county = county,
-      clip_unit = clip_unit,
+      clip = clip,
       agency  = 'USGS',
       source  = "NHD",
       dataset = "flowlines",

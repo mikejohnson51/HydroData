@@ -45,7 +45,7 @@ download_shp = function(URL, type) {
               format = "d", big.mark = ","),
             " in total.\n")
 
-    sp = sp::spTransform(sp, AOI::HydroDataProj)
+    sp = sp::spTransform(sp, AOI::aoiProj)
     }
 
 

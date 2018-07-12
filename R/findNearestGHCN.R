@@ -1,4 +1,4 @@
-#' Find Neareast GHCN
+#' Find Neareast GHCN stations
 #'
 #' @param location a lat, long pair
 #' @param n the number of GHCN to return
@@ -20,12 +20,12 @@ findNearestGHCN = function(location = NULL, n = 5, PARAM = NULL){
    }
   }
 
-  sp = SpatialPointsDataFrame(coords = cbind(df$LON, df$LAT), df, proj4string = AOI::HydroDataProj)
+  sp = SpatialPointsDataFrame(coords = cbind(df$LON, df$LAT), df, proj4string = AOI::aoiProj)
 
   if(class(location) == 'numeric') { point = SpatialPoints(cbind(location[1], location[2]))
   } else {
-    x = dismo::geocode(location)
-    point = SpatialPoints(cbind(x$longitude, x$latitude), proj4string = AOI::HydroDataProj )
+    x = AOI::getPoint(location)
+    point = SpatialPoints(cbind(x$longitude, x$latitude), proj4string = AOI::aoiProj )
   }
 
   dist = spDistsN1(sp, point, longlat = T)

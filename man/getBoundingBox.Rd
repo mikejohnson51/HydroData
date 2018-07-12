@@ -10,7 +10,7 @@ getBoundingBox(x)
 \item{x}{a \code{data.frame} with a lat and long column}
 }
 \value{
-a \code{SpatialPolygon} bounding area of input points \code{x}
+a \code{SpatialPolygon} bounding box of input points \code{x}
 }
 \description{
 A function to define a minimum bounding box for a set of points

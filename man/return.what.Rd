@@ -4,7 +4,7 @@
 \alias{return.what}
 \title{Choose what to return for HydroData Calls}
 \usage{
-return.what(sp, items, report, AOI, boundary, clip_unit, ids)
+return.what(sp, items, report, AOI, boundary, clip, ids)
 }
 \arguments{
 \item{sp}{Spatial object}
@@ -17,11 +17,9 @@ return.what(sp, items, report, AOI, boundary, clip_unit, ids)
 
 \item{boundary}{the boundary call}
 
-\item{clip_unit}{the clip_unit defintion}
+\item{clip}{the clip defintion}
 
 \item{ids}{the ids call}
-
-\item{basemap}{the basemap call}
 }
 \value{
 a list of HydroData components

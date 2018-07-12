@@ -4,7 +4,7 @@
 \alias{save.file}
 \title{Save File}
 \usage{
-save.file(data = NULL, state = NULL, county = NULL, clip_unit = NULL,
+save.file(data = NULL, state = NULL, county = NULL, clip = NULL,
   agency = NULL, source = NULL, dataset = NULL, other = NULL)
 }
 \arguments{
@@ -14,7 +14,7 @@ save.file(data = NULL, state = NULL, county = NULL, clip_unit = NULL,
 
 \item{county}{country call}
 
-\item{clip_unit}{clip unit call}
+\item{clip}{clip unit call}
 
 \item{agency}{what agency maintains the data}
 

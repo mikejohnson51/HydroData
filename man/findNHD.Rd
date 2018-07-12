@@ -4,7 +4,7 @@
 \alias{findNHD}
 \title{Find National Hydrography Data Stream Networks}
 \usage{
-findNHD(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE,
+findNHD(state = NULL, county = NULL, clip = NULL, boundary = FALSE,
   ids = FALSE, save = FALSE)
 }
 \arguments{
@@ -12,15 +12,9 @@ findNHD(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE,
 
 \item{county}{County name(s). Requires \code{state} input.}
 
-\item{clip_unit}{SpatialObject* or list. For details see \code{getClipUnit}}
+\item{clip}{SpatialObject* or list. For details see \code{getClipUnit}}
 
-\item{boundary}{If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list}
-
-\item{ids}{If TRUE, returns a list of COMIDS for NHD reaches}
-
-\item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
-
-\item{basemap}{If TRUE, a basemap will be joined to returned list
+\item{boundary}{If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list
 
  If a user wants greater control over basemap apperance replace TRUE with either:
 \itemize{
@@ -29,6 +23,10 @@ findNHD(state = NULL, county = NULL, clip_unit = NULL, boundary = FALSE,
 \item'h':  google hybrid basemap
 \item'r':  google roads basemap
 }}
+
+\item{ids}{If TRUE, returns a list of COMIDS for NHD reaches}
+
+\item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
 }
 \value{
 \code{findNHD} returns a list of minimum length 1:
@@ -47,7 +45,7 @@ Pending parameterization, \code{findNHD} can also return:
 }
 \description{
 \code{findNHD} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
-To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip_unit}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
+To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
 Returned \code{list} can be interactivly explored via \code{\link{explore}} and COMID values (\code{ids = TRUE}) allow for National Water Model access via \code{getNWM}.\cr\cr
 All outputs are projected to \code{CRS'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and stream networks are (\emph{down})loaded from the \href{https://cida.usgs.gov}{USGS}.
 }
@@ -89,7 +87,8 @@ inspect(flows, save = TRUE)
 \code{\link{explore}}
 
 Other HydroData 'find' functions: \code{\link{findAirports}},
-  \code{\link{findGHCN}}
+  \code{\link{findGHCN}}, \code{\link{findNID}},
+  \code{\link{findSnotel}}, \code{\link{findUSGS}}
 }
 \author{
 Mike Johnson

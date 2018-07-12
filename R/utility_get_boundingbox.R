@@ -4,11 +4,12 @@
 #'
 #' @param x a \code{data.frame} with a lat and long column
 #'
-#' @return a \code{SpatialPolygon} bounding area of input points \code{x}
+#' @return a \code{SpatialPolygon} bounding box of input points \code{x}
 #'
 #' @family HydroData 'utility' function
 
 getBoundingBox = function(x) {
+
   coords = matrix(
     c(
       min(x$long),
@@ -26,8 +27,8 @@ getBoundingBox = function(x) {
     byrow = TRUE
   )
 
-  bb = Polygon(coords)
-  bb = SpatialPolygons(list(Polygons(list(bb), ID = "AOI")), proj4string = CRS("+init=epsg:4326"))
+  bb = sp::Polygon(coords)
+  bb = sp::SpatialPolygons(list(Polygons(list(bb), ID = "AOI")), proj4string = CRS(AOI::aoiProj))
 
   return(bb)
 }

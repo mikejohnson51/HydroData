@@ -2,7 +2,7 @@
 % Please edit documentation in R/findNearestGHCN.R
 \name{findNearestGHCN}
 \alias{findNearestGHCN}
-\title{Find Neareast GHCN}
+\title{Find Neareast GHCN stations}
 \usage{
 findNearestGHCN(location = NULL, n = 5, PARAM = NULL)
 }
@@ -17,7 +17,7 @@ findNearestGHCN(location = NULL, n = 5, PARAM = NULL)
 A list contatining a data.frame of Airports and a minimum bounding box data.frame
 }
 \description{
-Find Neareast GHCN
+Find Neareast GHCN stations
 }
 \author{
 Mike Johnson

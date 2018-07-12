@@ -10,6 +10,8 @@ query_cida(AOI, type, spatial = TRUE)
 \item{AOI}{and AOI object generated with the AOI package, or a bounding box}
 
 \item{type}{the WBD or nhdplus object to return}
+
+\item{spatial}{return `sp` (default) if \code{FALSE} return `sf`}
 }
 \value{
 a \code{Spatial} object

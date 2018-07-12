@@ -4,16 +4,15 @@
 \alias{findGHCN}
 \title{Find NOAA Maintained GHCN Stations}
 \usage{
-findGHCN(state = NULL, county = NULL, clip_unit = NULL,
-  parameters = NULL, boundary = FALSE, basemap = FALSE, ids = FALSE,
-  save = FALSE)
+findGHCN(state = NULL, county = NULL, clip = NULL, parameters = NULL,
+  boundary = FALSE, basemap = FALSE, ids = FALSE, save = FALSE)
 }
 \arguments{
 \item{state}{Full name(s) or two character abbriviation(s). Not case senstive}
 
 \item{county}{County name(s). Requires \code{state} input.}
 
-\item{clip_unit}{SpatialObject* or list. For details see \code{getClipUnit}}
+\item{clip}{SpatialObject* or list. For details see \code{getClipUnit}}
 
 \item{parameters}{Select the variable of interest.The five core elemets are:\cr
 PRCP = Precipitation (tenths of mm)\cr
@@ -59,7 +58,7 @@ Pending parameterization, \code{findGCHN} can also return:
 }
 \description{
 \code{findGHCN} finds Global Historical Climatology Network (GHCN) stations within Area of Interest.
-To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip_unit}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
+To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
 Returned \code{list} can be interactivly explored via \code{\link{explore}} and ID values (\code{ids = TRUE}) allow for GHCN data access via \code{getGHCN}.\cr\cr
 All outputs are projected to \code{CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and station metadata is (\emph{down})load from a \href{ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt}{NOAA FTP}.
 }
@@ -101,7 +100,8 @@ plot(el.paso$ghcn, add = T)
 \code{\link{explore}}
 
 Other HydroData 'find' functions: \code{\link{findAirports}},
-  \code{\link{findNHD}}
+  \code{\link{findNHD}}, \code{\link{findNID}},
+  \code{\link{findSnotel}}, \code{\link{findUSGS}}
 }
 \author{
 Mike Johnson
