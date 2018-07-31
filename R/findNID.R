@@ -49,45 +49,42 @@
 #' @author
 #' Mike Johnson
 
-findNID = function(state = NULL, county = NULL, clip = NULL, boundary = FALSE, save = FALSE){
+findNID = function(AOI = NULL, ids = FALSE){
+
+  if(length(AOI) <= 1 ) { AOI = list(AOI = AOI) }
 
   dams = dams::nid_cleaned
+  dams = dams[!is.na(dams$Longitude),]
+  dams = dams[!is.na(dams$Latitude),]
 
-  dams = dams[stats::complete.cases(dams$Longitude),]
-  dams = dams[stats::complete.cases(dams$Latitude),]
-
-  AOI = getAOI(state, county, clip)
-
-  sp = SpatialPointsDataFrame(cbind(dams$Longitude, dams$Latitude), data = dams, proj4string = AOI::aoiProj)
+  sp = sp::SpatialPointsDataFrame(cbind(dams$Longitude, dams$Latitude), data = dams, proj4string = AOI::aoiProj)
 
   message("All dams in CONUS loaded: ", formatC(dim(sp)[1], format="d", big.mark=","), " dams in total")
 
-  sp = sp[AOI, ]
+  sp = sp[AOI$AOI, ]
 
-  if (length(sp) == 0) { stop("0 dams found in AOI") }
+  if (dim(sp)[1] == 0) { stop("0 dams found in AOI") }
 
   message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " NID dams found")
 
-  items = list(name = nameAOI(state, county, clip),
-               source = "USACE NID",
-               dams = sp)
+  AOI[["dams"]] = sp
 
   report = "Returned list includes: NID dams shapefile"
 
-  items = return.what(sp, items, report, AOI, boundary, clip, ids = NULL)
+  AOI = return.what(AOI, report, AOI, ids = if(ids){sp$Dam_Name})
 
-    if(save){
-      save.file(data = items,
-                state = state,
-                county = county,
-                clip = clip,
-                agency  = 'USACE',
-                source  = "NID",
-                dataset = "dams",
-                other   = NULL )
-    }
+    # if(save){
+    #   save.file(data = items,
+    #             state = state,
+    #             county = county,
+    #             clip = clip,
+    #             agency  = 'USACE',
+    #             source  = "NID",
+    #             dataset = "dams",
+    #             other   = NULL )
+    # }
 
-  return(items)
+  return(AOI)
 }
 
 

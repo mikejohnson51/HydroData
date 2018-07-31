@@ -1,0 +1,37 @@
+#' Find Neareast COMIDs
+#'
+#' @param location a lat, long pair or Colloqiual Name
+#'
+#' @return A list contatining a data.frame of Airports and a minimum bounding box data.frame
+#' @export
+#' @author Mike Johnson
+
+findNearestCOMID = function(location = NULL, n = 5, ids = TRUE){
+
+  if(class(location) == 'numeric') { point = SpatialPoints(cbind(location[1], location[2]))
+  } else {
+    x = AOI::getPoint(location)
+    point = sp::SpatialPoints(cbind(x$lon, x$lat), proj4string = AOI::aoiProj)
+  }
+
+  point = st_as_sf(point)
+
+  test = query_cida(AOI = suppressMessages(AOI::getAOI(clip = list(location, 5,5))), type = 'catchmentsp', spatial = FALSE)
+
+  dist = data.frame(ID = test$featureid, DIST = sf::st_distance(x = test, y = point))
+
+  dist = dist[order(dist$DIST),]
+  dist = dist[c(1:n),]
+
+  test1 = test[test$featureid %in% dist$ID,]
+
+  bb = AOI::getBoundingBox(test1)
+
+  if(ids){ items = test1$featureid} else {items = list(COMIDs = test1$featureid, extent = bb)}
+
+  return(items)
+
+}
+
+
+

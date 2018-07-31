@@ -6,19 +6,7 @@
 #' Returned \code{list} can be interactivly explored via \code{\link{explore}} and ID values (\code{ids = TRUE}) allow for Weather Underground data access via \code{getWU}.\cr\cr
 #' All outputs are projected to \code{CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}
 #'
-#' @param state    Full name(s) or two character abbriviation(s). Not case senstive
-#' @param county    County name(s). Requires \code{state} input.
-#' @param clip SpatialObject* or list. For details see \code{getClipUnit}
 #' @param boundary  If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list
-#'
-#'  If a user wants greater control over basemap apperance replace TRUE with either:
-#' \itemize{
-#' \item't':  google terrain basemap
-#' \item's':  google sattilite imagery basemap
-#' \item'h':  google hybrid basemap
-#' \item'r':  google roads basemap
-#' }
-#'
 #' @param ids  If TRUE, returns a list of road names in AOI
 #' @param save If TRUE, data is written to a HydroData folder in users working directory.
 #'
@@ -61,39 +49,48 @@
 #' @author
 #' Mike Johnson
 
-findAirports = function(state = NULL, county = NULL, clip = NULL, boundary = FALSE, ids = FALSE, save = FALSE){
+findAirports = function(AOI = NULL, ids = FALSE) {
+
+  if(length(AOI) <= 1) { AOI = list(AOI = AOI) }
 
   ap = HydroData::ap
 
-  air = sp::SpatialPointsDataFrame(coords = cbind(ap$lon, ap$lat), data = as.data.frame(ap), proj4string = AOI::aoiProj)
+  air = sp::SpatialPointsDataFrame(
+    coords = cbind(ap$lon, ap$lat),
+    data = as.data.frame(ap),
+    proj4string = AOI::aoiProj
+  )
 
-  AOI = AOI::getAOI(state, county, clip)
+  sp = air[AOI$AOI,]
 
-  sp = air[AOI, ]
+  if (dim(sp)[1] == 0) {
+    stop("0 airports found in AOI")
+  }
 
-  if (length(sp) == 0) { stop("0 airports found in AOI") }
+  message(formatC(
+    as.numeric(length(sp)),
+    format = "d",
+    big.mark = ","
+  ),
+  " airports found")
 
-  message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " airports found")
-
-  items = list(name = AOI::nameAOI(state, county, clip),
-               source = "Open Flights",
-               airports =  sp)
+  AOI[["ap"]] = sp
 
   report = "Returned list includes: airport shapefile"
 
-  items = return.what(sp, items, report, AOI, boundary, clip, ids = if(ids){ids = "ICAO"} )
+  items = return.what(AOI, report, AOI, ids = if (ids) {sp$ICAO})
 
-  if(save){
-    save.file(data      = items,
-              state     = state,
-              county    = county,
-              clip = clip,
-              agency    = 'NCAR',
-              source    = "NCAR",
-              dataset   = "airports",
-              other     = NULL )
-  }
+  # if (save) {
+  #   save.file(
+  #     data      = items,
+  #     bounds    = AOI,
+  #     agency    = 'NCAR',
+  #     source    = "NCAR",
+  #     dataset   = "airports",
+  #     other     = NULL
+  #   )
+  # }
 
-  return(items)
+  return(AOI)
 }
 

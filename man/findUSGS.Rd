@@ -4,10 +4,13 @@
 \alias{findUSGS}
 \title{Find USGS NWIS Stream Gages}
 \usage{
-findUSGS(state = NULL, county = NULL, clip = NULL, boundary = FALSE,
-  ids = FALSE, save = FALSE, comids = FALSE)
+findUSGS(AOI = NULL, ids = FALSE, comids = FALSE)
 }
 \arguments{
+\item{ids}{If TRUE, returns a list of station IDs in AOI}
+
+\item{comids}{If TRUE, returns a list of NHD COMIDs that correspond to the station IDs}
+
 \item{state}{Full name(s) or two character abbriviation(s). Not case senstive}
 
 \item{county}{County name(s). Requires \code{state} input.}
@@ -24,11 +27,7 @@ findUSGS(state = NULL, county = NULL, clip = NULL, boundary = FALSE,
 \item'r':  google roads basemap
 }}
 
-\item{ids}{If TRUE, returns a list of station IDs in AOI}
-
 \item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
-
-\item{comids}{If TRUE, returns a list of NHD COMIDs that correspond to the station IDs}
 }
 \value{
 \code{findUSGS} returns a named list of minimum length 1:
@@ -89,8 +88,9 @@ inspect(data, param = 'Flow')
 \code{\link[dataRetrieval]{readNWISdv}}
 
 Other HydroData 'find' functions: \code{\link{findAirports}},
-  \code{\link{findGHCN}}, \code{\link{findNHD}},
-  \code{\link{findNID}}, \code{\link{findSnotel}}
+  \code{\link{findGHCN}}, \code{\link{findHUC}},
+  \code{\link{findNHD}}, \code{\link{findNID}},
+  \code{\link{findSnotel}}, \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson

@@ -9,8 +9,8 @@
 
 query_cida = function(AOI, type, spatial = TRUE){
 
-df = data.frame(server = c(rep("WBD", 2), rep("nhdplus", 2)),
-                type = c("huc08", "huc12", "nhdflowline_network", "catchmentsp"), stringsAsFactors = F)
+df = data.frame(server = c(rep("WBD", 2), rep("nhdplus", 3)),
+                type = c("huc08", "huc12", "nhdflowline_network", "catchmentsp", "nhdwaterbody"), stringsAsFactors = F)
 
 bb = AOI@bbox
 

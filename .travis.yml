@@ -34,7 +34,6 @@ warnings_are_errors: false
 r_github_packages:
   - jimhester/covr
   - mikejohnson51/AOI
-  - ropensci/USAboundariesData
 
 script:
   - |

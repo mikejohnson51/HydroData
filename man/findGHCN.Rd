@@ -4,16 +4,9 @@
 \alias{findGHCN}
 \title{Find NOAA Maintained GHCN Stations}
 \usage{
-findGHCN(state = NULL, county = NULL, clip = NULL, parameters = NULL,
-  boundary = FALSE, basemap = FALSE, ids = FALSE, save = FALSE)
+findGHCN(AOI = NULL, parameters = NULL, ids = FALSE)
 }
 \arguments{
-\item{state}{Full name(s) or two character abbriviation(s). Not case senstive}
-
-\item{county}{County name(s). Requires \code{state} input.}
-
-\item{clip}{SpatialObject* or list. For details see \code{getClipUnit}}
-
 \item{parameters}{Select the variable of interest.The five core elemets are:\cr
 PRCP = Precipitation (tenths of mm)\cr
 SNOW = Snowfall (mm)\cr
@@ -24,6 +17,14 @@ TMIN = Minimum temperature (tenths of degrees C)\cr
 To see the other options consult the GHCN documentation \href{ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt}{here}\cr
 If \code{parameters = NULL}, all recorded parameters in AOI will be returned
 \cr}
+
+\item{ids}{If TRUE, returns a list of IDs for selected stations}
+
+\item{state}{Full name(s) or two character abbriviation(s). Not case senstive}
+
+\item{county}{County name(s). Requires \code{state} input.}
+
+\item{clip}{SpatialObject* or list. For details see \code{getClipUnit}}
 
 \item{boundary}{If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list}
 
@@ -36,8 +37,6 @@ If \code{parameters = NULL}, all recorded parameters in AOI will be returned
 \item'h':  google hybrid basemap
 \item'r':  google roads basemap
 }}
-
-\item{ids}{If TRUE, returns a list of IDs for selected stations}
 
 \item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
 }
@@ -100,8 +99,9 @@ plot(el.paso$ghcn, add = T)
 \code{\link{explore}}
 
 Other HydroData 'find' functions: \code{\link{findAirports}},
-  \code{\link{findNHD}}, \code{\link{findNID}},
-  \code{\link{findSnotel}}, \code{\link{findUSGS}}
+  \code{\link{findHUC}}, \code{\link{findNHD}},
+  \code{\link{findNID}}, \code{\link{findSnotel}},
+  \code{\link{findUSGS}}, \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson

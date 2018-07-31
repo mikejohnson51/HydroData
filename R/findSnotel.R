@@ -64,39 +64,37 @@
 #' @author
 #' Mike Johnson
 
-findSnotel = function(state = NULL, county = NULL, clip = NULL, boundary = FALSE, ids = FALSE, save = FALSE){
+findSnotel = function(AOI = NULL, ids = FALSE){
 
-  AOI = AOI::getAOI(state, county, clip)
+  if(length(AOI) <=1 ) { AOI = list(AOI = AOI) }
 
   snotel = HydroData::snotel
 
   sp = sp::SpatialPointsDataFrame(cbind(snotel$LONG, snotel$LAT), data = as.data.frame(snotel), proj4string = AOI::aoiProj)
 
-  sp = sp[AOI,]
+  sp = sp[AOI$AOI,]
 
-  if (length(sp) == 0) { stop("0 stations found in AOI") }
+  if (dim(sp)[1] == 0) { stop("0 stations found in AOI") }
 
   message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " snotel stations found within AOI")
 
-  items = list( name = nameAOI(state, county, clip),
-                source = "NRCS Snotel",
-                snotel = sp)
+  AOI[["snotel"]] = sp
 
   report ="Returned list includes: snotel shapefile"
 
-  items = return.what(sp, items, report, AOI, boundary, clip, ids = if(ids){ids = 'ID'})
+  AOI = return.what(AOI, report, AOI, ids = if(ids){sp$ID})
 
-  if(save){
-      save.file(data = items,
-                state = state,
-                county = county,
-                clip = clip,
-                agency  = 'NRCS',
-                source  = "snotel",
-                dataset = "stations",
-                other   = NULL )
-  }
+  # if(save){
+  #     save.file(data = items,
+  #               state = state,
+  #               county = county,
+  #               clip = clip,
+  #               agency  = 'NRCS',
+  #               source  = "snotel",
+  #               dataset = "stations",
+  #               other   = NULL )
+  # }
 
-  return(items)
+  return(AOI)
 }
 

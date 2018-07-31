@@ -28,8 +28,9 @@ getBoundingBox = function(x) {
   )
 
   bb = sp::Polygon(coords)
-  bb = sp::SpatialPolygons(list(Polygons(list(bb), ID = "AOI")), proj4string = CRS(AOI::aoiProj))
+  bb = sp::SpatialPolygons(list(sp::Polygons(list(bb), ID = "AOI")), proj4string = AOI::aoiProj)
 
   return(bb)
 }
+
 

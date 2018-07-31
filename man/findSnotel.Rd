@@ -4,10 +4,11 @@
 \alias{findSnotel}
 \title{Find USDA NRCS Snotel Stations}
 \usage{
-findSnotel(state = NULL, county = NULL, clip = NULL, boundary = FALSE,
-  ids = FALSE, save = FALSE)
+findSnotel(AOI = NULL, ids = FALSE)
 }
 \arguments{
+\item{ids}{If TRUE, returns a list of station IDs in AOI}
+
 \item{state}{Full name(s) or two character abbriviation(s). Not case senstive}
 
 \item{county}{County name(s). Requires \code{state} input.}
@@ -23,8 +24,6 @@ findSnotel(state = NULL, county = NULL, clip = NULL, boundary = FALSE,
 \item'h':  google hybrid basemap
 \item'r':  google roads basemap
 }}
-
-\item{ids}{If TRUE, returns a list of station IDs in AOI}
 
 \item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
 }
@@ -75,8 +74,9 @@ explore(nv.snow)
 \code{\link{explore}}
 
 Other HydroData 'find' functions: \code{\link{findAirports}},
-  \code{\link{findGHCN}}, \code{\link{findNHD}},
-  \code{\link{findNID}}, \code{\link{findUSGS}}
+  \code{\link{findGHCN}}, \code{\link{findHUC}},
+  \code{\link{findNHD}}, \code{\link{findNID}},
+  \code{\link{findUSGS}}, \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson

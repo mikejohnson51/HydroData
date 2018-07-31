@@ -1,8 +1,8 @@
 context("findGHCN")
 
 test_that("GHCN throws correct errors", {
-  expect_error(findGHCN(clip = list("UCSB", .3,.3)), "0 stations found in AOI")
-  expect_error(findNearestGHCN(location = c(37, -113), n = 5, PARAM = "PPT"), "PPT is not a valid GHCN parameter")
+  expect_error(findGHCN(clip = list("UCSB", .3,.3)), "0 stations found in AOI", fixed = TRUE)
+  expect_error(findNearestGHCN(location = c(37, -113), n = 5, PARAM = "PPT"), "PPT is not a valid GHCN parameter", fixed = TRUE)
 
 })
 

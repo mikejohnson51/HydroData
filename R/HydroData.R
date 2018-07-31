@@ -9,14 +9,12 @@
 #' @docType package
 #' @name HydroData
 #'
-#' @importFrom AOI getAOI nameAOI aoiProj simpleCap getPoint getFiat
-#' @importFrom methods as
 #' @importFrom raster writeRaster
 #' @importFrom rgdal  writeOGR
-#' @importFrom sf st_zm read_sf
+#' @importFrom sf st_zm read_sf as_Spatial
 #' @importFrom sp SpatialPoints SpatialPointsDataFrame CRS plot spDistsN1 Polygons Polygon spTransform SpatialPolygons
 #' @importFrom utils tail write.csv download.file unzip
-#' @importFrom stats complete.cases
+
 
 
 NULL

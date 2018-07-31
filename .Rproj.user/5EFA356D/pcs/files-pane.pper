@@ -1,9 +1,13 @@
 {
-    "path" : "~/Documents/GitHub/HydroData_test/R",
+    "path" : "~/Documents/GitHub/HydroData/R",
     "sortOrder" : [
         {
             "ascending" : true,
             "columnIndex" : 2
+        },
+        {
+            "ascending" : false,
+            "columnIndex" : 4
         }
     ]
 }

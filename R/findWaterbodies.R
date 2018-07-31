@@ -1,7 +1,7 @@
-#' Find National Hydrography Data Stream Networks
+#' Find National Hydrography Data Waterbodies
 #'
 #' @description
-#' \code{findNHD} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
+#' \code{findWaterbodies} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
 #' To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
 #' Returned \code{list} can be interactivly explored via \code{\link{explore}} and COMID values (\code{ids = TRUE}) allow for National Water Model access via \code{getNWM}.\cr\cr
 #' All outputs are projected to \code{CRS'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and stream networks are (\emph{down})loaded from the \href{https://cida.usgs.gov}{USGS}.
@@ -66,28 +66,33 @@
 #' @author Mike Johnson
 #'
 
-findNHD = function(AOI = NULL, ids = FALSE) {
+findWaterbodies = function(AOI = NULL, ids = FALSE) {
 
-  if(length(AOI) <= 1 ) { AOI = list(AOI = AOI) }
+    if(length(AOI) <= 1 ) { AOI = list(AOI = AOI) }
 
-  AOI[["nhd"]]  = query_cida(AOI$AOI, type = 'nhdflowline_network', spatial = T)
+    sl = query_cida(AOI$AOI, type = "nhdwaterbody", spatial = TRUE)
 
-  report = "Returned list includes: flowline shapefile"
+    AOI[["waterbodies"]] = sl
 
-  AOI = return.what(AOI, report, AOI, ids = if(ids){sl$comid})
+    report = "Returned list includes: NHD waterbodies shapefile"
 
-  # if (save) {
-  #   save.file(
-  #     data = items,
-  #     state = state,
-  #     county = county,
-  #     clip = clip,
-  #     agency  = 'USGS',
-  #     source  = "NHD",
-  #     dataset = "flowlines",
-  #     other   = NULL
-  #   )
-  # }
+    AOI = return.what(AOI, report, AOI, ids = if(ids){sl$gnis_name})
 
-  return(AOI)
-}
+    # if (save) {
+    #   save.file(
+    #     data = items,
+    #     state = state,
+    #     county = county,
+    #     clip = clip,
+    #     agency  = 'USGS',
+    #     source  = "NHD",
+    #     dataset = "flowlines",
+    #     other   = NULL
+    #   )
+    # }
+
+    return(AOI)
+  }
+
+
+

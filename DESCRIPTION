@@ -7,11 +7,12 @@ Date: 2018-2-9
 Author: Mike Johnson [aut, cre]
 Maintainer: Mike Johnson <mike.johnson@geog.ucsb.edu>
 Depends:
-    R(>= 3.3.0)
-Imports:
+    R(>= 3.3.0),
     AOI,
+    leaflet
+Imports:
     dams,
-    methods,
+    magrittr,
     sf,
     sp,
     utils,

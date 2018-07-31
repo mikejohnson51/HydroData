@@ -77,42 +77,40 @@
 #' Mike Johnson
 #'
 
-findUSGS = function(state = NULL, county = NULL, clip = NULL, boundary = FALSE, ids = FALSE, save = FALSE, comids = FALSE){
+findUSGS = function(AOI = NULL, ids = FALSE, comids = FALSE){
 
-  AOI  = getAOI(state, county, clip)
+  if(length(AOI) <= 1 ) { AOI = list(AOI = AOI) }
 
   usgsStations = HydroData::usgsStations
 
   sp = SpatialPointsDataFrame(cbind(usgsStations$lon_reachCent, usgsStations$lat_reachCent), usgsStations, proj4string = AOI::aoiProj)
 
-  sp = sp[AOI,]
+  sp = sp[AOI$AOI,]
 
-  if (length(sp) == 0) { stop("0 stations found in AOI") }
+  if (dim(sp)[1] == 0) { stop("0 stations found in AOI") }
 
   message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " USGS gages found within AOI")
 
-  items = list(name = nameAOI(state, county, clip),
-               source = "USGS NWIS",
-               nwis = sp)
+  AOI[["nwis"]] = sp
 
   report = "Returned list includes: USGS NWIS shapefile"
 
-  items = return.what(sp, items, report, AOI, boundary, clip, ids = if(ids){ids = 'site_no'})
+  items = return.what(AOI, report, AOI,  ids = if(ids){sp$site_no})
 
-  if(save){
+  # if(save){
+  #
+  #   save.file(data      = items,
+  #             state     = state,
+  #             county    = county,
+  #             clip = clip,
+  #             agency    = 'USGS',
+  #             source    = "NWIS",
+  #             dataset   = "nwis",
+  #             other     =  NULL )
+  # }
 
-    save.file(data      = items,
-              state     = state,
-              county    = county,
-              clip = clip,
-              agency    = 'USGS',
-              source    = "NWIS",
-              dataset   = "nwis",
-              other     =  NULL )
-  }
 
-
-return(items)
+return(AOI)
 
 }
 

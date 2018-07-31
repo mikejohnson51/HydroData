@@ -4,8 +4,7 @@
 \alias{findNID}
 \title{Find US Army Core Dams within Area of Interest}
 \usage{
-findNID(state = NULL, county = NULL, clip = NULL, boundary = FALSE,
-  save = FALSE)
+findNID(AOI = NULL, ids = FALSE)
 }
 \arguments{
 \item{state}{character. Provide full name(s) or two character abbriviation(s). Not case senstive}
@@ -59,8 +58,9 @@ plot(tx.dams$dams, add = TRUE)
          }
 
 Other HydroData 'find' functions: \code{\link{findAirports}},
-  \code{\link{findGHCN}}, \code{\link{findNHD}},
-  \code{\link{findSnotel}}, \code{\link{findUSGS}}
+  \code{\link{findGHCN}}, \code{\link{findHUC}},
+  \code{\link{findNHD}}, \code{\link{findSnotel}},
+  \code{\link{findUSGS}}, \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson

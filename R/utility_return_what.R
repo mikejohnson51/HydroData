@@ -16,29 +16,24 @@
 #' @export
 #' @author Mike Johnson
 
-return.what = function(sp,
-                       items,
+return.what = function(items,
                        report,
                        AOI,
-                       boundary,
-                       clip,
                        ids) {
-  if (boundary) {
-    items[['boundary']] = AOI
-    report = append(report, "AOI boundary")
-
-    if (!is.null(clip)) {
-      items[['fiat']] = AOI::getFiat(clip = AOI)
-      report = append(report, "fiat boundary")
-    }
-  }
+  # if (boundary) {
+  #   items[['boundary']] = AOI
+  #   report = append(report, "AOI boundary")
+  #
+  #   if (!is.null(clip)) {
+  #     items[['fiat']] = AOI::getFiat(clip = AOI)
+  #     report = append(report, "fiat boundary")
+  #   }
+  # }
 
   if (!is.null(ids)) {
-    items[['ids']] = sp@data[, ids]
+    items[['ids']] = ids
     report = append(report, "list of station IDs")
   }
-
-
 
   if (length(report) > 1) {
     report[length(report)] = paste("and",  tail(report, n = 1))

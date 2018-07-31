@@ -90,57 +90,42 @@
 #' Mike Johnson
 #'
 
-findGHCN = function(state = NULL,
-                    county = NULL,
-                    clip = NULL,
-                    parameters = NULL,
-                    boundary = FALSE,
-                    basemap = FALSE,
-                    ids = FALSE,
-                    save = FALSE) {
+findGHCN = function(AOI = NULL, parameters = NULL, ids = FALSE) {
 
-  AOI = AOI::getAOI(state, county, clip)
+  if(length(AOI) <=1 ) { AOI = list(AOI = AOI) }
 
   stations = HydroData::ghcn_stations
 
-  stations = stations[which(stations$LAT <= AOI@bbox[2, 2]),]
-  stations = stations[which(stations$LAT >= AOI@bbox[2, 1]),]
-  stations = stations[which(stations$LON >= AOI@bbox[1, 1]),]
-  stations = stations[which(stations$LON <= AOI@bbox[1, 2]),]
+  sp = sp::SpatialPointsDataFrame(cbind(stations$LON, stations$LAT), stations, proj4string = AOI::aoiProj)
+  sp = sp[AOI$AOI,]
 
   if(!is.null(parameters)) {
-    stations = stations[stations$PARAMETER %in% toupper(parameters), ]
+    sp = sp[sp$PARAMETER %in% toupper(parameters), ]
   }
 
-  if(dim(stations)[1] == 0) { stop("0 stations found in AOI") }
-
-  sp = sp::SpatialPointsDataFrame(cbind(stations$LON, stations$LAT), stations, proj4string = AOI::aoiProj)
-
-  sp = sp[AOI,]
+  if(dim(sp)[1] == 0) { stop("0 stations found in AOI") }
 
   message(length(sp), " GHCN stations found")
 
-  items = list(name = AOI::nameAOI(state, county, clip),
-               souce = "NOAA GHCN",
-               ghcn = sp)
+  AOI[["ghcn"]] = sp
 
   report = "Returned list includes: NOAA GHCN shapefile"
 
-  items = return.what(sp, items, report, AOI, boundary, clip, ids = if(ids){ids = 'ID'})
+  AOI = return.what(AOI, report, AOI, ids = if(ids){unique(sp$ID)})
 
-  if (save) {
-    save.file(
-      data = items,
-      state = state,
-      county = county,
-      clip = clip,
-      agency  = 'NOAA',
-      source  = "GHCN",
-      dataset = "ghcn",
-      other   = NULL
-    )
-  }
+  # if (save) {
+  #   save.file(
+  #     data = items,
+  #     state = state,
+  #     county = county,
+  #     clip = clip,
+  #     agency  = 'NOAA',
+  #     source  = "GHCN",
+  #     dataset = "ghcn",
+  #     other   = NULL
+  #   )
+  # }
 
-  return(items)
+  return(AOI)
 }
 

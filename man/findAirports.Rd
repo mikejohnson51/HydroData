@@ -4,27 +4,12 @@
 \alias{findAirports}
 \title{Find Airports}
 \usage{
-findAirports(state = NULL, county = NULL, clip = NULL, boundary = FALSE,
-  ids = FALSE, save = FALSE)
+findAirports(AOI = NULL, ids = FALSE)
 }
 \arguments{
-\item{state}{Full name(s) or two character abbriviation(s). Not case senstive}
-
-\item{county}{County name(s). Requires \code{state} input.}
-
-\item{clip}{SpatialObject* or list. For details see \code{getClipUnit}}
-
-\item{boundary}{If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list
-
- If a user wants greater control over basemap apperance replace TRUE with either:
-\itemize{
-\item't':  google terrain basemap
-\item's':  google sattilite imagery basemap
-\item'h':  google hybrid basemap
-\item'r':  google roads basemap
-}}
-
 \item{ids}{If TRUE, returns a list of road names in AOI}
+
+\item{boundary}{If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list}
 
 \item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
 }
@@ -72,8 +57,9 @@ explore(ap)
 \code{\link{explore}}
 
 Other HydroData 'find' functions: \code{\link{findGHCN}},
-  \code{\link{findNHD}}, \code{\link{findNID}},
-  \code{\link{findSnotel}}, \code{\link{findUSGS}}
+  \code{\link{findHUC}}, \code{\link{findNHD}},
+  \code{\link{findNID}}, \code{\link{findSnotel}},
+  \code{\link{findUSGS}}, \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson
