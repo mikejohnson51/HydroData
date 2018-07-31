@@ -11,7 +11,7 @@
 #'
 #' @importFrom raster writeRaster
 #' @importFrom rgdal  writeOGR
-#' @importFrom sf st_zm read_sf as_Spatial
+#' @importFrom sf st_zm read_sf as_Spatial st_as_sf
 #' @importFrom sp SpatialPoints SpatialPointsDataFrame CRS plot spDistsN1 Polygons Polygon spTransform SpatialPolygons
 #' @importFrom utils tail write.csv download.file unzip
 

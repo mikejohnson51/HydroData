@@ -14,7 +14,7 @@ findNearestCOMID = function(location = NULL, n = 5, ids = TRUE){
     point = sp::SpatialPoints(cbind(x$lon, x$lat), proj4string = AOI::aoiProj)
   }
 
-  point = st_as_sf(point)
+  point = sf::st_as_sf(point)
 
   test = query_cida(AOI = suppressMessages(AOI::getAOI(clip = list(location, 5,5))), type = 'catchmentsp', spatial = FALSE)
 

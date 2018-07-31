@@ -25,7 +25,7 @@ Namely:
  findUSGS
  findWaterbodies
  findWS
- findAirports
+ findap
  getCLD
  getKoppen
  getNED
