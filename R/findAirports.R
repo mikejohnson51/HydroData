@@ -51,7 +51,7 @@
 
 findAirports = function(AOI = NULL, ids = FALSE) {
 
-  if(class(AOI) != "list"){AOI = list(AOI = AOI)}
+  if(class(AOI) != "HydroData"){AOI = list(AOI = AOI)}
 
   ap = HydroData::ap
 

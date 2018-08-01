@@ -92,7 +92,7 @@
 
 findGHCN = function(AOI = NULL, parameters = NULL, ids = FALSE) {
 
-  if(class(AOI) != "list"){AOI = list(AOI = AOI)}
+  if(class(AOI) != "HydroData"){AOI = list(AOI = AOI)}
 
   stations = HydroData::ghcn_stations
 

@@ -18,7 +18,7 @@
 
 findGAGESII = function(AOI = NULL, ids = FALSE, basins = FALSE) {
 
-  if(class(AOI) != "list"){AOI = list(AOI = AOI)}
+  if(class(AOI) != "HydroData"){AOI = list(AOI = AOI)}
 
     AOI[["gagesII"]]  = query_cida(AOI$AOI, type = 'gagesII', spatial = T)
 

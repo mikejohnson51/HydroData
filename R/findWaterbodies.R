@@ -68,7 +68,7 @@
 
 findWaterbodies = function(AOI = NULL, ids = FALSE) {
 
-  if(class(AOI) != "list"){AOI = list(AOI = AOI)}
+  if(class(AOI) != "HydroData"){AOI = list(AOI = AOI)}
 
     sl = query_cida(AOI$AOI, type = "nhdwaterbody", spatial = TRUE)
 
@@ -76,7 +76,6 @@ findWaterbodies = function(AOI = NULL, ids = FALSE) {
 
     report = "Returned list includes: NHD waterbodies shapefile"
 
-    AOI = return.what(AOI, report, AOI, ids = if(ids){sl$gnis_name})
     AOI = return.what(AOI, type = 'waterbodies', report, vals = if(ids){"objectid"})
 
     return(AOI)

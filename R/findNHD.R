@@ -68,7 +68,7 @@
 
 findNHD = function(AOI = NULL, ids = FALSE) {
 
-  if(class(AOI) != "list"){AOI = list(AOI = AOI)}
+  if(class(AOI) != "HydroData"){AOI = list(AOI = AOI)}
 
   AOI[["nhd"]]  = query_cida(AOI$AOI, type = 'nhdflowline_network', spatial = T)
 

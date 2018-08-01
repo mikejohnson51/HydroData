@@ -79,7 +79,7 @@
 
 findNWIS = function(AOI = NULL, ids = FALSE, comids = FALSE){
 
-  if(class(AOI) != "list"){AOI = list(AOI = AOI)}
+  if(class(AOI) != "HydroData"){AOI = list(AOI = AOI)}
 
   usgsStations = HydroData::usgsStations
 
