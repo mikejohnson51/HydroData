@@ -4,7 +4,7 @@
 \alias{findNearestHUC12}
 \title{Find Neareast COMIDs}
 \usage{
-findNearestHUC12(location = NULL, n = 1, ids = TRUE)
+findNearestHUC12(point = NULL, n = 1, ids = FALSE, AOI = FALSE)
 }
 \arguments{
 \item{location}{a lat, long pair or Colloqiual Name}

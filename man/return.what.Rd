@@ -4,22 +4,16 @@
 \alias{return.what}
 \title{Choose what to return for HydroData Calls}
 \usage{
-return.what(items, report, AOI, ids)
+return.what(AOI, type, report, vals)
 }
 \arguments{
-\item{items}{an items list}
+\item{AOI}{Spatial object}
 
 \item{report}{a report vector}
 
+\item{vals}{the ids call}
+
 \item{AOI}{the defined AOI}
-
-\item{ids}{the ids call}
-
-\item{sp}{Spatial object}
-
-\item{boundary}{the boundary call}
-
-\item{clip}{the clip defintion}
 }
 \value{
 a list of HydroData components

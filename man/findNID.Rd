@@ -58,9 +58,10 @@ plot(tx.dams$dams, add = TRUE)
          }
 
 Other HydroData 'find' functions: \code{\link{findAirports}},
-  \code{\link{findGHCN}}, \code{\link{findHUC}},
-  \code{\link{findNHD}}, \code{\link{findSnotel}},
-  \code{\link{findUSGS}}, \code{\link{findWaterbodies}}
+  \code{\link{findGAGESII}}, \code{\link{findGHCN}},
+  \code{\link{findHUC}}, \code{\link{findNHD}},
+  \code{\link{findNWIS}}, \code{\link{findSnotel}},
+  \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson

@@ -2,13 +2,10 @@
 #'
 #' @description  A function defining what should be returned in a HydroData object
 #'
-#' @param sp Spatial object
-#' @param items an items list
+#' @param AOI Spatial object
 #' @param report a report vector
 #' @param AOI the defined AOI
-#' @param boundary the boundary call
-#' @param clip the clip defintion
-#' @param ids the ids call
+#' @param vals the ids call
 #'
 #' @family HydroData 'helper' functions
 #'
@@ -16,22 +13,13 @@
 #' @export
 #' @author Mike Johnson
 
-return.what = function(items,
+return.what = function(AOI,
+                       type,
                        report,
-                       AOI,
-                       ids) {
-  # if (boundary) {
-  #   items[['boundary']] = AOI
-  #   report = append(report, "AOI boundary")
-  #
-  #   if (!is.null(clip)) {
-  #     items[['fiat']] = AOI::getFiat(clip = AOI)
-  #     report = append(report, "fiat boundary")
-  #   }
-  # }
+                       vals) {
 
-  if (!is.null(ids)) {
-    items[['ids']] = ids
+  if (!is.null(vals)) {
+    AOI[[vals]] = eval(parse(text = paste("AOI",type, vals, sep = "$")))
     report = append(report, "list of station IDs")
   }
 
@@ -41,8 +29,8 @@ return.what = function(items,
 
   message(paste(report, collapse = ", "))
 
-  class(items) = "HydroData"
+  class(AOI) = "HydroData"
 
-  return(items)
+  return(AOI)
 
 }

@@ -51,7 +51,7 @@
 
 findAirports = function(AOI = NULL, ids = FALSE) {
 
-  if(length(AOI) <= 1) { AOI = list(AOI = AOI) }
+  if(class(AOI) != "list"){AOI = list(AOI = AOI)}
 
   ap = HydroData::ap
 
@@ -72,25 +72,15 @@ findAirports = function(AOI = NULL, ids = FALSE) {
     format = "d",
     big.mark = ","
   ),
-  " airports found")
+  " airport(s) found")
 
   AOI[["ap"]] = sp
 
   report = "Returned list includes: airport shapefile"
 
-  items = return.what(AOI, report, AOI, ids = if (ids) {sp$ICAO})
-
-  # if (save) {
-  #   save.file(
-  #     data      = items,
-  #     bounds    = AOI,
-  #     agency    = 'NCAR',
-  #     source    = "NCAR",
-  #     dataset   = "airports",
-  #     other     = NULL
-  #   )
-  # }
+  AOI = return.what(AOI, type = 'ap', report, vals = if(ids){"ICAO"})
 
   return(AOI)
 }
+
 

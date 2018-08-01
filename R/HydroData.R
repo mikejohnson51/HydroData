@@ -2,7 +2,7 @@
 #'
 #' \code{HydroData} package
 #'
-#' Access climate, landscape and hydrolgic data programatically
+#' Access earth systems geospatial and observation data programatically
 #'
 #' See the README on
 #'
@@ -11,11 +11,9 @@
 #'
 #' @importFrom raster writeRaster
 #' @importFrom rgdal  writeOGR
-#' @importFrom sf st_zm read_sf as_Spatial st_as_sf
-#' @importFrom sp SpatialPoints SpatialPointsDataFrame CRS plot spDistsN1 Polygons Polygon spTransform SpatialPolygons
+#' @importFrom sf st_zm read_sf as_Spatial st_as_sf st_coordinates
+#' @importFrom sp SpatialPoints SpatialPointsDataFrame CRS spTransform
 #' @importFrom utils tail write.csv download.file unzip
-
-
 
 NULL
 

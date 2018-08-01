@@ -61,10 +61,9 @@
 findHUC = function(AOI = NULL,
                   level = 8,
                   subbasins = FALSE,
-                  ids = FALSE,
-                  save = FALSE){
+                  ids = FALSE){
 
-  if(length(AOI) <=1 ) { AOI = list(AOI = AOI) }
+  if(class(AOI) != "list"){AOI = list(AOI = AOI)}
 
   sp = list()
   td <-  tempfile()
@@ -121,22 +120,16 @@ findHUC = function(AOI = NULL,
 
 AOI = c(AOI, sp)
 
+tmp = names(AOI)[grep("huc", names(AOI))]
+
+if(length(tmp) > 1){
+ tmp = tmp[which.max(as.numeric(gsub("huc", "", tmp)))]
+}
+
 report = paste0("Returning ", paste0("HUC", level, collapse = ", "), " shapefiles")
 
-AOI = return.what(AOI, report, AOI, ids = if(ids){HUC8} )
+AOI = return.what(AOI, type = tmp, report, vals = if(ids){tmp})
 
-# if(save){
-#     save.file(data = data,
-#               state = state,
-#               county = county,
-#               clip = clip,
-#               agency  = 'USGS',
-#               source  = "WBD",
-#               dataset = "HUC",
-#               other   = NULL )
-#   }
-
-#class(items) = "HydroData"
 return(AOI)
 
 }

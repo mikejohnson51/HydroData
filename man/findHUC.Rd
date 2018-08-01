@@ -4,8 +4,7 @@
 \alias{findHUC}
 \title{Find Watershed Boundaries (WBD)}
 \usage{
-findHUC(AOI = NULL, level = 8, subbasins = FALSE, ids = FALSE,
-  save = FALSE)
+findHUC(AOI = NULL, level = 8, subbasins = FALSE, ids = FALSE)
 }
 \arguments{
 \item{level}{defines the HUC level of interest}
@@ -14,13 +13,13 @@ findHUC(AOI = NULL, level = 8, subbasins = FALSE, ids = FALSE,
 
 \item{ids}{If TRUE, returns a list of HUC8 in AOI}
 
-\item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
-
 \item{state}{Full name(s) or two character abbriviation(s). Not case senstive}
 
 \item{county}{County name(s). Requires \code{state} input.}
 
 \item{clip}{SpatialObject* or list. For details see \code{getClipUnit}}
+
+\item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
 
 \item{HUC8}{option to supply known HUC8 code(s)}
 }
@@ -69,9 +68,10 @@ explore(ws)
 \code{\link{explore}}
 
 Other HydroData 'find' functions: \code{\link{findAirports}},
-  \code{\link{findGHCN}}, \code{\link{findNHD}},
-  \code{\link{findNID}}, \code{\link{findSnotel}},
-  \code{\link{findUSGS}}, \code{\link{findWaterbodies}}
+  \code{\link{findGAGESII}}, \code{\link{findGHCN}},
+  \code{\link{findNHD}}, \code{\link{findNID}},
+  \code{\link{findNWIS}}, \code{\link{findSnotel}},
+  \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson

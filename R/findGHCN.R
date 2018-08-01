@@ -92,7 +92,7 @@
 
 findGHCN = function(AOI = NULL, parameters = NULL, ids = FALSE) {
 
-  if(length(AOI) <=1 ) { AOI = list(AOI = AOI) }
+  if(class(AOI) != "list"){AOI = list(AOI = AOI)}
 
   stations = HydroData::ghcn_stations
 
@@ -111,20 +111,7 @@ findGHCN = function(AOI = NULL, parameters = NULL, ids = FALSE) {
 
   report = "Returned list includes: NOAA GHCN shapefile"
 
-  AOI = return.what(AOI, report, AOI, ids = if(ids){unique(sp$ID)})
-
-  # if (save) {
-  #   save.file(
-  #     data = items,
-  #     state = state,
-  #     county = county,
-  #     clip = clip,
-  #     agency  = 'NOAA',
-  #     source  = "GHCN",
-  #     dataset = "ghcn",
-  #     other   = NULL
-  #   )
-  # }
+  AOI = return.what(AOI, type = 'sp', report, vals = if(ids){"ID"})
 
   return(AOI)
 }

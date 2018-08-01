@@ -99,9 +99,10 @@ plot(el.paso$ghcn, add = T)
 \code{\link{explore}}
 
 Other HydroData 'find' functions: \code{\link{findAirports}},
-  \code{\link{findHUC}}, \code{\link{findNHD}},
-  \code{\link{findNID}}, \code{\link{findSnotel}},
-  \code{\link{findUSGS}}, \code{\link{findWaterbodies}}
+  \code{\link{findGAGESII}}, \code{\link{findHUC}},
+  \code{\link{findNHD}}, \code{\link{findNID}},
+  \code{\link{findNWIS}}, \code{\link{findSnotel}},
+  \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson

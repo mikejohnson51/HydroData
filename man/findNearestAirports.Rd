@@ -4,12 +4,12 @@
 \alias{findNearestAirports}
 \title{Find Neareast Airports}
 \usage{
-findNearestAirports(location = NULL, n = 5)
+findNearestAirports(point = NULL, n = 5, ids = FALSE, AOI = FALSE)
 }
 \arguments{
-\item{location}{a lat, long pair}
-
 \item{n}{the number of Airports to return}
+
+\item{location}{a lat, long pair}
 }
 \value{
 A list contatining a data.frame of Airports and a minimum bounding box data.frame

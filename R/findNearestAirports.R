@@ -2,32 +2,32 @@
 #'
 #' @param location a lat, long pair
 #' @param n the number of Airports to return
+#' @export
 #'
 #' @return A list contatining a data.frame of Airports and a minimum bounding box data.frame
-#' @export
 #' @author Mike Johnson
 
-findNearestAirports = function(location = NULL, n = 5){
+findNearestAirports = function(point = NULL, n = 5, ids = FALSE, AOI = FALSE){
+
+  pt = definePoint(point)
 
   df = HydroData::ap
+  df = sf::st_as_sf(x = df,  coords = c("lon", "lat"), crs = as.character(AOI::aoiProj))
 
-  sp = sp::SpatialPointsDataFrame(coords = cbind(df$lon, df$lat), data = as.data.frame(df), proj4string = AOI::aoiProj)
+  dist = data.frame(ICAO = df$ICAO, Distance_km = sf::st_distance(x = df, y = pt$geo))
+  dist = dist[order(dist$Distance_km)[1:n],]
+  fin = merge(df, dist, by = "ICAO")
 
-  if(class(location) == 'numeric') { point = SpatialPoints(cbind(location[1], location[2]))
-  } else {
-   x = AOI::getPoint(location)
-   point = sp::SpatialPoints(cbind(x$lon, x$lat), proj4string = AOI::aoiProj)
+  if (any(AOI, ids)) {
+    fin = list(closest_ap = fin)
+    if (AOI) {
+      fin[["AOI"]] = AOI::getBoundingBox(fin$closest_ap)
+    }
+    if (ids) {
+      fin[["ICAO"]] = unique(fin$closest_ap$ICAO)
+    }
   }
 
-  dist = spDistsN1(sp, point, longlat = T)
-
-  ndx = cbind(df[(order(dist)[1:n]), ],  dist[(order(dist)[1:n])])
-  names(ndx) = c("name",    "city",    "country", "IATA",    "ICAO",   "lat",     "long",     "elev",
-                 "tz",      "tzname", "Distance_km")
-
-  bb = getBoundingBox(ndx)
-
-  return(list(data = ndx, extent = bb))
+  return(fin)
 }
-
 

@@ -4,12 +4,13 @@
 \alias{findNearestGHCN}
 \title{Find Neareast GHCN stations}
 \usage{
-findNearestGHCN(location = NULL, n = 5, PARAM = NULL)
+findNearestGHCN(point = NULL, n = 5, parameters = NULL, ids = FALSE,
+  AOI = FALSE)
 }
 \arguments{
-\item{location}{a lat, long pair}
-
 \item{n}{the number of GHCN to return}
+
+\item{location}{a lat, long pair}
 
 \item{PARAM}{the parameter of interst}
 }

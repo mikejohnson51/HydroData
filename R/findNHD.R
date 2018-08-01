@@ -68,26 +68,13 @@
 
 findNHD = function(AOI = NULL, ids = FALSE) {
 
-  if(length(AOI) <= 1 ) { AOI = list(AOI = AOI) }
+  if(class(AOI) != "list"){AOI = list(AOI = AOI)}
 
   AOI[["nhd"]]  = query_cida(AOI$AOI, type = 'nhdflowline_network', spatial = T)
 
-  report = "Returned list includes: flowline shapefile"
+  report = "Returned list includes: nhd flowline shapefile"
 
-  AOI = return.what(AOI, report, AOI, ids = if(ids){sl$comid})
-
-  # if (save) {
-  #   save.file(
-  #     data = items,
-  #     state = state,
-  #     county = county,
-  #     clip = clip,
-  #     agency  = 'USGS',
-  #     source  = "NHD",
-  #     dataset = "flowlines",
-  #     other   = NULL
-  #   )
-  # }
+  AOI = return.what(AOI, type = 'nhd', report, vals = if(ids){"comid"})
 
   return(AOI)
 }

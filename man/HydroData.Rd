@@ -9,7 +9,7 @@
 \code{HydroData} package
 }
 \details{
-Access climate, landscape and hydrolgic data programatically
+Access earth systems geospatial and observation data programatically
 
 See the README on
 }

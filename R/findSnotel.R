@@ -66,7 +66,7 @@
 
 findSnotel = function(AOI = NULL, ids = FALSE){
 
-  if(length(AOI) <=1 ) { AOI = list(AOI = AOI) }
+  if(class(AOI) != "list"){AOI = list(AOI = AOI)}
 
   snotel = HydroData::snotel
 
@@ -82,18 +82,7 @@ findSnotel = function(AOI = NULL, ids = FALSE){
 
   report ="Returned list includes: snotel shapefile"
 
-  AOI = return.what(AOI, report, AOI, ids = if(ids){sp$ID})
-
-  # if(save){
-  #     save.file(data = items,
-  #               state = state,
-  #               county = county,
-  #               clip = clip,
-  #               agency  = 'NRCS',
-  #               source  = "snotel",
-  #               dataset = "stations",
-  #               other   = NULL )
-  # }
+  AOI = return.what(AOI, type = 'snotel', report, vals = if(ids){"ID"})
 
   return(AOI)
 }

@@ -7,24 +7,29 @@
 #' @export
 #' @author Mike Johnson
 
-findNearestUSGS = function(location = NULL, n = 5){
+findNearestNWIS = function(location = NULL, n = 5, ids = FALSE, AOI = FALSE){
+
+  pt = definePoint(point)
 
   df = HydroData::usgsStations
+  df = sf::st_as_sf(x = df,  coords = c("lon_reachCent", "lat_reachCent"), crs = as.character(AOI::aoiProj))
 
-  sp = sp::SpatialPointsDataFrame(coords = cbind(df$lon_reachCent, df$lat_reachCent), data = as.data.frame(df), proj4string = AOI::aoiProj)
+  dist = data.frame(site_no = df$site_no, Distance_km = sf::st_distance(x = df, y = pt$geo))
+  dist = dist[order(dist$Distance_km)[1:n],]
+  fin = merge(df, dist, by = "site_no")
 
-  if(class(location) == 'numeric') { point = SpatialPoints(cbind(location[1], location[2]))
-  } else {
-    x = AOI::getPoint(location)
-    point = sp::SpatialPoints(cbind(x$lon, x$lat), proj4string = AOI::aoiProj)
+  if (any(AOI, ids)) {
+    fin = list(closest_nwis = fin)
+    if (AOI) {
+      fin[["AOI"]] = AOI::getBoundingBox(fin$closest_nwis)
+    }
+    if (ids) {
+      fin[["site_no"]] = unique(fin$closest_nwis$site_no)
+    }
   }
 
-  dist = spDistsN1(sp, point, longlat = T)
+  return(fin)
 
-  ndx = cbind(df[(order(dist)[1:n]), ],  dist[(order(dist)[1:n])])
-  names(ndx) = c("OBJECTID", "comid", "site_no", "name", "da_sqkm", "lat", "long", "dist_km")
-
-  bb = getBoundingBox(ndx)
-
-  return(list(data = ndx, extent = bb))
 }
+
+

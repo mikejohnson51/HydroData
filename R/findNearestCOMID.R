@@ -6,32 +6,45 @@
 #' @export
 #' @author Mike Johnson
 
-findNearestCOMID = function(location = NULL, n = 5, ids = TRUE){
+findNearestCOMID = function(point = NULL, n = 5, ids = FALSE, AOI = FALSE){
 
-  if(class(location) == 'numeric') { point = SpatialPoints(cbind(location[1], location[2]))
-  } else {
-    x = AOI::getPoint(location)
-    point = sp::SpatialPoints(cbind(x$lon, x$lat), proj4string = AOI::aoiProj)
+  h = 5
+  w = 5
+  lines = data.frame()
+  pt = definePoint(point)
+
+  while (dim(lines)[1] < n) {
+    lines <-  suppressWarnings(query_cida(
+      AOI = suppressMessages(AOI::getAOI(
+        clip = list(pt$coords$lat, pt$coord$lon, h, w)
+      )),
+      type = 'nhdflowline_network',
+      spatial = FALSE
+    ))
+
+    if (is.null(lines)) {
+      lines = data.frame()
+    }
+    h = h + 2
+    w = w + 2
   }
 
-  point = sf::st_as_sf(point)
+  dist = data.frame(comid = lines$comid,
+                    Distance_km = sf::st_distance(x = lines, y = pt$geo))
+  dist = dist[order(dist$Distance_km)[1:n], ]
+  fin = merge(lines, dist, by = "comid")
 
-  test = query_cida(AOI = suppressMessages(AOI::getAOI(clip = list(location, 5,5))), type = 'catchmentsp', spatial = FALSE)
+  if (any(AOI, ids)) {
+    fin = list(closest_comids = fin)
+    if (AOI) {
+      fin[["AOI"]] = AOI::getBoundingBox(fin$closest_comids)
+    }
+    if (ids) {
+      fin[["comids"]] = unique(fin$closest_comids$comid)
+    }
+  }
 
-  dist = data.frame(ID = test$featureid, DIST = sf::st_distance(x = test, y = point))
-
-  dist = dist[order(dist$DIST),]
-  dist = dist[c(1:n),]
-
-  test1 = test[test$featureid %in% dist$ID,]
-
-  bb = AOI::getBoundingBox(test1)
-
-  if(ids){ items = test1$featureid} else {items = list(COMIDs = test1$featureid, extent = bb)}
-
-  return(items)
+  return(fin)
 
 }
-
-
 

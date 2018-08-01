@@ -74,9 +74,10 @@ explore(nv.snow)
 \code{\link{explore}}
 
 Other HydroData 'find' functions: \code{\link{findAirports}},
-  \code{\link{findGHCN}}, \code{\link{findHUC}},
-  \code{\link{findNHD}}, \code{\link{findNID}},
-  \code{\link{findUSGS}}, \code{\link{findWaterbodies}}
+  \code{\link{findGAGESII}}, \code{\link{findGHCN}},
+  \code{\link{findHUC}}, \code{\link{findNHD}},
+  \code{\link{findNID}}, \code{\link{findNWIS}},
+  \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson

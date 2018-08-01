@@ -7,10 +7,24 @@
 #' @return a \code{Spatial} object
 #' @export
 
+
 query_cida = function(AOI, type, spatial = TRUE){
 
-df = data.frame(server = c(rep("WBD", 2), rep("nhdplus", 3)),
-                type = c("huc08", "huc12", "nhdflowline_network", "catchmentsp", "nhdwaterbody"), stringsAsFactors = F)
+df = data.frame(server = c(rep("WBD", 2),
+                           rep("nhdplus", 3),
+                           rep("NWC", 2)),
+
+                type =   c("huc08",
+                           "huc12",
+
+                           "nhdflowline_network",
+                           "catchmentsp",
+                           "nhdwaterbody",
+
+                           "gagesII",
+                           "gagesii_basins"),
+
+                stringsAsFactors = F)
 
 bb = AOI@bbox
 
@@ -42,7 +56,7 @@ sl = tryCatch({sf::st_zm(sf::read_sf(url))},
               }
 )
 
-if(any(is.null(sl), nrow(sl) ==0)) {stop("O features found in this AOI.")}
+if(any(is.null(sl), nrow(sl) ==0)) {warning("O features found in this AOI.")}
 
 if(spatial) {sl = sf::as_Spatial(sl)}
 

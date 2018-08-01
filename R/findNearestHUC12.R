@@ -6,30 +6,39 @@
 #' @export
 #' @author Mike Johnson
 
-findNearestHUC12 = function(location = NULL, n = 1, ids = TRUE){
+findNearestHUC12 = function(point = NULL, n = 1, ids = FALSE, AOI = FALSE){
 
-  if(class(location) == 'numeric') { point = SpatialPoints(cbind(location[1], location[2]))
-  } else {
-    x = AOI::getPoint(location)
-    point = sp::SpatialPoints(cbind(x$lon, x$lat), proj4string = AOI::aoiProj)
+  h = 10
+  w = 10
+  lines = data.frame()
+  pt = definePoint(point)
+
+  while(dim(lines)[1] < n){
+    lines <-  suppressWarnings(query_cida(AOI = suppressMessages(
+      AOI::getAOI(clip = list(pt$coords$lat, pt$coord$lon, h, w))),
+      type = 'huc12',
+      spatial = FALSE))
+
+    if(is.null(lines)){lines = data.frame()}
+    h = h + 2
+    w = w + 2
   }
 
-  point = sf::st_as_sf(point)
+  dist = data.frame(huc12 = lines$huc12, Distance_km = sf::st_distance(x = lines, y = pt$geo))
+  dist = dist[order(dist$Distance_km)[1:n],]
+  fin = merge(lines, dist, by = "huc12")
 
-  test = query_cida(AOI = suppressMessages(AOI::getAOI(clip = list(location, 5,5))), type = 'huc12', spatial = FALSE)
+  if (any(AOI, ids)) {
+    fin = list(closest_huc12 = fin)
+    if (AOI) {
+      fin[["AOI"]] = AOI::getBoundingBox(fin$closest_huc12)
+    }
+    if (ids) {
+      fin[["huc12"]] = unique(fin$closest_huc12$huc12)
+    }
+  }
 
-  dist = data.frame(ID = test$huc12, DIST = sf::st_distance(x = test, y = point))
-
-  dist = dist[order(dist$DIST),]
-  dist = dist[c(1:n),]
-
-  test1 = test[test$huc12 %in% dist$ID,]
-
-  bb = AOI::getBoundingBox(test1)
-
-  if(ids){ items = test1$huc12} else {items = list(COMIDs = test1$huc12, extent = bb)}
-
-  return(items)
+  return(fin)
 
 }
 

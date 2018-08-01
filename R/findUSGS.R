@@ -77,9 +77,9 @@
 #' Mike Johnson
 #'
 
-findUSGS = function(AOI = NULL, ids = FALSE, comids = FALSE){
+findNWIS = function(AOI = NULL, ids = FALSE, comids = FALSE){
 
-  if(length(AOI) <= 1 ) { AOI = list(AOI = AOI) }
+  if(class(AOI) != "list"){AOI = list(AOI = AOI)}
 
   usgsStations = HydroData::usgsStations
 
@@ -95,20 +95,7 @@ findUSGS = function(AOI = NULL, ids = FALSE, comids = FALSE){
 
   report = "Returned list includes: USGS NWIS shapefile"
 
-  items = return.what(AOI, report, AOI,  ids = if(ids){sp$site_no})
-
-  # if(save){
-  #
-  #   save.file(data      = items,
-  #             state     = state,
-  #             county    = county,
-  #             clip = clip,
-  #             agency    = 'USGS',
-  #             source    = "NWIS",
-  #             dataset   = "nwis",
-  #             other     =  NULL )
-  # }
-
+  AOI = return.what(AOI, type = 'nwis', report, vals = if(ids){"site_no"})
 
 return(AOI)
 

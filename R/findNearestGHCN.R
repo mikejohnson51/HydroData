@@ -8,33 +8,36 @@
 #' @export
 #' @author Mike Johnson
 
-findNearestGHCN = function(location = NULL, n = 5, PARAM = NULL){
+findNearestGHCN = function(point = NULL, n = 5, parameters = NULL, ids = FALSE, AOI = FALSE){
+
+  pt = definePoint(point)
 
   df = HydroData::ghcn_stations
 
-  if(!is.null(PARAM)){
-  if((PARAM %in% unique(df$PARAMETER))){
-    df = df[which(df$PARAMETER == PARAM), ]
+  if(!is.null(parameters)){
+  if((parameters %in% unique(df$PARAMETER))){
+    df = df[which(df$PARAMETER == parameters), ]
    }else{
-    stop(paste(PARAM,  "is not a valid GHCN parameter"))
+    warning(paste(parameters,  "is not a valid GHCN parameter"))
    }
   }
 
-  sp = SpatialPointsDataFrame(coords = cbind(df$LON, df$LAT), df, proj4string = AOI::aoiProj)
+  df = sf::st_as_sf(x = df,  coords = c("LON", "LAT"), crs = as.character(AOI::aoiProj))
 
-  if(class(location) == 'numeric') { point = SpatialPoints(cbind(location[1], location[2]))
-  } else {
-    x = AOI::getPoint(location)
-    point = SpatialPoints(cbind(x$longitude, x$latitude), proj4string = AOI::aoiProj )
+  dist = data.frame(ID = df$ID, Distance_km = sf::st_distance(x = df, y = pt$geo))
+  dist = dist[order(dist$Distance_km)[1:n],]
+  fin = merge(df, dist, by = "ID")
+
+  if (any(AOI, ids)) {
+    fin = list(closest_ghcn = fin)
+    if (AOI) {
+      fin[["AOI"]] = AOI::getBoundingBox(fin$closest_ghcn)
+    }
+    if (ids) {
+      fin[["ID"]] = unique(fin$closest_ghcn$ID)
+    }
   }
 
-  dist = spDistsN1(sp, point, longlat = T)
-
-  ndx = cbind(df[(order(dist)[1:n]),],  dist[(order(dist)[1:n])])
-  names(ndx) = c("ID", "NAME", "lat", "long", "PARAMETER", "START_YEAR",
-                 "END_YEAR", "Distance_km")
-
-  bb = getBoundingBox(ndx)
-
-  return(list(data = ndx, extent = bb))
+  return(fin)
 }
+

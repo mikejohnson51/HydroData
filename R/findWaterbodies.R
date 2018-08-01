@@ -68,7 +68,7 @@
 
 findWaterbodies = function(AOI = NULL, ids = FALSE) {
 
-    if(length(AOI) <= 1 ) { AOI = list(AOI = AOI) }
+  if(class(AOI) != "list"){AOI = list(AOI = AOI)}
 
     sl = query_cida(AOI$AOI, type = "nhdwaterbody", spatial = TRUE)
 
@@ -77,19 +77,7 @@ findWaterbodies = function(AOI = NULL, ids = FALSE) {
     report = "Returned list includes: NHD waterbodies shapefile"
 
     AOI = return.what(AOI, report, AOI, ids = if(ids){sl$gnis_name})
-
-    # if (save) {
-    #   save.file(
-    #     data = items,
-    #     state = state,
-    #     county = county,
-    #     clip = clip,
-    #     agency  = 'USGS',
-    #     source  = "NHD",
-    #     dataset = "flowlines",
-    #     other   = NULL
-    #   )
-    # }
+    AOI = return.what(AOI, type = 'waterbodies', report, vals = if(ids){"objectid"})
 
     return(AOI)
   }

@@ -51,7 +51,7 @@
 
 findNID = function(AOI = NULL, ids = FALSE){
 
-  if(length(AOI) <= 1 ) { AOI = list(AOI = AOI) }
+  if(class(AOI) != "list"){AOI = list(AOI = AOI)}
 
   dams = dams::nid_cleaned
   dams = dams[!is.na(dams$Longitude),]
@@ -71,18 +71,8 @@ findNID = function(AOI = NULL, ids = FALSE){
 
   report = "Returned list includes: NID dams shapefile"
 
-  AOI = return.what(AOI, report, AOI, ids = if(ids){sp$Dam_Name})
+  AOI = return.what(AOI, type = 'dams', report, vals = if(ids){"Dam_Name"})
 
-    # if(save){
-    #   save.file(data = items,
-    #             state = state,
-    #             county = county,
-    #             clip = clip,
-    #             agency  = 'USACE',
-    #             source  = "NID",
-    #             dataset = "dams",
-    #             other   = NULL )
-    # }
 
   return(AOI)
 }

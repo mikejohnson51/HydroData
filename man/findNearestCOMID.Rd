@@ -4,7 +4,7 @@
 \alias{findNearestCOMID}
 \title{Find Neareast COMIDs}
 \usage{
-findNearestCOMID(location = NULL, n = 5, ids = TRUE)
+findNearestCOMID(point = NULL, n = 5, ids = FALSE, AOI = FALSE)
 }
 \arguments{
 \item{location}{a lat, long pair or Colloqiual Name}
