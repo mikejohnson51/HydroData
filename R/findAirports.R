@@ -51,7 +51,7 @@
 
 findAirports = function(AOI = NULL, ids = FALSE) {
 
-  if(class(AOI) != "HydroData"){AOI = list(AOI = AOI)}
+  if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 
   ap = HydroData::ap
 
@@ -64,8 +64,8 @@ findAirports = function(AOI = NULL, ids = FALSE) {
   sp = air[AOI$AOI,]
 
   if (dim(sp)[1] == 0) {
-    stop("0 airports found in AOI")
-  }
+    warning("0 airports found in AOI")
+  } else {
 
   message(formatC(
     as.numeric(length(sp)),
@@ -79,8 +79,10 @@ findAirports = function(AOI = NULL, ids = FALSE) {
   report = "Returned list includes: airport shapefile"
 
   AOI = return.what(AOI, type = 'ap', report, vals = if(ids){"ICAO"})
+  }
 
   return(AOI)
+
 }
 
 

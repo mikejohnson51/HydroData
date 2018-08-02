@@ -1,23 +1,21 @@
 Package: HydroData
 Type: Package
 Title: HydroData
-Description: A set of functions to find, pre-process, export and visualize land surface, infrastructural and station based datasets relevant to geography, hydrology, and earth system science. 
-Version: 0.1.0
-Date: 2018-2-9
+Description: A set of functions to find, process, export and visualize land surface, infrastructural and station based datasets relevant to geography, hydrology, and earth system science. 
+Version: 0.0.7
+Date: 2018-8-2
 Author: Mike Johnson [aut, cre]
-Maintainer: Mike Johnson <mike.johnson@geog.ucsb.edu>
+Maintainer: Mike Johnson <jmj00@ucsb.edu>
 Depends:
     R(>= 3.3.0),
     AOI,
     leaflet
 Imports:
     dams,
-    magrittr,
     sf,
     sp,
     utils,
-    raster,
-    rgdal
+    raster
 Remotes: mikejohnson51/AOI
 License: MIT + file LICENSE
 Encoding: UTF-8

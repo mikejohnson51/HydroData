@@ -92,18 +92,22 @@
 
 findGHCN = function(AOI = NULL, parameters = NULL, ids = FALSE) {
 
-  if(class(AOI) != "HydroData"){AOI = list(AOI = AOI)}
+  if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 
   stations = HydroData::ghcn_stations
+
+  if(!is.null(parameters)){
+    if((parameters %in% unique(df$PARAMETER))){
+      df = df[which(df$PARAMETER == parameters), ]
+    }else{
+      warning(paste(parameters,  "is not a valid GHCN parameter"))
+    }
+  }
 
   sp = sp::SpatialPointsDataFrame(cbind(stations$LON, stations$LAT), stations, proj4string = AOI::aoiProj)
   sp = sp[AOI$AOI,]
 
-  if(!is.null(parameters)) {
-    sp = sp[sp$PARAMETER %in% toupper(parameters), ]
-  }
-
-  if(dim(sp)[1] == 0) { stop("0 stations found in AOI") }
+  if(dim(sp)[1] == 0) { warning("0 stations found in AOI") } else {
 
   message(length(sp), " GHCN stations found")
 
@@ -113,6 +117,9 @@ findGHCN = function(AOI = NULL, parameters = NULL, ids = FALSE) {
 
   AOI = return.what(AOI, type = 'sp', report, vals = if(ids){"ID"})
 
+  }
+
   return(AOI)
+
 }
 

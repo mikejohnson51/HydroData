@@ -51,7 +51,7 @@
 
 findNID = function(AOI = NULL, ids = FALSE){
 
-  if(class(AOI) != "HydroData"){AOI = list(AOI = AOI)}
+  if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 
   dams = dams::nid_cleaned
   dams = dams[!is.na(dams$Longitude),]
@@ -63,7 +63,7 @@ findNID = function(AOI = NULL, ids = FALSE){
 
   sp = sp[AOI$AOI, ]
 
-  if (dim(sp)[1] == 0) { stop("0 dams found in AOI") }
+  if (dim(sp)[1] == 0) { warning("0 dams found in AOI") } else {
 
   message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " NID dams found")
 
@@ -73,8 +73,10 @@ findNID = function(AOI = NULL, ids = FALSE){
 
   AOI = return.what(AOI, type = 'dams', report, vals = if(ids){"Dam_Name"})
 
+  }
 
   return(AOI)
+
 }
 
 

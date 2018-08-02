@@ -68,13 +68,18 @@
 
 findNHD = function(AOI = NULL, ids = FALSE) {
 
-  if(class(AOI) != "HydroData"){AOI = list(AOI = AOI)}
+  if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 
-  AOI[["nhd"]]  = query_cida(AOI$AOI, type = 'nhdflowline_network', spatial = T)
+  sl = query_cida(AOI$AOI, type = 'nhdflowline_network', spatial = T)
 
-  report = "Returned list includes: nhd flowline shapefile"
+  if(!is.null(sl)){
 
-  AOI = return.what(AOI, type = 'nhd', report, vals = if(ids){"comid"})
+    AOI[["nhd"]] = sl
+
+    report = "Returned list includes: nhd flowline shapefile"
+
+    AOI = return.what(AOI, type = 'nhd', report, vals = if(ids){"comid"})
+  }
 
   return(AOI)
 }

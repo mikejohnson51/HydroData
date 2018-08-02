@@ -79,7 +79,7 @@
 
 findNWIS = function(AOI = NULL, ids = FALSE, comids = FALSE){
 
-  if(class(AOI) != "HydroData"){AOI = list(AOI = AOI)}
+  if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 
   usgsStations = HydroData::usgsStations
 
@@ -87,7 +87,7 @@ findNWIS = function(AOI = NULL, ids = FALSE, comids = FALSE){
 
   sp = sp[AOI$AOI,]
 
-  if (dim(sp)[1] == 0) { stop("0 stations found in AOI") }
+  if (dim(sp)[1] == 0) { warning("0 stations found in AOI") } else {
 
   message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " USGS gages found within AOI")
 
@@ -98,6 +98,7 @@ findNWIS = function(AOI = NULL, ids = FALSE, comids = FALSE){
   AOI = return.what(AOI, type = 'nwis', report, vals = if(ids){"site_no"})
 
 return(AOI)
+  }
 
 }
 

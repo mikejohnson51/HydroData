@@ -7,7 +7,7 @@
 #' @export
 #' @author Mike Johnson
 
-findNearestNWIS = function(location = NULL, n = 5, ids = FALSE, AOI = FALSE){
+findNearestNWIS = function(point = NULL, n = 5, ids = FALSE, AOI = FALSE){
 
   pt = definePoint(point)
 

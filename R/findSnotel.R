@@ -66,7 +66,7 @@
 
 findSnotel = function(AOI = NULL, ids = FALSE){
 
-  if(class(AOI) != "HydroData"){AOI = list(AOI = AOI)}
+  if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 
   snotel = HydroData::snotel
 
@@ -74,7 +74,7 @@ findSnotel = function(AOI = NULL, ids = FALSE){
 
   sp = sp[AOI$AOI,]
 
-  if (dim(sp)[1] == 0) { stop("0 stations found in AOI") }
+  if (dim(sp)[1] == 0) { warning("0 stations found in AOI") } else {
 
   message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " snotel stations found within AOI")
 
@@ -83,7 +83,9 @@ findSnotel = function(AOI = NULL, ids = FALSE){
   report ="Returned list includes: snotel shapefile"
 
   AOI = return.what(AOI, type = 'snotel', report, vals = if(ids){"ID"})
+  }
 
   return(AOI)
+
 }
 

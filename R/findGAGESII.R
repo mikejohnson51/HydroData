@@ -16,19 +16,32 @@
 #' @author Mike Johnson
 
 
-findGAGESII = function(AOI = NULL, ids = FALSE, basins = FALSE) {
+findGAGESII = function(AOI = NULL,
+                       ids = FALSE,
+                       basins = FALSE) {
 
-  if(class(AOI) != "HydroData"){AOI = list(AOI = AOI)}
-
-    AOI[["gagesII"]]  = query_cida(AOI$AOI, type = 'gagesII', spatial = T)
-
-  if(basins){
-    AOI[["gagesII_basin"]]  = query_cida(AOI$AOI, type = 'gagesii_basins', spatial = T)
+  if (!(class(AOI) %in% c("list", "HydroData"))) {
+    AOI = list(AOI = AOI)
   }
 
-    report = paste0("Returned list includes: gagesII stations", if(basins){" and basins"})
+  sl = query_cida(AOI$AOI, type = 'gagesII', spatial = T)
 
-    AOI = return.what(AOI, type = 'gagesII', report, vals = if(ids){"STAID"})
+
+  if (!is.null(sl)) {
+    AOI[["gagesII"]]  = sl
+
+    if (basins) {
+      AOI[["gagesII_basin"]]  = query_cida(AOI$AOI, type = 'gagesii_basins', spatial = T)
+    }
+
+    report = paste0("Returned list includes: gagesII stations", if (basins) {
+      " and basins"
+    })
+
+    AOI = return.what(AOI, type = 'gagesII', report, vals = if (ids) {
+      "STAID"
+    })
+  }
 
   return(AOI)
 }

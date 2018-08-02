@@ -4,12 +4,12 @@
 \alias{findNearestNWIS}
 \title{Find Neareast USGS stations}
 \usage{
-findNearestNWIS(location = NULL, n = 5, ids = FALSE, AOI = FALSE)
+findNearestNWIS(point = NULL, n = 5, ids = FALSE, AOI = FALSE)
 }
 \arguments{
-\item{location}{a lat, long pair or Colloqiual Name}
-
 \item{n}{the number of Airports to return}
+
+\item{location}{a lat, long pair or Colloqiual Name}
 }
 \value{
 A list contatining a data.frame of Airports and a minimum bounding box data.frame

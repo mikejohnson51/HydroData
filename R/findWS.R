@@ -63,7 +63,7 @@ findHUC = function(AOI = NULL,
                   subbasins = FALSE,
                   ids = FALSE){
 
-  if(class(AOI) != "HydroData"){AOI = list(AOI = AOI)}
+  if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 
   sp = list()
   td <-  tempfile()
