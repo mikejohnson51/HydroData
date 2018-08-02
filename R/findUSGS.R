@@ -96,9 +96,10 @@ findNWIS = function(AOI = NULL, ids = FALSE, comids = FALSE){
   report = "Returned list includes: USGS NWIS shapefile"
 
   AOI = return.what(AOI, type = 'nwis', report, vals = if(ids){"site_no"})
-
-return(AOI)
   }
+
+  return(AOI)
+
 
 }
 
