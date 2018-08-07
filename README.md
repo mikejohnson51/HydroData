@@ -1,4 +1,4 @@
-# HydroData <img src="man/figures/logo.png" width=130 height = 150 align="right" />
+# <img src="man/figures/logo.png" width=160 height = 130 align="right" />
 
 [![travis](https://travis-ci.org/mikejohnson51/HydroData.svg?branch=master)](https://travis-ci.org/mikejohnson51/HydroData) [![Coverage Status](https://img.shields.io/coveralls/github/mikejohnson51/HydroData.svg)](https://coveralls.io/github/mikejohnson51/HydroData?branch=master)
 
