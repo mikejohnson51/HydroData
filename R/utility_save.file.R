@@ -6,7 +6,7 @@
 #'
 #' @export
 
-save = function(AOI = NULL, path = NULL, ext = 'shp') {
+saveHD = function(AOI = NULL, path = NULL, ext = 'shp') {
 
   if(ext == "shp"){
     ext = ".shp"

@@ -73,7 +73,7 @@ Other HydroData 'find' functions: \code{\link{findAirports}},
   \code{\link{findGAGESII}}, \code{\link{findGHCN}},
   \code{\link{findHUC}}, \code{\link{findNHD}},
   \code{\link{findNID}}, \code{\link{findNWIS}},
-  \code{\link{findSnotel}}
+  \code{\link{findRoads}}, \code{\link{findSnotel}}
 }
 \author{
 Mike Johnson

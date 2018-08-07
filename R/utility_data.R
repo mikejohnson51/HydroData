@@ -108,4 +108,27 @@
 
 "snotel"
 
+#' DAYMET Tile Index
+#'
+#' \code{daymet_tiles} contains the Polygon tile index for DAYMET meterological Data
+#'
+#' @docType data
+#'
+#' @format a \code{SpatialPolygonsDataFrame}
+#' \itemize{
+#' \item 'TileID':  A \code{integer} Tile ID
+#' \item 'XMin':    A \code{integer} minimum latitude
+#' \item 'XMax':    A \code{integer} maximum latitude
+#' \item 'YMin':    A \code{integer} minimum longitide
+#' \item 'YMax':    A \code{integer} maximum longitude
+#' }
+#'
+#' @source \href{https://daymet.ornl.gov/gridded.html}{DAYMET Tile Data}
+#'
+#' @examples
+#' \dontrun{
+#'  tiles = HydroData::daymet_tiles
+#' }
+
+"daymet_tiles"
 

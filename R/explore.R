@@ -6,7 +6,7 @@
 #'  findGHCN
 #'  findNHD
 #'  findReservoir
-#'  findRoads
+#'  findtiger
 #'  findSnotel
 #'  findUSGS
 #'  findWaterbodies
@@ -51,7 +51,7 @@ explore = function(input = NULL, save = FALSE) {
   nhd = NULL
   nid = NULL
   wb = NULL
-  roads = NULL
+  tiger = NULL
   snotel = NULL
   reservoirs = NULL
   WS = list()
@@ -106,9 +106,9 @@ for (i in seq_along(input)) {
       layers = append(layers, "Water bodies")
     }
 
-    if (any(names(input[i]) == "roads")) {
-      roads = input[i][[which(names(input[i]) == "roads")]]
-      layers = append(layers, "Roads")
+    if (any(names(input[i]) == "tiger")) {
+      tiger = input[i][[which(names(input[i]) == "tiger")]]
+      layers = append(layers, "tiger")
     }
 
     if (any(names(input[i]) == "snotel")) {
@@ -403,19 +403,19 @@ if (!is.null(fiat)) {
 # TIGER                                                                       #
 #------------------------------------------------------------------------------#
 
-  if (!is.null(roads)) {
-    nam <- roads$FULLNAME
+  if (!is.null(tiger)) {
+    nam <- tiger$FULLNAME
 
     label <- paste(paste("<strong>Name:</strong>", nam),
                    sep = "<br/>")
 
     m = addPolylines(
       m,
-      data = roads,
+      data = tiger,
       color = 'black',
       weight = 2,
       popup = label,
-      group = "Roads",
+      group = "tiger",
       highlight = highlightOptions(
         weight = 10,
         color = "#666",
@@ -668,5 +668,5 @@ if (!is.null(ap)) {
   }
 
   print(m)
-  #return(m)
+  return(list(AOI = input, map = m))
 }

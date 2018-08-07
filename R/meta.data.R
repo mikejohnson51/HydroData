@@ -66,6 +66,15 @@ meta.data = function(AOI){
     }
   }
 
+  if(any(grepl("nlcd", names(AOI)))){
+    tmp = names(AOI)[grepl("nlcd", names(AOI))]
+
+    for(i in seq_along(tmp)){
+      d = eval(parse(text = paste("AOI", tmp[i], sep = "$")))
+      meta[nrow(meta) + 1, ] = c(tmp[i], "USGS", "MRLC", "NLCD", tmp[i], length(d), "NA", class(d)[1], as.character(Sys.Date()))
+    }
+  }
+
   AOI[["meta.data"]] = meta
   return(AOI)
 }

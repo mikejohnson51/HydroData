@@ -16,18 +16,15 @@ unzip_crop = function(AOI = NULL, path, file.type = "img"){
   AOI = sp::spTransform(AOI, dat@crs)
 
   if(!is.null(raster::intersect(raster::extent(dat),raster::extent(AOI)))){
-    data <- raster::crop(data, AOI, snap = "out")
+    dat <- raster::crop(dat, AOI, snap = "out")
     message("Raster Cropped.")
   } else {
     message("Raster not needed")
   }
 
-  data <- data * 1
-
   unlink(file, recursive = TRUE)
 
-  return(data)
+  return(dat)
 }
 
 
-?inters
