@@ -1,106 +1,44 @@
-#' Find NOAA Maintained GHCN Stations
-#'
-#' @description
-#' \code{findGHCN} finds Global Historical Climatology Network (GHCN) stations within Area of Interest.
-#' To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
-#' Returned \code{list} can be interactivly explored via \code{\link{explore}} and ID values (\code{ids = TRUE}) allow for GHCN data access via \code{getGHCN}.\cr\cr
-#' All outputs are projected to \code{CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and station metadata is (\emph{down})load from a \href{ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt}{NOAA FTP}.
-#'
-#' @param state     Full name(s) or two character abbriviation(s). Not case senstive
-#' @param county    County name(s). Requires \code{state} input.
-#' @param clip SpatialObject* or list. For details see \code{getClipUnit}
-#' @param boundary  If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list
-#' @param basemap   If TRUE, a basemap will be joined to returned list
-#'
-#'  If a user wants greater control over basemap apperance replace TRUE with either:
+#' @title Find NOAA Maintained GHCN Stations
+#' @description \code{findGHCN} returns a \code{SpatailPointsDataframe} of all
+#' Global Historical Climatology Network (GHCN) stations within an AOI.
+#' Data comes from the \href{https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn}{NOAA} and includes the following attributes:
 #' \itemize{
-#' \item't':  google terrain basemap
-#' \item's':  google sattilite imagery basemap
-#' \item'h':  google hybrid basemap
-#' \item'r':  google roads basemap
+#' \item 'ID'   : \code{character}  Station ID
+#' \item 'NAME'   : \code{character}  Station Name
+#' \item 'LAT': \code{numeric}  Latitude, decimal degrees
+#' \item 'LON'   : \code{numeric} Longitude, decimal degrees
+#' \item 'PARAMETER'   : \code{character}   Observed parameter
+#' \item 'START_YEAR'    : \code{integer}   Year of first observation
+#' \item 'END_YEAR'    : \code{integer}    Year of last observation
 #' }
-#'
-#' @param parameters Select the variable of interest.The five core elemets are:\cr
-#' PRCP = Precipitation (tenths of mm)\cr
-#' SNOW = Snowfall (mm)\cr
-#' SNWD = Snow depth (mm)\cr
-#' TMAX = Maximum temperature (tenths of degrees C)\cr
-#' TMIN = Minimum temperature (tenths of degrees C)\cr
-#'
-#' To see the other options consult the GHCN documentation \href{ftp://ftp.ncdc.noaa.gov/pub/data/ghcn/daily/readme.txt}{here}\cr
-#' If \code{parameters = NULL}, all recorded parameters in AOI will be returned
-#' \cr
-#'
-#' @param ids  If TRUE, returns a list of IDs for selected stations
-#' @param save If TRUE, data is written to a HydroData folder in users working directory.
-#'
-#' @export
-#' @seealso  \code{\link{getAOI}}
-#' @seealso  \code{\link{getGHCN}}
-#' @seealso  \code{\link{explore}}
-#'
-#' @family HydroData 'find' functions
-#'
-#' @return
-#' \code{findNHD} returns a list of minimum length 1:
-#'
-#' \enumerate{
-#' '\item 'gchn': A \code{SpatialPointsDataFrame*}\cr
-#'
-#'
-#' Pending parameterization, \code{findGCHN} can also return:
-#'
-#' \item 'basemap':   A \code{RasterLayer*} basemap if \code{basemap = TRUE}
-#' \item 'boundry':   A \code{SpatialPolygon*} of AOI if \code{boundary = TRUE}
-#' \item 'fiat':      A \code{SpatialPolygon*} of intersected county boundaries if \code{boundary = TRUE}
-#' \item 'ids':       A vector of station IDs if \code{ids = TRUE}
-#' }
-#'
+#' @param AOI  A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
+#' @param param Returned results can be filtered by a requested parameter valid parameters can be found calling \code{unique(ghcn_stations$PARAMETER)}
+#' @param ids  If TRUE,  a vector of station IDs codes is added to retuned list (default = \code{FALSE})
+#' @return a list() of minimum length 2: AOI and a
 #' @examples
 #' \dontrun{
-#' # Find GHCN stations in El Paso County, Colorado with Preciptiation Readings:
+#' # Get all stations and parameters
+#' sta = getAOI(state = "CO", county = "El Paso") %>% findGHCN()
 #'
-#' el.paso = findGHCN(state = 'CO',
-#'                   county = 'El Paso',
-#'                   boundary = TRUE,
-#'                   basemap = 'r',
-#'                   ids = TRUE,
-#'                   paramerters = 'prcp')
-#' # Static Mapping
+#' #Limit call to precipiation gages
+#' prcp.sta = getAOI(state = "CO", county = "El Paso") %>% findGHCN(param = 'PRCP')
 #'
-#' plot(el.paso$basemap)
-#' plot(el.paso$boundary, add = T)
-#' plot(el.paso$ghcn, add = T)
-#'
-#' # Generate Interactive Map
-#'
-#'  explore(el.paso, save = TRUE)
-#'
-#' # Get Precipiation data for stations
-#'
-#'  ppt = getGHCN(ids = el.paso$ids, parameters = 'prcp')
-#'
-#' # Interactivly explore timeseries data
-#'
-#'  inspect(ppt, save = TRUE)
 #' }
-#'
+#' @author Mike Johnson
 #' @export
-#' @author
-#' Mike Johnson
-#'
 
-findGHCN = function(AOI = NULL, parameters = NULL, ids = FALSE) {
+findGHCN = function(AOI = NULL, param = NULL, ids = FALSE) {
 
   if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
+  if(any(class(AOI$AOI) == "sf")){ AOI$AOI = as_Spatial(AOI$AOI) }
 
   stations = HydroData::ghcn_stations
 
-  if(!is.null(parameters)){
-    if((parameters %in% unique(df$PARAMETER))){
-      df = df[which(df$PARAMETER == parameters), ]
+  if(!is.null(param)){
+    if((param %in% unique(stations$PARAMETER))){
+      stations = stations[which(stations$PARAMETER == param), ]
     }else{
-      warning(paste(parameters,  "is not a valid GHCN parameter"))
+      warning(paste(param,  "is not a valid GHCN parameter"))
     }
   }
 
@@ -113,9 +51,9 @@ findGHCN = function(AOI = NULL, parameters = NULL, ids = FALSE) {
 
   AOI[["ghcn"]] = sp
 
-  report = "Returned list includes: NOAA GHCN shapefile"
+  report = "Returned list includes: NOAA GHCN stations"
 
-  AOI = return.what(AOI, type = 'sp', report, vals = if(ids){"ID"})
+  AOI = return.what(AOI, type = 'sp', report, vals = if(ids){"ID"}else{NULL})
 
   }
 

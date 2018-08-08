@@ -2,24 +2,25 @@
 % Please edit documentation in R/findNED.R
 \name{findNED}
 \alias{findNED}
-\title{Get NED data for an Area of Interest}
+\title{Find National Elevation Data (NED)}
 \usage{
 findNED(AOI = NULL, res = 1)
 }
 \arguments{
-\item{AOI}{a character string. Can be full name or state abbriviation}
+\item{AOI}{A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}}
 
 \item{res}{resolution of NED data. 1 equals 1 arc second, 13 equals 1/3 arc second.}
 }
+\value{
+a list() of minimum length 2: AOI and NED
+}
 \description{
-Function to download elevation data for an area of interest
+\code{findNED} returns \code{Raster} elevation data from the National Elevation Dataset (\href{https://nationalmap.gov/elevation.html}{NED}) for an AOI.
+Data comes the the USA National Map.
 }
 \examples{
 \dontrun{
-#Get 1 arc second elevation for El Paso County Colorado Springs
-
-el.paso.elev = get_ned(state = "CO", county = "El Paso", res = 1, keep.boundary = TRUE)
-plot(el.paso.elev, col = col_elev)
+ el.paso.elev = getAOI(state = "CO", county = "El Paso") \%>\% findNED(res = 1)
 }
 }
 \author{

@@ -1,4 +1,4 @@
-#' Get Multi-Year National Land Cover data for an Area of Interest
+#' Find National Land Cover Products (NLCD)
 #'
 #' Function to download land cover data for an area of interest from 2001, 2006, 2011
 #'

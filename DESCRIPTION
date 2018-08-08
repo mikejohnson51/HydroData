@@ -3,9 +3,10 @@ Type: Package
 Title: HydroData
 Description: A set of functions to find, process, export and visualize land surface, infrastructural and station based datasets relevant to geography, hydrology, and earth system science. 
 Version: 0.0.7
-Date: 2018-8-2
-Author: Mike Johnson [aut, cre]
+Authors@R: person("Mike", "Johnson", role = c("aut", "cre"), email = "mike.johnson@geog.ucsb.edu")
 Maintainer: Mike Johnson <jmj00@ucsb.edu>
+BugReports: https://github.com/mikejohnson51/HydroData/issues
+URL: https://github.com/mikejohnson51/HydroData
 Depends:
     R(>= 3.3.0),
     AOI,

@@ -1,0 +1,58 @@
+title: HydroData
+template:
+  params:
+    bootswatch: flatly
+reference:
+  - title: Find Features
+    desc: ~
+      Functions for finding features
+    contents:
+      - '`findAirports`'
+      - '`findDaymet`'
+      - '`findGAGESII`'
+      - '`findGHCN`'
+      - '`findNED`'
+      - '`findNHD`'
+      - '`findNHD`'
+      - '`findNID`'
+      - '`findNLCD`'
+      - '`findNLDI`'
+      - '`findNWIS`'
+      - '`findRoads`'
+      - '`findSnotel`'
+      - '`findWaterbodies`'
+      - '`findHUC`'
+  - title: Find Nearest Features
+    desc: ~
+      Functions for finding the 'X' nearest features to a location
+    contents:
+      - '`findNearestAirports`'
+      - '`findNearestCOMID`'
+      - '`findNearestGHCN`'
+      - '`findNearestHUC12`'
+      - '`findNearestNWIS`'
+      - '`findNearestWaterbodies`'
+  - title: Tools
+    desc: ~
+      Tools for exploring, describing and defining AOIs
+    contents:
+     - '`explore`'
+     - '`metaHD`'
+     - '`saveHD`'
+
+  - title: Data and Package Helpers
+    desc: ~
+      Data and functions that make the package useable
+    contents:
+navbar:
+  left:
+    - icon: fa-home
+      href: index.html
+    - text: "Documentation"
+      icon: fas fa-book
+      menu:
+      -  text: Available Data Source
+         href: articles/sources.html
+    - icon: fa-file-code-o
+      text: "functions"
+      href: reference/index.html

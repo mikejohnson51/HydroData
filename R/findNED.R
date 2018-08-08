@@ -1,21 +1,19 @@
-#' @title Get NED data for an Area of Interest
-#' @description Function to download elevation data for an area of interest
-#' @param AOI a character string. Can be full name or state abbriviation
+#' @title Find National Elevation Data (NED)
+#' @description \code{findNED} returns \code{Raster} elevation data from the National Elevation Dataset (\href{https://nationalmap.gov/elevation.html}{NED}) for an AOI.
+#' Data comes the the USA National Map.
+#' @param AOI  A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
 #' @param res resolution of NED data. 1 equals 1 arc second, 13 equals 1/3 arc second.
-#' @export
+#' @return a list() of minimum length 2: AOI and NED
 #' @examples
 #' \dontrun{
-#' #Get 1 arc second elevation for El Paso County Colorado Springs
-#'
-#' el.paso.elev = get_ned(state = "CO", county = "El Paso", res = 1, keep.boundary = TRUE)
-#' plot(el.paso.elev, col = col_elev)
-#'}
-#' @author
-#' Mike Johnson
+#'  el.paso.elev = getAOI(state = "CO", county = "El Paso") %>% findNED(res = 1)
+#' }
+#' @author Mike Johnson
+#' @export
 
 findNED = function(AOI = NULL, res = 1){
 
-  if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
+  if(!(class(AOI) %in% c("list", "HydroData"))){AOI = list(AOI = AOI)}
 
   if(!(res %in% c(1,13))){stop("Resoultion must be either 1 (1 arc second) or 13 (1/3 arc second).")}
 

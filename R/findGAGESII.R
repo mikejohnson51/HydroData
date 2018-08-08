@@ -1,28 +1,59 @@
-#' Find GAGESII points and basins
-#'
-#' @description
-#' \code{findNHD} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
-#' To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
-#' Returned \code{list} can be interactivly explored via \code{\link{explore}} and COMID values (\code{ids = TRUE}) allow for National Water Model access via \code{getNWM}.\cr\cr
-#' All outputs are projected to \code{CRS'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and stream networks are (\emph{down})loaded from the \href{https://cida.usgs.gov}{USGS}.
-#'
-#' @param AOI and AOI of Interest
-#' @param ids If TRUE, returns a list of COMIDS for NHD reaches
+#' @title Find GAGESII points and basins
+#' @description The 'Geospatial Attributes of Gages for Evaluating Streamflow, version II'
+#' (\href{https://water.usgs.gov/GIS/metadata/usgswrd/XML/gagesII_Sept2011.xml#Entity_and_Attribute_Information}{GAGESII})
+#' provides geospatial data and classifications for 9,322 stream gages maintained by the U.S. Geological Survey (USGS). \code{findGAGESII}
+#' returns a \code{SpatialPointsDataFrame*} of GAGESII outlets within an AOI. Data comes from the USGS CIDA server and contains the following attributes:\cr
+#' \itemize{
+#' \item 'id'   : \code{character}  Internal feature number
+#' \item 'STAID'   : \code{character}  USGS NWIS Station ID
+#' \item 'STANAME': \code{character}  USGS NWIS Station Name
+#' \item 'CLASS'   : \code{character}  Classification (Ref or Non-ref)
+#' \item 'AGGECOREGION'   : \code{character}    Aggregated ecoregion
+#' \item 'DRAIN_SQKM'    : \code{numeric}    Drainage area, sq km
+#' \item 'HUC02'    : \code{character}    Hydrologic Unit Code, 2-digit
+#' \item 'LAT_GAGE'   : \code{numeric}  Latitude, decimal degrees
+#' \item 'LNG_GAGE'   : \code{numeric}  Longitude, decimal degrees
+#' \item 'STATE': \code{character}  State at gage location
+#' \item 'HCDN_2009'   : \code{character}  If gage is part of HCDN-2009
+#' \item 'ACTIVE09'   : \code{character}    If gage active in water year 2009
+#' \item 'FLYRS1990'    : \code{integer}    Number of complete years of flow data between 1900 and 2009
+#' \item 'FLYRS1950'    : \code{integer}    Number of complete years of flow data between 1950 and 2009
+#' \item 'FLYRS1990'    : \code{integer}    Number of complete years of flow data between 1990 and 2009
+#' } \cr
+#' If \code{basins = TRUE} a \code{SpatialPolygonsDataFrame} of the gage drainage basin will also be appended
+#' to the returned list and contain the following attributes:
+#' \itemize{
+#' \item 'id'   : \code{character}  Internal feature number and data identifier
+#' \item 'ogr_fid'   : \code{integer}  Internal feature number
+#' \item 'area': \code{numeric}  Basin Area
+#' \item 'perimeter'   : \code{integer}  Basein Parameters
+#' \item 'gage_id'   : \code{character}    USGS NWIS Station ID
+#' }\cr
+#' @param AOI A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
 #' @param basins If TRUE, returns a list of GAGESII basin in addition
+#' @param ids If TRUE, a vector of gage IDs is added to retuned list (default = \code{FALSE})
+#' @return a list() of minimum length 2: AOI and gagesII
+#' @examples
+#' \dontrun{
+#' #Get GAGESII outlets for AOI
+#' gage = getAOI(clip = list("UCSB", 10, 10)) %>%  findGAGESII()
 #'
-#' @family HydroData 'find' functions
-#'
-#' @export
+#' #Get GAGESII outlets and basins for AOI
+#' bas = getAOI(clip = list("UCSB", 10, 10)) %>%  findGAGESII(basins = TRUE)
+#' }
 #' @author Mike Johnson
+#' @export
 
 
 findGAGESII = function(AOI = NULL,
-                       ids = FALSE,
-                       basins = FALSE) {
+                       basins = FALSE,
+                       ids = FALSE) {
 
   if (!(class(AOI) %in% c("list", "HydroData"))) {
     AOI = list(AOI = AOI)
   }
+
+  if(any(class(AOI$AOI) == "sf")){ AOI$AOI = as_Spatial(AOI$AOI) }
 
   sl = query_cida(AOI$AOI, type = 'gagesII', spatial = T)
 
@@ -38,9 +69,7 @@ findGAGESII = function(AOI = NULL,
       " and basins"
     })
 
-    AOI = return.what(AOI, type = 'gagesII', report, vals = if (ids) {
-      "STAID"
-    })
+    AOI = return.what(AOI, type = 'gagesII', report, vals = if (ids){"STAID"} else {NULL})
   }
 
   return(AOI)

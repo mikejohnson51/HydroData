@@ -2,65 +2,35 @@
 % Please edit documentation in R/findAirports.R
 \name{findAirports}
 \alias{findAirports}
-\title{Find Airports}
+\title{Find Airport Data}
 \usage{
 findAirports(AOI = NULL, ids = FALSE)
 }
 \arguments{
-\item{ids}{If TRUE, returns a list of road names in AOI}
+\item{AOI}{A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}}
 
-\item{boundary}{If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list}
-
-\item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
+\item{ids}{If TRUE,  a vector of airport ICAO codes is added to retuned list (default = \code{FALSE})}
 }
 \value{
-\code{findAirports} returns a named list of minimum length 1:
-
-\enumerate{
-\item 'airports': A \code{SpatialPointsFrame*}\cr
-
-Pending parameterization, \code{findAirports} can also return:
-
-\item 'boundry':   A \code{SpatialPolygon*} of AOI if \code{boundary = TRUE}
-\item 'fiat':      A \code{SpatialPolygon*} of intersected county boundaries if \code{boundary = TRUE}
-\item 'ids':       A vector of 4 digit Airport Codes if \code{ids = TRUE}
-}
+a list() of minimum length 2: AOI and ap
 }
 \description{
-\code{findAirports} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
-To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
-Returned \code{list} can be interactivly explored via \code{\link{explore}} and ID values (\code{ids = TRUE}) allow for Weather Underground data access via \code{getWU}.\cr\cr
-All outputs are projected to \code{CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}
+\code{findAirports} returns a \code{SpatialPointsDataframe} of all airports within an AOI.
+Data comes from the \href{https://openflights.org/data.html}{Openflights} database and includes the following attributes:
+\itemize{
+\item 'name'   : \code{character}  Name of airport. May or may not contain the City name.
+\item 'city'   : \code{character}  Main city served by airport. May be spelled differently from Name.
+\item 'country': \code{character}  Country or territory where airport is located.
+\item 'IATA'   : \code{character}  3-letter IATA code
+\item 'ICAO'   : \code{numeric}    4-letter ICAO code
+\item 'lat'    : \code{numeric}    Latitude, decimal degrees
+\item 'lon'    : \code{numeric}    Longitude, decimal degrees
+}
 }
 \examples{
 \dontrun{
-# Find Airports in El Paso County, Colorado
-
-ap = findAirports(state = "CO", county = "El Paso", basemap = T, boundary = T)
-
-# Static Mapping
-
-plot(ap$boundary, add = T, lwd = 3)
-plot(ap$airports, add = T, pch = 16, cex = 2)
-
-# Generate Interactive Map
-
-explore(ap)
+ap = getAOI(state = "CO", county = "El Paso") \%>\% findAirports()
 }
-
-}
-\seealso{
-\code{\link{getAOI}}
-
-\code{\link{getWU}}
-
-\code{\link{explore}}
-
-Other HydroData 'find' functions: \code{\link{findGAGESII}},
-  \code{\link{findGHCN}}, \code{\link{findHUC}},
-  \code{\link{findNHD}}, \code{\link{findNID}},
-  \code{\link{findNWIS}}, \code{\link{findRoads}},
-  \code{\link{findSnotel}}, \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson

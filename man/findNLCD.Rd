@@ -2,7 +2,7 @@
 % Please edit documentation in R/findNLCD.R
 \name{findNLCD}
 \alias{findNLCD}
-\title{Get Multi-Year National Land Cover data for an Area of Interest}
+\title{Find National Land Cover Products (NLCD)}
 \usage{
 findNLCD(AOI = NULL, year = 2011, type = "landcover")
 }

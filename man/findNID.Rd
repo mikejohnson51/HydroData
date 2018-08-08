@@ -2,66 +2,42 @@
 % Please edit documentation in R/findNID.R
 \name{findNID}
 \alias{findNID}
-\title{Find US Army Core Dams within Area of Interest}
+\title{Find Dams in the US Army Core National Inventory (NID)}
 \usage{
 findNID(AOI = NULL, ids = FALSE)
 }
 \arguments{
-\item{state}{character. Provide full name(s) or two character abbriviation(s). Not case senstive}
+\item{AOI}{A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}}
 
-\item{county}{character. Provide county name(s). Requires \code{state} input.}
-
-\item{clip}{SpatialObject* or list. For details see \code{?getClipUnit}}
-
-\item{boundary}{logical. If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list
-
- #' If a user wants greater control over basemap apperance replace TRUE with either:
-\itemize{
-\item't':  a terrain imagery basemap
-\item's':  a sattilite imagery basemap
-\item'h':  a hybrid imagery basemap
-\item'r':  a roadmap imagery basemap
-}}
-
-\item{save}{logical. If TRUE, all data is saved to a HydroData folder created in users working directory. Find working directory with \code{getwd()}}
+\item{ids}{If TRUE, a vector of Dam IDs is added to retuned list (default = \code{FALSE})}
 }
 \value{
-All HydroData outputs are projected to \emph{'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'}
+a list() of minimum length 2: AOI and dams
 }
 \description{
-\code{findNID} finds all US Army Corps Dams for an Area of Interest from the National Inventory of Dams dataset.
-This dataset is access through the dams package.
-
- \code{findNID} returns a named list of minimum length 1:
-\enumerate{
-\item 'dams':      A \code{SpatialPointsDataFrame} of NID dams and metadata
-\item 'basemap':   A \code{RasterLayer} basemap if 'basemap' is \code{TRUE}
-\item 'fiat':      A \code{SpatialPolygon} of fiat boundaries if 'boundary' is \code{TRUE}
-\item 'clip':      A \code{SpatialPolygon} of clip unit boundary if 'boundary' is \code{TRUE}
-}
+\code{findNID} returns a \code{SpatialPointsDataFrame}
+of all US Army Corps Dams for an Area of Interest from the National Inventory of Dams dataset.
+The National Inventory of Dams (NID) is a congressionally authorized database documenting dams in the United States and its territories
+This dataset is accessed through the \code{dams} R package and contains 61 attributes, perhaps most notably:
+\itemize{
+\item 'Dam_Name'   : \code{character}  Dam Name
+\item 'NID_ID'   : \code{character}  Unique ID for the dam
+\item 'River': \code{character}  Name of the river
+\item 'Owner_Type'   : \code{character}  Type of Owner
+\item 'Dam_Type'   : \code{character}   Type of Dam
+\item 'Primary_Purpose'    : \code{numeric}    Primary Purpose served
+\item 'Dam_Length'    : \code{numeric}    Length of the dam
+\item 'Dam_Height'   : \code{numeric}  Height of the dam
+\item 'Max_Discharge'   : \code{numeric}  Maximum Discharge
+\item 'Max_Storage': \code{character}  Maximum Storage
+ \item 'Normal_Storage': \code{character}  Normal Storage
+} \cr
 }
 \examples{
 \dontrun{
 # Find all dams in Texas
-
-tx.dams = findNID(state = "TX", boundary = TRUE, basemap = 'r', save= TRUE)
-plot(tx.dams$basmap)
-plot(tx.dams$boundary, add = TRUE)
-plot(tx.dams$dams, add = TRUE)
+tx.dams = getAOI(state = "TX") \%>\% findNID()
 }
-}
-\seealso{
-\itemize{
-         \item \code{\link{getClipUnit}}
-         \item \link{getAOI}
-         \item \link[HydroData]{explore}
-         }
-
-Other HydroData 'find' functions: \code{\link{findAirports}},
-  \code{\link{findGAGESII}}, \code{\link{findGHCN}},
-  \code{\link{findHUC}}, \code{\link{findNHD}},
-  \code{\link{findNWIS}}, \code{\link{findRoads}},
-  \code{\link{findSnotel}}, \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson

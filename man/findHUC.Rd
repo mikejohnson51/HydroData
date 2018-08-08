@@ -67,11 +67,9 @@ explore(ws)
 
 \code{\link{explore}}
 
-Other HydroData 'find' functions: \code{\link{findAirports}},
-  \code{\link{findGAGESII}}, \code{\link{findGHCN}},
-  \code{\link{findNHD}}, \code{\link{findNID}},
-  \code{\link{findNWIS}}, \code{\link{findRoads}},
-  \code{\link{findSnotel}}, \code{\link{findWaterbodies}}
+Other HydroData 'find' functions: \code{\link{findNWIS}},
+  \code{\link{findRoads}}, \code{\link{findSnotel}},
+  \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson

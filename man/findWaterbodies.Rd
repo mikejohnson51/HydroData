@@ -2,7 +2,7 @@
 % Please edit documentation in R/findWaterbodies.R
 \name{findWaterbodies}
 \alias{findWaterbodies}
-\title{Find National Hydrography Data Waterbodies}
+\title{Find National Hydrography Dataset Waterbodies}
 \usage{
 findWaterbodies(AOI = NULL, ids = FALSE)
 }
@@ -69,11 +69,9 @@ inspect(flows, save = TRUE)
 
 \code{\link{explore}}
 
-Other HydroData 'find' functions: \code{\link{findAirports}},
-  \code{\link{findGAGESII}}, \code{\link{findGHCN}},
-  \code{\link{findHUC}}, \code{\link{findNHD}},
-  \code{\link{findNID}}, \code{\link{findNWIS}},
-  \code{\link{findRoads}}, \code{\link{findSnotel}}
+Other HydroData 'find' functions: \code{\link{findHUC}},
+  \code{\link{findNWIS}}, \code{\link{findRoads}},
+  \code{\link{findSnotel}}
 }
 \author{
 Mike Johnson

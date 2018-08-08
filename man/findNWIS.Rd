@@ -87,11 +87,9 @@ inspect(data, param = 'Flow')
 
 \code{\link[dataRetrieval]{readNWISdv}}
 
-Other HydroData 'find' functions: \code{\link{findAirports}},
-  \code{\link{findGAGESII}}, \code{\link{findGHCN}},
-  \code{\link{findHUC}}, \code{\link{findNHD}},
-  \code{\link{findNID}}, \code{\link{findRoads}},
-  \code{\link{findSnotel}}, \code{\link{findWaterbodies}}
+Other HydroData 'find' functions: \code{\link{findHUC}},
+  \code{\link{findRoads}}, \code{\link{findSnotel}},
+  \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson

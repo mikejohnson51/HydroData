@@ -1,70 +1,28 @@
-#' Find National Hydrography Data Stream Networks
-#'
+#' @title Find National Hydrography River Networks
 #' @description
-#' \code{findNHD} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
-#' To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
-#' Returned \code{list} can be interactivly explored via \code{\link{explore}} and COMID values (\code{ids = TRUE}) allow for National Water Model access via \code{getNWM}.\cr\cr
-#' All outputs are projected to \code{CRS'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and stream networks are (\emph{down})loaded from the \href{https://cida.usgs.gov}{USGS}.
-#'
-
-#'
-#' @param ids  If TRUE, returns a list of COMIDS for NHD reaches
-#' @param save If TRUE, data is written to a HydroData folder in users working directory.
-#'
-#' @seealso  \code{\link{getAOI}}
-#' @seealso  \code{\link{getNWM}}
-#' @seealso  \code{\link{explore}}
-#'
-#' @family HydroData 'find' functions
-#'
-#' @return
-#' \code{findNHD} returns a list of minimum length 1:
-#'
-#' \enumerate{
-#' \item 'flowlines': A \code{SpatialLinesDataFrame}\cr
-#'
-#'
-#' Pending parameterization, \code{findNHD} can also return:
-#'
-#' \item 'basemap':   A \code{RasterLayer*} basemap if \code{basemap = TRUE}
-#' \item 'boundry':   A \code{SpatialPolygon*} of AOI if \code{boundary = TRUE}
-#' \item 'fiat':      A \code{SpatialPolygon*} of intersected county boundaries if \code{boundary = TRUE}
-#' \item 'ids':       A vector of COMIDs if \code{ids = TRUE}
-#' }
-#'
-#'
+#' \code{findNHD} returns a \code{SpatialLinesDataframe} of all NHDFlowlines reaches within an AOI.
+#' Data comes from the USGS CIDA server and contain 92 attributes, perhaps most notably:
+#' \itemize{
+#' \item 'comid'   : \code{integer}  Integer value that uniquely identifies the occurrence of each feature in the NHD
+#' \item 'reachcode'   : \code{character}  Unique identifier for a ‘reach’. The first eight numbers are the WBD_HUC8
+#' \item 'fdate': \code{POSITct}  Date of last feature modification
+#' \item 'gnis_id'   : \code{character}    Unique identifier assigned by GNIS
+#' \item 'gnis_name'   : \code{character}    Proper name, term, or expression by which a particular geographic entity is known
+#' \item 'lengthkm'    : \code{numeric}    Length of linear feature based on Albers Equal Area
+#' \item 'areasqkm'    : \code{numeric}    Area of areal feature based on Albers Equal Area,
+#' \item 'flowdir'   : \code{character}     Direction of flow relative to coordinate order.
+#' \item 'wbareacomi'   : \code{integer}  The COMID of the waterbody through which the flowline flows.
+#' \item 'ftype': \code{character}  unique identifier of a feature type
+#' }\cr
+#' @param AOI  A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
+#' @param ids  If TRUE,  a vector of airport ICAO codes is added to retuned list (default = \code{FALSE})
+#' @return a list() of minimum length 2: AOI and nhd
 #' @examples
 #' \dontrun{
-#' # Find NHD data for El Paso County, Colorado
-#'
-#' el.paso = findNHD(state = 'CO',
-#'                   county = 'El Paso',
-#'                   boundary = TRUE,
-#'                   basemap = 'r',
-#'                   ids = TRUE)
-#'
-#' # Static Mapping
-#'
-#'  plot(el.paso$basemap)
-#'  plot(el.paso$boundary, lwd = 5, add = T)
-#'  plot(el.paso$flowlines, col = 'blue', lwd = el.paso$flowlines$streamorde, add = T)
-#'
-#' # Generate Interactive Map
-#'
-#'   explore(el.paso, save = TRUE)
-#'
-#' # Get flow data for reaches
-#'
-#' flows = getNWM(ids = el.paso$ids, startDate = '2017-01-01', endDate = '2017-12-31')
-#'
-#' # Interactivly explore timeseries data
-#'
-#' inspect(flows, save = TRUE)
+#' nhd  = getAOI(clip = list("Tuscaloosa, AL", 10, 10)) %>% findNHD()
 #' }
-#'
-#' @export
 #' @author Mike Johnson
-#'
+#' @export
 
 findNHD = function(AOI = NULL, ids = FALSE) {
 
