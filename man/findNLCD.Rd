@@ -7,36 +7,26 @@
 findNLCD(AOI = NULL, year = 2011, type = "landcover")
 }
 \arguments{
-\item{year}{year of land cover desired. Options include 2001, 2006, and 2011. Multiple years can be given as a vector.}
+\item{AOI}{A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}}
 
-\item{state}{a character string. Can be full name or state abbriviation}
+\item{year}{the year(s) to download. Options include 2001, 2006, 2011. Default = 2011}
 
-\item{county}{a character string. Can be full name or state abbriviation}
-
-\item{clip_unit}{can be provided as a shapefile or as a vector defineing centroid and bounding box diminsion}
-
-\item{keep.boundary}{logical. If TRUE, the AOI shapefile will be returned with station data in a list}
+\item{type}{the type of data to downlaod. Options include landcover, canopy, and impervious. Default = landcover}
+}
+\value{
+a list() of minimum length 2: AOI and NLCD
 }
 \description{
-Function to download land cover data for an area of interest from 2001, 2006, 2011
+\code{findNLCD} returns \code{Raster} land cover data from the National Land Cover Dataset (\href{https://www.mrlc.gov}{NED}) for an AOI.
+Data comes the the USA National Map and is avaialble for years 2001, 2006, 2011.
+In additon to landcover, users can get data reflecting impervious surface and conaopy cover.
 }
 \examples{
 \dontrun{
-el.paso.lc = get_nlcd_multi(state = 'CO', county = 'El Paso', year = c(2001, 2006, 2011))
-
-plot(el.paso.lc$lc$lc_2001, col = col_lc$color, main = "2001")
-plot(el.paso.lc$boundary, add = TRUE, lwd = 4)
-legend('topright',col_lc$description,fill=col_lc$color, cex = .5)
-
-plot(el.paso.lc$lc$lc_2006, col = col_lc$color, main = "2006")
-plot(el.paso.lc$boundary, add = TRUE, lwd = 5)
-legend('topright',col_lc$description,fill=col_lc$color, cex = .5)
-
-plot(el.paso.lc$lc$lc_2011, col = col_lc$color, main = "2011")
-plot(el.paso.lc$boundary, add = TRUE, lwd = 5)
-legend('topright',col_lc$description,fill=col_lc$color, cex = .5)
+ dt = getAOI(clip = list("Devil Tower")) \%>\% findNLDC(2006, 'landcover')
+ dt = getAOI(clip = list("Devil Tower")) \%>\% findNLDC(2011, 'canopy')
+ dt = getAOI(clip = list("Devil Tower")) \%>\% findNLDC(2011, 'impervious')
 }
-
 }
 \author{
 Mike Johnson

@@ -26,32 +26,32 @@ returns a \code{SpatialPointsDataFrame*} of GAGESII outlets within an AOI. Data 
 \item 'STAID'   : \code{character}  USGS NWIS Station ID
 \item 'STANAME': \code{character}  USGS NWIS Station Name
 \item 'CLASS'   : \code{character}  Classification (Ref or Non-ref)
-\item 'AGGECOREGION'   : \code{character}    Aggregated ecoregion
+\item 'AGGECOREGION'   : \code{numeric}    Aggregated ecoregion
 \item 'DRAIN_SQKM'    : \code{numeric}    Drainage area, sq km
-\item 'HUC02'    : \code{character}    Hydrologic Unit Code, 2-digit
-\item 'LAT_GAGE'   : \code{numeric}  Latitude, decimal degrees
-\item 'LNG_GAGE'   : \code{numeric}  Longitude, decimal degrees
+\item 'HUC02'    : \code{numeric}    Hydrologic Unit Code, 2-digit
+\item 'LAT_GAGE'   : \code{character}   %>% %>% %>% %>% %>% %>% %>% %>% %>% %>% %>%
+\item 'LNG_GAGE'   : \code{character}  Longitude, decimal degrees
 \item 'STATE': \code{character}  State at gage location
 \item 'HCDN_2009'   : \code{character}  If gage is part of HCDN-2009
-\item 'ACTIVE09'   : \code{character}    If gage active in water year 2009
-\item 'FLYRS1990'    : \code{integer}    Number of complete years of flow data between 1900 and 2009
-\item 'FLYRS1950'    : \code{integer}    Number of complete years of flow data between 1950 and 2009
-\item 'FLYRS1990'    : \code{integer}    Number of complete years of flow data between 1990 and 2009
+\item 'ACTIVE09'   : \code{numeric}    If gage active in water year 2009
+\item 'FLYRS1990'    : \code{numeric}    Number of complete years of flow data between 1900 and 2009
+\item 'FLYRS1950'    : \code{numeric}    Number of complete years of flow data between 1950 and 2009
+\item 'FLYRS1990'    : \code{numeric}    Number of complete years of flow data between 1990 and 2009
 } \cr
 If \code{basins = TRUE} a \code{SpatialPolygonsDataFrame} of the gage drainage basin will also be appended
 to the returned list and contain the following attributes:
 \itemize{
 \item 'id'   : \code{character}  Internal feature number and data identifier
-\item 'ogr_fid'   : \code{integer}  Internal feature number
-\item 'area': \code{numeric}  Basin Area
-\item 'perimeter'   : \code{integer}  Basein Parameters
-\item 'gage_id'   : \code{character}    USGS NWIS Station ID
+\item 'ogr_fid'   : \code{character}  Internal feature number
+\item 'area': \code{character}  Basin Area
+\item 'perimeter'   : \code{character}  Basein Parameters
+\item 'gage_id'   : \code{numeric}    USGS NWIS Station ID
 }\cr
 }
 \examples{
 \dontrun{
 #Get GAGESII outlets for AOI
-gage = getAOI(clip = list("UCSB", 10, 10)) \%>\%  findGAGESII()
+bas = getAOI(clip = list("UCSB", 10, 10)) \%>\%  findGAGESII()
 
 #Get GAGESII outlets and basins for AOI
 bas = getAOI(clip = list("UCSB", 10, 10)) \%>\%  findGAGESII(basins = TRUE)

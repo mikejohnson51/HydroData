@@ -1,5 +1,4 @@
-#' Find Dams in the US Army Core National Inventory (NID)
-#'
+#' @title Find Dams in the US Army Core National Inventory (NID)
 #' @description  \code{findNID} returns a \code{SpatialPointsDataFrame}
 #' of all US Army Corps Dams for an Area of Interest from the National Inventory of Dams dataset.
 #' The National Inventory of Dams (NID) is a congressionally authorized database documenting dams in the United States and its territories

@@ -40,25 +40,25 @@ returns a SpatialPointsDataFrame* of GAGESII outlets within an AOI. Data comes f
 'STAID'   : character  USGS NWIS Station ID
 'STANAME': character  USGS NWIS Station Name
 'CLASS'   : character  Classification (Ref or Non-ref)
-'AGGECOREGION'   : character    Aggregated ecoregion
+'AGGECOREGION'   : numeric    Aggregated ecoregion
 'DRAIN_SQKM'    : numeric    Drainage area, sq km
-'HUC02'    : character    Hydrologic Unit Code, 2-digit
-'LAT_GAGE'   : numeric  Latitude, decimal degrees
-'LNG_GAGE'   : numeric  Longitude, decimal degrees
+'HUC02'    : numeric    Hydrologic Unit Code, 2-digit
+'LAT_GAGE'   : character   
+'LNG_GAGE'   : character  Longitude, decimal degrees
 'STATE': character  State at gage location
 'HCDN_2009'   : character  If gage is part of HCDN-2009
-'ACTIVE09'   : character    If gage active in water year 2009
-'FLYRS1990'    : integer    Number of complete years of flow data between 1900 and 2009
-'FLYRS1950'    : integer    Number of complete years of flow data between 1950 and 2009
-'FLYRS1990'    : integer    Number of complete years of flow data between 1990 and 2009
+'ACTIVE09'   : numeric    If gage active in water year 2009
+'FLYRS1990'    : numeric    Number of complete years of flow data between 1900 and 2009
+'FLYRS1950'    : numeric    Number of complete years of flow data between 1950 and 2009
+'FLYRS1990'    : numeric    Number of complete years of flow data between 1990 and 2009
 
 If basins = TRUE a SpatialPolygonsDataFrame of the gage drainage basin will also be appended
 to the returned list and contain the following attributes:
 'id'   : character  Internal feature number and data identifier
-'ogr_fid'   : integer  Internal feature number
-'area': numeric  Basin Area
-'perimeter'   : integer  Basein Parameters
-'gage_id'   : character    USGS NWIS Station ID
+'ogr_fid'   : character  Internal feature number
+'area': character  Basin Area
+'perimeter'   : character  Basein Parameters
+'gage_id'   : numeric    USGS NWIS Station ID
 " />
 
 <meta property="og:image" content="/logo.png" />
@@ -159,25 +159,25 @@ returns a <code>SpatialPointsDataFrame*</code> of GAGESII outlets within an AOI.
 <li><p>'STAID'   : <code>character</code>  USGS NWIS Station ID</p></li>
 <li><p>'STANAME': <code>character</code>  USGS NWIS Station Name</p></li>
 <li><p>'CLASS'   : <code>character</code>  Classification (Ref or Non-ref)</p></li>
-<li><p>'AGGECOREGION'   : <code>character</code>    Aggregated ecoregion</p></li>
+<li><p>'AGGECOREGION'   : <code>numeric</code>    Aggregated ecoregion</p></li>
 <li><p>'DRAIN_SQKM'    : <code>numeric</code>    Drainage area, sq km</p></li>
-<li><p>'HUC02'    : <code>character</code>    Hydrologic Unit Code, 2-digit</p></li>
-<li><p>'LAT_GAGE'   : <code>numeric</code>  Latitude, decimal degrees</p></li>
-<li><p>'LNG_GAGE'   : <code>numeric</code>  Longitude, decimal degrees</p></li>
+<li><p>'HUC02'    : <code>numeric</code>    Hydrologic Unit Code, 2-digit</p></li>
+<li><p>'LAT_GAGE'   : <code>character</code>   <!-- %&gt;% %&gt;% %&gt;% %&gt;% %&gt;% %&gt;% %&gt;% %&gt;% %&gt;% %&gt;% %&gt;% --></p></li>
+<li><p>'LNG_GAGE'   : <code>character</code>  Longitude, decimal degrees</p></li>
 <li><p>'STATE': <code>character</code>  State at gage location</p></li>
 <li><p>'HCDN_2009'   : <code>character</code>  If gage is part of HCDN-2009</p></li>
-<li><p>'ACTIVE09'   : <code>character</code>    If gage active in water year 2009</p></li>
-<li><p>'FLYRS1990'    : <code>integer</code>    Number of complete years of flow data between 1900 and 2009</p></li>
-<li><p>'FLYRS1950'    : <code>integer</code>    Number of complete years of flow data between 1950 and 2009</p></li>
-<li><p>'FLYRS1990'    : <code>integer</code>    Number of complete years of flow data between 1990 and 2009</p></li>
+<li><p>'ACTIVE09'   : <code>numeric</code>    If gage active in water year 2009</p></li>
+<li><p>'FLYRS1990'    : <code>numeric</code>    Number of complete years of flow data between 1900 and 2009</p></li>
+<li><p>'FLYRS1950'    : <code>numeric</code>    Number of complete years of flow data between 1950 and 2009</p></li>
+<li><p>'FLYRS1990'    : <code>numeric</code>    Number of complete years of flow data between 1990 and 2009</p></li>
 </ul><p><br />
 If <code>basins = TRUE</code> a <code>SpatialPolygonsDataFrame</code> of the gage drainage basin will also be appended
 to the returned list and contain the following attributes:</p><ul>
 <li><p>'id'   : <code>character</code>  Internal feature number and data identifier</p></li>
-<li><p>'ogr_fid'   : <code>integer</code>  Internal feature number</p></li>
-<li><p>'area': <code>numeric</code>  Basin Area</p></li>
-<li><p>'perimeter'   : <code>integer</code>  Basein Parameters</p></li>
-<li><p>'gage_id'   : <code>character</code>    USGS NWIS Station ID</p></li>
+<li><p>'ogr_fid'   : <code>character</code>  Internal feature number</p></li>
+<li><p>'area': <code>character</code>  Basin Area</p></li>
+<li><p>'perimeter'   : <code>character</code>  Basein Parameters</p></li>
+<li><p>'gage_id'   : <code>numeric</code>    USGS NWIS Station ID</p></li>
 </ul><p><br /></p>
     
     </div>
@@ -209,7 +209,7 @@ to the returned list and contain the following attributes:</p><ul>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
 <span class='co'>#Get GAGESII outlets for AOI</span>
-<span class='no'>gage</span> <span class='kw'>=</span> <span class='fu'>getAOI</span>(<span class='kw'>clip</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='st'>"UCSB"</span>, <span class='fl'>10</span>, <span class='fl'>10</span>)) <span class='kw'>%&gt;%</span>  <span class='fu'>findGAGESII</span>()
+<span class='no'>bas</span> <span class='kw'>=</span> <span class='fu'>getAOI</span>(<span class='kw'>clip</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='st'>"UCSB"</span>, <span class='fl'>10</span>, <span class='fl'>10</span>)) <span class='kw'>%&gt;%</span>  <span class='fu'>findGAGESII</span>()
 
 <span class='co'>#Get GAGESII outlets and basins for AOI</span>
 <span class='no'>bas</span> <span class='kw'>=</span> <span class='fu'>getAOI</span>(<span class='kw'>clip</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='st'>"UCSB"</span>, <span class='fl'>10</span>, <span class='fl'>10</span>)) <span class='kw'>%&gt;%</span>  <span class='fu'>findGAGESII</span>(<span class='kw'>basins</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)

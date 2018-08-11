@@ -70,7 +70,6 @@ inspect(flows, save = TRUE)
 \code{\link{explore}}
 
 Other HydroData 'find' functions: \code{\link{findHUC}},
-  \code{\link{findNWIS}}, \code{\link{findRoads}},
   \code{\link{findSnotel}}
 }
 \author{

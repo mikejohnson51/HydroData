@@ -1,81 +1,24 @@
-#' Find USGS NWIS Stream Gages
-#'
-#' @description
-#' \code{findUSGS} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
-#' To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
-#' Returned \code{list} can be interactivly explored via \code{\link{explore}} \cr
-#' Returned ID values (\code{ids = TRUE}) allow for observed data access via \code{getUSGS} or \link[dataRetrieval]{readNWISdv} .\cr
-#' Returned COMID values (\code{comids = TRUE}) allow for National Water Model access via \code{getNWM}.\cr\cr
-#'
-#' All outputs are projected to \code{CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and station data was extracted from the \href{https://maps.waterdata.usgs.gov/mapper/index.html}{USGS NWIS Mapper}.
-#'
-#' @param state    Full name(s) or two character abbriviation(s). Not case senstive
-#' @param county    County name(s). Requires \code{state} input.
-#' @param clip SpatialObject* or list. For details see \code{getClipUnit}
-#' @param boundary  If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list
-#'
-#'  If a user wants greater control over basemap apperance replace TRUE with either:
+#' @title Find USGS NWIS Stream Gages
+#' @description \code{findNWIS} returns a \code{SpatialPointsDataFrame}
+#' of all USGS NWIS gages for an Area of Interest. This dataset is accessed through the NWIS web portal and contains the following attributes:
 #' \itemize{
-#' \item't':  google terrain basemap
-#' \item's':  google sattilite imagery basemap
-#' \item'h':  google hybrid basemap
-#' \item'r':  google roads basemap
-#' }
-#'
-#' @param ids     If TRUE, returns a list of station IDs in AOI
-#' @param comids  If TRUE, returns a list of NHD COMIDs that correspond to the station IDs
-#' @param save    If TRUE, data is written to a HydroData folder in users working directory.
-#'
-#' @seealso  \code{\link{getAOI}}
-#' @seealso  \code{\link{explore}}
-#' @seealso  \code{\link{getUSGS}}
-#' @seealso  \code{\link[dataRetrieval]{readNWISdv}}
-#'
-#' @family HydroData 'find' functions
-#'
-#' @return
-#' \code{findUSGS} returns a named list of minimum length 1:
-#'
-#' \enumerate{
-#' \item 'nwis':     A \code{SpatialPointsDataFrame} of stations and metadata
-#' Pending parameterization, \code{findRoads} can also return:
-#'
-#' \item 'basemap':   A \code{RasterLayer*} basemap if \code{basemap = TRUE}
-#' \item 'boundry':   A \code{SpatialPolygon*} of AOI if \code{boundary = TRUE}
-#' \item 'fiat':      A \code{SpatialPolygon*} of intersected county boundaries if \code{boundary = TRUE}
-#' \item 'ids':       A vector of road names if \code{ids = TRUE}
-#' }
-#'
+#' \item 'OBJECTID'   : \code{character}  Unique ID in dataset
+#' \item 'feature_id'   : \code{character}  NHD COMID for reach
+#' \item 'site_no': \code{character}  NWIS ID number
+#' \item 'site_name'   : \code{character}  Name of site
+#' \item 'da_sqkm'   : \code{character}   Area drainign to gage in square kilometers
+#' \item 'lat_reachCent'    : \code{numeric}    Latitude of the reach center, decimil degrees
+#' \item 'lon_reachCent'    : \code{numeric}    Longitude of the reach center, decimil degrees
+#' } \cr
+#' @param AOI A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
+#' @param ids If TRUE, a vector of NIWS gage IDs are added to retuned list (default = \code{FALSE})
+#' @return a list() of minimum length 2: AOI and nwis
 #' @examples
 #' \dontrun{
-#' # Find stations within 10 square miles of the National Water Center:
-#'
-#'  nwc.usgs <- findUSGS(clip = list("National Water Center", 10,  10),
-#'                              boundary = TRUE, basemap = TRUE, ids = TRUE)
-#'
-#' # Static Mapping
-#'
-#'  plot(nwc.usgs$basemap)
-#'  plot(nwc.usgs$boundary, add = TRUE, lwd = 5)
-#'  plot(nwc.usgs$usgs, add = TRUE, lwd = 2, pch = 16,  col = "darkgreen")
-#'
-#' # Generate Interactive Map
-#'
-#' explore(nwc.usgs)
-#'
-#' # Get discharge data for all stations usign dataRetrival Package
-#'
-#'  data = getUSGS(IDs = nwc.usgs$ids)
-#'
-#' # Generate Interactive Timseries
-#'
-#' inspect(data, param = 'Flow')
+#' co = getAOI(state = "CO") %>% findNWIS()
 #' }
-#'
+#' @author Mike Johnson
 #' @export
-#' @author
-#' Mike Johnson
-#'
 
 findNWIS = function(AOI = NULL, ids = FALSE, comids = FALSE){
 

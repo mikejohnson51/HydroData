@@ -1,72 +1,33 @@
-#' Find US Census Bureau TIGER Road Networks
+#' @title Find US Census Bureau TIGER Road Networks
 #'
-#' @description
-#' \code{findRoads} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
-#' To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip_unit}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
-#' Returned \code{list} can be interactivly explored via \code{\link{explore}}.\cr\cr
-#' All outputs are projected to \code{CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and road networks are (\emph{down})loaded from the 2017 \href{https://www2.census.gov/geo/tiger/TIGER2017}{US Census servers}.
-#'
-#' @param state    Full name(s) or two character abbriviation(s). Not case senstive
-#' @param county    County name(s). Requires \code{state} input.
-#' @param clip_unit SpatialObject* or list. For details see \code{getClipUnit}
-#' @param boundary  If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list
-#' @param basemap   If TRUE, a basemap will be joined to returned list
-#'
-#'  If a user wants greater control over basemap apperance replace TRUE with either:
+#' @description \code{findRoads} returns a \code{SpatialLinesDataFrame} of TIGER road networks cropped to an Area of Interest.
+#' This dataset is accessed through the US Census geo portal and contains the following attributes:
 #' \itemize{
-#' \item't':  google terrain basemap
-#' \item's':  google sattilite imagery basemap
-#' \item'h':  google hybrid basemap
-#' \item'r':  google roads basemap
+#' \item 'LINEARID'   : \code{character}  Linear feature identifier
+#' \item 'FULLNAME'   : \code{character}  Feature Name
+#' \item 'RTTYP': \code{character}  Route Type Code
+#' \item 'MTFCC'   : \code{character}  Road Classification
+#' \itemize{
+#' \item S1100   Primary Roads
+#' \item R1011   Railroad Feature (Main, Spur, or Yard)
+#' \item R1051   Carline, Streetcar Track, Monorail, Other Mass Transit Rail)
+#' \item R1052   Cog Rail Line, Incline Rail Line, Tram
+#' \item S1100   Primary Road
+#' \item S1200   Secondary Road
 #' }
-#'
-#' @param ids  If TRUE, returns a list of road names in AOI
-#' @param save If TRUE, data is written to a HydroData folder in users working directory.
-#'
-#' @seealso  \code{\link{getAOI}}
-#' @seealso  \code{\link{explore}}
-#'
-#' @family HydroData 'find' functions
-#'
-#' @return
-#' \code{findRoads} returns a named list of minimum length 1:
-#'
-#' \enumerate{
-#' \item 'roads': A \code{SpatialLinesDataFrame*}\cr
-#'
-#' Pending parameterization, \code{findRoads} can also return:
-#'
-#' \item 'basemap':   A \code{RasterLayer*} basemap if \code{basemap = TRUE}
-#' \item 'boundry':   A \code{SpatialPolygon*} of AOI if \code{boundary = TRUE}
-#' \item 'fiat':      A \code{SpatialPolygon*} of intersected county boundaries if \code{boundary = TRUE}
-#' \item 'ids':       A vector of road names if \code{ids = TRUE}
 #' }
-#'
+#' @param AOI A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
+#' @return a list() of minimum length 2: AOI and tiger
 #' @examples
-#'\dontrun{
-#' # Find Roads Near UCSB
-#'
-#' roads = findRoads(clip_unit = list("UCSB", 10, 10), basemap = T, boundary = T)
-#'
-#' # Static Mapping
-#'
-#' plot(roads$basemap)
-#' plot(roads$boundary, add = T)
-#' plot(roads$roads, add = T)
-#'
-#' # Generate Interactive Map
-#'
-#' explore(roads)
-#'}
-#'
+#' \dontrun{
+#' AOI  = getAOI(clip = list("UCSB", 10, 10)) %>% findRoads()
+#' }
+#' @author Mike Johnson
 #' @export
-#' @author
-#' Mike Johnson
 #'
 
 findRoads = function(AOI = FALSE) {
 
-  `%dopar%` <- foreach::`%dopar%`
 
   if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 
@@ -78,10 +39,14 @@ findRoads = function(AOI = FALSE) {
 
   message(paste("There", verb, length(urls), "TIGER", noun, "in this AOI"))
 
-  sl <- foreach::foreach(i = seq_along(urls), .combine = 'rbind') %do% {
+  input.shp = list()
+
+  sl <- for(i in seq_along(urls)){
     input.shp[[i]] = download_shp(URL = urls[1], type = paste('TIGER', i))
     input.shp[[i]] = input.shp[[i]][AOI$AOI,]
- }
+  }
+
+  sl = do.call(rbind, input.shp)
 
   AOI[["tiger"]] <- raster::crop(x = sl,  y = raster::extent(AOI$AOI))
 
@@ -89,5 +54,4 @@ findRoads = function(AOI = FALSE) {
 
   return(AOI)
 }
-
 

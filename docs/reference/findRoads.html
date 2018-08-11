@@ -32,10 +32,20 @@
 
 <meta property="og:title" content="Find US Census Bureau TIGER Road Networks — findRoads" />
 
-<meta property="og:description" content="findRoads returns a list of Spatial* Objects cropped to an Area of Interest.
-To better understand defining an AOI using 'state', 'county' and 'clip_unit' see getAOI and getClipUnit.
-Returned list can be interactivly explored via explore.
-All outputs are projected to CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs' and road networks are (down)loaded from the 2017 US Census servers." />
+<meta property="og:description" content="findRoads returns a SpatialLinesDataFrame of TIGER road networks cropped to an Area of Interest.
+This dataset is accessed through the US Census geo portal and contains the following attributes:
+'LINEARID'   : character  Linear feature identifier
+'FULLNAME'   : character  Feature Name
+'RTTYP': character  Route Type Code
+'MTFCC'   : character  Road Classification
+S1100   Primary Roads
+R1011   Railroad Feature (Main, Spur, or Yard)
+R1051   Carline, Streetcar Track, Monorail, Other Mass Transit Rail)
+R1052   Cog Rail Line, Incline Rail Line, Tram
+S1100   Primary Road
+S1200   Secondary Road
+
+" />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -127,10 +137,20 @@ All outputs are projected to CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,
 
     <div class="ref-description">
     
-    <p><code>findRoads</code> returns a list of <code>Spatial*</code> Objects cropped to an Area of Interest.<br /><br />
-To better understand defining an AOI using '<em>state</em>', '<em>county</em>' and '<em>clip_unit</em>' see <code>getAOI</code> and <code>getClipUnit</code>.<br /><br />
-Returned <code>list</code> can be interactivly explored via <code><a href='explore.html'>explore</a></code>.<br /><br />
-All outputs are projected to <code>CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'</code> and road networks are (<em>down</em>)loaded from the 2017 <a href='https://www2.census.gov/geo/tiger/TIGER2017'>US Census servers</a>.</p>
+    <p><code>findRoads</code> returns a <code>SpatialLinesDataFrame</code> of TIGER road networks cropped to an Area of Interest.
+This dataset is accessed through the US Census geo portal and contains the following attributes:</p><ul>
+<li><p>'LINEARID'   : <code>character</code>  Linear feature identifier</p></li>
+<li><p>'FULLNAME'   : <code>character</code>  Feature Name</p></li>
+<li><p>'RTTYP': <code>character</code>  Route Type Code</p></li>
+<li><p>'MTFCC'   : <code>character</code>  Road Classification</p><ul>
+<li><p>S1100   Primary Roads</p></li>
+<li><p>R1011   Railroad Feature (Main, Spur, or Yard)</p></li>
+<li><p>R1051   Carline, Streetcar Track, Monorail, Other Mass Transit Rail)</p></li>
+<li><p>R1052   Cog Rail Line, Incline Rail Line, Tram</p></li>
+<li><p>S1100   Primary Road</p></li>
+<li><p>S1200   Secondary Road</p></li>
+</ul></li>
+</ul>
     
     </div>
 
@@ -140,80 +160,20 @@ All outputs are projected to <code>CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>state</th>
-      <td><p>Full name(s) or two character abbriviation(s). Not case senstive</p></td>
-    </tr>
-    <tr>
-      <th>county</th>
-      <td><p>County name(s). Requires <code>state</code> input.</p></td>
-    </tr>
-    <tr>
-      <th>clip_unit</th>
-      <td><p>SpatialObject* or list. For details see <code>getClipUnit</code></p></td>
-    </tr>
-    <tr>
-      <th>boundary</th>
-      <td><p>If TRUE, the AOI <code>SpatialPolygon(s)</code> will be joined to returned list</p></td>
-    </tr>
-    <tr>
-      <th>basemap</th>
-      <td><p>If TRUE, a basemap will be joined to returned list</p>
-<p>If a user wants greater control over basemap apperance replace TRUE with either:</p><ul>
-<li><p>'t':  google terrain basemap</p></li>
-<li><p>'s':  google sattilite imagery basemap</p></li>
-<li><p>'h':  google hybrid basemap</p></li>
-<li><p>'r':  google roads basemap</p></li>
-</ul></td>
-    </tr>
-    <tr>
-      <th>ids</th>
-      <td><p>If TRUE, returns a list of road names in AOI</p></td>
-    </tr>
-    <tr>
-      <th>save</th>
-      <td><p>If TRUE, data is written to a HydroData folder in users working directory.</p></td>
+      <th>AOI</th>
+      <td><p>A Spatial* or simple features geometry, can be piped from <a href='http://www.rdocumentation.org/packages/AOI/topics/getAOI'>getAOI</a></p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>findRoads</code> returns a named list of minimum length 1:</p>
-<ol>
-<li><p>'roads': A <code>SpatialLinesDataFrame*</code><br /></p>
-<p>Pending parameterization, <code>findRoads</code> can also return:</p></li>
-<li><p>'basemap':   A <code>RasterLayer*</code> basemap if <code>basemap = TRUE</code></p></li>
-<li><p>'boundry':   A <code>SpatialPolygon*</code> of AOI if <code>boundary = TRUE</code></p></li>
-<li><p>'fiat':      A <code>SpatialPolygon*</code> of intersected county boundaries if <code>boundary = TRUE</code></p></li>
-<li><p>'ids':       A vector of road names if <code>ids = TRUE</code></p></li>
-</ol>
-
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code>getAOI</code></p>
-<p><code><a href='explore.html'>explore</a></code></p>
-<p>Other HydroData 'find' functions: <code><a href='findHUC.html'>findHUC</a></code>,
-  <code><a href='findNWIS.html'>findNWIS</a></code>, <code><a href='findSnotel.html'>findSnotel</a></code>,
-  <code><a href='findWaterbodies.html'>findWaterbodies</a></code></p></div>
+    <p>a list() of minimum length 2: AOI and tiger</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='co'># Find Roads Near UCSB</span>
-
-<span class='no'>roads</span> <span class='kw'>=</span> <span class='fu'>findRoads</span>(<span class='kw'>clip_unit</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='st'>"UCSB"</span>, <span class='fl'>10</span>, <span class='fl'>10</span>), <span class='kw'>basemap</span> <span class='kw'>=</span> <span class='no'>T</span>, <span class='kw'>boundary</span> <span class='kw'>=</span> <span class='no'>T</span>)
-
-<span class='co'># Static Mapping</span>
-
-<span class='fu'>plot</span>(<span class='no'>roads</span>$<span class='no'>basemap</span>)
-<span class='fu'>plot</span>(<span class='no'>roads</span>$<span class='no'>boundary</span>, <span class='kw'>add</span> <span class='kw'>=</span> <span class='no'>T</span>)
-<span class='fu'>plot</span>(<span class='no'>roads</span>$<span class='no'>roads</span>, <span class='kw'>add</span> <span class='kw'>=</span> <span class='no'>T</span>)
-
-<span class='co'># Generate Interactive Map</span>
-
-<span class='fu'><a href='explore.html'>explore</a></span>(<span class='no'>roads</span>)
-<span class='co'># }</span><div class='input'>
-</div></pre>
+<span class='no'>AOI</span>  <span class='kw'>=</span> <span class='fu'>getAOI</span>(<span class='kw'>clip</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='st'>"UCSB"</span>, <span class='fl'>10</span>, <span class='fl'>10</span>)) <span class='kw'>%&gt;%</span> <span class='fu'>findRoads</span>()
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -221,8 +181,6 @@ All outputs are projected to <code>CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

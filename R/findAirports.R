@@ -7,12 +7,12 @@
 #' \item 'country': \code{character}  Country or territory where airport is located.
 #' \item 'IATA'   : \code{character}  3-letter IATA code
 #' \item 'ICAO'   : \code{numeric}    4-letter ICAO code
-#' \item 'lat'    : \code{numeric}    Latitude, decimal degrees
-#' \item 'lon'    : \code{numeric}    Longitude, decimal degrees
+#' \item 'lat'    : \code{numeric}    Latitude of airport
+#' \item 'lon'    : \code{numeric}    Longitude of airport
 #' }
 #' @param AOI  A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
 #' @param ids  If TRUE,  a vector of airport ICAO codes is added to retuned list (default = \code{FALSE})
-#' @return a list() of minimum length 2: AOI and ap
+#' @return a list of minimum length 2: AOI and ap
 #' @examples
 #' \dontrun{
 #' ap = getAOI(state = "CO", county = "El Paso") %>% findAirports()
@@ -23,7 +23,7 @@
 findAirports = function(AOI = NULL, ids = FALSE) {
 
   if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
-  if(any(class(AOI$AOI) == "sf")){ AOI$AOI = as_Spatial(AOI$AOI) }
+  if(any(class(AOI) == "sf")){ AOI = as_Spatial(AOI) }
 
   ap = HydroData::ap
 

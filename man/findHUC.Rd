@@ -67,8 +67,7 @@ explore(ws)
 
 \code{\link{explore}}
 
-Other HydroData 'find' functions: \code{\link{findNWIS}},
-  \code{\link{findRoads}}, \code{\link{findSnotel}},
+Other HydroData 'find' functions: \code{\link{findSnotel}},
   \code{\link{findWaterbodies}}
 }
 \author{

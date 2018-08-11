@@ -24,9 +24,21 @@ findNED = function(AOI = NULL, res = 1){
   mat = expand.grid(lat,lon)
 
   urls = vector()
+  urls.bu = vector()
 
   for(i in 1:dim(mat)[1]){
     urls[i] = paste0('https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/',
+                     res,
+                     '/IMG/USGS_NED_',
+                     res,
+                     '_n',
+                     mat[i,1],
+                     "w",
+                     mat[i,2],
+                     "_IMG.zip")}
+
+  for(i in 1:dim(mat)[1]){
+    urls.bu[i] = paste0('https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/',
                      res,
                      '/IMG/n',
                      mat[i,1],
@@ -47,7 +59,13 @@ findNED = function(AOI = NULL, res = 1){
 
   for(i in seq_along(urls)){
     message(paste0("Downloading raster ", i, " of ", length(urls)))
-      check = download.url(url = urls[i], mode = "binary")
+      check <- tryCatch(
+        {suppressWarnings(download.url(url = urls[i], mode = "binary"))},
+        error =function(e){
+          download.url(url = urls.bu[i], mode = "binary")
+        }
+      )
+
       message(paste0("Finished downloading raster ", i, " of ", length(urls)))
       rast = unzip_crop(AOI = AOI$AOI, path = check$destfile)
     all.rast[[i]] = rast

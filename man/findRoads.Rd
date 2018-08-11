@@ -7,74 +7,33 @@
 findRoads(AOI = FALSE)
 }
 \arguments{
-\item{state}{Full name(s) or two character abbriviation(s). Not case senstive}
-
-\item{county}{County name(s). Requires \code{state} input.}
-
-\item{clip_unit}{SpatialObject* or list. For details see \code{getClipUnit}}
-
-\item{boundary}{If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list}
-
-\item{basemap}{If TRUE, a basemap will be joined to returned list
-
- If a user wants greater control over basemap apperance replace TRUE with either:
-\itemize{
-\item't':  google terrain basemap
-\item's':  google sattilite imagery basemap
-\item'h':  google hybrid basemap
-\item'r':  google roads basemap
-}}
-
-\item{ids}{If TRUE, returns a list of road names in AOI}
-
-\item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
+\item{AOI}{A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}}
 }
 \value{
-\code{findRoads} returns a named list of minimum length 1:
-
-\enumerate{
-\item 'roads': A \code{SpatialLinesDataFrame*}\cr
-
-Pending parameterization, \code{findRoads} can also return:
-
-\item 'basemap':   A \code{RasterLayer*} basemap if \code{basemap = TRUE}
-\item 'boundry':   A \code{SpatialPolygon*} of AOI if \code{boundary = TRUE}
-\item 'fiat':      A \code{SpatialPolygon*} of intersected county boundaries if \code{boundary = TRUE}
-\item 'ids':       A vector of road names if \code{ids = TRUE}
-}
+a list() of minimum length 2: AOI and tiger
 }
 \description{
-\code{findRoads} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
-To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip_unit}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
-Returned \code{list} can be interactivly explored via \code{\link{explore}}.\cr\cr
-All outputs are projected to \code{CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and road networks are (\emph{down})loaded from the 2017 \href{https://www2.census.gov/geo/tiger/TIGER2017}{US Census servers}.
+\code{findRoads} returns a \code{SpatialLinesDataFrame} of TIGER road networks cropped to an Area of Interest.
+This dataset is accessed through the US Census geo portal and contains the following attributes:
+\itemize{
+\item 'LINEARID'   : \code{character}  Linear feature identifier
+\item 'FULLNAME'   : \code{character}  Feature Name
+\item 'RTTYP': \code{character}  Route Type Code
+\item 'MTFCC'   : \code{character}  Road Classification
+\itemize{
+\item S1100   Primary Roads
+\item R1011   Railroad Feature (Main, Spur, or Yard)
+\item R1051   Carline, Streetcar Track, Monorail, Other Mass Transit Rail)
+\item R1052   Cog Rail Line, Incline Rail Line, Tram
+\item S1100   Primary Road
+\item S1200   Secondary Road
+}
+}
 }
 \examples{
 \dontrun{
-# Find Roads Near UCSB
-
-roads = findRoads(clip_unit = list("UCSB", 10, 10), basemap = T, boundary = T)
-
-# Static Mapping
-
-plot(roads$basemap)
-plot(roads$boundary, add = T)
-plot(roads$roads, add = T)
-
-# Generate Interactive Map
-
-explore(roads)
+AOI  = getAOI(clip = list("UCSB", 10, 10)) \%>\% findRoads()
 }
-
-}
-\seealso{
-\code{\link{getAOI}}
-
-\code{\link{explore}}
-
-Other HydroData 'find' functions: \code{\link{findHUC}},
-  \code{\link{findNWIS}}, \code{\link{findSnotel}},
-  \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson

@@ -32,7 +32,9 @@
 
 <meta property="og:title" content="Find National Land Cover Products (NLCD) — findNLCD" />
 
-<meta property="og:description" content="Function to download land cover data for an area of interest from 2001, 2006, 2011" />
+<meta property="og:description" content="findNLCD returns Raster land cover data from the National Land Cover Dataset (NED) for an AOI.
+Data comes the the USA National Map and is avaialble for years 2001, 2006, 2011.
+In additon to landcover, users can get data reflecting impervious surface and conaopy cover." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -124,7 +126,9 @@
 
     <div class="ref-description">
     
-    <p>Function to download land cover data for an area of interest from 2001, 2006, 2011</p>
+    <p><code>findNLCD</code> returns <code>Raster</code> land cover data from the National Land Cover Dataset (<a href='https://www.mrlc.gov'>NED</a>) for an AOI.
+Data comes the the USA National Map and is avaialble for years 2001, 2006, 2011.
+In additon to landcover, users can get data reflecting impervious surface and conaopy cover.</p>
     
     </div>
 
@@ -134,51 +138,38 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>AOI</th>
+      <td><p>A Spatial* or simple features geometry, can be piped from <a href='http://www.rdocumentation.org/packages/AOI/topics/getAOI'>getAOI</a></p></td>
+    </tr>
+    <tr>
       <th>year</th>
-      <td><p>year of land cover desired. Options include 2001, 2006, and 2011. Multiple years can be given as a vector.</p></td>
+      <td><p>the year(s) to download. Options include 2001, 2006, 2011. Default = 2011</p></td>
     </tr>
     <tr>
-      <th>state</th>
-      <td><p>a character string. Can be full name or state abbriviation</p></td>
-    </tr>
-    <tr>
-      <th>county</th>
-      <td><p>a character string. Can be full name or state abbriviation</p></td>
-    </tr>
-    <tr>
-      <th>clip_unit</th>
-      <td><p>can be provided as a shapefile or as a vector defineing centroid and bounding box diminsion</p></td>
-    </tr>
-    <tr>
-      <th>keep.boundary</th>
-      <td><p>logical. If TRUE, the AOI shapefile will be returned with station data in a list</p></td>
+      <th>type</th>
+      <td><p>the type of data to downlaod. Options include landcover, canopy, and impervious. Default = landcover</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a list() of minimum length 2: AOI and NLCD</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='no'>el.paso.lc</span> <span class='kw'>=</span> <span class='fu'>get_nlcd_multi</span>(<span class='kw'>state</span> <span class='kw'>=</span> <span class='st'>'CO'</span>, <span class='kw'>county</span> <span class='kw'>=</span> <span class='st'>'El Paso'</span>, <span class='kw'>year</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>2001</span>, <span class='fl'>2006</span>, <span class='fl'>2011</span>))
-
-<span class='fu'>plot</span>(<span class='no'>el.paso.lc</span>$<span class='no'>lc</span>$<span class='no'>lc_2001</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>col_lc</span>$<span class='no'>color</span>, <span class='kw'>main</span> <span class='kw'>=</span> <span class='st'>"2001"</span>)
-<span class='fu'>plot</span>(<span class='no'>el.paso.lc</span>$<span class='no'>boundary</span>, <span class='kw'>add</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>lwd</span> <span class='kw'>=</span> <span class='fl'>4</span>)
-<span class='fu'>legend</span>(<span class='st'>'topright'</span>,<span class='no'>col_lc</span>$<span class='no'>description</span>,<span class='kw'>fill</span><span class='kw'>=</span><span class='no'>col_lc</span>$<span class='no'>color</span>, <span class='kw'>cex</span> <span class='kw'>=</span> <span class='fl'>.5</span>)
-
-<span class='fu'>plot</span>(<span class='no'>el.paso.lc</span>$<span class='no'>lc</span>$<span class='no'>lc_2006</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>col_lc</span>$<span class='no'>color</span>, <span class='kw'>main</span> <span class='kw'>=</span> <span class='st'>"2006"</span>)
-<span class='fu'>plot</span>(<span class='no'>el.paso.lc</span>$<span class='no'>boundary</span>, <span class='kw'>add</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>lwd</span> <span class='kw'>=</span> <span class='fl'>5</span>)
-<span class='fu'>legend</span>(<span class='st'>'topright'</span>,<span class='no'>col_lc</span>$<span class='no'>description</span>,<span class='kw'>fill</span><span class='kw'>=</span><span class='no'>col_lc</span>$<span class='no'>color</span>, <span class='kw'>cex</span> <span class='kw'>=</span> <span class='fl'>.5</span>)
-
-<span class='fu'>plot</span>(<span class='no'>el.paso.lc</span>$<span class='no'>lc</span>$<span class='no'>lc_2011</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>col_lc</span>$<span class='no'>color</span>, <span class='kw'>main</span> <span class='kw'>=</span> <span class='st'>"2011"</span>)
-<span class='fu'>plot</span>(<span class='no'>el.paso.lc</span>$<span class='no'>boundary</span>, <span class='kw'>add</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>lwd</span> <span class='kw'>=</span> <span class='fl'>5</span>)
-<span class='fu'>legend</span>(<span class='st'>'topright'</span>,<span class='no'>col_lc</span>$<span class='no'>description</span>,<span class='kw'>fill</span><span class='kw'>=</span><span class='no'>col_lc</span>$<span class='no'>color</span>, <span class='kw'>cex</span> <span class='kw'>=</span> <span class='fl'>.5</span>)
-<span class='co'># }</span><div class='input'>
-</div></pre>
+ <span class='no'>dt</span> <span class='kw'>=</span> <span class='fu'>getAOI</span>(<span class='kw'>clip</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='st'>"Devil Tower"</span>)) <span class='kw'>%&gt;%</span> <span class='fu'>findNLDC</span>(<span class='fl'>2006</span>, <span class='st'>'landcover'</span>)
+ <span class='no'>dt</span> <span class='kw'>=</span> <span class='fu'>getAOI</span>(<span class='kw'>clip</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='st'>"Devil Tower"</span>)) <span class='kw'>%&gt;%</span> <span class='fu'>findNLDC</span>(<span class='fl'>2011</span>, <span class='st'>'canopy'</span>)
+ <span class='no'>dt</span> <span class='kw'>=</span> <span class='fu'>getAOI</span>(<span class='kw'>clip</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='st'>"Devil Tower"</span>)) <span class='kw'>%&gt;%</span> <span class='fu'>findNLDC</span>(<span class='fl'>2011</span>, <span class='st'>'impervious'</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#value">Value</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

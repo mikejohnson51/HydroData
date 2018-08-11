@@ -12,7 +12,7 @@ findAirports(AOI = NULL, ids = FALSE)
 \item{ids}{If TRUE,  a vector of airport ICAO codes is added to retuned list (default = \code{FALSE})}
 }
 \value{
-a list() of minimum length 2: AOI and ap
+a list of minimum length 2: AOI and ap
 }
 \description{
 \code{findAirports} returns a \code{SpatialPointsDataframe} of all airports within an AOI.
@@ -23,8 +23,8 @@ Data comes from the \href{https://openflights.org/data.html}{Openflights} databa
 \item 'country': \code{character}  Country or territory where airport is located.
 \item 'IATA'   : \code{character}  3-letter IATA code
 \item 'ICAO'   : \code{numeric}    4-letter ICAO code
-\item 'lat'    : \code{numeric}    Latitude, decimal degrees
-\item 'lon'    : \code{numeric}    Longitude, decimal degrees
+\item 'lat'    : \code{numeric}    Latitude of airport
+\item 'lon'    : \code{numeric}    Longitude of airport
 }
 }
 \examples{

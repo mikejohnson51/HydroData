@@ -10,7 +10,7 @@
 #'
 
 
-writeHD = function(class, dir, feature_name, ext = "shp") {
+writeHD = function(AOI, class, dir, feature_name, ext = "shp") {
 
   data = eval(parse(text = paste0("AOI$", feature_name)))
 
