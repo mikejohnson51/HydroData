@@ -17,6 +17,7 @@
 
 findNLCD = function(AOI = NULL, year = 2011, type = "landcover"){
 
+`%+%` = crayon::`%+%`
 
 if(!(type %in% c('canopy', 'impervious', "landcover"))){stop(paste0(type, " is not a valid NLCD layer."))}
 if(type == "landcover") {ext = "_LC_" }
@@ -76,27 +77,26 @@ if(length(urls)/length(year) > 1){
   noun = 'raster'
 }
 
-message(paste("There", verb, length(urls)/length(year), "NLCD", noun, "in this AOI per year."))
+#message(paste("There", verb, length(urls)/length(year), "NLCD", noun, "in this AOI per year."))
 
 for(j in seq_along(year)){
 
 xxx = grep(year[j], urls, value=TRUE)
 
 for(i in seq_along(xxx)){
-  message(paste0("Downloading ", year[j], " raster (", i, "/", length(xxx), ")"))
+  cat(crayon::white(paste0("Downloading ", year[j], " " ,type, " raster (", i, "/", length(xxx), "): ")) %+% crayon::yellow(basename(xxx[i]), "\n" ))
   check = download.url(url = xxx[i])
-  message(paste0("Finished downloading raster ", i, " of ", length(xxx)))
-  rast = unzip_crop(AOI = AOI$AOI, path = check$destfile, file.type = "tif")
+  rast  = unzip_crop(AOI = AOI$AOI, path = check$destfile, file.type = "tif")
   all.rast[[i]] = rast
 }
 
 dat = mosaic.hd(all.rast)
-#dat = raster::projectRaster(dat, crs = AOI::aoiProj, method = 'ngb')
+
 AOI[[paste0("nlcd", year[j])]] = dat
 
 }
 
-report = paste0("Returned object contains land cover rasters for", paste(year, collapse = ","))
+cat(crayon::white("Returned object contains: ") %+% crayon::green("cropped", type, "raster for ", paste(year, collapse = ","), "\n"))
 
 class(AOI) = "HydroData"
 return(AOI)

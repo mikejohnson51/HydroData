@@ -21,8 +21,6 @@ download_shp = function(URL, type) {
   td   <- tempfile()
   temp <- tempfile(pattern = type, fileext = ".zip")
 
-  message("Trying URL ... ")
-
   download.file(URL, destfile =  temp, quiet = T)
   unzip(temp, exdir = td, overwrite = TRUE)
 

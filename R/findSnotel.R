@@ -76,13 +76,11 @@ findSnotel = function(AOI = NULL, ids = FALSE){
 
   if (dim(sp)[1] == 0) { warning("0 stations found in AOI") } else {
 
-  message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " snotel stations found within AOI")
-
   AOI[["snotel"]] = sp
 
-  report ="Returned list includes: snotel shapefile"
-
+  report = paste(length(sp), "snotel stations")
   AOI = return.what(AOI, type = 'snotel', report, vals = if(ids){"ID"})
+
   }
 
   return(AOI)

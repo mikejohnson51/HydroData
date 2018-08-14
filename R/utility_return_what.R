@@ -18,16 +18,18 @@ return.what = function(AOI,
                        report,
                        vals) {
 
+  `%+%` = crayon::`%+%`
+
   if (!is.null(vals)) {
     AOI[[vals]] = eval(parse(text = paste("AOI",type, vals, sep = "$")))
-    report = append(report, "list of station IDs")
+    report = append(report, paste("list of", vals, "IDs"))
   }
 
   if (length(report) > 1) {
     report[length(report)] = paste("and",  tail(report, n = 1))
   }
 
-  message(paste(report, collapse = ", "))
+  cat(crayon::white("Returned object contains: ") %+% crayon::green(paste(report, collapse = ", "), "\n"))
 
   class(AOI) = "HydroData"
 

@@ -63,6 +63,7 @@ findHUC = function(AOI = NULL,
                   subbasins = FALSE,
                   ids = FALSE){
 
+  `%+%` = crayon::`%+%`
   if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 
   sp = list()
@@ -73,14 +74,16 @@ findHUC = function(AOI = NULL,
 
   if (all(level == 8)) {
     sp[["huc8"]] = query_cida(AOI$AOI, "huc08", spatial = TRUE)
+    cat(crayon::white("Returned object contains: ") %+% crayon::green(paste(length(sp$huc8), "HUC8 boundaries"), "\n"))
   } else if (all(level == 12)) {
     sp[["huc12"]] = query_cida(AOI$AOI, "huc12", spatial = TRUE)
+    cat(crayon::white("Returned object contains: ") %+% crayon::green(paste(length(sp$huc12), "HUC12 boundaries"), "\n"))
   } else {
 
     flow = query_cida(AOI$AOI, type ="huc08")
     HUC8 = flow$huc8
 
-    message("There are ", length(HUC8), " HUC8 units in this AOI: ", paste(HUC8, collapse = ", "))
+    #message("There are ", length(HUC8), " HUC8 units in this AOI: ", paste(HUC8, collapse = ", "))
 
     urls = paste0(
       "https://prd-tnm.s3.amazonaws.com/StagedProducts/Hydrography/NHD/HU8/HighResolution/Shape/NHD_H_",
@@ -89,21 +92,19 @@ findHUC = function(AOI = NULL,
     )
 
       for (i in seq_along(urls)) {
-        temp = tempfile(pattern = "WBD", fileext = ".zip")
-        download.file(url =  urls[i],
-                      destfile =  temp,
-                      quiet = F)
-        unzip(temp, exdir = td, overwrite = TRUE)
+
+        cat(crayon::white(paste0("Downloading (", i, "/", length(urls), "): ")) %+% crayon::yellow(basename(urls[i])), "\n")
+        xx = download.url(urls[i])
+        unzip(xx$destfile, exdir = td, overwrite = TRUE)
 
         for (j in seq_along(level)) {
-          shp = rgdal::readOGR(
-            paste0(td, '/Shape/WBDHU', level[j], ".shp"),
-            stringsAsFactors = F,
-            verbose = F
-          )
-          shp <- shp[!duplicated(data.frame(shp$Name)),]
-          shp = sp::spTransform(shp, AOI::aoiProj)
-          sp[[paste0("huc", level[j])]] = shp[AOI$AOI,]
+
+        shp = sf::read_sf(paste0(td, '/Shape/WBDHU', level[j], ".shp"))
+        shp <- shp[!duplicated(data.frame(shp$Name)),]
+        shp = sf::st_transform(shp, as.character(AOI::aoiProj))
+        shp = suppressWarnings(suppressMessages( sf::st_intersection(shp, sf::st_as_sf(AOI$AOI)) ))
+        sp[[paste0("huc", level[j])]] = sf::as_Spatial(shp)
+
         }
 
         series[[paste0('huc', HUC8[i])]] = sp
@@ -116,7 +117,8 @@ findHUC = function(AOI = NULL,
         sp[[paste0("huc", level[j])]] <-
           do.call(rbind, all.files[grepl(pattern = paste0(level[j], "$"), names(all.files))])
       }
-    }
+
+
 
 AOI = c(AOI, sp)
 
@@ -126,11 +128,11 @@ if(length(tmp) > 1){
  tmp = tmp[which.max(as.numeric(gsub("huc", "", tmp)))]
 }
 
-report = paste0("Returning ", paste0("HUC", level, collapse = ", "), " shapefiles")
+report = paste0(paste0("HUC", level, collapse = ", "), " boundaries")
 
 AOI = return.what(AOI, type = tmp, report, vals = if(ids){tmp})
 
 return(AOI)
-
+}
 }
 

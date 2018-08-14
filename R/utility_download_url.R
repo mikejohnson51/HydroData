@@ -1,27 +1,19 @@
 #' Download data from URL
 #'
-#' @param url the url
-#' @param mode download mode
-#' @param max.try number of attempts allowed
-#'
+#' @param url url
 #' @return
 #' @export
 #'
 
-download.url = function(url, mode = "curl", max.try = 5){
+download.url = function(url){
 
   destdir <- normalizePath(paste0(tempdir(), "/."))
   destfile <- paste0(destdir, "/", basename(url))
 
-  code = -9999
-  rep = 0
+  if(!file.exists(destfile)){
+    x = httr::GET(url = url, httr::write_disk(destfile, overwrite = T), httr::progress(type = "down"))
+  } else {x = list(status_code = 200)}
 
-  while(code != 0 & rep < max.try){
-      rep = rep + 1
-      code = utils::download.file(url = url, destfile = destfile, mode = "wb", quiet = FALSE)
-      if(code != 0){ Sys.sleep(2) }
-    }
-
-  return(list(code = code, destfile = destfile))
+  return(list(code = x$status_code, destfile = destfile))
 
 }

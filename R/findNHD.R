@@ -34,7 +34,7 @@ findNHD = function(AOI = NULL, ids = FALSE) {
 
     AOI[["nhd"]] = sl
 
-    report = "Returned list includes: nhd flowline shapefile"
+    report = paste(length(sl), "nhd flowlines")
 
     AOI = return.what(AOI, type = 'nhd', report, vals = if(ids){"comid"})
   }

@@ -45,15 +45,13 @@ findGHCN = function(AOI = NULL, param = NULL, ids = FALSE) {
   sp = sp::SpatialPointsDataFrame(cbind(stations$LON, stations$LAT), stations, proj4string = AOI::aoiProj)
   sp = sp[AOI$AOI,]
 
-  if(dim(sp)[1] == 0) { warning("0 stations found in AOI") } else {
-
-  message(length(sp), " GHCN stations found")
+  if(dim(sp)[1] == 0) { cat(crayon::red("0 GHCN stations found in AOI")) } else {
 
   AOI[["ghcn"]] = sp
 
-  report = "Returned list includes: NOAA GHCN stations"
+  report = paste(length(sp), "GHCN station(s)")
 
-  AOI = return.what(AOI, type = 'sp', report, vals = if(ids){"ID"}else{NULL})
+  AOI = return.what(AOI, type = 'ghcn', report, vals = if(ids){"ID"}else{NULL})
 
   }
 

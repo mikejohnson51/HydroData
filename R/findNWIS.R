@@ -32,13 +32,11 @@ findNWIS = function(AOI = NULL, ids = FALSE, comids = FALSE){
 
   if (dim(sp)[1] == 0) { warning("0 stations found in AOI") } else {
 
-  message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " USGS gages found within AOI")
-
   AOI[["nwis"]] = sp
 
-  report = "Returned list includes: USGS NWIS shapefile"
+  report = paste(length(sp), "USGS NWIS stations")
 
-  AOI = return.what(AOI, type = 'nwis', report, vals = if(ids){"site_no"})
+  AOI = return.what(AOI, type = 'nwis', report, vals = if(ids){"site_no"} else {NULL})
   }
 
   return(AOI)

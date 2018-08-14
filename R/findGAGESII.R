@@ -65,13 +65,10 @@ findGAGESII = function(AOI = NULL,
       AOI[["gagesII_basin"]]  = query_cida(AOI$AOI, type = 'gagesii_basins', spatial = T)
     }
 
-    report = paste0("Returned list includes: gagesII stations", if (basins) {
-      " and basins"
-    })
+    report = paste0(length(sl), " gagesII stations", if (basins) {
+      " and basins" } else {NULL})
 
-    AOI = return.what(AOI, type = 'gagesII', report, vals = if (ids) {
-      "STAID"
-    })
+    AOI = return.what(AOI, type = 'gagesII', report, vals = if (ids){"STAID"} else {NULL})
   }
 
   return(AOI)

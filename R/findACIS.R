@@ -1,4 +1,4 @@
-findACIS <- function (AOI, param=NULL) {
+findACIS <- function (AOI, param = NULL) {
 
   if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 
@@ -7,6 +7,11 @@ findACIS <- function (AOI, param=NULL) {
   bbox = AOI$AOI %>% bbox_st()
 
   if (is.null(param)) { param <- meta$element$code[1:7] }
+
+
+  if(any(param %in% meta$element$code[1:7])) {
+
+  }
 
   URL = paste0( "http://data.rcc-acis.org/StnMeta",
                 "?elems=", paste(param, collapse = ","),
@@ -46,6 +51,8 @@ findACIS <- function (AOI, param=NULL) {
     dat = sp::SpatialPointsDataFrame(coords = cbind(as.numeric(dat$lon), as.numeric(dat$lat)), data = dat)
 
     AOI[["acis"]] = dat
+
+    cat(crayon::green("Returned object contains ACIS SpatialPointsDataFrame\n"))
 
     return(AOI)
 

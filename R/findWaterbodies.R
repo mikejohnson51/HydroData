@@ -74,11 +74,10 @@ findWaterbodies = function(AOI = NULL, ids = FALSE) {
 
     AOI[["waterbodies"]] = sl
 
-    report = "Returned list includes: NHD waterbodies shapefile"
+    report = paste(length(sl),  "NHD waterbodies")
 
     AOI = return.what(AOI, type = 'waterbodies', report, vals = if(ids){"objectid"})
    }
-
     return(AOI)
   }
 

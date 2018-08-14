@@ -17,7 +17,7 @@ unzip_crop = function(AOI = NULL, path, file.type = "img"){
 
   if(!is.null(raster::intersect(raster::extent(dat),raster::extent(AOI)))){
     dat <- raster::crop(dat, AOI, snap = "out")
-    message("Raster Cropped.")
+    #message("Raster Cropped.")
   } else {
     message("Raster not needed")
   }

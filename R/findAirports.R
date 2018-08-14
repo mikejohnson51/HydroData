@@ -35,22 +35,14 @@ findAirports = function(AOI = NULL, ids = FALSE) {
 
   sp = air[AOI$AOI,]
 
-  if (dim(sp)[1] == 0) {
-    warning("0 airports found in AOI")
-  } else {
-
-  message(formatC(
-    as.numeric(length(sp)),
-    format = "d",
-    big.mark = ","
-  ),
-  " airport(s) found")
+  if (dim(sp)[1] == 0) { cat(crayon::red("0 airports found in AOI")) } else {
 
   AOI[["ap"]] = sp
+  if(ids){ AOI[["ICAO"]] = sp$ICAO}
 
-  report = "Returned list includes: airport shapefile"
+  report = paste(length(sp), "Airport(s)")
 
-  AOI = return.what(AOI, type = 'ap', report, vals = if(ids){"ICAO"})
+  AOI = return.what(AOI, type = 'ap', report, vals = if(ids){"ICAO"}else{NULL})
   }
 
   return(AOI)

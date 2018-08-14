@@ -18,7 +18,8 @@ saveHD = function(AOI = NULL, path = NULL, ext = 'shp') {
     driver = "GPKG"
   }
 
-  name = revGeo(mean(AOI$AOI@bbox[2,]), mean(AOI$AOI@bbox[1,]))
+  name = AOI::revgeocode(c(mean(AOI$AOI@bbox[2,]), mean(AOI$AOI@bbox[1,])))
+  if(!is.null(name$match_addr)){name = name$match_addr} else {name = name[1]}
 
   if(is.null(path)){raw.dir = normalizePath(paste0("./HydroData/"), mustWork = FALSE)
   } else { raw.dir = normalizePath(path, mustWork = FALSE) }

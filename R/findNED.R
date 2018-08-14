@@ -11,7 +11,11 @@
 #' @author Mike Johnson
 #' @export
 
+
+
 findNED = function(AOI = NULL, res = 1){
+
+  `%+%` = crayon::`%+%`
 
   if(!(class(AOI) %in% c("list", "HydroData"))){AOI = list(AOI = AOI)}
 
@@ -54,30 +58,28 @@ findNED = function(AOI = NULL, res = 1){
     noun = 'raster'
   }
 
-  message(paste("There", verb, length(urls), "NED", noun, "in this AOI."))
+  #message(paste("There", verb, length(urls), "NED", noun, "in this AOI."))
   all.rast = list()
 
   for(i in seq_along(urls)){
-    message(paste0("Downloading raster ", i, " of ", length(urls)))
-      check <- tryCatch(
-        {suppressWarnings(download.url(url = urls[i], mode = "binary"))},
-        error =function(e){
-          download.url(url = urls.bu[i], mode = "binary")
-        }
-      )
-
-      message(paste0("Finished downloading raster ", i, " of ", length(urls)))
+    cat(crayon::white(paste0("Downloading (", i, "/", length(urls), "): ")) %+% crayon::yellow(basename(urls[i])), "\n")
+      check <- download.url(url = urls.bu[i])
+      if(check$code != 200){
+       check = download.url(url = urls[i])
+      }
       rast = unzip_crop(AOI = AOI$AOI, path = check$destfile)
-    all.rast[[i]] = rast
+      all.rast[[i]] = rast
   }
 
   fin = mosaic.hd(all.rast)
 
   AOI[["NED"]] = fin[[1]]
 
-  message(paste0("Returned object contains ", res," arc sec elevation raster"))
+  cat(crayon::white("Returned object contains: ") %+% crayon::green("cropped", res, "arc sec elevation raster\n"))
 
   class(AOI) = "HydroData"
   return(AOI)
 }
+
+
 
