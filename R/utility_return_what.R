@@ -1,7 +1,8 @@
 #' @title Choose what to return for HydroData Calls
 #' @description  A function defining what should be returned in a HydroData object
 #' @param AOI Spatial object
-#' @param report a report vector
+#' @param type the index of the AOI object to report on
+#' @param report character sting to append values to
 #' @param vals the ids call
 #' @return a list of HydroData components
 #' @export

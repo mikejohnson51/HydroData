@@ -9,11 +9,11 @@ return.what(AOI, type, report, vals)
 \arguments{
 \item{AOI}{Spatial object}
 
-\item{report}{a report vector}
+\item{type}{the index of the AOI object to report on}
+
+\item{report}{character sting to append values to}
 
 \item{vals}{the ids call}
-
-\item{AOI}{the defined AOI}
 }
 \value{
 a list of HydroData components

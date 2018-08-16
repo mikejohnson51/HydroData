@@ -1,5 +1,6 @@
 #' @title Write Data to disk
 #' @description interal function used to write data to disk according to it meta.data found via HydroData::meta.data()
+#' @param AOI a HydroData object with components to write to disk
 #' @param class objects class
 #' @param dir directory
 #' @param feature_name object id

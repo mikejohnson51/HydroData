@@ -7,71 +7,31 @@
 findSnotel(AOI = NULL, ids = FALSE)
 }
 \arguments{
-\item{ids}{If TRUE, returns a list of station IDs in AOI}
+\item{AOI}{A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}}
 
-\item{state}{Full name(s) or two character abbriviation(s). Not case senstive}
-
-\item{county}{County name(s). Requires \code{state} input.}
-
-\item{clip}{SpatialObject* or list. For details see \code{getClipUnit}}
-
-\item{boundary}{If TRUE, the AOI \code{SpatialPolygon(s)} will be joined to returned list
-
- If a user wants greater control over basemap apperance replace TRUE with either:
-\itemize{
-\item't':  google terrain basemap
-\item's':  google sattilite imagery basemap
-\item'h':  google hybrid basemap
-\item'r':  google roads basemap
-}}
-
-\item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
-}
-\value{
-\code{findSnotel} returns a list of minimum length 1:
-
-\enumerate{
-\item 'snotel': A \code{SpatialPointsDataFrame*}\cr
-
-Pending parameterization, \code{findSnotel} can also return:
-
-\item 'basemap':   A \code{RasterLayer*} basemap if \code{basemap = TRUE}
-\item 'boundry':   A \code{SpatialPolygon*} of AOI if \code{boundary = TRUE}
-\item 'fiat':      A \code{SpatialPolygon*} of intersected county boundaries if \code{boundary = TRUE}
-\item 'ids':       A vector of station IDs if \code{ids = TRUE}
-}
+\item{ids}{If TRUE,  a vector of NHD COMIDs is added to retuned list (default = \code{FALSE})}
 }
 \description{
-\code{findSnotel} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
-To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
-Returned \code{list} can be interactivly explored via \code{\link{explore}} and ID values (\code{ids = TRUE}) allow for SNOTEL data access via \code{getSNOTEL}.\cr\cr
-All outputs are projected to \code{CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and station data is taken from \href{https://wcc.sc.egov.usda.gov/nwcc/yearcount?network=sntl&counttype=statelist&state=}{NRCS reports}.
+\code{findSnotel} returns a \code{SpatialPointsDataFrame*} Objects cropped to an Area of Interest.
+Station data is extacted from \href{https://wcc.sc.egov.usda.gov/nwcc/yearcount?network=sntl&counttype=statelist&state=}{NRCS reports} and contains 11 attributes:
+\itemize{
+\item 'NETWORK'   : \code{integer}  Description of Network (all = 'SNTL')
+\item 'STATE'   : \code{character}  The state the station is located in
+\item 'NAME': \code{POSITct}  Unique station name
+\item 'ID'   : \code{character}    Unique identifier assigned by NRCS
+\item 'START.DATE'   : \code{character}    Date the station made first measurment ("Year-Month")
+\item 'LAT'    : \code{numeric}    Latitude of station, decimil degrees
+\item 'LON'    : \code{numeric}    Longitude of station, decimil degrees
+\item 'ELEV'   : \code{character}     Elevation of station
+\item 'COUNTY'   : \code{integer}  The county the station is located in
+\item 'HUC12.NAME': \code{character}  The HUC12 name the station is located in
+\item 'HUC12.ID': \code{character}  The HUC12 ID the station is located in
+}\cr
 }
 \examples{
 \dontrun{
-# Find Snotel stations in Nevada
-
-nv.snow = findSnotel(state = 'NV', boundary = TRUE, basemap = TRUE)
-
-# Static Mapping
-
-plot(nv.snow$basemap)
-plot(nv.snow$boundary, add = TRUE, lwd = 5)
-plot(nv.snow$snotel, add = TRUE, pch = 8, col = "lightblue")
-
-# Generate Interactive Map
-
-explore(nv.snow)
+CA.sno = getAOI(state = 'CA') \%>\% findSnotel()
 }
-
-
-}
-\seealso{
-\code{\link{getAOI}}
-
-\code{\link{getSnotel}}
-
-\code{\link{explore}}
 }
 \author{
 Mike Johnson

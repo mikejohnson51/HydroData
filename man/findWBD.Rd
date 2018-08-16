@@ -8,17 +8,15 @@ findWBD(AOI = NULL, level = 8, subbasins = FALSE, crop = TRUE,
   ids = FALSE)
 }
 \arguments{
+\item{AOI}{A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}}
+
 \item{level}{defines the HUC level of interest (default = 8)}
 
 \item{subbasins}{If TRUE, all subbasins of the supplied level will be joined to retuned list}
 
-\item{crop}{If TRUE, all subbasins are cropped to the AOI boundaries (default = \code{TRUE})}
+\item{crop}{If TRUE, all objects are cropped to the AOI boundaries (default = \code{TRUE})}
 
-\item{ids}{If TRUE, returns a list of HUC8 in AOI}
-
-\item{save}{If TRUE, data is written to a HydroData folder in users working directory.}
-
-\item{HUC8}{option to supply known HUC8 code(s)}
+\item{ids}{If TRUE,  a vector of finest resolution HUC codes is added to retuned list (default = \code{FALSE})}
 }
 \description{
 The United States Geological Survey maintains a hierarchical system of hydrologic units each assigned a
@@ -36,7 +34,7 @@ Subregion \tab 4 \tab  16,800  \tab Lower Snake \tab 1706\cr
   Subbasin \tab 8 \tab 700  \tab Imnaha River \tab 17060102 \cr
   Watershed \tab 10 \tab 227 \tab Upper Imnaha River \tab 1706010201 \cr
   Subwatershed \tab 12 \tab 40 \tab North Fork Imnaha River \tab 170601020101 \cr
-}
+}\cr
 }
 \examples{
 \dontrun{

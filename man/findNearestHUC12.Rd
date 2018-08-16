@@ -2,18 +2,32 @@
 % Please edit documentation in R/findNearestHUC12.R
 \name{findNearestHUC12}
 \alias{findNearestHUC12}
-\title{Find Neareast COMIDs}
+\title{Find Neareast HUC12 boundaries}
 \usage{
-findNearestHUC12(point = NULL, n = 1, ids = FALSE, AOI = FALSE)
+findNearestHUC12(point = NULL, n = 1, ids = FALSE, bb = FALSE)
 }
 \arguments{
-\item{location}{a lat, long pair or Colloqiual Name}
+\item{point}{a point described by lat/long, can be piped from \link[AOI]{geocode}}
+
+\item{n}{the number of basins to find (default = 5)}
+
+\item{ids}{If TRUE, a vector of basin HUC IDs is added to retuned list (default = \code{FALSE})}
+
+\item{bb}{If TRUE, the geometry of the minimum bounding area of the features is added to returned list (default = \code{FALSE})}
 }
 \value{
-A list contatining a data.frame of Airports and a minimum bounding box data.frame
+a list() of minimum length 2: AOI and wbd
 }
 \description{
-Find Neareast COMIDs
+\code{findNearestHUC12} returns a \code{SpatialPolygonDataFrame} of the 'n' number of HUC12 basins closest to a declared point.
+}
+\examples{
+\dontrun{
+pt = geocode("UCSB") \%>\% findNearestHUC12(n = 5)
+}
+}
+\seealso{
+findWBD
 }
 \author{
 Mike Johnson

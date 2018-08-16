@@ -4,16 +4,30 @@
 \alias{findNearestCOMID}
 \title{Find Neareast COMIDs}
 \usage{
-findNearestCOMID(point = NULL, n = 5, ids = FALSE, AOI = FALSE)
+findNearestCOMID(point = NULL, n = 5, ids = FALSE, bb = FALSE)
 }
 \arguments{
-\item{location}{a lat, long pair or Colloqiual Name}
+\item{point}{a point described by lat/long, can be piped from \link[AOI]{geocode}}
+
+\item{n}{the number of COMIDs to find (default = 5)}
+
+\item{ids}{If TRUE,  a vector of NHD COMIDs is added to retuned list (default = \code{FALSE})}
+
+\item{bb}{If TRUE, the geometry of the minimum bounding area of the features is added to returned list  (default = \code{FALSE})}
 }
 \value{
-A list contatining a data.frame of Airports and a minimum bounding box data.frame
+a list() of minimum length 2: AOI and ap
 }
 \description{
-Find Neareast COMIDs
+\code{findNearestCOMID} returns a \code{SpatialPointsDataFrame} of the 'n' number of COMIDs closest to a declared point.
+}
+\examples{
+\dontrun{
+pt = geocode("University of Oregon") \%>\% findNearestCOMID(n = 5)
+}
+}
+\seealso{
+findAirports
 }
 \author{
 Mike Johnson

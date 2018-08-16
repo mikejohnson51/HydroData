@@ -1,5 +1,6 @@
 #' @title Return HydroData Object metadata
-#' @param AOI and AOI object with appended HydroDat features
+#' @description Function for generating descriptive meta data for all HyrdroData objects
+#' @param AOI and AOI object with appended HydroData features
 #' @return a data.frame of meta.data describing a HydroData object
 #' @export
 #' @author Mike Johnson

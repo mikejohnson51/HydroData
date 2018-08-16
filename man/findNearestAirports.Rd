@@ -13,13 +13,13 @@ findNearestAirports(point = NULL, n = 5, ids = FALSE, bb = FALSE)
 
 \item{ids}{If TRUE, a vector of airport ICAO IDs is added to retuned list (default = \code{FALSE})}
 
-\item{AOI}{If TRUE, the geometry of the minimum bounding area of the features is added to returned list  (default = \code{FALSE})}
+\item{bb}{If TRUE, the geometry of the minimum bounding area of the features is added to returned list  (default = \code{FALSE})}
 }
 \value{
 a list() of minimum length 2: AOI and ap
 }
 \description{
-\code{findNearestAirports} returns a \code{SpatialLinesPointsframe} of the 'n' number of airports closest to a declared point.
+\code{findNearestAirports} returns a \code{SpatialPointsDataFrame} of the 'n' number of airports closest to a declared point.
 }
 \examples{
 \dontrun{

@@ -14,13 +14,12 @@
 #'   Subbasin \tab 8 \tab 700  \tab Imnaha River \tab 17060102 \cr
 #'   Watershed \tab 10 \tab 227 \tab Upper Imnaha River \tab 1706010201 \cr
 #'   Subwatershed \tab 12 \tab 40 \tab North Fork Imnaha River \tab 170601020101 \cr
-#' }
-#' @param ids  If TRUE, returns a list of HUC8 in AOI
-#' @param save If TRUE, data is written to a HydroData folder in users working directory.
+#' }\cr
+#' @param AOI  A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
 #' @param level defines the HUC level of interest (default = 8)
 #' @param subbasins If TRUE, all subbasins of the supplied level will be joined to retuned list
-#' @param crop If TRUE, all subbasins are cropped to the AOI boundaries (default = \code{TRUE})
-#' @param HUC8 option to supply known HUC8 code(s)
+#' @param crop If TRUE, all objects are cropped to the AOI boundaries (default = \code{TRUE})
+#' @param ids  If TRUE,  a vector of finest resolution HUC codes is added to retuned list (default = \code{FALSE})
 #' @export
 #' @examples
 #' \dontrun{

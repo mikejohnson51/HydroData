@@ -2,20 +2,32 @@
 % Please edit documentation in R/findNearestUSGS.R
 \name{findNearestNWIS}
 \alias{findNearestNWIS}
-\title{Find Neareast USGS stations}
+\title{Find Neareast NWIS stations}
 \usage{
-findNearestNWIS(point = NULL, n = 5, ids = FALSE, AOI = FALSE)
+findNearestNWIS(point = NULL, n = 5, ids = FALSE, bb = FALSE)
 }
 \arguments{
-\item{n}{the number of Airports to return}
+\item{point}{a point described by lat/long, can be piped from \link[AOI]{geocode}}
 
-\item{location}{a lat, long pair or Colloqiual Name}
+\item{n}{the number of NWIS gages to find (default = 5)}
+
+\item{ids}{If TRUE, a vector of station IDs is added to retuned list (default = \code{FALSE})}
+
+\item{bb}{If TRUE, the geometry of the minimum bounding area of the features is added to returned list  (default = \code{FALSE})}
 }
 \value{
-A list contatining a data.frame of Airports and a minimum bounding box data.frame
+a list() of minimum length 2: AOI and nwis
 }
 \description{
-Find Neareast USGS stations
+\code{findNearestNWIS} returns a \code{SpatialPointsDataFrame} of the 'n' number of NWIS gages closest to a declared point.
+}
+\examples{
+\dontrun{
+pt = geocode("UCSB") \%>\% findNearestNWIS(n = 5)
+}
+}
+\seealso{
+findNWIS
 }
 \author{
 Mike Johnson

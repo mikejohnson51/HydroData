@@ -5,20 +5,32 @@
 \title{Find Neareast GHCN stations}
 \usage{
 findNearestGHCN(point = NULL, n = 5, parameters = NULL, ids = FALSE,
-  AOI = FALSE)
+  bb = FALSE)
 }
 \arguments{
-\item{n}{the number of GHCN to return}
+\item{point}{a point described by lat/long, can be piped from \link[AOI]{geocode}}
 
-\item{location}{a lat, long pair}
+\item{n}{the number of stations to find (default = 5)}
 
-\item{PARAM}{the parameter of interst}
+\item{parameters}{Can be used to filter the returned stations by measurement types}
+
+\item{ids}{If TRUE, a vector of airport stations IDs is added to retuned list (default = \code{FALSE})}
+
+\item{bb}{If TRUE, the geometry of the minimum bounding area of the features is added to returned list  (default = \code{FALSE})}
 }
 \value{
-A list contatining a data.frame of Airports and a minimum bounding box data.frame
+a list() of minimum length 2: AOI and ghcn
 }
 \description{
-Find Neareast GHCN stations
+\code{findNearestGHCN} returns a \code{SpatialPointsDataFrame} of the 'n' number of GHCN station closest to a declared point.
+}
+\examples{
+\dontrun{
+pt = geocode("UCSB") \%>\% findNearestGHCN(n = 5)
+}
+}
+\seealso{
+findGHCN
 }
 \author{
 Mike Johnson

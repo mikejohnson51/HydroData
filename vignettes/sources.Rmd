@@ -1,10 +1,10 @@
 ---
-pagetitle: Data Sources
+title: Data Sources
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteEngine{knitr::knitr}
   %\VignetteIndexEntry{Title of your vignette}
-  %\usepackage[UTF-8]{inputenc}
+  \usepackage[UTF-8]{inputenc}
 ---
 
 # HydroData Data Repositories

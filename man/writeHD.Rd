@@ -7,6 +7,8 @@
 writeHD(AOI, class, dir, feature_name, ext = "shp")
 }
 \arguments{
+\item{AOI}{a HydroData object with components to write to disk}
+
 \item{class}{objects class}
 
 \item{dir}{directory}

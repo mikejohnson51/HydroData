@@ -2,6 +2,7 @@
 #' @description \code{findNearestCOMID} returns a \code{SpatialPointsDataFrame} of the 'n' number of COMIDs closest to a declared point.
 #' @param point a point described by lat/long, can be piped from \link[AOI]{geocode}
 #' @param n the number of COMIDs to find (default = 5)
+#' @param ids If TRUE,  a vector of NHD COMIDs is added to retuned list (default = \code{FALSE})
 #' @param bb If TRUE, the geometry of the minimum bounding area of the features is added to returned list  (default = \code{FALSE})
 #' @export
 #' @seealso findAirports

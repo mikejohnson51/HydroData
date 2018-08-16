@@ -10,7 +10,7 @@ findUSCRN = function(AOI, ids = FALSE){
 
 if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 
-x = read.table("ftp://ftp.ncdc.noaa.gov/pub/data/uscrn/products/stations.tsv", sep = '\t',header = T,quote='', comment='')
+x = read.table("ftp://ftp.ncdc.noaa.gov/pub/data/uscrn/products/stations.tsv", sep = '\t',header = T,quote='', comment.char='')
 
 sp = SpatialPointsDataFrame(coords = cbind(x$LONGITUDE, x$LATITUDE), data = x, proj4string = AOI$AOI@proj4string)
 sp = sp[AOI$AOI, ]

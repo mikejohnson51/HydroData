@@ -157,12 +157,12 @@ for (i in seq_along(input)) {
 
 
   m = leaflet() %>%
-    addProviderTiles(providers$CartoDB.Positron, group = "Base") %>%
-    addProviderTiles(providers$Esri.WorldImagery, group = "Imagery") %>%
-    addProviderTiles(providers$Esri.NatGeoWorldMap , group = "Terrain") %>%
+    addProviderTiles(leaflet::providers$CartoDB.Positron, group = "Base") %>%
+    addProviderTiles(leaflet::providers$Esri.WorldImagery, group = "Imagery") %>%
+    addProviderTiles(leaflet::providers$Esri.NatGeoWorldMap , group = "Terrain") %>%
 
     addScaleBar("bottomleft") %>%
-    addMiniMap(tiles = providers$OpenStreetMap.BlackAndWhite,
+    addMiniMap(tiles = leaflet::providers$OpenStreetMap.BlackAndWhite,
                toggleDisplay = TRUE,
                minimized = TRUE) %>%
     addMeasure(
@@ -309,7 +309,7 @@ if (!is.null(fiat)) {
       popup = label,
       group = "NHD",
 
-      highlight = highlightOptions(
+      hightlightOptions= highlightOptions(
         weight = 10,
         color = "#666",
         fillOpacity = 0.7,
@@ -392,7 +392,7 @@ if (!is.null(fiat)) {
       smoothFactor = 0.7,
       popup = label,
       group = "Water bodies",
-      highlight = highlightOptions(
+      hightlightOptions= highlightOptions(
         weight = 5,
         color = "darkred",
         fillOpacity = 0.7,
@@ -418,7 +418,7 @@ if (!is.null(fiat)) {
       weight = 2,
       popup = label,
       group = "tiger",
-      highlight = highlightOptions(
+      hightlightOptions= highlightOptions(
         weight = 10,
         color = "#666",
         fillOpacity = 0.7,
@@ -552,7 +552,7 @@ if (!is.null(fiat)) {
       smoothFactor = 0.7,
       popup = ll,
       group = "WBD",
-      highlight = highlightOptions(
+      hightlightOptions= highlightOptions(
         weight = 5,
         color = "darkred",
         fillOpacity = 0.7,
