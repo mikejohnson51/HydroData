@@ -1,0 +1,840 @@
+texture,stratextsflag,rvindicator,texdesc,chkey,chtgkey
+SL,No ,Yes,Sandy loam,42894272,84781809
+SL,No ,Yes,Sandy loam,42894273,84781810
+FSL,No ,No ,Fine sandy loam,42894273,84781811
+GR-SL,No ,Yes,Gravelly sandy loam,42894274,84781812
+VAR,No ,Yes,Variable,42894282,84781824
+SR- LS CL,No ,Yes,Stratified loamy sand to clay loam,42894283,84781825
+SL,No ,Yes,Sandy loam,42894345,84781934
+SL,No ,Yes,Sandy loam,42894346,84781935
+SCL,No ,No ,Sandy clay loam,42894346,84781936
+SL,No ,Yes,Sandy loam,42894347,84781937
+COSL,No ,No ,Coarse sandy loam,42894347,84781938
+SCL,No ,Yes,Sandy clay loam,42894348,84781939
+SL,No ,No ,Sandy loam,42894348,84781940
+LCOS,No ,Yes,Loamy coarse sand,42894349,84781941
+LS,No ,No ,Loamy sand,42894349,84781942
+COSL,No ,No ,Coarse sandy loam,42894349,84781943
+SL,No ,Yes,Sandy loam,42894350,84781944
+LCOS,No ,No ,Loamy coarse sand,42894351,84781945
+COSL,No ,Yes,Coarse sandy loam,42894351,84781946
+SL,No ,Yes,Sandy loam,42894352,84781947
+SL,No ,Yes,Sandy loam,42894353,84781948
+GRX-S,No ,No ,Extremely gravelly sand,42894354,84781949
+GRV-S,No ,No ,Very gravelly sand,42894354,84781950
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,42894354,84781951
+GRX-LCOS,No ,No ,Extremely gravelly loamy coarse sand,42894354,84781952
+SCL,No ,No ,Sandy clay loam,42894355,84781953
+SL,No ,No ,Sandy loam,42894355,84781954
+GR-SCL,No ,Yes,Gravelly sandy clay loam,42894355,84781955
+GR-SL,No ,No ,Gravelly sandy loam,42894355,84781956
+GR-SL,No ,Yes,Gravelly sandy loam,42894356,84781957
+SL,No ,Yes,Sandy loam,42894360,84781964
+SL,No ,Yes,Sandy loam,42894361,84781965
+SCL,No ,No ,Sandy clay loam,42894361,84781966
+SCL,No ,Yes,Sandy clay loam,42894362,84781967
+SL,No ,No ,Sandy loam,42894362,84781968
+SL,No ,Yes,Sandy loam,42894363,84781969
+COSL,No ,No ,Coarse sandy loam,42894363,84781970
+COSL,No ,No ,Coarse sandy loam,42894364,84781971
+LS,No ,No ,Loamy sand,42894364,84781972
+LCOS,No ,Yes,Loamy coarse sand,42894364,84781973
+SL,No ,Yes,Sandy loam,42894365,84781974
+SL,No ,Yes,Sandy loam,42894366,84781975
+SL,No ,Yes,Sandy loam,42894367,84781976
+LCOS,No ,No ,Loamy coarse sand,42894368,84781977
+COSL,No ,Yes,Coarse sandy loam,42894368,84781978
+GR-SL,No ,Yes,Gravelly sandy loam,42894369,84781979
+SL,No ,No ,Sandy loam,42894370,84781980
+GR-SCL,No ,Yes,Gravelly sandy clay loam,42894370,84781981
+GR-SL,No ,No ,Gravelly sandy loam,42894370,84781982
+SCL,No ,No ,Sandy clay loam,42894370,84781983
+GRX-LCOS,No ,No ,Extremely gravelly loamy coarse sand,42894371,84781984
+GRX-S,No ,No ,Extremely gravelly sand,42894371,84781985
+GRV-S,No ,No ,Very gravelly sand,42894371,84781986
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,42894371,84781987
+LCOS,No ,Yes,Loamy coarse sand,42894372,84781988
+LS,No ,No ,Loamy sand,42894372,84781989
+COSL,No ,No ,Coarse sandy loam,42894372,84781990
+SL,No ,Yes,Sandy loam,42894373,84781991
+SL,No ,Yes,Sandy loam,42894374,84781992
+SCL,No ,No ,Sandy clay loam,42894374,84781993
+SCL,No ,Yes,Sandy clay loam,42894375,84781994
+SL,No ,No ,Sandy loam,42894375,84781995
+SL,No ,Yes,Sandy loam,42894376,84781996
+COSL,No ,No ,Coarse sandy loam,42894376,84781997
+LCOS,No ,No ,Loamy coarse sand,42894377,84781998
+COSL,No ,Yes,Coarse sandy loam,42894377,84781999
+SL,No ,Yes,Sandy loam,42894378,84782000
+SL,No ,Yes,Sandy loam,42894379,84782001
+SL,No ,Yes,Sandy loam,42894380,84782002
+SL,No ,Yes,Sandy loam,42894381,84782003
+SCL,No ,Yes,Sandy clay loam,42894382,84782004
+SL,No ,No ,Sandy loam,42894382,84782005
+SCL,No ,Yes,Sandy clay loam,42894383,84782006
+SL,No ,No ,Sandy loam,42894383,84782007
+SL,No ,No ,Sandy loam,42894384,84782008
+SCL,No ,Yes,Sandy clay loam,42894384,84782009
+SL,No ,Yes,Sandy loam,42894385,84782010
+SL,No ,No ,Sandy loam,42894386,84782011
+LS,No ,Yes,Loamy sand,42894386,84782012
+GR-SL,No ,Yes,Gravelly sandy loam,42894395,84782029
+GRV-SL,No ,Yes,Very gravelly sandy loam,42894396,84782030
+GRX-LCOS,No ,Yes,Extremely gravelly loamy coarse sand,42894397,84782031
+GRV-LS,No ,Yes,Very gravelly loamy sand,42894398,84782032
+GR-SL,No ,Yes,Gravelly sandy loam,42894399,84782033
+GRV-SL,No ,Yes,Very gravelly sandy loam,42894400,84782034
+GRX-LCOS,No ,Yes,Extremely gravelly loamy coarse sand,42894401,84782035
+GRV-LS,No ,Yes,Very gravelly loamy sand,42894402,84782036
+GRX-LCOS,No ,Yes,Extremely gravelly loamy coarse sand,42894403,84782037
+GRV-LS,No ,Yes,Very gravelly loamy sand,42894404,84782038
+GR-SL,No ,Yes,Gravelly sandy loam,42894405,84782039
+GRV-SL,No ,Yes,Very gravelly sandy loam,42894406,84782040
+CL,No ,Yes,Clay loam,42894407,84782041
+C,No ,Yes,Clay,42894408,84782042
+CL,No ,No ,Clay loam,42894408,84782043
+SICL,No ,No ,Silty clay loam,42894408,84782044
+WB,No ,Yes,Weathered bedrock,42894409,84782045
+FSL,No ,No ,Fine sandy loam,42894412,84782050
+LS,No ,No ,Loamy sand,42894412,84782051
+SL,No ,Yes,Sandy loam,42894412,84782052
+SL,No ,Yes,Sandy loam,42894413,84782053
+SCL,No ,Yes,Sandy clay loam,42894414,84782054
+SL,No ,No ,Sandy loam,42894414,84782055
+SCL,No ,No ,Sandy clay loam,42894415,84782056
+L,No ,No ,Loam,42894415,84782057
+SL,No ,Yes,Sandy loam,42894415,84782058
+FSL,No ,No ,Fine sandy loam,42894416,84782059
+LS,No ,Yes,Loamy sand,42894416,84782060
+SL,No ,No ,Sandy loam,42894416,84782061
+SCL,No ,Yes,Sandy clay loam,42894417,84782062
+L,No ,Yes,Loam,42894418,84782063
+SCL,No ,Yes,Sandy clay loam,42894419,84782064
+UWB,No ,Yes,Unweathered bedrock,42894420,84782065
+LCOS,No ,Yes,Loamy coarse sand,42894458,84782116
+SR- COS SL,Yes,Yes,Stratified coarse sand to sandy loam,42894459,84782117
+VAR,No ,No ,Variable,42894460,84782118
+SR- GRV-S L,Yes,No ,Stratified very gravelly sand to loam,42894461,84782119
+SL,No ,Yes,Sandy loam,42894462,84782120
+SL,No ,No ,Sandy loam,42894463,84782121
+SCL,No ,Yes,Sandy clay loam,42894463,84782122
+SL,No ,No ,Sandy loam,42894464,84782123
+SCL,No ,Yes,Sandy clay loam,42894464,84782124
+SCL,No ,No ,Sandy clay loam,42894465,84782125
+FSL,No ,Yes,Fine sandy loam,42894465,84782126
+SL,No ,No ,Sandy loam,42894465,84782127
+SCL,No ,No ,Sandy clay loam,42894466,84782128
+FSL,No ,Yes,Fine sandy loam,42894466,84782129
+SL,No ,No ,Sandy loam,42894466,84782130
+SL,No ,Yes,Sandy loam,42894467,84782131
+SL,No ,Yes,Sandy loam,42894468,84782132
+SL,No ,Yes,Sandy loam,42894469,84782133
+SL,No ,Yes,Sandy loam,42894470,84782134
+LS,No ,No ,Loamy sand,42894470,84782135
+SL,No ,Yes,Sandy loam,42894471,84782136
+SL,No ,Yes,Sandy loam,42894472,84782137
+SCL,No ,Yes,Sandy clay loam,42894473,84782138
+SL,No ,No ,Sandy loam,42894474,84782139
+L,No ,No ,Loam,42894474,84782140
+SCL,No ,Yes,Sandy clay loam,42894474,84782141
+SCL,No ,Yes,Sandy clay loam,42894475,84782142
+SL,No ,No ,Sandy loam,42894475,84782143
+L,No ,No ,Loam,42894475,84782144
+SCL,No ,No ,Sandy clay loam,42894476,84782145
+SL,No ,Yes,Sandy loam,42894476,84782146
+L,No ,No ,Loam,42894476,84782147
+L,No ,Yes,Loam,42894485,84782164
+C,No ,Yes,Clay,42894486,84782165
+SC,No ,No ,Sandy clay,42894486,84782166
+WB,No ,Yes,Weathered bedrock,42894487,84782167
+UWB,No ,Yes,Unweathered bedrock,42894488,84782168
+UWB,No ,Yes,Unweathered bedrock,42894489,84782169
+CL,No ,Yes,Clay loam,42894490,84782170
+SIC,No ,Yes,Silty clay,42894491,84782171
+C,No ,No ,Clay,42894491,84782172
+SICL,No ,Yes,Silty clay loam,42894492,84782173
+GR-SL,No ,Yes,Gravelly sandy loam,42894505,84782192
+GR-CL,No ,No ,Gravelly clay loam,42894506,84782193
+GR-L,No ,No ,Gravelly loam,42894506,84782194
+GR-SCL,No ,Yes,Gravelly sandy clay loam,42894506,84782195
+GRV-L,No ,No ,Very gravelly loam,42894507,84782196
+GRV-SL,No ,Yes,Very gravelly sandy loam,42894507,84782197
+GRV-LS,No ,Yes,Very gravelly loamy sand,42894508,84782198
+GRX-SCL,No ,Yes,Extremely gravelly sandy clay loam,42894509,84782199
+GRX-LS,No ,Yes,Extremely gravelly loamy sand,42894510,84782200
+STV-L,No ,Yes,Very stony loam,42894511,84782201
+CL,No ,Yes,Clay loam,42894528,84782223
+CL,No ,Yes,Clay loam,42894529,84782224
+C,No ,No ,Clay,42894529,84782225
+CL,No ,Yes,Clay loam,42894530,84782226
+C,No ,No ,Clay,42894530,84782227
+GRX-CL,No ,Yes,Extremely gravelly clay loam,42894531,84782228
+WB,No ,Yes,Weathered bedrock,42894532,84782229
+CL,No ,Yes,Clay loam,42894533,84782230
+CL,No ,Yes,Clay loam,42894534,84782231
+C,No ,No ,Clay,42894534,84782232
+CL,No ,Yes,Clay loam,42894535,84782233
+C,No ,No ,Clay,42894535,84782234
+GRX-CL,No ,Yes,Extremely gravelly clay loam,42894536,84782235
+WB,No ,Yes,Weathered bedrock,42894537,84782236
+GRV-SL,No ,Yes,Very gravelly sandy loam,42894538,84782237
+GRV-SL,No ,No ,Very gravelly sandy loam,42894539,84782238
+GRX-SL,No ,Yes,Extremely gravelly sandy loam,42894539,84782239
+WB,No ,Yes,Weathered bedrock,42894540,84782240
+GRV-SL,No ,No ,Very gravelly sandy loam,42894541,84782241
+GRX-SL,No ,Yes,Extremely gravelly sandy loam,42894541,84782242
+WB,No ,Yes,Weathered bedrock,42894542,84782243
+GRV-SL,No ,Yes,Very gravelly sandy loam,42894543,84782244
+UWB,No ,Yes,Unweathered bedrock,42894544,84782245
+C,No ,Yes,Clay,42894545,84782246
+SIC,No ,Yes,Silty clay,42894546,84782247
+SIC,No ,No ,Silty clay,42894547,84782248
+C,No ,No ,Clay,42894547,84782249
+SICL,No ,Yes,Silty clay loam,42894547,84782250
+WB,No ,Yes,Weathered bedrock,42894548,84782251
+SICL,No ,Yes,Silty clay loam,42894549,84782252
+C,No ,No ,Clay,42894550,84782253
+SIC,No ,No ,Silty clay,42894550,84782254
+SICL,No ,Yes,Silty clay loam,42894550,84782255
+L,No ,Yes,Loam,42894566,84782277
+SIL,No ,No ,Silt loam,42894567,84782278
+SICL,No ,No ,Silty clay loam,42894567,84782279
+L,No ,Yes,Loam,42894567,84782280
+CL,No ,Yes,Clay loam,42894588,84782314
+SICL,No ,No ,Silty clay loam,42894589,84782315
+CL,No ,Yes,Clay loam,42894589,84782316
+SIC,No ,No ,Silty clay,42894589,84782317
+CL,No ,Yes,Clay loam,42894590,84782318
+SICL,No ,No ,Silty clay loam,42894590,84782319
+SIL,No ,No ,Silt loam,42894590,84782320
+CL,No ,Yes,Clay loam,42894591,84782321
+C,No ,Yes,Clay,42894592,84782322
+CL,No ,No ,Clay loam,42894592,84782323
+SICL,No ,No ,Silty clay loam,42894592,84782324
+WB,No ,Yes,Weathered bedrock,42894593,84782325
+FSL,No ,Yes,Fine sandy loam,42894598,84782330
+FSL,No ,Yes,Fine sandy loam,42894599,84782331
+SL,No ,No ,Sandy loam,42894599,84782332
+WB,No ,Yes,Weathered bedrock,42894600,84782333
+FSL,No ,Yes,Fine sandy loam,42894601,84782334
+FSL,No ,Yes,Fine sandy loam,42894602,84782335
+SL,No ,No ,Sandy loam,42894602,84782336
+WB,No ,Yes,Weathered bedrock,42894603,84782337
+CL,No ,Yes,Clay loam,42894611,84782353
+C,No ,No ,Clay,42894611,84782354
+CL,No ,Yes,Clay loam,42894612,84782355
+CL,No ,Yes,Clay loam,42894613,84782356
+C,No ,No ,Clay,42894613,84782357
+SCL,No ,Yes,Sandy clay loam,42894614,84782358
+C,No ,Yes,Clay,42894615,84782359
+GR-L,No ,Yes,Gravelly loam,42894644,84782402
+GRV-L,No ,Yes,Very gravelly loam,42894645,84782403
+UWB,No ,Yes,Unweathered bedrock,42894646,84782404
+UWB,No ,Yes,Unweathered bedrock,42894647,84782405
+CN-L,No ,Yes,Channery loam,42894648,84782406
+CN-L,No ,Yes,Channery loam,42894649,84782407
+UWB,No ,Yes,Unweathered bedrock,42894650,84782408
+L,No ,Yes,Loam,42894651,84782409
+SIL,No ,No ,Silt loam,42894652,84782410
+SICL,No ,No ,Silty clay loam,42894652,84782411
+L,No ,Yes,Loam,42894652,84782412
+GRX-S,No ,No ,Extremely gravelly sand,42894688,84782458
+GRX-S,No ,No ,Extremely gravelly sand,42894689,84782459
+GRX-COS,No ,No ,Extremely gravelly coarse sand,42894689,84782460
+GRV-COS,No ,No ,Very gravelly coarse sand,42894689,84782461
+CL,No ,Yes,Clay loam,42894694,84782466
+SIC,No ,No ,Silty clay,42894695,84782467
+C,No ,No ,Clay,42894695,84782468
+CL,No ,Yes,Clay loam,42894695,84782469
+SIC,No ,No ,Silty clay,42894696,84782470
+SICL,No ,No ,Silty clay loam,42894696,84782471
+C,No ,Yes,Clay,42894696,84782472
+WB,No ,Yes,Weathered bedrock,42894697,84782473
+ST-CL,No ,Yes,Stony clay loam,42894698,84782474
+CB-CL,No ,Yes,Cobbly clay loam,42894699,84782475
+CB-C,No ,Yes,Cobbly clay,42894700,84782476
+WB,No ,Yes,Weathered bedrock,42894701,84782477
+ST-CL,No ,Yes,Stony clay loam,42894702,84782478
+CB-CL,No ,Yes,Cobbly clay loam,42894703,84782479
+CB-C,No ,Yes,Cobbly clay,42894704,84782480
+WB,No ,Yes,Weathered bedrock,42894705,84782481
+CL,No ,Yes,Clay loam,42894706,84782482
+C,No ,Yes,Clay,42894707,84782483
+CL,No ,No ,Clay loam,42894707,84782484
+SICL,No ,No ,Silty clay loam,42894707,84782485
+WB,No ,Yes,Weathered bedrock,42894708,84782486
+L,No ,Yes,Loam,42894722,84782502
+CL,No ,Yes,Clay loam,42894723,84782503
+L,No ,No ,Loam,42894723,84782504
+SCL,No ,No ,Sandy clay loam,42894723,84782505
+L,No ,No ,Loam,42894724,84782506
+SL,No ,No ,Sandy loam,42894724,84782507
+SCL,No ,Yes,Sandy clay loam,42894724,84782508
+LS,No ,Yes,Loamy sand,42894728,84782513
+LS,No ,Yes,Loamy sand,42894729,84782514
+LS,No ,No ,Loamy sand,42894730,84782515
+LCOS,No ,No ,Loamy coarse sand,42894730,84782516
+S,No ,Yes,Sand,42894730,84782517
+CL,No ,Yes,Clay loam,42894731,84782518
+L,No ,No ,Loam,42894732,84782519
+SIL,No ,Yes,Silt loam,42894732,84782520
+L,No ,Yes,Loam,42894733,84782521
+GR-L,No ,Yes,Gravelly loam,42894739,84782530
+GRV-L,No ,Yes,Very gravelly loam,42894740,84782531
+GRV-SL,No ,No ,Very gravelly sandy loam,42894740,84782532
+GRV-S,No ,Yes,Very gravelly sand,42894741,84782533
+GRV-COS,No ,No ,Very gravelly coarse sand,42894741,84782534
+GRV-LS,No ,No ,Very gravelly loamy sand,42894741,84782535
+CL,No ,Yes,Clay loam,42894742,84782536
+SIC,No ,No ,Silty clay,42894743,84782537
+C,No ,No ,Clay,42894743,84782538
+CL,No ,Yes,Clay loam,42894743,84782539
+SIC,No ,No ,Silty clay,42894744,84782540
+SICL,No ,No ,Silty clay loam,42894744,84782541
+C,No ,Yes,Clay,42894744,84782542
+WB,No ,Yes,Weathered bedrock,42894745,84782543
+SL,No ,Yes,Sandy loam,42894746,84782544
+GR-SL,No ,Yes,Gravelly sandy loam,42894747,84782545
+GR-SL,No ,No ,Gravelly sandy loam,42894748,84782546
+GR-LS,No ,Yes,Gravelly loamy sand,42894748,84782547
+SL,No ,Yes,Sandy loam,42894749,84782548
+GR-SL,No ,Yes,Gravelly sandy loam,42894750,84782549
+GR-SL,No ,No ,Gravelly sandy loam,42894751,84782550
+GR-LS,No ,Yes,Gravelly loamy sand,42894751,84782551
+SL,No ,Yes,Sandy loam,42894752,84782552
+GR-SL,No ,Yes,Gravelly sandy loam,42894753,84782553
+GR-SL,No ,No ,Gravelly sandy loam,42894754,84782554
+GR-LS,No ,Yes,Gravelly loamy sand,42894754,84782555
+SCL,No ,Yes,Sandy clay loam,42894755,84782556
+SL,No ,Yes,Sandy loam,42894756,84782557
+UWB,No ,Yes,Unweathered bedrock,42894757,84782558
+SL,No ,Yes,Sandy loam,42894758,84782559
+SL,No ,Yes,Sandy loam,42894811,84782642
+SL,No ,Yes,Sandy loam,42894812,84782643
+UWB,No ,Yes,Unweathered bedrock,42894813,84782644
+UWB,No ,Yes,Unweathered bedrock,42894814,84782645
+LS,No ,Yes,Loamy sand,42894815,84782646
+SL,No ,Yes,Sandy loam,42894816,84782647
+COSL,No ,Yes,Coarse sandy loam,42894817,84782648
+LCOS,No ,No ,Loamy coarse sand,42894817,84782649
+SL,No ,Yes,Sandy loam,42894818,84782650
+SL,No ,Yes,Sandy loam,42894819,84782651
+COSL,No ,Yes,Coarse sandy loam,42894820,84782652
+LCOS,No ,No ,Loamy coarse sand,42894820,84782653
+COSL,No ,No ,Coarse sandy loam,42894821,84782654
+LCOS,No ,Yes,Loamy coarse sand,42894821,84782655
+LS,No ,No ,Loamy sand,42894821,84782656
+SL,No ,Yes,Sandy loam,42894822,84782657
+SCL,No ,No ,Sandy clay loam,42894823,84782658
+SL,No ,Yes,Sandy loam,42894823,84782659
+SL,No ,No ,Sandy loam,42894824,84782660
+SCL,No ,Yes,Sandy clay loam,42894824,84782661
+SL,No ,Yes,Sandy loam,42894825,84782662
+COSL,No ,No ,Coarse sandy loam,42894825,84782663
+SL,No ,Yes,Sandy loam,42894826,84782664
+SL,No ,Yes,Sandy loam,42894827,84782665
+SL,No ,Yes,Sandy loam,42894828,84782666
+LCOS,No ,No ,Loamy coarse sand,42894829,84782667
+COSL,No ,No ,Coarse sandy loam,42894829,84782668
+LS,No ,No ,Loamy sand,42894829,84782669
+SL,No ,Yes,Sandy loam,42894829,84782670
+LS,No ,Yes,Loamy sand,42894830,84782671
+LS,No ,Yes,Loamy sand,42894831,84782672
+LCOS,No ,No ,Loamy coarse sand,42894831,84782673
+S,No ,Yes,Sand,42894832,84782674
+LS,No ,No ,Loamy sand,42894832,84782675
+LCOS,No ,No ,Loamy coarse sand,42894832,84782676
+VAR,No ,Yes,Variable,42894845,84782696
+L,No ,Yes,Loam,42894960,84782888
+SCL,No ,No ,Sandy clay loam,42894961,84782889
+CL,No ,Yes,Clay loam,42894961,84782890
+L,No ,Yes,Loam,42894962,84782891
+SIL,No ,No ,Silt loam,42894962,84782892
+CL,No ,Yes,Clay loam,42894963,84782893
+L,No ,No ,Loam,42894964,84782894
+SL,No ,Yes,Sandy loam,42894964,84782895
+FSL,No ,No ,Fine sandy loam,42894964,84782896
+SIL,No ,Yes,Silt loam,42894965,84782897
+SICL,No ,Yes,Silty clay loam,42894966,84782898
+SICL,No ,Yes,Silty clay loam,42894967,84782899
+SIL,No ,No ,Silt loam,42894968,84782900
+SICL,No ,Yes,Silty clay loam,42894968,84782901
+L,No ,No ,Loam,42894969,84782902
+SIL,No ,Yes,Silt loam,42894969,84782903
+FSL,No ,Yes,Fine sandy loam,42894970,84782904
+FSL,No ,No ,Fine sandy loam,42894971,84782905
+SL,No ,Yes,Sandy loam,42894971,84782906
+SL,No ,Yes,Sandy loam,42894972,84782907
+FSL,No ,No ,Fine sandy loam,42894972,84782908
+SIL,No ,Yes,Silt loam,42894987,84782932
+SICL,No ,Yes,Silty clay loam,42894988,84782933
+SIL,No ,No ,Silt loam,42894989,84782934
+SICL,No ,Yes,Silty clay loam,42894989,84782935
+SICL,No ,Yes,Silty clay loam,42894990,84782936
+SIL,No ,Yes,Silt loam,42894991,84782937
+L,No ,No ,Loam,42894991,84782938
+SL,No ,Yes,Sandy loam,42894992,84782939
+SL,No ,Yes,Sandy loam,42894993,84782940
+SL,No ,Yes,Sandy loam,42894994,84782941
+SL,No ,No ,Sandy loam,42894995,84782942
+LS,No ,Yes,Loamy sand,42894995,84782943
+L,No ,No ,Loam,42894996,84782944
+CL,No ,Yes,Clay loam,42894996,84782945
+L,No ,Yes,Loam,42894997,84782946
+L,No ,Yes,Loam,42894998,84782947
+CL,No ,No ,Clay loam,42894998,84782948
+L,No ,Yes,Loam,42894999,84782949
+FSL,No ,No ,Fine sandy loam,42894999,84782950
+CL,No ,Yes,Clay loam,42895000,84782951
+L,No ,No ,Loam,42895000,84782952
+L,No ,No ,Loam,42895001,84782953
+SIL,No ,Yes,Silt loam,42895001,84782954
+SL,No ,Yes,Sandy loam,42895002,84782955
+L,No ,No ,Loam,42895003,84782956
+CL,No ,Yes,Clay loam,42895003,84782957
+CL,No ,Yes,Clay loam,42895004,84782958
+SCL,No ,No ,Sandy clay loam,42895004,84782959
+SL,No ,No ,Sandy loam,42895005,84782960
+L,No ,Yes,Loam,42895005,84782961
+FSL,No ,No ,Fine sandy loam,42895005,84782962
+SL,No ,Yes,Sandy loam,42895006,84782963
+FSL,No ,No ,Fine sandy loam,42895006,84782964
+L,No ,No ,Loam,42895006,84782965
+SICL,No ,No ,Silty clay loam,42895007,84782966
+SIC,No ,No ,Silty clay,42895007,84782967
+C,No ,Yes,Clay,42895007,84782968
+C,No ,No ,Clay,42895008,84782969
+SIC,No ,Yes,Silty clay,42895008,84782970
+SICL,No ,No ,Silty clay loam,42895008,84782971
+SIC,No ,No ,Silty clay,42895009,84782972
+SICL,No ,No ,Silty clay loam,42895009,84782973
+C,No ,Yes,Clay,42895009,84782974
+SICL,No ,Yes,Silty clay loam,42895010,84782975
+CL,No ,No ,Clay loam,42895010,84782976
+C,No ,No ,Clay,42895010,84782977
+CL,No ,No ,Clay loam,42895011,84782978
+SICL,No ,Yes,Silty clay loam,42895011,84782979
+C,No ,No ,Clay,42895011,84782980
+SIC,No ,No ,Silty clay,42895012,84782981
+CL,No ,Yes,Clay loam,42895012,84782982
+C,No ,No ,Clay,42895012,84782983
+FSL,No ,Yes,Fine sandy loam,42895013,84782984
+CL,No ,No ,Clay loam,42895014,84782985
+C,No ,No ,Clay,42895014,84782986
+SICL,No ,Yes,Silty clay loam,42895014,84782987
+C,No ,No ,Clay,42895015,84782988
+CL,No ,No ,Clay loam,42895015,84782989
+SICL,No ,Yes,Silty clay loam,42895015,84782990
+CL,No ,No ,Clay loam,42895016,84782991
+SICL,No ,Yes,Silty clay loam,42895016,84782992
+CL,No ,No ,Clay loam,42895017,84782993
+SICL,No ,Yes,Silty clay loam,42895017,84782994
+SICL,No ,Yes,Silty clay loam,42895018,84782995
+FSL,No ,Yes,Fine sandy loam,42895019,84782996
+SCL,No ,Yes,Sandy clay loam,42895020,84782997
+L,No ,Yes,Loam,42895021,84782998
+L,No ,Yes,Loam,42895022,84782999
+SICL,No ,Yes,Silty clay loam,42895023,84783000
+SIL,No ,Yes,Silt loam,42895024,84783001
+SICL,No ,Yes,Silty clay loam,42895025,84783002
+CL,No ,No ,Clay loam,42895025,84783003
+C,No ,No ,Clay,42895025,84783004
+SICL,No ,Yes,Silty clay loam,42895026,84783005
+CL,No ,No ,Clay loam,42895026,84783006
+C,No ,No ,Clay,42895026,84783007
+SIL,No ,No ,Silt loam,42895027,84783008
+CL,No ,No ,Clay loam,42895027,84783009
+SICL,No ,Yes,Silty clay loam,42895027,84783010
+CL,No ,No ,Clay loam,42895028,84783011
+SICL,No ,No ,Silty clay loam,42895028,84783012
+SIL,No ,Yes,Silt loam,42895028,84783013
+SICL,No ,Yes,Silty clay loam,42895029,84783014
+SIL,No ,Yes,Silt loam,42895030,84783015
+SICL,No ,Yes,Silty clay loam,42895031,84783016
+SICL,No ,Yes,Silty clay loam,42895032,84783017
+SICL,No ,Yes,Silty clay loam,42895033,84783018
+SIL,No ,No ,Silt loam,42895033,84783019
+L,No ,No ,Loam,42895034,84783020
+SIL,No ,Yes,Silt loam,42895034,84783021
+L,No ,Yes,Loam,42895035,84783022
+CL,No ,Yes,Clay loam,42895036,84783023
+CL,No ,Yes,Clay loam,42895037,84783024
+SCL,No ,No ,Sandy clay loam,42895037,84783025
+L,No ,Yes,Loam,42895038,84783026
+SIL,No ,No ,Silt loam,42895038,84783027
+L,No ,No ,Loam,42895039,84783028
+SL,No ,Yes,Sandy loam,42895039,84783029
+FSL,No ,No ,Fine sandy loam,42895039,84783030
+SIC,No ,Yes,Silty clay,42895040,84783031
+C,No ,Yes,Clay,42895041,84783032
+SIC,No ,No ,Silty clay,42895041,84783033
+C,No ,Yes,Clay,42895042,84783034
+SIC,No ,No ,Silty clay,42895042,84783035
+BR,No ,Yes,Bedrock,42895043,84783036
+BR,No ,Yes,Bedrock,45496130,90261054
+CL,No ,Yes,Clay loam,45496131,90261055
+C,No ,Yes,Clay,45496132,90261056
+CL,No ,Yes,Clay loam,45496133,90261057
+CL,No ,Yes,Clay loam,45496134,90261058
+C,No ,No ,Clay,45496135,90261059
+CL,No ,Yes,Clay loam,45496135,90261060
+UWB,No ,Yes,Unweathered bedrock,45496136,90261061
+CB-L,No ,Yes,Cobbly loam,45496137,90261062
+CBV-L,No ,Yes,Very cobbly loam,45496138,90261063
+C,No ,Yes,Clay,45496139,90261064
+WB,No ,Yes,Weathered bedrock,45496140,90261065
+CL,No ,Yes,Clay loam,45496141,90261066
+C,No ,No ,Clay,45496141,90261067
+CL,No ,Yes,Clay loam,45496142,90261068
+CL,No ,Yes,Clay loam,45496143,90261069
+BR,No ,Yes,Bedrock,45496178,90261117
+CB-L,No ,Yes,Cobbly loam,45496179,90261118
+CBV-L,No ,Yes,Very cobbly loam,45496180,90261119
+UWB,No ,Yes,Unweathered bedrock,45496181,90261120
+CB-L,No ,Yes,Cobbly loam,45496182,90261121
+CBV-L,No ,Yes,Very cobbly loam,45496183,90261122
+UWB,No ,Yes,Unweathered bedrock,45496184,90261123
+UWB,No ,Yes,Unweathered bedrock,45496200,90261153
+CB-L,No ,Yes,Cobbly loam,45496201,90261154
+UWB,No ,Yes,Unweathered bedrock,45496202,90261155
+CBV-L,No ,Yes,Very cobbly loam,45496203,90261156
+UWB,No ,Yes,Unweathered bedrock,45496204,90261157
+L,No ,Yes,Loam,45496205,90261158
+C,No ,Yes,Clay,45496206,90261159
+WB,No ,Yes,Weathered bedrock,45496207,90261160
+BR,No ,Yes,Bedrock,45496208,90261161
+CB-L,No ,Yes,Cobbly loam,45496209,90261162
+CBV-L,No ,Yes,Very cobbly loam,45496210,90261163
+SPM,No ,Yes,Slightly decomposed plant material,45496225,90261190
+WB,No ,Yes,Weathered bedrock,45496226,90261191
+GR-COSL,No ,Yes,Gravelly coarse sandy loam,45496227,90261192
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,45496228,90261193
+GRX-LS,No ,No ,Extremely gravelly loamy sand,45496228,90261194
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496229,90261195
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496230,90261196
+GRV-SL,No ,No ,Very gravelly sandy loam,45496230,90261197
+GRX-COSL,No ,Yes,Extremely gravelly coarse sandy loam,45496231,90261198
+GRV-SL,No ,No ,Very gravelly sandy loam,45496231,90261199
+WB,No ,Yes,Weathered bedrock,45496232,90261200
+BR,No ,Yes,Bedrock,45496233,90261201
+SPM,No ,Yes,Slightly decomposed plant material,45496234,90261202
+WB,No ,Yes,Weathered bedrock,45496235,90261203
+GR-COSL,No ,Yes,Gravelly coarse sandy loam,45496236,90261204
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,45496237,90261205
+GRX-LS,No ,No ,Extremely gravelly loamy sand,45496237,90261206
+CBV-SL,No ,Yes,Very cobbly sandy loam,45496238,90261207
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496239,90261208
+STV-SL,No ,No ,Very stony sandy loam,45496239,90261209
+GRV-SCL,No ,No ,Very gravelly sandy clay loam,45496240,90261210
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496240,90261211
+SPM,No ,Yes,Slightly decomposed plant material,45496241,90261212
+WB,No ,Yes,Weathered bedrock,45496242,90261213
+GRV-SL,No ,Yes,Very gravelly sandy loam,45496243,90261214
+BR,No ,Yes,Bedrock,45496244,90261215
+SPM,No ,Yes,Slightly decomposed plant material,45496245,90261216
+BR,No ,Yes,Bedrock,45496246,90261217
+GR-SL,No ,No ,Gravelly sandy loam,45496247,90261218
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496247,90261219
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,45496248,90261220
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496249,90261221
+SPM,No ,Yes,Slightly decomposed plant material,45496250,90261222
+WB,No ,Yes,Weathered bedrock,45496251,90261223
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,45496252,90261224
+GRX-LS,No ,No ,Extremely gravelly loamy sand,45496252,90261225
+GR-COSL,No ,Yes,Gravelly coarse sandy loam,45496253,90261226
+GRX-SL,No ,Yes,Extremely gravelly sandy loam,45496254,90261227
+GRV-L,No ,No ,Very gravelly loam,45496254,90261228
+GRX-SL,No ,No ,Extremely gravelly sandy loam,45496254,90261229
+WB,No ,Yes,Weathered bedrock,45496255,90261230
+GRV-LS,No ,Yes,Very gravelly loamy sand,45496256,90261231
+GRV-SL,No ,Yes,Very gravelly sandy loam,45496257,90261232
+GRV-SCL,No ,Yes,Very gravelly sandy clay loam,45496262,90261239
+GRV-CL,No ,No ,Very gravelly clay loam,45496262,90261240
+GRX-SL,No ,No ,Extremely gravelly sandy loam,45496263,90261241
+GRV-SL,No ,Yes,Very gravelly sandy loam,45496263,90261242
+BR,No ,Yes,Bedrock,45496264,90261243
+SPM,No ,Yes,Slightly decomposed plant material,45496265,90261244
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496266,90261245
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496267,90261246
+UWB,No ,Yes,Unweathered bedrock,45496268,90261247
+BR,No ,Yes,Bedrock,45496269,90261248
+GR-SL,No ,Yes,Gravelly sandy loam,45496270,90261249
+GRV-COSL,No ,No ,Very gravelly coarse sandy loam,45496271,90261250
+GRX-SL,No ,Yes,Extremely gravelly sandy loam,45496271,90261251
+SPM,No ,Yes,Slightly decomposed plant material,45496272,90261252
+GR-SL,No ,No ,Gravelly sandy loam,45496273,90261253
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496273,90261254
+WB,No ,Yes,Weathered bedrock,45496274,90261255
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,45496275,90261256
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496276,90261257
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496391,90261423
+GRV-SL,No ,No ,Very gravelly sandy loam,45496391,90261424
+GRX-COSL,No ,Yes,Extremely gravelly coarse sandy loam,45496392,90261425
+GRV-SL,No ,No ,Very gravelly sandy loam,45496392,90261426
+WB,No ,Yes,Weathered bedrock,45496393,90261427
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496394,90261428
+SPM,No ,Yes,Slightly decomposed plant material,45496395,90261429
+WB,No ,Yes,Weathered bedrock,45496396,90261430
+GR-COSL,No ,Yes,Gravelly coarse sandy loam,45496397,90261431
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,45496398,90261432
+GRX-LS,No ,No ,Extremely gravelly loamy sand,45496398,90261433
+UWB,No ,Yes,Unweathered bedrock,45496399,90261434
+MPM,No ,Yes,Moderately decomposed plant material,45496400,90261435
+COSL,No ,Yes,Coarse sandy loam,45496401,90261436
+COSL,No ,Yes,Coarse sandy loam,45496402,90261437
+GRV-COSL,No ,No ,Very gravelly coarse sandy loam,45496402,90261438
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496403,90261439
+GRV-SCL,No ,No ,Very gravelly sandy clay loam,45496403,90261440
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496404,90261441
+GRX-COSL,No ,No ,Extremely gravelly coarse sandy loam,45496405,90261442
+GRX-SCL,No ,Yes,Extremely gravelly sandy clay loam,45496405,90261443
+GRX-COSL,No ,Yes,Extremely gravelly coarse sandy loam,45496406,90261444
+GRX-SCL,No ,No ,Extremely gravelly sandy clay loam,45496406,90261445
+SPM,No ,Yes,Slightly decomposed plant material,45496407,90261446
+WB,No ,Yes,Weathered bedrock,45496408,90261447
+GR-COSL,No ,Yes,Gravelly coarse sandy loam,45496409,90261448
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,45496410,90261449
+GRX-LS,No ,No ,Extremely gravelly loamy sand,45496410,90261450
+WB,No ,Yes,Weathered bedrock,45496411,90261451
+GRV-SL,No ,Yes,Very gravelly sandy loam,45496412,90261452
+CBV-SL,No ,Yes,Very cobbly sandy loam,45496413,90261453
+SPM,No ,Yes,Slightly decomposed plant material,45496414,90261454
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496415,90261455
+STV-SL,No ,No ,Very stony sandy loam,45496415,90261456
+GRV-SCL,No ,No ,Very gravelly sandy clay loam,45496416,90261457
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496416,90261458
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,45496436,90261484
+WB,No ,Yes,Weathered bedrock,45496437,90261485
+GR-SL,No ,No ,Gravelly sandy loam,45496438,90261486
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496438,90261487
+SPM,No ,Yes,Slightly decomposed plant material,45496439,90261488
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496440,90261489
+GRV-COSL,No ,No ,Very gravelly coarse sandy loam,45496441,90261490
+GR-SL,No ,Yes,Gravelly sandy loam,45496441,90261491
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496442,90261492
+GRX-LS,No ,Yes,Extremely gravelly loamy sand,45496443,90261493
+GRV-COSL,No ,No ,Very gravelly coarse sandy loam,45496443,90261494
+SPM,No ,Yes,Slightly decomposed plant material,45496444,90261495
+BR,No ,Yes,Bedrock,45496445,90261496
+SPM,No ,Yes,Slightly decomposed plant material,45496446,90261497
+BR,No ,Yes,Bedrock,45496447,90261498
+GR-SL,No ,Yes,Gravelly sandy loam,45496448,90261499
+GRX-SL,No ,No ,Extremely gravelly sandy loam,45496449,90261500
+GRV-SL,No ,Yes,Very gravelly sandy loam,45496449,90261501
+GRX-SL,No ,Yes,Extremely gravelly sandy loam,45496450,90261502
+GRV-COSL,No ,No ,Very gravelly coarse sandy loam,45496450,90261503
+GRV-SL,No ,Yes,Very gravelly sandy loam,45496451,90261504
+GRX-SL,No ,No ,Extremely gravelly sandy loam,45496451,90261505
+GRF-FSL,No ,No ,Fine gravelly fine sandy loam,45496452,90261506
+FSL,No ,Yes,Fine sandy loam,45496452,90261507
+LFS,No ,Yes,Loamy fine sand,45496453,90261508
+GR-COSL,No ,No ,Gravelly coarse sandy loam,45496453,90261509
+SL,No ,No ,Sandy loam,45496453,90261510
+GR-SL,No ,No ,Gravelly sandy loam,45496453,90261511
+COSL,No ,No ,Coarse sandy loam,45496453,90261512
+VFSL,No ,No ,Very fine sandy loam,45496453,90261513
+GRV-LCOS,No ,No ,Very gravelly loamy coarse sand,45496454,90261514
+GRV-COS,No ,No ,Very gravelly coarse sand,45496454,90261515
+VFSL,No ,Yes,Very fine sandy loam,45496454,90261516
+GRC-COSL,No ,No ,Coarse gravelly coarse sandy loam,45496455,90261517
+COS,No ,Yes,Coarse sand,45496455,90261518
+CBV-SL,No ,Yes,Very cobbly sandy loam,45496496,90261588
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496497,90261589
+STV-SL,No ,No ,Very stony sandy loam,45496497,90261590
+GRV-SCL,No ,No ,Very gravelly sandy clay loam,45496498,90261591
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496498,90261592
+WB,No ,Yes,Weathered bedrock,45496499,90261593
+GRV-SL,No ,Yes,Very gravelly sandy loam,45496500,90261594
+SPM,No ,Yes,Slightly decomposed plant material,45496501,90261595
+SPM,No ,Yes,Slightly decomposed plant material,45496502,90261596
+CBV-SL,No ,Yes,Very cobbly sandy loam,45496503,90261597
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496504,90261598
+STV-SL,No ,No ,Very stony sandy loam,45496504,90261599
+GRV-SCL,No ,No ,Very gravelly sandy clay loam,45496505,90261600
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496505,90261601
+GRV-SL,No ,Yes,Very gravelly sandy loam,45496506,90261602
+CBV-SL,No ,Yes,Very cobbly sandy loam,45496507,90261603
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496508,90261604
+STV-SL,No ,No ,Very stony sandy loam,45496508,90261605
+GRV-SCL,No ,No ,Very gravelly sandy clay loam,45496509,90261606
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496509,90261607
+WB,No ,Yes,Weathered bedrock,45496510,90261608
+GRV-SL,No ,Yes,Very gravelly sandy loam,45496511,90261609
+SPM,No ,Yes,Slightly decomposed plant material,45496512,90261610
+CBV-SL,No ,Yes,Very cobbly sandy loam,45496513,90261611
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496514,90261612
+STV-SL,No ,No ,Very stony sandy loam,45496514,90261613
+BR,No ,Yes,Bedrock,45496515,90261614
+SPM,No ,Yes,Slightly decomposed plant material,45496516,90261615
+GRV-SL,No ,Yes,Very gravelly sandy loam,45496517,90261616
+GRV-SCL,No ,No ,Very gravelly sandy clay loam,45496518,90261617
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496518,90261618
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,45496519,90261619
+GRX-LS,No ,No ,Extremely gravelly loamy sand,45496519,90261620
+WB,No ,Yes,Weathered bedrock,45496520,90261621
+SPM,No ,Yes,Slightly decomposed plant material,45496521,90261622
+GR-COSL,No ,Yes,Gravelly coarse sandy loam,45496522,90261623
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496523,90261624
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496524,90261625
+GRV-SL,No ,No ,Very gravelly sandy loam,45496524,90261626
+GRX-COSL,No ,Yes,Extremely gravelly coarse sandy loam,45496525,90261627
+GRV-SL,No ,No ,Very gravelly sandy loam,45496525,90261628
+WB,No ,Yes,Weathered bedrock,45496526,90261629
+UWB,No ,Yes,Unweathered bedrock,45496527,90261630
+WB,No ,Yes,Weathered bedrock,45496528,90261631
+SPM,No ,Yes,Slightly decomposed plant material,45496529,90261632
+GR-COSL,No ,Yes,Gravelly coarse sandy loam,45496530,90261633
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,45496531,90261634
+GRX-LS,No ,No ,Extremely gravelly loamy sand,45496531,90261635
+BR,No ,Yes,Bedrock,45496532,90261636
+GRX-COSL,No ,Yes,Extremely gravelly coarse sandy loam,45496533,90261637
+GRV-SL,No ,No ,Very gravelly sandy loam,45496533,90261638
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496534,90261639
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496535,90261640
+GRV-SL,No ,No ,Very gravelly sandy loam,45496535,90261641
+SPM,No ,Yes,Slightly decomposed plant material,45496536,90261642
+WB,No ,Yes,Weathered bedrock,45496537,90261643
+GR-COSL,No ,Yes,Gravelly coarse sandy loam,45496538,90261644
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,45496539,90261645
+GRX-LS,No ,No ,Extremely gravelly loamy sand,45496539,90261646
+GRX-COSL,No ,Yes,Extremely gravelly coarse sandy loam,45496582,90261705
+GRV-SL,No ,No ,Very gravelly sandy loam,45496582,90261706
+WB,No ,Yes,Weathered bedrock,45496583,90261707
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496584,90261708
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496585,90261709
+GRV-SL,No ,No ,Very gravelly sandy loam,45496585,90261710
+FSL,No ,Yes,Fine sandy loam,45496586,90261711
+LFS,No ,Yes,Loamy fine sand,45496587,90261712
+GR-COSL,No ,No ,Gravelly coarse sandy loam,45496587,90261713
+SL,No ,No ,Sandy loam,45496587,90261714
+GR-SL,No ,No ,Gravelly sandy loam,45496587,90261715
+COSL,No ,No ,Coarse sandy loam,45496587,90261716
+VFSL,No ,No ,Very fine sandy loam,45496587,90261717
+VFSL,No ,Yes,Very fine sandy loam,45496588,90261718
+GRV-LCOS,No ,No ,Very gravelly loamy coarse sand,45496588,90261719
+GRV-COS,No ,No ,Very gravelly coarse sand,45496588,90261720
+GRC-COSL,No ,No ,Coarse gravelly coarse sandy loam,45496589,90261721
+COS,No ,Yes,Coarse sand,45496589,90261722
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,45496612,90261760
+GRX-LCOS,No ,No ,Extremely gravelly loamy coarse sand,45496612,90261761
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496613,90261762
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496614,90261763
+COSL,No ,Yes,Coarse sandy loam,45496615,90261764
+GR-SL,No ,Yes,Gravelly sandy loam,45496616,90261765
+GRV-SL,No ,Yes,Very gravelly sandy loam,45496617,90261766
+CBV-SL,No ,Yes,Very cobbly sandy loam,45496618,90261767
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496619,90261768
+STV-SL,No ,No ,Very stony sandy loam,45496619,90261769
+GRV-SCL,No ,No ,Very gravelly sandy clay loam,45496620,90261770
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496620,90261771
+SPM,No ,Yes,Slightly decomposed plant material,45496621,90261772
+GRV-SL,No ,Yes,Very gravelly sandy loam,45496622,90261773
+CBV-SL,No ,Yes,Very cobbly sandy loam,45496623,90261774
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496624,90261775
+STV-SL,No ,No ,Very stony sandy loam,45496624,90261776
+GRV-SCL,No ,No ,Very gravelly sandy clay loam,45496625,90261777
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496625,90261778
+BR,No ,Yes,Bedrock,45496626,90261779
+SPM,No ,Yes,Slightly decomposed plant material,45496627,90261780
+SPM,No ,Yes,Slightly decomposed plant material,45496628,90261781
+GRV-SL,No ,Yes,Very gravelly sandy loam,45496629,90261782
+CBV-SL,No ,Yes,Very cobbly sandy loam,45496630,90261783
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496631,90261784
+STV-SL,No ,No ,Very stony sandy loam,45496631,90261785
+GRV-SCL,No ,No ,Very gravelly sandy clay loam,45496632,90261786
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496632,90261787
+WB,No ,Yes,Weathered bedrock,45496633,90261788
+CBV-SL,No ,Yes,Very cobbly sandy loam,45496634,90261789
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496635,90261790
+STV-SL,No ,No ,Very stony sandy loam,45496635,90261791
+GRV-SCL,No ,No ,Very gravelly sandy clay loam,45496636,90261792
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496636,90261793
+WB,No ,Yes,Weathered bedrock,45496637,90261794
+GRV-SL,No ,Yes,Very gravelly sandy loam,45496638,90261795
+SPM,No ,Yes,Slightly decomposed plant material,45496639,90261796
+BR,No ,Yes,Bedrock,45496660,90261821
+SPM,No ,Yes,Slightly decomposed plant material,45496661,90261822
+WB,No ,Yes,Weathered bedrock,45496662,90261823
+GR-COSL,No ,Yes,Gravelly coarse sandy loam,45496663,90261824
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,45496664,90261825
+GRX-LS,No ,No ,Extremely gravelly loamy sand,45496664,90261826
+SPM,No ,Yes,Slightly decomposed plant material,45496665,90261827
+WB,No ,Yes,Weathered bedrock,45496666,90261828
+GR-COSL,No ,Yes,Gravelly coarse sandy loam,45496667,90261829
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,45496668,90261830
+GRX-LS,No ,No ,Extremely gravelly loamy sand,45496668,90261831
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496669,90261832
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496670,90261833
+GRV-SL,No ,No ,Very gravelly sandy loam,45496670,90261834
+GRX-COSL,No ,Yes,Extremely gravelly coarse sandy loam,45496671,90261835
+GRV-SL,No ,No ,Very gravelly sandy loam,45496671,90261836
+WB,No ,Yes,Weathered bedrock,45496672,90261837
+COSL,No ,Yes,Coarse sandy loam,45496703,90261873
+GRV-COSL,No ,No ,Very gravelly coarse sandy loam,45496703,90261874
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496704,90261875
+GRV-SCL,No ,No ,Very gravelly sandy clay loam,45496704,90261876
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496705,90261877
+GRX-COSL,No ,No ,Extremely gravelly coarse sandy loam,45496706,90261878
+GRX-SCL,No ,Yes,Extremely gravelly sandy clay loam,45496706,90261879
+GRX-COSL,No ,Yes,Extremely gravelly coarse sandy loam,45496707,90261880
+GRX-SCL,No ,No ,Extremely gravelly sandy clay loam,45496707,90261881
+MPM,No ,Yes,Moderately decomposed plant material,45496708,90261882
+COSL,No ,Yes,Coarse sandy loam,45496709,90261883
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496710,90261884
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496711,90261885
+GRV-SL,No ,No ,Very gravelly sandy loam,45496711,90261886
+GRX-COSL,No ,Yes,Extremely gravelly coarse sandy loam,45496712,90261887
+GRV-SL,No ,No ,Very gravelly sandy loam,45496712,90261888
+WB,No ,Yes,Weathered bedrock,45496713,90261889
+SPM,No ,Yes,Slightly decomposed plant material,45496714,90261890
+WB,No ,Yes,Weathered bedrock,45496715,90261891
+GR-COSL,No ,Yes,Gravelly coarse sandy loam,45496716,90261892
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,45496717,90261893
+GRX-LS,No ,No ,Extremely gravelly loamy sand,45496717,90261894
+WB,No ,Yes,Weathered bedrock,45496718,90261895
+GR-COSL,No ,Yes,Gravelly coarse sandy loam,45496719,90261896
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,45496720,90261897
+GRX-LS,No ,No ,Extremely gravelly loamy sand,45496720,90261898
+SPM,No ,Yes,Slightly decomposed plant material,45496721,90261899
+GRV-SCL,No ,No ,Very gravelly sandy clay loam,45496722,90261900
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496722,90261901
+WB,No ,Yes,Weathered bedrock,45496723,90261902
+GRV-SL,No ,Yes,Very gravelly sandy loam,45496724,90261903
+SPM,No ,Yes,Slightly decomposed plant material,45496725,90261904
+CBV-SCL,No ,Yes,Very cobbly sandy clay loam,45496726,90261905
+STV-SL,No ,No ,Very stony sandy loam,45496726,90261906
+CBV-SL,No ,Yes,Very cobbly sandy loam,45496727,90261907
+UWB,No ,Yes,Unweathered bedrock,45496728,90261908
+L,No ,Yes,Loam,45496729,90261909
+C,No ,Yes,Clay,45496730,90261910
+WB,No ,Yes,Weathered bedrock,45496731,90261911
+UWB,No ,Yes,Unweathered bedrock,45496732,90261912
+L,No ,Yes,Loam,45496733,90261913
+C,No ,Yes,Clay,45496734,90261914
+WB,No ,Yes,Weathered bedrock,45496735,90261915
+UWB,No ,Yes,Unweathered bedrock,45496736,90261916
+UWB,No ,Yes,Unweathered bedrock,45496737,90261917
+UWB,No ,Yes,Unweathered bedrock,45496738,90261918
+CB-L,No ,Yes,Cobbly loam,45496739,90261919
+CBV-L,No ,Yes,Very cobbly loam,45496740,90261920
+BR,No ,Yes,Bedrock,45496741,90261921
+BR,No ,Yes,Bedrock,45496742,90261922
+L,No ,Yes,Loam,45496743,90261923
+C,No ,Yes,Clay,45496744,90261924
+WB,No ,Yes,Weathered bedrock,45496807,90262029
+SPM,No ,Yes,Slightly decomposed plant material,45496808,90262030
+GR-COSL,No ,Yes,Gravelly coarse sandy loam,45496809,90262031
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,45496810,90262032
+GRX-LS,No ,No ,Extremely gravelly loamy sand,45496810,90262033
+UWB,No ,Yes,Unweathered bedrock,45496811,90262034
+GRX-COSL,No ,Yes,Extremely gravelly coarse sandy loam,45496812,90262035
+GRV-SL,No ,No ,Very gravelly sandy loam,45496812,90262036
+WB,No ,Yes,Weathered bedrock,45496813,90262037
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496814,90262038
+GRV-COSL,No ,Yes,Very gravelly coarse sandy loam,45496815,90262039
+GRV-SL,No ,No ,Very gravelly sandy loam,45496815,90262040
+WB,No ,Yes,Weathered bedrock,45496816,90262041
+SPM,No ,Yes,Slightly decomposed plant material,45496817,90262042
+GR-COSL,No ,Yes,Gravelly coarse sandy loam,45496818,90262043
+GRV-LCOS,No ,Yes,Very gravelly loamy coarse sand,45496819,90262044
+GRX-LS,No ,No ,Extremely gravelly loamy sand,45496819,90262045

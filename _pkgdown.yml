@@ -7,22 +7,32 @@ reference:
     desc: ~
       Functions for finding Spatial Data
     contents:
-      - '`findAirports`'
-      - '`findDaymet`'
+      - '`findCDL`'
       - '`findGAGESII`'
       - '`findNED`'
-      - '`findNHD`'
       - '`findNHD`'
       - '`findNID`'
       - '`findNLCD`'
       - '`findNLDI`'
       - '`findRoads`'
       - '`findWaterbodies`'
-      - '`findHUC`'
       - '`findWaterPoly`'
+      - '`findWBD`'
+  - title: Find Stations
+    desc: ~
+      Functions for station locations
+    contents:
+      - '`findAirports`'
+      - '`findACIS`'
+      - '`findASOS`'
+      - '`findGHCN`'
+      - '`findUSCRN`'
+      - '`findNOAAnorms`'
+      - '`findNWIS`'
+      - '`findSnotel`'
   - title: Find Nearest Features
     desc: ~
-      Functions for finding the 'X' nearest features to a location
+      Functions for finding the 'n' nearest features to a location
     contents:
       - '`findNearestAirports`'
       - '`findNearestCOMID`'
@@ -30,30 +40,14 @@ reference:
       - '`findNearestHUC12`'
       - '`findNearestNWIS`'
       - '`findNearestWaterbodies`'
-  - title: Find Stations
-    desc: ~
-      Functions for station locations
-    contents:
-      - '`findACIS`'
-      - '`findASOS`'
-      - '`findGHCN`'
-      - '`findUSCRN`'
-      - '`findNearestNWIS`'
-      - '`findNearestWaterbodies`'
-      - '`findNWIS`'
-      - '`findSnotel`'
   - title: Tools
     desc: ~
       Tools for exploring, describing and defining AOIs
     contents:
      - '`explore`'
-     - '`metaHD`'
+     - '`meta.data`'
      - '`saveHD`'
      - '`to_sf`'
-  - title: Data and Package Helpers
-    desc: ~
-      Data and functions that make the package useable
-    contents:
 navbar:
   left:
     - icon: fa-home

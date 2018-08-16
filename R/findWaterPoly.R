@@ -19,7 +19,8 @@ val = AOI$AOI %>% findNHD() %>% findWaterbodies() %>% to_sf()
 
 river = val$nhd
 wb = val$waterbodies
-wb = wb[!is.na(wb$lakearea),]
+#wb = wb[!is.na(wb$lakearea),]
+wb = wb[wb$areasqkm > .1,]
 
 river.p = sf::st_transform(river, "+init=epsg:3395")
 wb.p = sf::st_transform(wb, "+init=epsg:3395")

@@ -1,0 +1,356 @@
+wndbrkht.l,wndbrkht.r,wndbrkht.h,plantsym,plantsciname,plantcomname,cokey,copwindbreakkey
+NA,2,NA,CAAR18,Caragana arborescens,Siberian peashrub,14875503,82605566
+NA,6,NA,CEOC,Celtis occidentalis,common hackberry,14875503,82605589
+NA,6,NA,FRPE,Fraxinus pennsylvanica,green ash,14875503,82605658
+NA,7,NA,GLTR,Gleditsia triacanthos,honeylocust,14875503,82605703
+NA,5,NA,JUVI,Juniperus virginiana,eastern redcedar,14875503,82605816
+NA,4,NA,MABA,Malus baccata,Manchurian crabapple,14875503,82605859
+NA,6,NA,PIPO,Pinus ponderosa,ponderosa pine,14875503,82605887
+NA,2,NA,RHTR,Rhus trilobata,skunkbush sumac,14875503,82606054
+NA,2,NA,SYVU,Syringa vulgaris,common lilac,14875503,82606074
+NA,9,NA,ULPU,Ulmus pumila,Siberian elm,14875503,82606117
+NA,8,NA,CEOC,Celtis occidentalis,common hackberry,14875535,82605593
+NA,6,NA,GLTR,Gleditsia triacanthos,honeylocust,14875535,82605706
+NA,5,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875535,82605743
+NA,6,NA,PIAM2,Piper amalago,ponderosa pine,14875535,82605868
+NA,9,NA,ULMUS,Ulmus,Siberian elm,14875535,82606109
+NA,1.5,NA,CAAR18,Caragana arborescens,Siberian peashrub,14875536,82605567
+NA,3.4,NA,CEOC,Celtis occidentalis,common hackberry,14875536,82605594
+NA,0.9,NA,COAC2,Cotoneaster acutifolius,Peking cotoneaster,14875536,82605649
+NA,3.7,NA,FRPE,Fraxinus pennsylvanica,green ash,14875536,82605660
+NA,4,NA,GLTR,Gleditsia triacanthos,honeylocust,14875536,82605707
+NA,2.7,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875536,82605810
+NA,3,NA,JUVI,Juniperus virginiana,eastern redcedar,14875536,82605820
+NA,3,NA,MAPO,Maclura pomifera,osage orange,14875536,82605861
+NA,2.4,NA,PIED,Pinus edulis,twoneedle pinyon,14875536,82605872
+NA,3.7,NA,PINI,Pinus nigra,Austrian pine,14875536,82605881
+NA,3.6,NA,PIPO,Pinus ponderosa,ponderosa pine,14875536,82605970
+NA,1.8,NA,PRAM,Prunus americana,American plum,14875536,82605984
+NA,0.9,NA,PRPUB,Prunus pumila var. besseyi,western sandcherry,14875536,82606006
+NA,2.1,NA,PRVI,Prunus virginiana,chokecherry,14875536,82606013
+NA,3,NA,PSME,Pseudotsuga menziesii,Douglas fir,14875536,82606041
+NA,3,NA,QUMA2,Quercus macrocarpa,bur oak,14875536,82606046
+NA,1.2,NA,RHTR,Rhus trilobata,skunkbush sumac,14875536,82606055
+NA,4,NA,ROPS,Robinia pseudoacacia,black locust,14875536,82606065
+NA,1.5,NA,SYVU,Syringa vulgaris,common lilac,14875536,82606075
+NA,6.1,NA,ULPU,Ulmus pumila,Siberian elm,14875536,82606191
+NA,2,NA,CAAR18,Caragana arborescens,Siberian peashrub,14875537,82605568
+NA,4,NA,CEOC,Celtis occidentalis,common hackberry,14875537,82605643
+NA,4,NA,FRPE,Fraxinus pennsylvanica,green ash,14875537,82605661
+NA,5,NA,GLTR,Gleditsia triacanthos,honeylocust,14875537,82605708
+NA,3,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875537,82605811
+NA,4,NA,JUVI,Juniperus virginiana,eastern redcedar,14875537,82605821
+NA,5,NA,PIPO,Pinus ponderosa,ponderosa pine,14875537,82605971
+NA,2,NA,RHTR,Rhus trilobata,skunkbush sumac,14875537,82606056
+NA,1,NA,SYVU,Syringa vulgaris,common lilac,14875537,82606076
+NA,6,NA,ULPU,Ulmus pumila,Siberian elm,14875537,82606192
+NA,8,NA,CEOC,Celtis occidentalis,common hackberry,14875541,82605644
+NA,6,NA,GLTR,Gleditsia triacanthos,honeylocust,14875541,82605732
+NA,5,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875541,82605813
+NA,6,NA,PIAM2,Piper amalago,ponderosa pine,14875541,82605869
+NA,9,NA,ULMUS,Ulmus,Siberian elm,14875541,82606110
+NA,1.5,NA,CAAR18,Caragana arborescens,Siberian peashrub,14875542,82605569
+NA,3.4,NA,CEOC,Celtis occidentalis,common hackberry,14875542,82605645
+NA,0.9,NA,COAC2,Cotoneaster acutifolius,Peking cotoneaster,14875542,82605650
+NA,3.7,NA,FRPE,Fraxinus pennsylvanica,green ash,14875542,82605662
+NA,4,NA,GLTR,Gleditsia triacanthos,honeylocust,14875542,82605733
+NA,2.7,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875542,82605814
+NA,3,NA,JUVI,Juniperus virginiana,eastern redcedar,14875542,82605846
+NA,3,NA,MAPO,Maclura pomifera,osage orange,14875542,82605862
+NA,2.4,NA,PIED,Pinus edulis,twoneedle pinyon,14875542,82605873
+NA,3.7,NA,PINI,Pinus nigra,Austrian pine,14875542,82605882
+NA,3.6,NA,PIPO,Pinus ponderosa,ponderosa pine,14875542,82605973
+NA,1.8,NA,PRAM,Prunus americana,American plum,14875542,82605985
+NA,0.9,NA,PRPUB,Prunus pumila var. besseyi,western sandcherry,14875542,82606007
+NA,2.1,NA,PRVI,Prunus virginiana,chokecherry,14875542,82606014
+NA,3,NA,PSME,Pseudotsuga menziesii,Douglas fir,14875542,82606042
+NA,3,NA,QUMA2,Quercus macrocarpa,bur oak,14875542,82606047
+NA,1.2,NA,RHTR,Rhus trilobata,skunkbush sumac,14875542,82606057
+NA,4,NA,ROPS,Robinia pseudoacacia,black locust,14875542,82606066
+NA,1.5,NA,SYVU,Syringa vulgaris,common lilac,14875542,82606077
+NA,6.1,NA,ULPU,Ulmus pumila,Siberian elm,14875542,82606194
+NA,2,NA,CAAR18,Caragana arborescens,Siberian peashrub,14875543,82605570
+NA,4,NA,CEOC,Celtis occidentalis,common hackberry,14875543,82605646
+NA,4,NA,FRPE,Fraxinus pennsylvanica,green ash,14875543,82605663
+NA,5,NA,GLTR,Gleditsia triacanthos,honeylocust,14875543,82605734
+NA,3,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875543,82605815
+NA,4,NA,JUVI,Juniperus virginiana,eastern redcedar,14875543,82605847
+NA,5,NA,PIPO,Pinus ponderosa,ponderosa pine,14875543,82605962
+NA,2,NA,RHTR,Rhus trilobata,skunkbush sumac,14875543,82606058
+NA,1,NA,SYVU,Syringa vulgaris,common lilac,14875543,82606078
+NA,6,NA,ULPU,Ulmus pumila,Siberian elm,14875543,82606183
+NA,8,NA,CEOC,Celtis occidentalis,common hackberry,14875544,82605647
+NA,6,NA,GLTR,Gleditsia triacanthos,honeylocust,14875544,82605735
+NA,5,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875544,82605804
+NA,6,NA,PIAM2,Piper amalago,ponderosa pine,14875544,82605870
+NA,9,NA,ULMUS,Ulmus,Siberian elm,14875544,82606111
+NA,1.5,NA,CAAR18,Caragana arborescens,Siberian peashrub,14875545,82605571
+NA,3.4,NA,CEOC,Celtis occidentalis,common hackberry,14875545,82605648
+NA,0.9,NA,COAC2,Cotoneaster acutifolius,Peking cotoneaster,14875545,82605651
+NA,3.7,NA,FRPE,Fraxinus pennsylvanica,green ash,14875545,82605697
+NA,4,NA,GLTR,Gleditsia triacanthos,honeylocust,14875545,82605736
+NA,2.7,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875545,82605805
+NA,3,NA,JUVI,Juniperus virginiana,eastern redcedar,14875545,82605848
+NA,3,NA,MAPO,Maclura pomifera,osage orange,14875545,82605863
+NA,2.4,NA,PIED,Pinus edulis,twoneedle pinyon,14875545,82605874
+NA,3.7,NA,PINI,Pinus nigra,Austrian pine,14875545,82605883
+NA,3.6,NA,PIPO,Pinus ponderosa,ponderosa pine,14875545,82605963
+NA,1.8,NA,PRAM,Prunus americana,American plum,14875545,82605986
+NA,0.9,NA,PRPUB,Prunus pumila var. besseyi,western sandcherry,14875545,82606008
+NA,2.1,NA,PRVI,Prunus virginiana,chokecherry,14875545,82606015
+NA,3,NA,PSME,Pseudotsuga menziesii,Douglas fir,14875545,82606043
+NA,3,NA,QUMA2,Quercus macrocarpa,bur oak,14875545,82606048
+NA,1.2,NA,RHTR,Rhus trilobata,skunkbush sumac,14875545,82606059
+NA,4,NA,ROPS,Robinia pseudoacacia,black locust,14875545,82606067
+NA,1.5,NA,SYVU,Syringa vulgaris,common lilac,14875545,82606079
+NA,6.1,NA,ULPU,Ulmus pumila,Siberian elm,14875545,82606184
+NA,8,NA,CEOC,Celtis occidentalis,common hackberry,14875546,82605637
+NA,5,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875546,82605806
+NA,5,NA,JUVI,Juniperus virginiana,eastern redcedar,14875546,82605849
+NA,6,NA,PIPO,Pinus ponderosa,ponderosa pine,14875546,82605964
+NA,2,NA,PRAM,Prunus americana,American plum,14875546,82605987
+NA,2,NA,SYVU,Syringa vulgaris,common lilac,14875546,82606102
+NA,8,NA,ULPU,Ulmus pumila,Siberian elm,14875546,82606185
+NA,5,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875551,82605809
+NA,5,NA,PIPO,Pinus ponderosa,ponderosa pine,14875551,82605967
+NA,8,NA,ULPU,Ulmus pumila,Siberian elm,14875551,82606188
+NA,5,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875554,82605798
+NA,5,NA,PIPO,Pinus ponderosa,ponderosa pine,14875554,82605956
+NA,8,NA,ULPU,Ulmus pumila,Siberian elm,14875554,82606177
+NA,5,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875556,82605799
+NA,5,NA,PIPO,Pinus ponderosa,ponderosa pine,14875556,82605957
+NA,8,NA,ULPU,Ulmus pumila,Siberian elm,14875556,82606178
+NA,8,NA,CEOC,Celtis occidentalis,common hackberry,14875564,82605638
+NA,5,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875564,82605800
+NA,5,NA,JUVI,Juniperus virginiana,eastern redcedar,14875564,82605851
+NA,6,NA,PIPO,Pinus ponderosa,ponderosa pine,14875564,82605959
+NA,2,NA,PRAM,Prunus americana,American plum,14875564,82605988
+NA,2,NA,SYVU,Syringa vulgaris,common lilac,14875564,82606105
+NA,8,NA,ULPU,Ulmus pumila,Siberian elm,14875564,82606180
+NA,8,NA,CEOC,Celtis occidentalis,common hackberry,14875596,82605641
+NA,5,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875596,82605803
+NA,5,NA,JUVI,Juniperus virginiana,eastern redcedar,14875596,82605841
+NA,6,NA,PIPO,Pinus ponderosa,ponderosa pine,14875596,82605951
+NA,2,NA,PRAM,Prunus americana,American plum,14875596,82605989
+NA,2,NA,SYVU,Syringa vulgaris,common lilac,14875596,82606106
+NA,8,NA,ULPU,Ulmus pumila,Siberian elm,14875596,82606172
+NA,1.5,NA,CAAR18,Caragana arborescens,Siberian peashrub,14875597,82605583
+NA,3.4,NA,CEOC,Celtis occidentalis,common hackberry,14875597,82605642
+NA,0.9,NA,COAC2,Cotoneaster acutifolius,Peking cotoneaster,14875597,82605652
+NA,3.7,NA,FRPE,Fraxinus pennsylvanica,green ash,14875597,82605698
+NA,4,NA,GLTR,Gleditsia triacanthos,honeylocust,14875597,82605737
+NA,2.7,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875597,82605792
+NA,3,NA,JUVI,Juniperus virginiana,eastern redcedar,14875597,82605842
+NA,3,NA,MAPO,Maclura pomifera,osage orange,14875597,82605864
+NA,2.4,NA,PIED,Pinus edulis,twoneedle pinyon,14875597,82605875
+NA,3.7,NA,PINI,Pinus nigra,Austrian pine,14875597,82605884
+NA,3.6,NA,PIPO,Pinus ponderosa,ponderosa pine,14875597,82605952
+NA,1.8,NA,PRAM,Prunus americana,American plum,14875597,82606000
+NA,0.9,NA,PRPUB,Prunus pumila var. besseyi,western sandcherry,14875597,82606009
+NA,2.1,NA,PRVI,Prunus virginiana,chokecherry,14875597,82606016
+NA,3,NA,PSME,Pseudotsuga menziesii,Douglas fir,14875597,82606044
+NA,3,NA,QUMA2,Quercus macrocarpa,bur oak,14875597,82606049
+NA,1.2,NA,RHTR,Rhus trilobata,skunkbush sumac,14875597,82606062
+NA,4,NA,ROPS,Robinia pseudoacacia,black locust,14875597,82606068
+NA,1.5,NA,SYVU,Syringa vulgaris,common lilac,14875597,82606107
+NA,6.1,NA,ULPU,Ulmus pumila,Siberian elm,14875597,82606173
+NA,2,NA,CAAR18,Caragana arborescens,Siberian peashrub,14875598,82605584
+NA,5,NA,CEOC,Celtis occidentalis,common hackberry,14875598,82605631
+NA,5,NA,FRPE,Fraxinus pennsylvanica,green ash,14875598,82605699
+NA,3,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875598,82605793
+NA,3,NA,JUVI,Juniperus virginiana,eastern redcedar,14875598,82605843
+NA,4,NA,PINI,Pinus nigra,Austrian pine,14875598,82605885
+NA,4,NA,PIPO,Pinus ponderosa,ponderosa pine,14875598,82605953
+NA,5,NA,PIPU,Picea pungens,blue spruce,14875598,82605974
+NA,4,NA,PISY,Pinus sylvestris,Scotch pine,14875598,82605976
+NA,2,NA,PRVI,Prunus virginiana,chokecherry,14875598,82606017
+NA,2,NA,SYVU,Syringa vulgaris,common lilac,14875598,82606096
+NA,8,NA,CEOC,Celtis occidentalis,common hackberry,14875620,82605633
+NA,8,NA,FRPE,Fraxinus pennsylvanica,green ash,14875620,82605691
+NA,6,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875620,82605797
+NA,8,NA,PIPO,Pinus ponderosa,ponderosa pine,14875620,82605945
+NA,9,NA,ULPU,Ulmus pumila,Siberian elm,14875620,82606175
+NA,3,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875638,82605788
+NA,4,NA,PIPO,Pinus ponderosa,ponderosa pine,14875638,82605948
+NA,5,NA,ULPU,Ulmus pumila,Siberian elm,14875638,82606166
+NA,3,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875641,82605789
+NA,4,NA,PIPO,Pinus ponderosa,ponderosa pine,14875641,82605949
+NA,5,NA,ULPU,Ulmus pumila,Siberian elm,14875641,82606167
+NA,2,NA,CAAR18,Caragana arborescens,Siberian peashrub,14875648,82605588
+NA,3,NA,FRPE,Fraxinus pennsylvanica,green ash,14875648,82605693
+NA,2,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875648,82605790
+NA,4,NA,ULPA,Ulmus parvifolia,lacebark elm,14875648,82606115
+NA,2,NA,CAAR18,Caragana arborescens,Siberian peashrub,14875658,82605577
+NA,3,NA,FRPE,Fraxinus pennsylvanica,green ash,14875658,82605694
+NA,2,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875658,82605791
+NA,2,NA,JUVI,Juniperus virginiana,eastern redcedar,14875658,82605844
+NA,4,NA,PIPO,Pinus ponderosa,ponderosa pine,14875658,82605938
+NA,1,NA,SHAR,Shepherdia argentea,silver buffaloberry,14875658,82606071
+NA,1,NA,SYVU,Syringa vulgaris,common lilac,14875658,82606101
+NA,3,NA,ULPU,Ulmus pumila,Siberian elm,14875658,82606168
+NA,2,NA,CAAR18,Caragana arborescens,Siberian peashrub,14875665,82605578
+NA,4,NA,FRPE,Fraxinus pennsylvanica,green ash,14875665,82605695
+NA,3,NA,JUVI,Juniperus virginiana,eastern redcedar,14875665,82605845
+NA,4,NA,PIPO,Pinus ponderosa,ponderosa pine,14875665,82605939
+NA,2,NA,PRVI,Prunus virginiana,chokecherry,14875665,82606037
+NA,6,NA,ULPU,Ulmus pumila,Siberian elm,14875665,82606169
+NA,1,NA,UNKNOWN,unknown scientific name,Nanking cherry,14875665,82606195
+NA,8,NA,CEOC,Celtis occidentalis,common hackberry,14875673,82605636
+NA,4,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875673,82605780
+NA,4,NA,JUVI,Juniperus virginiana,eastern redcedar,14875673,82605834
+NA,5,NA,PIPO,Pinus ponderosa,ponderosa pine,14875673,82605940
+NA,8,NA,ULPU,Ulmus pumila,Siberian elm,14875673,82606170
+NA,6,NA,GLTR,Gleditsia triacanthos,honeylocust,14875684,82605728
+NA,6,NA,PIPO,Pinus ponderosa,ponderosa pine,14875684,82605942
+NA,5,NA,THPL,Thuja plicata,western redcedar,14875684,82606108
+NA,9,NA,ULPU,Ulmus pumila,Siberian elm,14875684,82606160
+NA,2,NA,CAAR18,Caragana arborescens,Siberian peashrub,14875698,82605579
+NA,3,NA,FRPE,Fraxinus pennsylvanica,green ash,14875698,82605696
+NA,2,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875698,82605782
+NA,2,NA,JUVI,Juniperus virginiana,eastern redcedar,14875698,82605835
+NA,4,NA,PIPO,Pinus ponderosa,ponderosa pine,14875698,82605943
+NA,1,NA,SHAR,Shepherdia argentea,silver buffaloberry,14875698,82606072
+NA,1,NA,SYVU,Syringa vulgaris,common lilac,14875698,82606090
+NA,3,NA,ULPU,Ulmus pumila,Siberian elm,14875698,82606161
+NA,1,NA,CAAR18,Caragana arborescens,Siberian peashrub,14875727,82605580
+NA,3,NA,FRPE,Fraxinus pennsylvanica,green ash,14875727,82605689
+NA,4,NA,GLTR,Gleditsia triacanthos,honeylocust,14875727,82605729
+NA,3,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875727,82605775
+NA,2,NA,JUVI,Juniperus virginiana,eastern redcedar,14875727,82605836
+NA,2,NA,LOTA,Lonicera tatarica,Tatarian honeysuckle,14875727,82605855
+NA,3,NA,PIPO,Pinus ponderosa,ponderosa pine,14875727,82605928
+NA,2,NA,PRAM,Prunus americana,American plum,14875727,82606004
+NA,2,NA,PRVI,Prunus virginiana,chokecherry,14875727,82606038
+NA,2,NA,SYVU,Syringa vulgaris,common lilac,14875727,82606091
+NA,6,NA,ULPU,Ulmus pumila,Siberian elm,14875727,82606158
+NA,1,NA,CAAR18,Caragana arborescens,Siberian peashrub,14875732,82605581
+NA,3,NA,FRPE,Fraxinus pennsylvanica,green ash,14875732,82605690
+NA,4,NA,GLTR,Gleditsia triacanthos,honeylocust,14875732,82605730
+NA,3,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875732,82605776
+NA,2,NA,JUVI,Juniperus virginiana,eastern redcedar,14875732,82605837
+NA,2,NA,LOTA,Lonicera tatarica,Tatarian honeysuckle,14875732,82605856
+NA,3,NA,PIPO,Pinus ponderosa,ponderosa pine,14875732,82605929
+NA,2,NA,PRAM,Prunus americana,American plum,14875732,82606005
+NA,2,NA,PRVI,Prunus virginiana,chokecherry,14875732,82606039
+NA,2,NA,SYVU,Syringa vulgaris,common lilac,14875732,82606092
+NA,6,NA,ULPU,Ulmus pumila,Siberian elm,14875732,82606147
+NA,5,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875744,82605777
+NA,8,NA,PIPO,Pinus ponderosa,ponderosa pine,14875744,82605930
+NA,9,NA,PODEM,Populus deltoides ssp. monilifera,plains cottonwood,14875744,82605981
+NA,9,NA,ULPU,Ulmus pumila,Siberian elm,14875744,82606148
+NA,8,NA,CEOC,Celtis occidentalis,common hackberry,14875750,82605622
+NA,6,NA,FRPE,Fraxinus pennsylvanica,green ash,14875750,82605680
+NA,6,NA,GLTR,Gleditsia triacanthos,honeylocust,14875750,82605720
+NA,5,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875750,82605778
+NA,6,NA,PIPO,Pinus ponderosa,ponderosa pine,14875750,82605920
+NA,9,NA,PODE3,Populus deltoides,Siouxland cottonwood,14875750,82605977
+NA,9,NA,ULPU,Ulmus pumila,Siberian elm,14875750,82606150
+NA,5,NA,CEOC,Celtis occidentalis,common hackberry,14875753,82605623
+NA,6,NA,FRPE,Fraxinus pennsylvanica,green ash,14875753,82605681
+NA,7,NA,GLTR,Gleditsia triacanthos,honeylocust,14875753,82605721
+NA,5,NA,JUVI,Juniperus virginiana,eastern redcedar,14875753,82605839
+NA,2,NA,LOMA6,Lonicera maackii,Amur honeysuckle,14875753,82605853
+NA,5,NA,PIPO,Pinus ponderosa,ponderosa pine,14875753,82605921
+NA,3,NA,PRVI,Prunus virginiana,chokecherry,14875753,82606029
+NA,5,NA,QUMA2,Quercus macrocarpa,bur oak,14875753,82606051
+NA,2,NA,SYVU,Syringa vulgaris,common lilac,14875753,82606094
+NA,9,NA,ULPU,Ulmus pumila,Siberian elm,14875753,82606151
+NA,1,NA,CAAR18,Caragana arborescens,Siberian peashrub,14875760,82605582
+NA,3,NA,FRPE,Fraxinus pennsylvanica,green ash,14875760,82605683
+NA,4,NA,GLTR,Gleditsia triacanthos,honeylocust,14875760,82605723
+NA,3,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875760,82605779
+NA,2,NA,JUVI,Juniperus virginiana,eastern redcedar,14875760,82605829
+NA,2,NA,LOTA,Lonicera tatarica,Tatarian honeysuckle,14875760,82605857
+NA,3,NA,PIPO,Pinus ponderosa,ponderosa pine,14875760,82605923
+NA,2,NA,PRAM,Prunus americana,American plum,14875760,82605994
+NA,2,NA,PRVI,Prunus virginiana,chokecherry,14875760,82606031
+NA,2,NA,SYVU,Syringa vulgaris,common lilac,14875760,82606084
+NA,6,NA,ULPU,Ulmus pumila,Siberian elm,14875760,82606141
+NA,5,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875763,82605768
+NA,5,NA,PIPO,Pinus ponderosa,ponderosa pine,14875763,82605924
+NA,8,NA,ULPU,Ulmus pumila,Siberian elm,14875763,82606142
+NA,5,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875767,82605769
+NA,5,NA,PIPO,Pinus ponderosa,ponderosa pine,14875767,82605925
+NA,8,NA,ULPU,Ulmus pumila,Siberian elm,14875767,82606143
+NA,5,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875770,82605770
+NA,5,NA,PIPO,Pinus ponderosa,ponderosa pine,14875770,82605914
+NA,8,NA,ULPU,Ulmus pumila,Siberian elm,14875770,82606144
+NA,9,NA,CEOC,Celtis occidentalis,common hackberry,14875805,82605618
+NA,8,NA,FRPE,Fraxinus pennsylvanica,green ash,14875805,82605674
+NA,6,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875805,82605767
+NA,6,NA,JUVI,Juniperus virginiana,eastern redcedar,14875805,82605833
+NA,8,NA,PIPO,Pinus ponderosa,ponderosa pine,14875805,82605911
+NA,11,NA,ULPU,Ulmus pumila,Siberian elm,14875805,82606129
+NA,9,NA,CEOC,Celtis occidentalis,common hackberry,14875808,82605607
+NA,8,NA,FRPE,Fraxinus pennsylvanica,green ash,14875808,82605675
+NA,6,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875808,82605756
+NA,6,NA,JUVI,Juniperus virginiana,eastern redcedar,14875808,82605822
+NA,8,NA,PIPO,Pinus ponderosa,ponderosa pine,14875808,82605912
+NA,11,NA,ULPU,Ulmus pumila,Siberian elm,14875808,82606130
+NA,8,NA,CEOC,Celtis occidentalis,common hackberry,14875811,82605608
+NA,6,NA,GLTR,Gleditsia triacanthos,honeylocust,14875811,82605714
+NA,5,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875811,82605757
+NA,6,NA,PIAM2,Piper amalago,ponderosa pine,14875811,82605871
+NA,9,NA,ULMUS,Ulmus,Siberian elm,14875811,82606112
+NA,1.5,NA,CAAR18,Caragana arborescens,Siberian peashrub,14875812,82605573
+NA,3.4,NA,CEOC,Celtis occidentalis,common hackberry,14875812,82605609
+NA,0.9,NA,COAC2,Cotoneaster acutifolius,Peking cotoneaster,14875812,82605653
+NA,3.7,NA,FRPE,Fraxinus pennsylvanica,green ash,14875812,82605676
+NA,4,NA,GLTR,Gleditsia triacanthos,honeylocust,14875812,82605715
+NA,2.7,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875812,82605758
+NA,3,NA,JUVI,Juniperus virginiana,eastern redcedar,14875812,82605823
+NA,3,NA,MAPO,Maclura pomifera,osage orange,14875812,82605865
+NA,2.4,NA,PIED,Pinus edulis,twoneedle pinyon,14875812,82605876
+NA,3.7,NA,PINI,Pinus nigra,Austrian pine,14875812,82605886
+NA,3.6,NA,PIPO,Pinus ponderosa,ponderosa pine,14875812,82605913
+NA,1.8,NA,PRAM,Prunus americana,American plum,14875812,82605990
+NA,0.9,NA,PRPUB,Prunus pumila var. besseyi,western sandcherry,14875812,82606010
+NA,2.1,NA,PRVI,Prunus virginiana,chokecherry,14875812,82606025
+NA,3,NA,PSME,Pseudotsuga menziesii,Douglas fir,14875812,82606045
+NA,3,NA,QUMA2,Quercus macrocarpa,bur oak,14875812,82606053
+NA,1.2,NA,RHTR,Rhus trilobata,skunkbush sumac,14875812,82606063
+NA,4,NA,ROPS,Robinia pseudoacacia,black locust,14875812,82606069
+NA,1.5,NA,SYVU,Syringa vulgaris,common lilac,14875812,82606080
+NA,6.1,NA,ULPU,Ulmus pumila,Siberian elm,14875812,82606131
+NA,8,NA,CEOC,Celtis occidentalis,common hackberry,14875813,82605610
+NA,6,NA,FRPE,Fraxinus pennsylvanica,green ash,14875813,82605677
+NA,6,NA,GLTR,Gleditsia triacanthos,honeylocust,14875813,82605716
+NA,5,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875813,82605759
+NA,6,NA,PIPO,Pinus ponderosa,ponderosa pine,14875813,82605902
+NA,9,NA,PODE3,Populus deltoides,Siouxland cottonwood,14875813,82605979
+NA,9,NA,ULPU,Ulmus pumila,Siberian elm,14875813,82606132
+NA,2,NA,CAAR18,Caragana arborescens,Siberian peashrub,14875852,82605576
+NA,4,NA,ELAN,Elaeagnus angustifolia,Russian olive,14875852,82605657
+NA,4,NA,FRPE,Fraxinus pennsylvanica,green ash,14875852,82605672
+NA,3,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875852,82605746
+NA,4,NA,PIPO,Pinus ponderosa,ponderosa pine,14875852,82605901
+NA,2,NA,PRAM,Prunus americana,American plum,14875852,82605993
+NA,2,NA,PRVI,Prunus virginiana,chokecherry,14875852,82606019
+NA,2,NA,SYVU,Syringa vulgaris,common lilac,14875852,82606083
+NA,6,NA,ULPA,Ulmus parvifolia,lacebark elm,14875852,82606116
+NA,3,NA,CEOC,Celtis occidentalis,common hackberry,14875853,82605595
+NA,5,NA,CEOC,Celtis occidentalis,common hackberry,14875853,82605596
+NA,5,NA,FRPE,Fraxinus pennsylvanica,green ash,14875853,82605664
+NA,6,NA,GLTR,Gleditsia triacanthos,honeylocust,14875853,82605711
+NA,2,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875853,82605747
+NA,4,NA,PIED,Pinus edulis,twoneedle pinyon,14875853,82605878
+NA,6,NA,PIPO,Pinus ponderosa,ponderosa pine,14875853,82605893
+NA,2,NA,PRVI,Prunus virginiana,chokecherry,14875853,82606020
+NA,3,NA,CEOC,Celtis occidentalis,common hackberry,14875858,82605599
+NA,5,NA,CEOC,Celtis occidentalis,common hackberry,14875858,82605600
+NA,5,NA,FRPE,Fraxinus pennsylvanica,green ash,14875858,82605666
+NA,6,NA,GLTR,Gleditsia triacanthos,honeylocust,14875858,82605713
+NA,2,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,14875858,82605749
+NA,4,NA,PIED,Pinus edulis,twoneedle pinyon,14875858,82605880
+NA,6,NA,PIPO,Pinus ponderosa,ponderosa pine,14875858,82605895
+NA,2,NA,PRVI,Prunus virginiana,chokecherry,14875858,82606022
+NA,6,NA,CEOC,Celtis occidentalis,common hackberry,15697475,86804188
+NA,6,NA,ELAN,Elaeagnus angustifolia,Russian olive,15697475,86804189
+NA,8,NA,PIPO,Pinus ponderosa,ponderosa pine,15697475,86804190
+NA,9,NA,ULPU,Ulmus pumila,Siberian elm,15697475,86804191
+NA,5,NA,ULPU,Ulmus pumila,Siberian elm,15697360,86804168
+NA,3,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,15697360,86804169
+NA,4,NA,PIPO,Pinus ponderosa,ponderosa pine,15697360,86804170
+NA,5,NA,ULPU,Ulmus pumila,Siberian elm,15697362,86804171
+NA,3,NA,JUSC2,Juniperus scopulorum,Rocky Mountain juniper,15697362,86804172
+NA,4,NA,PIPO,Pinus ponderosa,ponderosa pine,15697362,86804173

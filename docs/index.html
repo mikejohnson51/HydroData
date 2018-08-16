@@ -103,7 +103,30 @@ List of 5
  $ nwis       :Formal class 'SpatialPointsDataFrame' [package "sp"] with 5 slots
  $ NED        :Formal class 'RasterLayer' [package "raster"] with 12 slots
  - attr(*, "class")= chr "HydroData"</code></pre>
-<p>For now, most internal HydroData operations are based of the ‘simple featrure (sf)’ library however objects are all returned as Spatial* sp objects. As the community around simple feautures grows the default output of ‘HydroData’ might change. Until then users can use the hydrodata_sf function to convert a Hydrodata object to simple features where appropriate.</p>
+<p>For now, most internal HydroData operations are based of the ‘simple feature (sf)’ library however objects are all returned as Spatial* sp objects. As the community around simple features grows the default output of ‘HydroData’ might change. Until then users can use the <code>to_sf</code> function to convert a <code>HydroData</code> object to simple features where appropriate.</p>
+<p>HydroData offer in-package tools for generating interactive visualizations of HydroData Spatial* objects</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myData.sf =<span class="st"> </span>myData <span class="op">%&gt;%</span><span class="st"> </span>to_sf</code></pre></div>
+<pre><code>str(myData.sf,max.level = 1)
+
+List of 5
+ $ NED        :Formal class 'RasterLayer' [package "raster"] with 12 slots
+ $ AOI        :Classes ‘sf’ and 'data.frame':   1 obs. of  1 variable:
+  ..- attr(*, "sf_column")= chr "geometry"
+  ..- attr(*, "agr")= Factor w/ 3 levels "constant","aggregate",..: 
+  .. ..- attr(*, "names")= chr(0) 
+ $ nhd        :Classes ‘sf’ and 'data.frame':   100 obs. of  92 variables:
+  ..- attr(*, "sf_column")= chr "geometry"
+  ..- attr(*, "agr")= Factor w/ 3 levels "constant","aggregate",..: NA NA NA NA NA NA NA NA NA NA ...
+  .. ..- attr(*, "names")= chr [1:91] "id" "ogc_fid" "comid" "fdate" ...
+ $ waterbodies:Classes ‘sf’ and 'data.frame':   11 obs. of  24 variables:
+  ..- attr(*, "sf_column")= chr "geometry"
+  ..- attr(*, "agr")= Factor w/ 3 levels "constant","aggregate",..: NA NA NA NA NA NA NA NA NA NA ...
+  .. ..- attr(*, "names")= chr [1:23] "id" "objectid" "comid" "fdate" ...
+ $ nwis       :Classes ‘sf’ and 'data.frame':   3 obs. of  8 variables:
+  ..- attr(*, "sf_column")= chr "geometry"
+  ..- attr(*, "agr")= Factor w/ 3 levels "constant","aggregate",..: NA NA NA NA NA NA NA
+  .. ..- attr(*, "names")= chr [1:7] "OBJECTID" "feature_id" "site_no" "site_name" ...
+  </code></pre>
 <p>HydroData offer in-package tools for generating interactive visualizations of HydroData Spatial* objects</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> myData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="reference/explore.html">explore</a></span>()</code></pre></div>
 <p><br><img src="reference/figures/explore_ex.png" width="500"><br></p>
@@ -146,7 +169,7 @@ List of 5
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://travis-ci.org/mikejohnson51/HydroData"><img src="https://travis-ci.org/mikejohnson51/HydroData.svg?branch=master" alt="travis"></a></li>
+<li><a href="http://travis-ci.org/mikejohnson51/HydroData"><img src="https://travis-ci.org/mikejohnson51/HydroData.svg?branch=master" alt="travis"></a></li>
 <li><a href="https://coveralls.io/github/mikejohnson51/HydroData?branch=master"><img src="https://img.shields.io/coveralls/github/mikejohnson51/HydroData.svg" alt="Coverage Status"></a></li>
 </ul>
 </div>

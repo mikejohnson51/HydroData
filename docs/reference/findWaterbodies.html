@@ -32,10 +32,18 @@
 
 <meta property="og:title" content="Find National Hydrography Dataset Waterbodies — findWaterbodies" />
 
-<meta property="og:description" content="findWaterbodies returns a list of Spatial* Objects cropped to an Area of Interest.
-To better understand defining an AOI using 'state', 'county' and 'clip' see getAOI and getClipUnit.
-Returned list can be interactivly explored via explore and COMID values (ids = TRUE) allow for National Water Model access via getNWM.
-All outputs are projected to CRS'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs' and stream networks are (down)loaded from the USGS." />
+<meta property="og:description" content="findWaterbodies returns a SpatialPolgonsDataframe of all NHDwaterbodies within an AOI.
+Data comes from the USGS CIDA server and contain 23 attributes, perhaps most notably:
+'objectid'   : integer  Integer value that uniquely identifies the waterbody of each feature in the NHD
+'comid'   : character  The COMID draining into the feature
+'fdate': POSITct  Date of last feature modification
+'gnis_id'   : character    Unique identifier assigned by GNIS
+'gnis_name'   : character    Proper name, term, or expression by which a particular geographic entity is known
+'meandepth'    : numeric     Mean depth of the waterbody
+'lakevolume'    : numeric    Total waterbody volume
+'maxdepth'   : character     Maximum depth of waterbody
+'meanused'   : integer  The average amount of water used
+" />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -127,10 +135,18 @@ All outputs are projected to CRS'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0
 
     <div class="ref-description">
     
-    <p><code>findWaterbodies</code> returns a list of <code>Spatial*</code> Objects cropped to an Area of Interest.<br /><br />
-To better understand defining an AOI using '<em>state</em>', '<em>county</em>' and '<em>clip</em>' see <code>getAOI</code> and <code>getClipUnit</code>.<br /><br />
-Returned <code>list</code> can be interactivly explored via <code><a href='explore.html'>explore</a></code> and COMID values (<code>ids = TRUE</code>) allow for National Water Model access via <code>getNWM</code>.<br /><br />
-All outputs are projected to <code>CRS'+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'</code> and stream networks are (<em>down</em>)loaded from the <a href='https://cida.usgs.gov'>USGS</a>.</p>
+    <p><code>findWaterbodies</code> returns a <code>SpatialPolgonsDataframe</code> of all NHDwaterbodies within an AOI.
+Data comes from the USGS CIDA server and contain 23 attributes, perhaps most notably:</p><ul>
+<li><p>'objectid'   : <code>integer</code>  Integer value that uniquely identifies the waterbody of each feature in the NHD</p></li>
+<li><p>'comid'   : <code>character</code>  The COMID draining into the feature</p></li>
+<li><p>'fdate': <code>POSITct</code>  Date of last feature modification</p></li>
+<li><p>'gnis_id'   : <code>character</code>    Unique identifier assigned by GNIS</p></li>
+<li><p>'gnis_name'   : <code>character</code>    Proper name, term, or expression by which a particular geographic entity is known</p></li>
+<li><p>'meandepth'    : <code>numeric</code>     Mean depth of the waterbody</p></li>
+<li><p>'lakevolume'    : <code>numeric</code>    Total waterbody volume</p></li>
+<li><p>'maxdepth'   : <code>character</code>     Maximum depth of waterbody</p></li>
+<li><p>'meanused'   : <code>integer</code>  The average amount of water used</p></li>
+</ul><p><br /></p>
     
     </div>
 
@@ -140,65 +156,23 @@ All outputs are projected to <code>CRS'+proj=longlat +ellps=GRS80 +towgs84=0,0,0
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>ids</th>
-      <td><p>If TRUE, returns a list of COMIDS for NHD reaches</p></td>
+      <th>AOI</th>
+      <td><p>A Spatial* or simple features geometry, can be piped from <a href='http://www.rdocumentation.org/packages/AOI/topics/getAOI'>getAOI</a></p></td>
     </tr>
     <tr>
-      <th>save</th>
-      <td><p>If TRUE, data is written to a HydroData folder in users working directory.</p></td>
+      <th>ids</th>
+      <td><p>If TRUE, a vector of waterbody IDs is added to retuned list (default = <code>FALSE</code>)</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>findNHD</code> returns a list of minimum length 1:</p>
-<ol>
-<li><p>'flowlines': A <code>SpatialLinesDataFrame</code><br /></p>
-
-<p>Pending parameterization, <code>findNHD</code> can also return:</p></li>
-<li><p>'basemap':   A <code>RasterLayer*</code> basemap if <code>basemap = TRUE</code></p></li>
-<li><p>'boundry':   A <code>SpatialPolygon*</code> of AOI if <code>boundary = TRUE</code></p></li>
-<li><p>'fiat':      A <code>SpatialPolygon*</code> of intersected county boundaries if <code>boundary = TRUE</code></p></li>
-<li><p>'ids':       A vector of COMIDs if <code>ids = TRUE</code></p></li>
-</ol>
-
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code>getAOI</code></p>
-<p><code>getNWM</code></p>
-<p><code><a href='explore.html'>explore</a></code></p>
-<p>Other HydroData 'find' functions: <code><a href='findHUC.html'>findHUC</a></code>,
-  <code><a href='findSnotel.html'>findSnotel</a></code></p></div>
+    <p>a list() of minimum length 2: AOI and waterboies</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='co'># NOT RUN {</span>
-<span class='co'># Find NHD data for El Paso County, Colorado</span>
-
-<span class='no'>el.paso</span> <span class='kw'>=</span> <span class='fu'><a href='findNHD.html'>findNHD</a></span>(<span class='kw'>state</span> <span class='kw'>=</span> <span class='st'>'CO'</span>,
-                  <span class='kw'>county</span> <span class='kw'>=</span> <span class='st'>'El Paso'</span>,
-                  <span class='kw'>boundary</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-                  <span class='kw'>basemap</span> <span class='kw'>=</span> <span class='st'>'r'</span>,
-                  <span class='kw'>ids</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-
-<span class='co'># Static Mapping</span>
-
- <span class='fu'>plot</span>(<span class='no'>el.paso</span>$<span class='no'>basemap</span>)
- <span class='fu'>plot</span>(<span class='no'>el.paso</span>$<span class='no'>boundary</span>, <span class='kw'>lwd</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>add</span> <span class='kw'>=</span> <span class='no'>T</span>)
- <span class='fu'>plot</span>(<span class='no'>el.paso</span>$<span class='no'>flowlines</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='st'>'blue'</span>, <span class='kw'>lwd</span> <span class='kw'>=</span> <span class='no'>el.paso</span>$<span class='no'>flowlines</span>$<span class='no'>streamorde</span>, <span class='kw'>add</span> <span class='kw'>=</span> <span class='no'>T</span>)
-
-<span class='co'># Generate Interactive Map</span>
-
-  <span class='fu'><a href='explore.html'>explore</a></span>(<span class='no'>el.paso</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-
-<span class='co'># Get flow data for reaches</span>
-
-<span class='no'>flows</span> <span class='kw'>=</span> <span class='fu'>getNWM</span>(<span class='kw'>ids</span> <span class='kw'>=</span> <span class='no'>el.paso</span>$<span class='no'>ids</span>, <span class='kw'>startDate</span> <span class='kw'>=</span> <span class='st'>'2017-01-01'</span>, <span class='kw'>endDate</span> <span class='kw'>=</span> <span class='st'>'2017-12-31'</span>)
-
-<span class='co'># Interactivly explore timeseries data</span>
-
-<span class='fu'>inspect</span>(<span class='no'>flows</span>, <span class='kw'>save</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'>getAOI</span>(<span class='kw'>clip</span> <span class='kw'>=</span> <span class='st'>"Tuscaloosa"</span>) <span class='kw'>%&gt;%</span> <span class='fu'>findWaterbodies</span>()
 <span class='co'># }</span><div class='input'>
 </div></pre>
   </div>
@@ -208,8 +182,6 @@ All outputs are projected to <code>CRS'+proj=longlat +ellps=GRS80 +towgs84=0,0,0
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

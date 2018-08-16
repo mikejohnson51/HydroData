@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Download data from URL — download.url • HydroData</title>
+<title>Download data from URL via httr::GET — download.url • HydroData</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,10 @@
 
 
 
-<meta property="og:title" content="Download data from URL — download.url" />
+<meta property="og:title" content="Download data from URL via httr::GET — download.url" />
 
-<meta property="og:description" content="Download data from URL" />
+<meta property="og:description" content="Download file from URL using httr:GET.
+File is written to the tmp directory with the basename of the URL call." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -117,14 +118,15 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Download data from URL</h1>
+    <h1>Download data from URL via httr::GET</h1>
     <small class="dont-index">Source: <a href='https://github.com/mikejohnson51/HydroData/blob/master/R/utility_download_url.R'><code>R/utility_download_url.R</code></a></small>
     <div class="hidden name"><code>download.url.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Download data from URL</p>
+    <p>Download file from URL using httr:GET.
+File is written to the tmp directory with the basename of the URL call.</p>
     
     </div>
 
@@ -139,13 +141,23 @@
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>a status and path to downloaded file</p>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
+
+    <h2>Author</h2>
+    
+Mike Johnson
 
   </div>
 </div>

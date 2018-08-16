@@ -131,3 +131,20 @@
 
 "daymet_tiles"
 
+#' Appliced Climate Information Systems Meta Data
+#'
+#' \code{ACIS_meta} contains the meta data needed to query stations from the ACIS API tile index for DAYMET meterological Data
+#'
+#' @docType data
+#'
+#' @format a \code{list}
+#
+#' @source \href{http://www.rcc-acis.org}{Applied Climate Information System}
+#'
+#' @examples
+#' \dontrun{
+#'  meta = HydroData::meta
+#' }
+
+"meta"
+

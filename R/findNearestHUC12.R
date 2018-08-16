@@ -37,8 +37,8 @@ findNearestHUC12 = function(point = NULL, n = 1, ids = FALSE, bb = FALSE){
   fin[["wbd"]] = merge(lines, dist, by = "huc12")
 
 
-    if (bb) { fin[["AOI"]] = AOI::getBoundingBox(fin$closest_huc12) }
-    if (ids) { fin[["huc12"]] = unique(fin$closest_huc12$huc12) }
+    if (bb) { fin[["AOI"]] = AOI::getBoundingBox(fin$wbd) }
+    if (ids) { fin[["huc12"]] = unique(fin$wbd$huc12) }
 
   return(fin)
 

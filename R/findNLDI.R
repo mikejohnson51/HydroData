@@ -14,7 +14,7 @@
 #' @author Mike Johnson
 #'
 
-getNLDI = function(comid = NULL,
+findNLDI = function(comid = NULL,
                    nwis = NULL,
                    huc12 = NULL,
                    type = NULL,

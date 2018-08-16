@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Find Neareast COMIDs — findNearestHUC12 • HydroData</title>
+<title>Find Neareast HUC12 boundaries — findNearestHUC12 • HydroData</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Find Neareast COMIDs — findNearestHUC12" />
+<meta property="og:title" content="Find Neareast HUC12 boundaries — findNearestHUC12" />
 
-<meta property="og:description" content="Find Neareast COMIDs" />
+<meta property="og:description" content="findNearestHUC12 returns a SpatialPolygonDataFrame of the 'n' number of HUC12 basins closest to a declared point." />
 
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -117,33 +117,53 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Find Neareast COMIDs</h1>
+    <h1>Find Neareast HUC12 boundaries</h1>
     <small class="dont-index">Source: <a href='https://github.com/mikejohnson51/HydroData/blob/master/R/findNearestHUC12.R'><code>R/findNearestHUC12.R</code></a></small>
     <div class="hidden name"><code>findNearestHUC12.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Find Neareast COMIDs</p>
+    <p><code>findNearestHUC12</code> returns a <code>SpatialPolygonDataFrame</code> of the 'n' number of HUC12 basins closest to a declared point.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>findNearestHUC12</span>(<span class='kw'>point</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>ids</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>AOI</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>findNearestHUC12</span>(<span class='kw'>point</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>ids</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>bb</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>location</th>
-      <td><p>a lat, long pair or Colloqiual Name</p></td>
+      <th>point</th>
+      <td><p>a point described by lat/long, can be piped from <a href='http://www.rdocumentation.org/packages/AOI/topics/geoCode'>geocode</a></p></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><p>the number of basins to find (default = 5)</p></td>
+    </tr>
+    <tr>
+      <th>ids</th>
+      <td><p>If TRUE, a vector of basin HUC IDs is added to retuned list (default = <code>FALSE</code>)</p></td>
+    </tr>
+    <tr>
+      <th>bb</th>
+      <td><p>If TRUE, the geometry of the minimum bounding area of the features is added to returned list (default = <code>FALSE</code>)</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list contatining a data.frame of Airports and a minimum bounding box data.frame</p>
+    <p>a list() of minimum length 2: AOI and wbd</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>findWBD</p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='no'>pt</span> <span class='kw'>=</span> <span class='fu'>geocode</span>(<span class='st'>"UCSB"</span>) <span class='kw'>%&gt;%</span> <span class='fu'>findNearestHUC12</span>(<span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>5</span>)
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -151,7 +171,11 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+
+      <li><a href="#see-also">See also</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
     <h2>Author</h2>
     

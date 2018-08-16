@@ -14,7 +14,7 @@
 #'   Subbasin \tab 8 \tab 700  \tab Imnaha River \tab 17060102 \cr
 #'   Watershed \tab 10 \tab 227 \tab Upper Imnaha River \tab 1706010201 \cr
 #'   Subwatershed \tab 12 \tab 40 \tab North Fork Imnaha River \tab 170601020101 \cr
-#' }\cr
+#' }
 #' @param AOI  A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
 #' @param level defines the HUC level of interest (default = 8)
 #' @param subbasins If TRUE, all subbasins of the supplied level will be joined to retuned list

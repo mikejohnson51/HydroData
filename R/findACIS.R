@@ -1,16 +1,42 @@
-findACIS <- function (AOI, param = NULL, ids = FALSE) {
+#' @title Find Meterologic Stations from the Applied Climate Information System
+#' @description Query station information from the applied climate information system (ACIS) API. \code{findACIS} returns a \code{SpatailPointsDataframe} of all
+#' stations within an AOI. Some stations are a part of multiple networks. As such each SpatialPoint is marked by all networks and unique station ids within each.
+#' Data comes from the \href{http://www.rcc-acis.org/index.html}{ACIS} and includes the following attributes:
+#' \itemize{
+#' \item 'uid'   : \code{character}  Unique station ID
+#' \item 'NAME'   : \code{character}  Station name
+#' \item 'state'    : \code{integer}    USA state
+#' \item 'elev'    : \code{integer}    Station Elevation (feet)
+#' \item 'staidX'   : \code{character}   Unique station id within network
+#' \item 'network_typeX'    : \code{integer}   Station network
+#' \item 'minDate'    : \code{integer}    Year of first observation
+#' \item 'maxDate'    : \code{integer}    Year of last observation
+#' }\cr
+#' @param AOI  A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
+#' @param ids  If TRUE,  a vector of unique acis station IDs is added to retuned list (default = \code{FALSE})
+#' @return a list() of minimum length 2: AOI and and acis
+#' @examples
+#' \dontrun{
+#' sta = getAOI(state = "CO", county = "El Paso") %>% findACIS()
+#' }
+#' @author Mike Johnson
+#' @export
+
+findACIS <- function (AOI, ids = FALSE) {
 
   if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 
-  load("/Users/mikejohnson/Documents/GitHub/ACISmeta.rda")
+  meta = HydroData::meta
 
-  bbox = AOI$AOI %>% bbox_st()
+  bbox = AOI$AOI %>% AOI::bbox_st()
 
   if (is.null(param)) { param <- meta$element$code[1:7] }
 
+  bad.param = param[!(param %in% meta$element$code[1:7])]
 
-  if(any(param %in% meta$element$code[1:7])) {
-
+  if(length(bad.param) >=1) {
+   cat(crayon::red(bad.param, "is not a valid parameter\n"))
+   cat(crayon::white("Use: ", paste0(meta$element$code[1:7], collapse = ", "), "\n"))
   }
 
   URL = paste0( "http://data.rcc-acis.org/StnMeta",
@@ -40,26 +66,33 @@ findACIS <- function (AOI, param = NULL, ids = FALSE) {
 
       for(j in seq_along(sids)){
         val = unlist(strsplit(as.character(sids[j]), " "))
-        dat[i, paste0("sid", j)] = val[1]
-        dat[i, paste0("sid_type", j)] = meta$stationIdType$description[meta$stationIdType$code == as.numeric(val[2])]
+        dat[i, paste0("staid", j)] = val[1]
+        dat[i, paste0("network", j)] = meta$stationIdType$description[meta$stationIdType$code == as.numeric(val[2])]
       }
 
-    dat[i, "minDate"] = as.Date(min(unlist(tmp[grepl("date", names(tmp))])), "%Y-%m-%d")
+    dat[i, "minDate"] = min(unlist(tmp[grepl("date", names(tmp))]))
     dat[i, "maxDate"] = as.Date(max(unlist(tmp[grepl("date", names(tmp))])), "%Y-%m-%d")
     }
 
-    dat = sp::SpatialPointsDataFrame(coords = cbind(as.numeric(dat$lon), as.numeric(dat$lat)), data = dat)
+    dat$lon = as.numeric(dat$lon)
+    dat$lat = as.numeric(dat$lat)
+    dat$minDate = as.Date(dat$minDate, format = "%Y-%m-%d")
+    dat$maxDate = as.Date(dat$maxDate, format = "%Y-%m-%d")
+    dat[is.na(dat)] = NULL
 
-    AOI[["acis"]] = dat
+    dat = sf::st_as_sf(x = dat, coords = c("lon", "lat"), crs = as.character(AOI$AOI@proj4string))
+    st_crs(dat) <- 4269
+
+    AOI[["acis"]] = as_Spatial(dat)
 
     report = paste(length(dat$uid), "ACIS station(s)")
 
-    AOI = return.what(AOI, type = 'acis', report, vals = if(ids){"sid1"}else{NULL})
-
-    rm(base)
+    AOI = return.what(AOI, type = 'acis', report, vals = if(ids){"uid"}else{NULL})
 
     return(AOI)
 
 }
+
+
 
 

@@ -1,0 +1,612 @@
+recdate,mapunittextkind,textcat,textsubcat,text,mukey,mutextkey
+01/26/2016 00:00:00,Miscellaneous notes,minor componants,,"Minor componants listed in El Paso County Soil Survey:
+Bresser loam
+Ascalon sandy loam 
+Truckton sandy loam
+Yoder gravelly sandy loam
+
+Bresser loam and Ascalon sandy loam were not used in this map unit.  Truckton and Yoder
+would have wider interp variations than the Bresser loam, Ascalon has secondary carbonates,
+the parent materials are alluvium from arkosic sand with very little if any carbonates.  
+
+Platner is a minor componant in the DMU, Platner is not on the El Paso County legend nor is
+it mentioned in the soil survey manual.",95368,1499053
+02/19/2016 00:00:00,Map unit description,map unit concept,,"Map Unit Concept Description:  This very deep, well drained soil formed in tertiary aged
+alluvium derived from arkose on plains and broad flat interfluves.  Elevation ranges from
+1783 meters to 2,097 meters.  The average annual precipitation ranges from 381 to 483mm,
+the average annual air temperature is 9 to 11 degrees C, and the annual frost free period 
+is 100 to 130 days.
+  Included with this soil in mapping are small areas of Truckton sandy loam, and Yoder
+  gravelly sandy loam, 1 to 8 percent
+  Permeability of this Bresser soil is moderate.  Effective rooting depth is 203cm or more.
+  Available water capacity is moderate.  Surface runoff is slow, the hazard of erosion is
+  slight to moderate, and the hazard of soil blowing is moderate.  Most area of this soil 
+  are cultivated.
+
+ 
+Component concept:
+
+The Bresser series consists of a very deep, well drained soils that formed in alluvium
+derived from arkosic deposits.  These soils are on plains and broad flat interfluves.  They have
+slopes of 0 to 20 percent.  Average annual precipitation is about 432mm and average annual
+air temperatureis about 10 degrees C.  
+  Bresser soils are similar to Ascalon and Satanta soils and are near Blakeland and Truckton
+  soils.  Ascalon and Satanta soils are calcareous in part of the solum and in the C
+  horizon.  Blakeland soils do not have a Bt horizon and are coarse textured throughout.
+  Truckton soils have a Bt horizon that is less that 18 percent clay.
+  The Bresser series classifies as a fine-loamy, mixed, superactive, mesic Aridic Argiustolls.
+  Thickness of the mollic ranges from 18 to 27cm.  Depth to the base of the argillic horizon 
+  ranges from 78 to 104cm.    Depth to the sandy textured C horizon ranges from 78 to 104cm.
+Ecological site is Sandy Foothill.  
+Bresser makes up about 85 percent of the unit.
+
+The Truckton series consists of a very deep, well drained soils formed in alluvium from 
+arkosic deposits. These soils are on plains and broad flat interfluves and terraces.  
+  Truckton soils are similar to Bresser and Bijou soils.  They are near Bresser and Blakeland
+  soils.  Bresser soils have a Bt horizon that is 18 to 35 percent clay.  Bijou soils do not
+  have a mollic epipedon.  Blakeland soils do not have a Bt horizon.
+  The Truckton series classifies as a coarse-loamy, mixed, superactive, mesic Aridic Argiustolls.  
+Ecological site is Sandy Foothill.
+Tructon makes up about 10 percent of the unit.
+
+The Yoder series consists of very deep, well drained soils that formed in noncalcareous
+alluvium derived from arkosic deposits.  These soils are on plains and broad flat interfluves.
+Yoder soils are near Bresser and Truckton soils.   Bresser and Truckton soils have a dark
+colored surface layer.  Yoder series classifies as fine-loamy over sandy/sandy-skeletal, 
+mixed, superactive, mesic Ustic Haplargids.
+    Depth to the contrasting C horizon is 26 to 61cm.  Depth to the argillic horizon is
+  11 to 21cm.  Rock fragments in the solum range from 0 to 35 percent and rock fragment 
+  in the 2C horizon range from 35 to 80 percent.
+Ecological site is Gravelly Foothill.
+Yoder makes up about 5 percent of the unit.
+
+",95368,1499054
+02/19/2016 00:00:00,Miscellaneous notes,SDJR project,DMU,"This datamapunit is being created on 2/19/2016 to be used for the map unit Bresser sandy loam, 0 to 3 percent slopes, as it occurs in two counties, one in MLRA 49 and one in 67B.  In those two counties there are currently two datamapunits correlated to this map unit.  This datamapunit was created by editing a copy of DMUID RECID 681227,  which had previously been edited and had most properties populated and passed validations.  All data elements including MAP, MAAT, and FFD are being reviewed in the context of using the datamapunit across MLRA 49 and 67B.  A major editing emphasis is being placed on the composition of minor components and their percentages.  Minor components are being reviewed and edited and will pass all validations and requirements of National Bulletin 430-5-7. MJM 
+
+",95368,1499055
+02/18/2016 00:00:00,Miscellaneous notes,SDJR Project,,This Data Map Unit covers El Paso County Colorado in MLRA 49 as well as part of Elbert County East Colorado in MLRA 67B.,95368,1499056
+01/25/2016 00:00:00,Miscellaneous notes,SDJR Project,,"This Data Map Unit covers El Paso County Colorado in MLRA 49 as well as part of Elbert County, Colorado, Eastern Part in MLRA 67B.",95370,1499057
+01/25/2016 00:00:00,Miscellaneous notes,SDJR project,DMU,"This datamapunit is being created on 12/20/2016 to be used for the map unit Bresser sandy loam, 3 to 5 percent slopes, as it occurs in two counties in MLRA 49 and 67B.  In those two counties there are currently two datamapunits correlated to this map unit.  This datamapunit was created by editing a copy of DMUID RECID 681227,  which had previously been edited and had most properties populated and passed validations.  All data elements including MAP, MAAT, and FFD are being reviewed in the context of using the datamapunit across MLRA 49 and 67B.  A major editing emphasis is being placed on the composition of minor components and their percentages.  Minor components are being reviewed and edited and will pass all validations and requirements of National Bulletin 430-5-7. MJM 
+
+",95370,1499058
+01/26/2016 00:00:00,Miscellaneous notes,minor componants,,"Minor componants listed in El Paso County Soil Survey:
+Bresser loam
+Ascalon sandy loam 
+Truckton sandy loam
+Yoder gravelly sandy loam
+
+Bresser loam and Ascalon sandy loam were not used in this map unit.  Truckton and Yoder
+would have wider interp variations than the Bresser loam, Ascalon has secondary carbonates,
+the parent materials are alluvium from arkosic sand with very little if any carbonates.  
+
+Platner is a minor componant in the DMU, Platner is not on the El Paso County legend nor is
+it mentioned in the soil survey manual.",95370,1499059
+01/25/2016 00:00:00,Map unit description,map unit concept,,"DMU ID: MLRA 49/67B - Bresser sandy loam,cool, 3-5 percent slopes 
+NAT SYM: 2tlpd
+Ecological Site: Sandy Foothill
+
+
+
+
+  
+  Map Unit Concept Description:  This very deep, well drained soil formed in tertiary aged alluvium and derived from arkose
+  on foothills and interfluves.  Elevation ranges from 1920 meters to 2,072 meters.  The average annual precipitation 
+  ranges from 330 to 483mm, the average annual air temperature is 7.8 to 10 degrees C, and the annual frost free period is 
+  125 to 140 days.
+  Included with this soil in mapping are small areas of Truckton sandy loam, and Yoder gravelly sandy loam, 1 to 8 percent
+  Permeability of this Bresser soil is moderate.  Effective rooting depth is 203cm or more.  Available water capacity is moderate.
+  Surface runoff is slow, the hazard of erosion is slight to moderate, and the hazard of soil blowing is moderate.  Most area of 
+  this soil are cultivated.
+
+ 
+Component concept:
+
+The Bresser series consists of a very deep, well drained soils that formed in alluvium derived from arkosic deposits. 
+These soils are on foothills and interfluves.  They have slopes of 0 to 20 percent.  Average annual precipitation is about 
+381mm and average annual air temperatureis about 8.3 degrees C.  
+  Bresser soils are similar to Ascalon and Satanta soils and are near Blakeland and Truckton soils.  Ascalon and Satanta
+  soils are calcareous in part of the solum and in the C horizon.  Blakeland soils do not have a Bt horizon and are coarse
+  textured throughout.  Truckton soils have a Bt horizon that is less that 18 percent clay.
+   The Bresser series classifies as a fine-loamy, mixed, superactive, mesic Aridic Argiustolls.  Thickness of the mollic
+   ranges from 18 to 41cm.  Depth to the base of the argillic horizon ranges from 78 to 104cm.    Depth to the sandy
+   textured C horizon ranges from 78 to 104cm.
+Ecological site is Sandy Foothill.  
+Bresser makes up about 85 percent of the unit.
+
+The Truckton series consists of a very deep, well drained soils formed in alluvium from arkosic deposits. These soils
+are on plains and broad flat interfluves and terraces.  
+  Truckton soils are similar to Bresser and Bijou soils.  They are near Bresser and Blakeland soils.  Bresser soils have 
+  a Bt horizon that is 18 to 35 percent clay.  Bijou soils do not have a mollic epipedon.  Blakeland soils do not have
+  a Bt horizon.
+  The Truckton series classifies as a coarse-loamy, mixed, superactive, mesic Aridic Argiustolls.  
+Ecological site is Sandy Foothill.
+Tructon makes up about 10 percent of the unit.
+
+The Yoder series consists of very deep, well drained soils that formed in noncalcareous alluvium derived from arkosic deposits.
+These soils are on plains and broad flat interfluves.
+Yoder soils are near Bresser and Truckton soils.   Bresser and Truckton soils have a dark colored surface layer.  Yoder series
+classifies as fine-loamy over sandy/sandy-skeletal, mixed, superactive, mesic Ustic Haplargids.
+    Depth to the contrasting C horizon is 26 to 61cm.  Depth to the argillic horizon is
+  11 to 21cm.  Rock fragments in the solum range from 0 to 35 percent and rock fragment in the 2C horizon range from 35 to 80 percent.
+Ecological site is Gravelly Foothill.
+Yoder makes up about 5 percent of the unit.
+
+
+ 
+
+",95370,1499060
+02/29/2016 00:00:00,Map unit description,map unit concept,,"Map Unit Concept Description:  This very deep, well drained soil formed in
+tertiary aged alluvium and or residuum derived from arkose on hills, interfluves
+and terraces.  Elevation ranges from 1676 meters to 2,121 meters.  The average
+annual precipitation ranges from 381 to 483mm, the average annual air temperature
+is 9 to 11 degrees C, and the annual frost free period is 100 to 130 days.
+  Included with this soil in mapping are small areas of Truckton sandy loam,
+  and Ascalon sandy loam.
+  Permeability of this Bresser soil is moderate.  Effective rooting depth is
+  203cm or more.  Available water capacity is moderate.  Surface runoff is
+  medium, the hazard of erosion is slight to moderate, and the hazard of soil
+  blowing is moderate.  ",95371,1499061
+02/29/2016 00:00:00,Miscellaneous notes,minor components,,"Reasons for minor componants:
+
+Minor componants per survey area:
+CO622: Bresser sandy loam, 1-3% slopes, Truckton, Aquic Haplustolls, loamy alluvial land
+CO623: Bresser sandy loam, 0-4% slopes, Ascalon, Truckton
+CO625: Pleasant, other soils
+
+Minor componants for this DMU and MU: Ascalon and Truckton.
+
+Miscelanious soils were not used.  Putting lines on a map exactly where they need to go is very difficult,
+slope overlaps are a given.  The Pleasant soil from El Paso county is not on the CO625 legend, it was not used.
+",95371,1499062
+03/02/2016 00:00:00,Miscellaneous notes,SDJR project,DMU,"This datamapunit is being created on 2/29/2016 to be used for the map unit Bresser sandy loam, cool, 3 to 5 percent slopes, as it occurs in three counties in MLRA 49.  In those three counties there are currently three datamapunits correlated to this map unit.  This datamapunit was created by editing a copy of DMUID RECID 705183,  which had previously been edited and had most properties populated and passed validations.  All data elements including MAP, MAAT, and FFD are being reviewed in the context of using the datamapunit across MLRA 49 and 67B.  A major editing emphasis is being placed on the composition of minor components and their percentages.  Minor components are being reviewed and edited and will pass all validations and requirements of National Bulletin 430-5-7. MJM 
+
+",95371,1499063
+03/06/2015 00:00:00,Miscellaneous notes,SDJR project,DMU,"This datamapunit is being created on 3/6/2015 to be used for the map unit Ascalon sandy loam, 3 to 9 percent slopes, as it occurs in two counties in MLRA 67B and 72.  In those two counties there are currently two datamapunits correlated to this map unit.  This datamapunit was created by editing a copy of DMUID MLRA 67B - Ascalon sandy loam, 0 to 3 percent slopes, which had previously been edited and had most properties populated and passed validations.  All data elements including MAP, MAAT, and FFD are being reviewed in the context of using the datamapunit across MLRA 67B.  A major editing emphasis is being placed on the composition of minor components and their percentages.  Minor components are being reviewed and edited and will pass all validations and requirements of National Bulletin 430-5-7. MJM ",95389,1499064
+03/06/2015 00:00:00,Correlation notes,minor components,,"Justification for inclusion choice.
+
+
+Between the two map units there were five minor components.
+Washington County: Julesburg and Manter
+El Paso County:  Olney, Fort Collins and Vona
+
+*Julesburg is a coarse-loamy Argiustoll and has no secondary carbonates, this soil is more prevalent in MLRA 72.
+*Manter is also a coarse-loamy Argiustoll, it has secondary carbonates and is also more prevalent in MLRA 72.
+
+Olney is an Aridisol, soils that are coarse-loamy and finer in MLRA 67B are now Alfisols, Olnest is the Alfisol version, both of these soils
+are found througout MLRA 67B and 72, Olnest was chosen as a minor component to represent those areas of fine-loamy soils lacking a mollic epipedon.
+*Fort Collins is a fine-loamy Alfisol, was not used, Olnest/Olney had a wider distribution.
+*Vona is a coarse-loamy Alfisol, it is found throughout MLRA 67B and 72.  This soil will be used to represent those areas with more sand and less clay.
+
+
+
+",95389,1499065
+03/06/2015 00:00:00,Map unit description,Map unit concept,,"DMU ID:  MLRA 67B - Ascalon sandy loam, 3 to 9 percent slopes
+NAT SYM:  2tlny
+Ecological site:  Sandy Plains (RO67BY024CO)
+Soil depth:  very deep
+Drainage:  well
+
+Map unit concept:
+
+ The Ascalon sandy loam, 3 to 9 percent slopes map unit is mapped in two counties in MLRA 67B.
+They are Washington and El Paso Counties, Colorado.
+It is mapped on back slopes of interfluves on dissected plains.  This unit is in the  13-17 inch (330 to 430mm)
+precipitation zone.  Elevation ranges from 1179-1816 meters, air temperature ranges from 10 to
+12 degrees C, and frost free days range from 135 to 160 days.
+
+Included with this unit are the Olnest and Vona soils.  Olnest is also fine-loamy in the control section, is very
+deep and well drained but lacks the thick dark colored surface horizon found with the Ascalon soil, the Olnest soil
+makes up about 10 percent of this unit.  The Vona soil is well drained and very deep, has more sand and less clay in
+the control section and also lacks a thick dark colored surface horizon, the Vona soil makes up about 5 percent
+of the unit. 
+
+
+
+",95389,1499066
+06/28/2017 00:00:00,Map unit description,map unit concept,,"The Truckton sandy loam, 3 to 9 percent slopes map unit (NATSYM: 2x0j2; DMUID: 783732) is located in east-central Colorado in MLRA 49. It is located on hills or interfluves in the uplifted piedmont of the Colorado Piedmont. It is in the 356 to 483 millimeter (14 to 19 inch) precipitation zone, with the majority of the map unit in the 406 to 457 millimeter (16 to 18 inch) precipitation zone. The mean annual air temperature ranges from 9 to 11 degrees Centigrade (48 to 52 degrees Fahrenheit) and the frost free days range from 85 to 155 days. This map unit is associated with map units of Blakeland sandy loam (1-15% slopes); Blakeland loamy sand (0-9% slopes); Blakeland-Truckton association; Bresser sandy loam (3-5% and 5-9% slopes); Bresser-Truckton sandy loams (5-25% and 8-25% slopes); and Truckton sandy loam (0-3% slopes). Approximately 90 percent of this map unit is in native rangeland and 10 percent is in production agriculture, with the majority being dryland. 
+
+Component concept: The Truckton soil is a very deep, well drained soil that formed from re-worked alluvium derived from arkosic material. . These soils are found on backslopes of hills and sideslopes of interfluves. They have a coarse-loamy particle size control section with moderately-developed subsoil horizons. They are noncalcareous. This component is in the Sandy Foothill (R049BY210CO) ecological site in MLRA 49. When not cropped, the existing vegetation includes prairie sandreed, needle and thread, sideoats grama, switchgrass, blue grama, and western wheatgrass. This soil classifies as a coarse-loamy, mixed, superactive, mesic Aridic Argiustolls. 
+
+Included in this map unit are the Blakeland and Bresser soils. Blakeland is a very deep, somewhat excessively drained soil that formed from eolian and alluvial deposits derived from arkosic material. These soils are found on backslopes and shoulders of hills or sideslopes and crests of interfluves. They have a sandy particle size control section with very little soil development. These soils are noncalcareous throughout. These soils classify as sandy, mixed, mesic Torriorthentic Haplustolls. Bresser is a very deep, well drained soil that formed from tertiary aged alluvium derived from arkosic material. These soils are found on toeslopes or footslopes of hills or baseslopes of interfluves. They have a fine-loamy particle size control section with well-developed subsoil horizons. These soils are noncalcareous in the upper part of the profile. These soils classify as fine-loamy, mixed, superactive, mesic Aridic Argiustolls. ",95463,1499099
+06/28/2017 00:00:00,Miscellaneous notes,inclusions,,"Inclusions in this map unit were chosen based on data from the original soil surveys and the existing DMU's. The soil surveys and DMU's had listed inclusions of Blakeland, Bresser, Moderately Deep Soils, Truckton, Terry, Haplustolls, Other Soils, Pleasant, Urban Land, and Haplaquolls. The most common inclusions were Blakeland and Bresser. Based on some of these soils being similar soils and minor mentions in the existing data, it was decided to use Blakeland and Bresser as the minor components in the new MLRA MU and DMU. Percentages were based on existing data in the soil survey manuscripts and NASIS.
+
+
+
+Truckton (major component)
+(coarse-loamy, mixed, superactive, mesic Aridic Argiustolls)
+
+The Truckton soil is a very deep, well drained soil that formed from re-worked alluvium derived from arkosic material. . These soils are found on backslopes of hills and sideslopes of interfluves. They have a coarse-loamy particle size control section with moderately-developed subsoil horizons. They are noncalcareous. 
+
+
+Blakeland (minor component)
+(sandy, mixed, mesic Torriorthentic Haplustolls)
+
+Blakeland is a very deep, somewhat excessively drained soil that formed from eolian and alluvial deposits derived from arkosic material. These soils are found on backslopes and shoulders of hills or sideslopes and crests of interfluves. They have a sandy particle size control section with very little soil development. These soils are noncalcareous throughout. 
+
+
+Bresser (minor component)
+(fine-loamy, mixed, superactive, mesic Aridic Argiustolls)
+
+Bresser is a very deep, well drained soil that formed from tertiary aged alluvium derived from arkosic material. These soils are found on toeslopes or footslopes of hills or baseslopes of interfluves. They have a fine-loamy particle size control section with well-developed subsoil horizons. These soils are noncalcareous in the upper part of the profile. ",95463,1499100
+06/28/2017 00:00:00,Miscellaneous notes,SDJR project DMU,,"This data mapunit is being created to be used for the map units listed below. These map units occur in 4 counties in MLRA 49. In those counties there are 4 data mapunits correlated to these 4 map units. This is a new data mapunit that will be populated according to NSSH standards and in the context of using the data mapunit across county boundaries within MLRA 67B. Major and minor components will be fully populated according to NSSH standards.
+
+Truckton component was copied from MLRA map unit Bresser sandy loam, cool, 0 to 3 percent slopes (DMUID: 705182; SSAID: 5-FTM).
+Blakeland component was copied from non-MLRA map unit Blakeland loamy sand, 1 to 9 percent slopes (DMUID: 68150; SSAID: CO625).
+Bresser component was copied from MLRA map unit Bresser sandy loam, cool, 0 to 3 percent slopes (DMUID: 705182; SSAID: 5-FTM).
+
+
+Map Unit Name											MUSYM	Natl. SYM		SSAID	County
+
+Truckton sandy loam, 3 to 8 percent slopes				TrD		jr0j			CO622	Castle Rock Area, Colorado
+Truckton sandy loam, 4 to 8 percent slopes				41		jnkz			CO623	Elbert County, Colorado , Western Part
+Truckton sandy loam, 3 to 9 percent slopes				97		36bg			CO625	El Paso County Area, Colorado
+Truckton sandy loam, 3 to 9 percent slopes				159		jpmf			CO641	Golden Area, Colorado, Parts of Denver, Douglas, Jefferson, and Park Counties
+
+",95463,1499101
+07/29/1999 00:00:00,Correlation notes,,,For SSURGO certification the symbol is changed from W to 111 so all symbols will be numeric.  7/29/99  sag,95466,1499102
+05/12/2011 00:00:00,Miscellaneous notes,,,This area is contaminated by past mining operations and manipulated by earth moving equipment to the point natural landforms and soil cannot be recognized. Soil materials are extremely erosive and soil properties are extremely variable and not predictable so an on-site investigation is needed for all uses.,2520932,1499104
+07/20/2011 00:00:00,Miscellaneous notes,soil,,This area is contaminated by past mining operations and manipulated by earth moving equipment to the point natural landforms and soil cannot be recognized. Soil properties are extremely variable and not predictable so an on-site investigation is needed for all uses.,2520932,1499105
+02/02/2012 00:00:00,Map unit description,minor components,,"Minor components in the Fort loam, 1 to 5 percent slopes, cool map unit consists of Wilid and Oterodry soils. Wilid soils are on interfluves and average less than 15 percent fine sand and coarser sand. Oterodry soils are on hills and ridges and average less than 18 percent clay and average greater than 45 percent fine sand and coarser. Inclusions of Baca were described in Huefano County. Inclusions of Kimera and Chicosa occur in Las Animas County. Inclusions of Olney were described in El Paso County.",2738799,1499147
+03/01/2012 00:00:00,Map unit description,map unit concept,,"Soils in this map unit formed in eolian deposits modified by local alluvium.  This map unit is found in northeastern Las Animas County, eastern Huerfano County, northern Pueblo County, and southern El Paso County in the higher elevations of MLRA 69B. Fort soils are very deep well drained and formed on hills and interfluves of low to moderate relief. The surface is typically loam. The argillic horizon is clay loam and is leached of carbonates in the upper part of the horizon. The calcic horizon is usually below the argillic but may be included within the Btk horizon. Included in this map unit are Oterodry and Wilid soils. Oterodry soils lack argillic horizons and are on the head slopes (shoulders) of hills and rigdes. Wilid soils that formed in deep loess and fine eolian deposits on interfluves. Additional inclusions in the original published soil surveys are Baca in Huerfano County, Kimera and Chicosa soils in Las Animas County, and Olney, Keith and Bresser in El Paso County. Chicosa, Baca, Kimera and Olney soils are not inclusions in this map unit but are presently correlated within these soil survey areas in other map units. Olney soils are similiar to Fort and are included as similar soils. Keith and Bresser soils are presently not correlated in MLRA 69B.
+
+This map unit is a result of field investigation in all three counties and will provide continuity across survey boundaries that previously did not match.",2738799,1499148
+03/05/2012 00:00:00,Miscellaneous notes,location,,"National map unit 2rgqs representing Fort loam, 1 to 5 percent slopes, cool.
+
+Fort loam, 1 to 5 percent slopes should be added to Huerfano County replacing correlated legend map units 17 and 18 in MLRA LRU 69B. 
+The new LMU symbol FtC will be used in the legend map unit. 
+LMU 17 and 18 will remain in MLRA LRU 69C. 
+
+Las Anims County: will use the existing legend map unit symbol (FcC) for 2rgqs.
+
+El Paso County: will use new legend map unit symbol 118 for 2rgqs. Existing map units 30 and 31 will remain in El Paso County in MLRA 67B.
+
+Pueblo County: will use new legend map unit symbol FrB for that portion of of Fort that is in LRU 69B.
+
+",2738799,1499149
+07/30/2012 00:00:00,Correlation notes,DMU description,,"This DMU is designed to update and replace 628FcC in Las Animas County, 30 and 31 in El Paso County and replace LMU 17 and 18 in Huerfano County that are is in MLRA LRU 69B. Field documentation in Huerfano and Las Animas Counties shows the presence of Fort loam and laboratory tests indicates the presence of a calcic horizon below the Bt horizon. This new DMU updates the correlated DMU 628FcC to present standards. It will replace the 69B portion of 62586 (Stoneham) in El Paso County. It will replace the 69B part of 627017 and 627018 in Huefano County with one new map unit MLRA 69 Fort loam, 1 to 5 percent slopes, cool. The type location is in Huerfano County. ",2738799,1499150
+03/02/2012 00:00:00,Miscellaneous notes,typical pedon,,"The pedon used for the Fort loam, 1 to 5 percent slopes, cool came from a representative profile in Huerfano County.",2738799,1499151
+03/07/2012 00:00:00,Miscellaneous notes,Interpretations,,"Interpretation differences between the new MLRA 69 Fort loam, 1-5% DMU and 628FcC is minimal. Only 12 interpretations have significant differences and these are due to: 1. correcting the original Ksat values, 2. Updating HSG to present standards, 3. updating LEP with the calculator, and 4. changing the type location to a profile that has a Sandy Loam bottom layer.
+
+Interpretation differences between MLRA 69 Fort loam, 1-5% slopes and 627017 & 627018 are due to 1. Change in slope range, 2, updating HSG values, 3. updating LL and PI values, 4. updating frost action, 5. changing the type location to a profile that has a sandy loam bottom layer.
+
+El Paso County: Only 8 interpretations changed for map units 30 and 31 in El Paso County. For map unit 30, the update of frost action, CTSG, and ksat affected 3 interpretations. Calculations of LL, PI, LEP, and AASTHO group affected 3 additional interpretations. The climate range (high ppt) was lowered to reflect MLRA 69B affecting the NCCPI rating.
+	Map unit 30 was affected more by the lower slope range, 3-9 to 1-5. Calculations of LL, PI, LEP and AASHTO group affected same interpretations as described in map unit 30.",2738799,1499152
+05/30/2013 00:00:00,Correlation notes,DMU description,,"This DMU is designed to update and replace 628FcD in Las Animas County and 86 in El Paso County in MLRA LRU 69B. This new DMU updates the correlated DMU 628FcD to present standards. It will replace the 69B part of 625086 in El Paso County with one new map unit MLRA 69 Fort sandy loam, 1 to 8 percent slopes, cool that is in MLRA LRU 69B. The type location is in Las Animas County. ",2738801,1499159
+05/30/2013 00:00:00,Miscellaneous notes,typical pedon,,The pedon used for the Fort DMU of MLRA LRU 69B came from the representative profile in Las Animas County.,2738801,1499160
+06/07/2013 00:00:00,Miscellaneous notes,Interpretations,,"Interpretation differences between historical map units and the new DMU MLRA Fort sandy loam, 1 to 8 percent slopes are due to updates in the data using calculations on a number of required data.
+
+Las Animas County 628FcD: only 3 interpretations changed due to calulating LEP, AASHTO group, changing EC and SAR from 0 to 0.1, and populating ESP and pH chloride.
+
+El Paso County 625086: updating LL, PI, AASHTO group, LEP using calculations affected 12 interpretations. Additional changes occured by populating ESP, pH chloride, and changing EC from 0 to 0.1. Extending the profile from 152 cm to 200 cm affected two additional interpretations.  Lowering the Rv slope within the existing slope range affected 2 water management interpretations.",2738801,1499161
+06/04/2013 00:00:00,Map unit description,map unit concept,,"Soils in this map unit formed in eolian deposits modified by local alluvium.  This map unit is found in northeastern Las Animas County and southern El Paso County in the higher elevations of MLRA 69B. Fort soils are very deep well drained and formed on hills and interfluves of low to moderate relief. The surface is typically sandy loam and the argillic horizon is typically clay loam or sandy clay loam and is leached of carbonates in the upper part of the argillic horizon. The calcic horizon is usually below the argillic but may be included within the Btk horizon. Included in this map unit are Kimera, Vonid, and Wilid soils. Kimera soils lack argillic horizons and are on the shoulders of hills and rigdes. Vonid soils formed in thick eolian deposits on hills and ridges and have an argillic horizon that is typically sandy loam.  Wilid soils formed in deeper loess and fine eolian deposits on interfluves. Additional inclusions in the original published soil surveys are Keith in El Paso County and Chicosa in Las Animas County. Keith soils are presently not correlated in MLRA 69B. Chicosa soils have only been correlated in Las Animas County.
+
+",2738801,1499162
+06/04/2013 00:00:00,Map unit description,minor components,,"Minor components in the Fort sandy loam, 1 to 8 percent slopes, cool map unit consists of Kimera, Vonid, and Wilid soils. Kimera soils lack argillic horizons and are on head slopes (shoulders) of hills and ridges. Vonid soils are on hills and ridges and average less than 18 percent clay. Wilid soils are on interfluves and average less than 15 percent fine and coarser sand. Other inclusions of Keith occur in El Paso County. ",2738801,1499163
+06/04/2013 00:00:00,Miscellaneous notes,location,,"National map unit 2t50n representing Fort sandy loam, 1 to 8 percent slopes, cool.
+
+Las Anims County: will use the existing legend map unit symbol (FcD).
+
+El Paso County: will use new legend map unit symbol 119 for 2t50n. Existing map unit 86 will remain in El Paso County in MLRA 67B. This replaces the Stoneham series with Fort.
+
+",2738801,1499164
+06/28/2013 00:00:00,Map unit description,map unit concept,,"DMU: MLRA 69B Manzanola SICL 0-2 saline (633211)
+MU: Manzanola silty clay loam, 0 to 2 percent slopes, saline (new map unit symbol is MzA)
+National map unit symbol: 2rgrg
+
+The Manzanola series is ustic aridic  and in MLRA 69. (Manzanst was established in MLRA 67 to separate the aridic ustic soils from the ustic aridic soils in MLRA 69.) This map unit is contained entirely in MLRA 69B in the ustic aridic moisture zone with 305 to 356 mm of precipitation annually and is class 4c rangeland. Elevations range from 1189 to 1829 meters. MAAT is 9 to 12 degrees C. Frost Free Days are 130 to 170. Soils in this map unit formed in old alluvium. This map unit is mapped in Las Animas, Huerfano, El Paso, Kiowa, and Pueblo counties. These soils are  typically on interfluves and in drainageways, but are also found on terraces and fan remnants. This map unit is a saline map unit in MLRA 69B, it has higher EC and SAR than the non-saline map units. Calcareous material is commonly at the surface, but ranges from 0 to 10 inches and is not leached in the argillic horizon. Map units with similar properties and slopes are combined to correct inconsistencies.",2766575,1499165
+06/28/2013 00:00:00,Miscellaneous notes,location,,"DMU: MLRA 69B Manzanola SICL 0-2 saline
+MU: Manzanola silty clay loam, saline, 0 to 2 percent slopes (new map unit symbol is MzA)
+National map unit symbol: 2rgrg
+The new national map unit uses a profile from Las Animas County.
+
+Las Animas County
+For old map unit MzA in 69B use MzA symbol (use MzA dmu and mu)
+
+Huerfano County
+For old map unit 44 in 69B use old symbol 44 (use new MzA dmu and mu)
+
+
+El Paso County
+For old map unit 51 and 52  in 69B use new symbol MzA (use new MzA dmu and mu)
+
+Pueblo County
+For old map unit MpA in 69B use new symbol MzA  (use new MzA dmu and mu)
+
+Kiowa County
+For old map unit 24 in 69B use new symbol 24  (use new MzA dmu and mu)
+
+
+",2766575,1499166
+06/28/2013 00:00:00,Map unit description,minor components,,"DMU: MLRA 69B Manzanola SICL 0-2 saline (633211)
+MU: Manzanola silty clay loam, 0 to 2 percent slopes, saline (new map unit symbol is MzA)
+National map unit symbol: 2rgrg
+
+Minor components consist of Haversid and Aguilar soils. Haversid soils are fine-loamy and are on terraces and drainageways, and are mostly formed in more recent alluvium. Aguilar soils are natric and have vertic properties and are found on fan remnants in old alluvium.
+
+",2766575,1499167
+06/28/2013 00:00:00,Miscellaneous notes,Typical Pedon,,This data map unit was derived from pedon 82CO628010 in Las Animas County.,2766575,1499168
+06/28/2013 00:00:00,Miscellaneous notes,Interpretations,,"DMU: MLRA 69B Manzanola SICL 0-2 saline (633211)
+MU: Manzanola silty clay loam, 0 to 2 percent slopes, saline (new map unit symbol is MzA)
+National map unit symbol: 2rgrg
+
+
+Interpretation differences in WMS, ENG, URB/REC are due to assigning higher SAR and EC to the typical pedon for the saline map unit concept. Concept also has slightly lower Na than 69A saline unit. LEP and unified new calculation differences in ENG interps.  Ksat guide updates causes some differences in WMS. Typical pedon used has less clay, less sand, and lower CCE made some differences in ENG, MIL interpretations. 
+
+",2766575,1499169
+06/28/2013 00:00:00,Miscellaneous notes,Location,,"DMU: MLRA 69B Manzanola SICL 0-2 saline
+MU: Manzanola silty clay loam, 0 to 2 percent slopes, saline (new map unit symbol is MzA)
+National map unit symbol: 2rgrg
+
+
+Las Animas County
+For old map unit MzA in 69B use MzA symbol (use MzA dmu and mu)
+
+Huerfano County
+For old map unit 44 in 69B use old symbol 44 (use new MzA dmu and mu)
+
+
+El Paso County
+For old map unit 51 and 52  in 69B use new symbol MzA (use new MzA dmu and mu)
+
+Pueblo County
+For old map unit MpA in 69B use new symbol MzA  (use new MzA dmu and mu)
+
+Kiowa County
+For old map unit 24 in 69B use old symbol 24  (use new MzA dmu and mu)
+
+",2766575,1499170
+06/28/2013 00:00:00,Miscellaneous notes,Typical Pedon,,This data map unit was derived from pedon 82CO628011 in Las Animas County.,2766576,1499171
+06/28/2013 00:00:00,Miscellaneous notes,Interpretations,,"DMU: MLRA 69B Manzanola SICL 3-9 (633209)
+MU: Manzanola silty clay loam, 3 to 9 percent slopes (new map unit symbol is MzC)
+National map unit symbol: 2rgrk
+
+
+Interpretation differences in WMS are due to lower SAR and EC amounts, higher SAR and EC are assigned to the typical pedon for the saline map unit concept. Differences in thickest layer, some differences in ENG interpretations. Less sand in the thickest layer in the new type, some ENG differences. Less clay in the lower part in the new type, some WMS differences.
+
+",2766576,1499172
+06/28/2013 00:00:00,Miscellaneous notes,Location,,"DMU: MLRA 69B Manzanola SICL 3-9 (633209)
+MU: Manzanola silty clay loam, 3 to 9 percent slopes (new map unit symbol is MzC)
+National map unit symbol: 2rgrk
+
+
+Pueblo County
+For old map unit MoD in 69B use new MzC symbol (use MzC dmu and mu)
+
+El Paso County
+For old map unit 53 in 69B use new symbol MzC (use new MzC dmu and mu)
+
+
+
+
+",2766576,1499173
+06/28/2013 00:00:00,Map unit description,map unit concept,,"DMU: MLRA 69B Manzanola SICL 3-9 (633209)
+MU: Manzanola silty clay loam, 3 to 9 percent slopes (new map unit symbol is MzC)
+National map unit symbol: 2rgrk
+
+The Manzanola series is ustic aridic  and in MLRA 69. (Manzanst was established in MLRA 67 to separate the aridic ustic soils from the ustic aridic soils in MLRA 69.) This map unit is contained entirely in MLRA 69B in the ustic aridic moisture zone with 305 to 356 mm of precipitation annually and is class 6e (because of slope/erosion) rangeland. Elevations range from 1128 to 1890 meters. MAAT is 9 to 12 degrees C. Frost Free Days are 130 to 170. Soils in this map unit formed in old alluvium. This map unit is mapped in Pueblo and El Paso counties. These soils are  typically on interfluves and in drainageways, but are also found on terraces and fan remnants. This map unit is in MLRA 69B, it has lower EC and SAR than the saline map units. Calcareous material is commonly at the surface, but ranges from 0 to 10 inches and is not leached in the argillic horizon. Map units with similar properties and slopes are combined to correct inconsistencies.",2766576,1499174
+06/28/2013 00:00:00,Miscellaneous notes,location,,"DMU: MLRA 69B Manzanola SICL 3-9 (633209)
+MU: Manzanola silty clay loam, 3 to 9 percent slopes (new map unit symbol is MzC)
+National map unit symbol: 2rgrk
+
+
+El Paso County
+For old map unit 53 in 69B use new MzC symbol (use MzC dmu and mu)
+
+Pueblo County
+For old map unit MoD in 69B use new symbol MzC (use new MzC dmu and mu)
+
+Huerfano County
+For the old map unit 45 in 69B use new wymbol MzC (use new MzC dmu and mu)
+
+
+
+
+
+
+
+",2766576,1499175
+06/28/2013 00:00:00,Map unit description,minor components,,"DMU: MLRA 69B Manzanola SICL 3-9  (633209)
+MU: Manzanola silty clay loam, 3 to 9 percent slopes (new map unit symbol is MzC)
+National map unit symbol: 2rgrk
+
+Minor components consist of Wilid, Fort, and Razor soils. Fort soils are fine-loamy. Manvel and Wilid soils are fine-silty and have a calcic.  Wilid and Fort soils are on interfluves. Soils in this area are formed in old alluvium that is modified by windblown material or local alluvium in some places. Razor soils are fine-family and moderately deep to shale. Razor soils are on hills and pediments.
+
+",2766576,1499176
+03/24/2009 00:00:00,Edit notes,Component,NA,"In preparation for SSURGO certification, some assumptions had to be made to allow a fully populated and certifiable dataset:
+
+Minor components were populated from the published report.  Component and horizon data for minor components were copied from a corresponding major component.
+
+All horizon fragments and surface fragments were assumed to be indurated if hardness was unknown.
+
+All paralithic layers were assumed to be weakly cemented if hardness was unknown.
+
+Generalized horizon layers (H1, H2, etc.) were subdivided into horizons based on the series description in the publication.
+
+The landform for many map units was published as ""mountainsides and ridges""; these were populated as simply ""mountain slopes"".  Some map units were published as ""hills and ridges"";  these were judged to have too much relief for hills and were populated as ""mountain slopes"".",497325,1505718
+03/24/2009 00:00:00,Edit notes,Component,NA,"In preparation for SSURGO certification, some assumptions had to be made to allow a fully populated and certifiable dataset:
+
+Minor components were populated from the published report.  Component and horizon data for minor components were copied from a corresponding major component.
+
+All horizon fragments and surface fragments were assumed to be indurated if hardness was unknown.
+
+All paralithic layers were assumed to be weakly cemented if hardness was unknown.
+
+Generalized horizon layers (H1, H2, etc.) were subdivided into horizons based on the series description in the publication.
+
+The landform for many map units was published as ""mountainsides and ridges""; these were populated as simply ""mountain slopes"".  Some map units were published as ""hills and ridges"";  these were judged to have too much relief for hills and were populated as ""mountain slopes"".",497327,1505720
+03/24/2009 00:00:00,Edit notes,Component,NA,"In preparation for SSURGO certification, some assumptions had to be made to allow a fully populated and certifiable dataset:
+
+Minor components were populated from the published report.  Component and horizon data for minor components were copied from a corresponding major component.
+
+All horizon fragments and surface fragments were assumed to be indurated if hardness was unknown.
+
+All paralithic layers were assumed to be weakly cemented if hardness was unknown.
+
+Generalized horizon layers (H1, H2, etc.) were subdivided into horizons based on the series description in the publication.
+
+The landform for many map units was published as ""mountainsides and ridges""; these were populated as simply ""mountain slopes"".  Some map units were published as ""hills and ridges"";  these were judged to have too much relief for hills and were populated as ""mountain slopes"".",497333,1505708
+03/24/2009 00:00:00,Edit notes,Component,NA,"In preparation for SSURGO certification, some assumptions had to be made to allow a fully populated and certifiable dataset:
+
+Minor components were populated from the published report.  Component and horizon data for minor components were copied from a corresponding major component.
+
+All horizon fragments and surface fragments were assumed to be indurated if hardness was unknown.
+
+All paralithic layers were assumed to be weakly cemented if hardness was unknown.
+
+Generalized horizon layers (H1, H2, etc.) were subdivided into horizons based on the series description in the publication.
+
+The landform for many map units was published as ""mountainsides and ridges""; these were populated as simply ""mountain slopes"".  Some map units were published as ""hills and ridges"";  these were judged to have too much relief for hills and were populated as ""mountain slopes"".",497335,1505727
+03/24/2009 00:00:00,Edit notes,Component,NA,"In preparation for SSURGO certification, some assumptions had to be made to allow a fully populated and certifiable dataset:
+
+Minor components were populated from the published report.  Component and horizon data for minor components were copied from a corresponding major component.
+
+All horizon fragments and surface fragments were assumed to be indurated if hardness was unknown.
+
+All paralithic layers were assumed to be weakly cemented if hardness was unknown.
+
+Generalized horizon layers (H1, H2, etc.) were subdivided into horizons based on the series description in the publication.
+
+The landform for many map units was published as ""mountainsides and ridges""; these were populated as simply ""mountain slopes"".  Some map units were published as ""hills and ridges"";  these were judged to have too much relief for hills and were populated as ""mountain slopes"".",497336,1505728
+03/24/2009 00:00:00,Edit notes,Component,NA,"In preparation for SSURGO certification, some assumptions had to be made to allow a fully populated and certifiable dataset:
+
+Minor components were populated from the published report.  Component and horizon data for minor components were copied from a corresponding major component.
+
+All horizon fragments and surface fragments were assumed to be indurated if hardness was unknown.
+
+All paralithic layers were assumed to be weakly cemented if hardness was unknown.
+
+Generalized horizon layers (H1, H2, etc.) were subdivided into horizons based on the series description in the publication.
+
+The landform for many map units was published as ""mountainsides and ridges""; these were populated as simply ""mountain slopes"".  Some map units were published as ""hills and ridges"";  these were judged to have too much relief for hills and were populated as ""mountain slopes"".",497337,1505729
+03/24/2009 00:00:00,Edit notes,Component,NA,"In preparation for SSURGO certification, some assumptions had to be made to allow a fully populated and certifiable dataset:
+
+Minor components were populated from the published report.  Component and horizon data for minor components were copied from a corresponding major component.
+
+All horizon fragments and surface fragments were assumed to be indurated if hardness was unknown.
+
+All paralithic layers were assumed to be weakly cemented if hardness was unknown.
+
+Generalized horizon layers (H1, H2, etc.) were subdivided into horizons based on the series description in the publication.
+
+The landform for many map units was published as ""mountainsides and ridges""; these were populated as simply ""mountain slopes"".  Some map units were published as ""hills and ridges"";  these were judged to have too much relief for hills and were populated as ""mountain slopes"".",497340,1505732
+03/24/2009 00:00:00,Edit notes,Component,NA,"In preparation for SSURGO certification, some assumptions had to be made to allow a fully populated and certifiable dataset:
+
+Minor components were populated from the published report.  Component and horizon data for minor components were copied from a corresponding major component.
+
+All horizon fragments and surface fragments were assumed to be indurated if hardness was unknown.
+
+All paralithic layers were assumed to be weakly cemented if hardness was unknown.
+
+Generalized horizon layers (H1, H2, etc.) were subdivided into horizons based on the series description in the publication.
+
+The landform for many map units was published as ""mountainsides and ridges""; these were populated as simply ""mountain slopes"".  Some map units were published as ""hills and ridges"";  these were judged to have too much relief for hills and were populated as ""mountain slopes"".",497343,1505735
+03/24/2009 00:00:00,Edit notes,Component,NA,"In preparation for SSURGO certification, some assumptions had to be made to allow a fully populated and certifiable dataset:
+
+Minor components were populated from the published report.  Component and horizon data for minor components were copied from a corresponding major component.
+
+All horizon fragments and surface fragments were assumed to be indurated if hardness was unknown.
+
+All paralithic layers were assumed to be weakly cemented if hardness was unknown.
+
+Generalized horizon layers (H1, H2, etc.) were subdivided into horizons based on the series description in the publication.
+
+The landform for many map units was published as ""mountainsides and ridges""; these were populated as simply ""mountain slopes"".  Some map units were published as ""hills and ridges"";  these were judged to have too much relief for hills and were populated as ""mountain slopes"".",497346,1505737
+03/24/2009 00:00:00,Edit notes,Component,NA,"In preparation for SSURGO certification, some assumptions had to be made to allow a fully populated and certifiable dataset:
+
+Minor components were populated from the published report.  Component and horizon data for minor components were copied from a corresponding major component.
+
+All horizon fragments and surface fragments were assumed to be indurated if hardness was unknown.
+
+All paralithic layers were assumed to be weakly cemented if hardness was unknown.
+
+Generalized horizon layers (H1, H2, etc.) were subdivided into horizons based on the series description in the publication.
+
+The landform for many map units was published as ""mountainsides and ridges""; these were populated as simply ""mountain slopes"".  Some map units were published as ""hills and ridges"";  these were judged to have too much relief for hills and were populated as ""mountain slopes"".",497349,1505740
+03/24/2009 00:00:00,Edit notes,Component,NA,"In preparation for SSURGO certification, some assumptions had to be made to allow a fully populated and certifiable dataset:
+
+Minor components were populated from the published report.  Component and horizon data for minor components were copied from a corresponding major component.
+
+All horizon fragments and surface fragments were assumed to be indurated if hardness was unknown.
+
+All paralithic layers were assumed to be weakly cemented if hardness was unknown.
+
+Generalized horizon layers (H1, H2, etc.) were subdivided into horizons based on the series description in the publication.
+
+The landform for many map units was published as ""mountainsides and ridges""; these were populated as simply ""mountain slopes"".  Some map units were published as ""hills and ridges"";  these were judged to have too much relief for hills and were populated as ""mountain slopes"".",497350,1505741
+03/24/2009 00:00:00,Edit notes,Component,NA,"In preparation for SSURGO certification, some assumptions had to be made to allow a fully populated and certifiable dataset:
+
+Minor components were populated from the published report.  Component and horizon data for minor components were copied from a corresponding major component.
+
+All horizon fragments and surface fragments were assumed to be indurated if hardness was unknown.
+
+All paralithic layers were assumed to be weakly cemented if hardness was unknown.
+
+Generalized horizon layers (H1, H2, etc.) were subdivided into horizons based on the series description in the publication.
+
+The landform for many map units was published as ""mountainsides and ridges""; these were populated as simply ""mountain slopes"".  Some map units were published as ""hills and ridges"";  these were judged to have too much relief for hills and were populated as ""mountain slopes"".",497351,1505742
+03/24/2009 00:00:00,Edit notes,Component,NA,"In preparation for SSURGO certification, some assumptions had to be made to allow a fully populated and certifiable dataset:
+
+Minor components were populated from the published report.  Component and horizon data for minor components were copied from a corresponding major component.
+
+All horizon fragments and surface fragments were assumed to be indurated if hardness was unknown.
+
+All paralithic layers were assumed to be weakly cemented if hardness was unknown.
+
+Generalized horizon layers (H1, H2, etc.) were subdivided into horizons based on the series description in the publication.
+
+The landform for many map units was published as ""mountainsides and ridges""; these were populated as simply ""mountain slopes"".  Some map units were published as ""hills and ridges"";  these were judged to have too much relief for hills and were populated as ""mountain slopes"".",497359,1505749
+03/24/2009 00:00:00,Edit notes,Component,NA,"In preparation for SSURGO certification, some assumptions had to be made to allow a fully populated and certifiable dataset:
+
+Minor components were populated from the published report.  Component and horizon data for minor components were copied from a corresponding major component.
+
+All horizon fragments and surface fragments were assumed to be indurated if hardness was unknown.
+
+All paralithic layers were assumed to be weakly cemented if hardness was unknown.
+
+Generalized horizon layers (H1, H2, etc.) were subdivided into horizons based on the series description in the publication.
+
+The landform for many map units was published as ""mountainsides and ridges""; these were populated as simply ""mountain slopes"".  Some map units were published as ""hills and ridges"";  these were judged to have too much relief for hills and were populated as ""mountain slopes"".",497361,1505751
+03/24/2009 00:00:00,Edit notes,Component,NA,"In preparation for SSURGO certification, some assumptions had to be made to allow a fully populated and certifiable dataset:
+
+Minor components were populated from the published report.  Component and horizon data for minor components were copied from a corresponding major component.
+
+All horizon fragments and surface fragments were assumed to be indurated if hardness was unknown.
+
+All paralithic layers were assumed to be weakly cemented if hardness was unknown.
+
+Generalized horizon layers (H1, H2, etc.) were subdivided into horizons based on the series description in the publication.
+
+The landform for many map units was published as ""mountainsides and ridges""; these were populated as simply ""mountain slopes"".  Some map units were published as ""hills and ridges"";  these were judged to have too much relief for hills and were populated as ""mountain slopes"".",497362,1505752
+03/24/2009 00:00:00,Edit notes,Component,NA,"In preparation for SSURGO certification, some assumptions had to be made to allow a fully populated and certifiable dataset:
+
+Minor components were populated from the published report.  Component and horizon data for minor components were copied from a corresponding major component.
+
+All horizon fragments and surface fragments were assumed to be indurated if hardness was unknown.
+
+All paralithic layers were assumed to be weakly cemented if hardness was unknown.
+
+Generalized horizon layers (H1, H2, etc.) were subdivided into horizons based on the series description in the publication.
+
+The landform for many map units was published as ""mountainsides and ridges""; these were populated as simply ""mountain slopes"".  Some map units were published as ""hills and ridges"";  these were judged to have too much relief for hills and were populated as ""mountain slopes"".",497363,1505753
+03/24/2009 00:00:00,Edit notes,Component,NA,"In preparation for SSURGO certification, some assumptions had to be made to allow a fully populated and certifiable dataset:
+
+Minor components were populated from the published report.  Component and horizon data for minor components were copied from a corresponding major component.
+
+All horizon fragments and surface fragments were assumed to be indurated if hardness was unknown.
+
+All paralithic layers were assumed to be weakly cemented if hardness was unknown.
+
+Generalized horizon layers (H1, H2, etc.) were subdivided into horizons based on the series description in the publication.
+
+The landform for many map units was published as ""mountainsides and ridges""; these were populated as simply ""mountain slopes"".  Some map units were published as ""hills and ridges"";  these were judged to have too much relief for hills and were populated as ""mountain slopes"".",497364,1505754
+03/24/2009 00:00:00,Edit notes,Component,NA,"In preparation for SSURGO certification, some assumptions had to be made to allow a fully populated and certifiable dataset:
+
+Minor components were populated from the published report.  Component and horizon data for minor components were copied from a corresponding major component.
+
+All horizon fragments and surface fragments were assumed to be indurated if hardness was unknown.
+
+All paralithic layers were assumed to be weakly cemented if hardness was unknown.
+
+Generalized horizon layers (H1, H2, etc.) were subdivided into horizons based on the series description in the publication.
+
+The landform for many map units was published as ""mountainsides and ridges""; these were populated as simply ""mountain slopes"".  Some map units were published as ""hills and ridges"";  these were judged to have too much relief for hills and were populated as ""mountain slopes"".",497365,1505755

@@ -1,35 +1,26 @@
-# Find Stations for NOAA'S 1981-2010 CLIMATE NORMALS
-
-# ID         is the station identification code.  Note that the first two
-# characters denote the FIPS country code, the third character
-# is a network code that identifies the station numbering system
-# used, and the remaining eight characters contain the actual
+#' @title Find stations from NOAAs 1981–2010 US Climate Normals
+#' @description Query station information from the Query station information from NOAA 1981-2010 cliamte normats. \code{findNOAAnorms} returns a \code{SpatailPointsDataframe} of all
+#' stations within an AOI. Data comes from the \href{ftp://ftp.ncdc.noaa.gov/pub/data/normals/1981-2010/}{NOAA} and includes the following attributes:
+#' \itemize{
+#' \item 'ID'   : \code{character}  is the station identification code. The first two characters denote the FIPS country code, the third character is a network code identifiNG the station numbering systemused, and the remaining eight characters contain the actual
 # station ID.
-# LATITUDE   is latitude of the station (in decimal degrees).
-# LONGITUDE  is the longitude of the station (in decimal degrees).
-# ELEVATION  is the elevation of the station (in meters, missing = -999.9).
-# STATE      is the U.S. postal code for the state (for U.S. stations only).
-# NAME       is the name of the station.
-# GSNFLAG    is a flag that indicates whether the station is part of the GCOS
-# Surface Network (GSN). The flag is assigned by cross-referencing
-# the number in the WMOID field with the official list of GSN
-# stations. There are two possible values:
-#
-#   Blank = non-GSN station or WMO Station number not available
-# GSN   = GSN station
-#
-# HCNFLAG    is a flag that indicates whether the station is part of the U.S.
-# Historical Climatology Network (HCN).  There are two possible
-# values:
-#
-#   Blank = non-HCN station
-# HCN   = HCN station
-#
-# WMOID      is the World Meteorological Organization (WMO) number for the
-# station. If the station has no WMO number, then the field is blank.
-# METHOD*    is an indication of whether a "traditional" or a "pseudonormals"
-# approach was utilized for temperature or precipitation. This field
-# in only found in prcp-inventory.txt and temp-inventory.txt
+#' \item 'ELEV'   : Station name
+#' \item 'ST.ABB'    : USA state abbriviation (USA station only)
+#' \item 'NAME'    : Elevation of the station (in meters, missing = -999.9).
+#' \item 'GSNFLAG'   : ndicates whether the station is part of the GCOS Surface Network (GSN)
+#' \item 'HCNFLAG'    : Indicates whether the station is part of the U.S. Historical Climatology Network (HCN).
+#' \item 'WMOID'    : World Meteorological Organization (WMO) station number
+#' \item 'METHOD'    : Indicates whether a "traditional" or a "pseudonormals" approach was utilized for temperature or precipitation
+#' }\cr
+#' @param AOI  A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
+#' @param ids  If TRUE,  a vector of unique acis station IDs is added to retuned list (default = \code{FALSE})
+#' @return a list() of minimum length 2: AOI and and acis
+#' @examples
+#' \dontrun{
+#' sta = getAOI(state = "CO", county = "El Paso") %>% findNOAAnorms()
+#' }
+#' @author Mike Johnson
+#' @export
 
 findNOAAnorms = function(AOI, ids = FALSE){
 
@@ -48,18 +39,19 @@ findNOAAnorms = function(AOI, ids = FALSE){
                        GSNFLAG = substr(x, 73, 75),
                        HCNFLAG = substr(x, 77, 79),
                        WMOID   = substr(x, 81, 85),
-                       WMOID   = substr(x, 87, 99),
+                       METHOD   = substr(x, 87, 99),
                        stringsAsFactors = FALSE
   )
 
-sp = SpatialPointsDataFrame(coords = cbind(mydata$LON, mydata$LAT), data = mydata, proj4string = AOI$AOI@proj4string)
-sp = sp[AOI$AOI, ]
+  sp = sf::st_as_sf(x= mydata, coords = c("LON", "LAT"))
+  sf::st_crs(sp) <- 4269
+  sp = suppressMessages( sp[sf::st_as_sf(AOI$AOI), ])
 
 if(!is.null(sp)){
 
-  AOI[["nnorms"]] = sp
+  AOI[["nnorms"]] = as_Spatil(sp)
 
-  report = paste(length(sp), "Normal Stations")
+  report = paste(length(sp), "NOAA Normals stations")
 
   AOI = return.what(AOI, type = 'nnorms', report, vals = if(ids){"ID"})
 }

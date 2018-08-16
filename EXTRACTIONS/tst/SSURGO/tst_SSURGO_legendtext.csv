@@ -1,0 +1,420 @@
+recdate,legendtextkind,textcat,textsubcat,text,lkey,legtextkey
+09/27/1999 00:00:00,Certification statements,date,ssurgo,09/27/99,10662,59029
+09/27/1999 00:00:00,Certification statements,notes,ssurgo,This legend has been edited to reflect the ssurgo certification of the soil survey.,10662,59030
+09/07/2012 00:00:00,Correlation notes,,,"UNITED STATES DEPARTMENT OF AGRICULTURE
+Natural Resources Conservation Service
+Central Great Plains MLRA Office
+Salina, Kansas
+
+
+August 8, 2012
+
+
+Amendment to:
+
+Classification and Correlation 
+of the Soils of
+El Paso County, Colorado
+
+These changes are being incorporated to the non-MLRA soil survey areas as part of the SDJR initiative.
+
+National map unit 2qnmq representing Wilid silt loam, 0 to 3 percent slopes will be added to El Paso County replacing correlated legend map units  107.
+
+National Map unit 2qnms--Olney sandy loam, 0 to 3 percent slopes replaces map units 60 (natsym 3695)in MLRA 69. All original legend map unit symbols will be retained.
+
+National map unit 2qnmv representing Olney sandy loam, 3 to 5 percent slopes will replace existing map unit natsym 3696 in El Paso Counties.  This new map unit will retain the original legend mapunit symbol (61)in El Paso County.
+
+Map unit 2rgqc representing Vonid sandy loam, 0 to 5 percent slopees will replace map unit 104 and 105 in El Paso County MLRA LRU 69B. The new legend map unit symbol will be 117. The original legend map units and DMU's will be retained to represent the Vona soils in MLRA 67B in EL Paso County.",10662,59031
+03/19/2013 00:00:00,Correlation notes,amendment,,"UNITED STATES DEPARTMENT OF AGRICULTURE
+Natural Resources Conservation Service
+Northern Great Plains Soil Survey Reional Office
+Denver, Colorado
+
+
+March 19, 2013
+
+
+Amendment to:
+
+Classification and Correlation 
+of the Soils of
+El Paso, Colorado
+
+All of these changes and combinations of map units and symbols are the result of SDJR and on going soil survey update projects.  All have had Quality Control review at the project office and Quality Assurance review at the Regional Office and meet the standards of the National Soil survey Handbook and National Instructions.
+
+National map unit 2rgqk is being established to replace Manvel in Bent, Fremont, El Paso, Pueblo, and Las Animas Counties. The new data map unit updates the Manvel soil to current standards and the soil physical factors and interpretations will be consistent with adjacent surveys. This map unit replaces Manvel only in LRU 69B.
+
+
+El Paso County will retain the original map unit symbol 50.
+
+",10662,59032
+09/06/2013 00:00:00,Correlation notes,amendment,,"Amendment to classification and correlation of soils
+
+UNITED STATES DEPARTMENT OF AGRICULTURE
+Natural Resources Conservation Service
+Northern Great Plains Soil Survey Regional Office
+Denver, Colorado
+
+All of these changes and combinations of map units and symbols are the result of four projects from the Soil Data Join and Recorrelation Initiative and ongoing soil survey update projects.  All have had Quality Control review at the project office and Quality Assurance review at the Regional Office and meet the standards of the National Soil Survey Handbook and National Instructions.
+
+Some map units are being split based on differences in climatic properties in  different Land Resource Units (LRU) within an MLRA.
+
+Area_Name	Area_Symbol	Old_Symbol	Old_Nat_Sym	Old_MUname	Old_DMUID	Correlated_Symbol	Corr_Nat_Sym	Corr_MUname	Corr_Status	New_DMIUD
+El Paso County Area, Colorado	CO625	30	3683	Fort Collins loam, 0 to 3 percent slopes	68172	118	2rgqs	Fort loam, 1 to 5 percent slopes, cool	correlated	633190
+El Paso County Area, Colorado	CO625	31	3684	Fort Collins loam, 3 to 8 percent slopes	68173	118	2rgqs	Fort loam, 1 to 5 percent slopes, cool	correlated	633190
+El Paso County Area, Colorado	CO625	86	36b2	Stoneham sandy loam, 3 to 8 percent slopes	68228	119	2t50n	Fort sandy loam, 1 to 8 percent slopes, cool	correlated	690936
+El Paso County Area, Colorado	CO625	87	36b3	Stoneham sandy loam, 8 to 15 percent slopes	68229	120	2t50p	Fort sandy loam, 8 to 15 percent slopes, cool	correlated	690937
+El Paso County Area, Colorado	CO625	102	3674	Valent sand, 1 to 9 percent slopes	68244	102	2rgs5	Valent sand, 1 to 12 percent slopes, dry	correlated	633235
+El Paso County Area, Colorado	CO625	103	3675	Valent sand, 9 to 20 percent slopes	68245	103	2rgs7	Valent sand, 9 to 20 percent slopes, dry	correlated	633237
+",10662,59033
+08/08/2016 00:00:00,Correlation notes,amendment,FY 2016,"FY 2016 Amendment to the Classification and Correlation of the Soils of El Paso County Area, Colorado, August 2016
+U.S. Department of Agriculture, Natural Resources Conservation Service, Central Great Plains MLRA Regional Office Salina, Kansas 
+______________________________ Clint Evans	    	State Conservationist	  Date:_____________
+______________________________ Chad Remley  	    SSR5 Director             Date:______________
+
+The U.S. Department of Agriculture (USDA) prohibits discrimination against its customers, employees and applicants for employment on the bases of race, color, national origin, age, disability, sex, gender identity, religion, reprisal, and where applicable, political beliefs, marital status, familial or parental status, sexual orientation, or all or part of an individuals income is derived from any public assistance program, or protected genetic information in employment or in any program or activity conducted or funded by the Department.  (Not all prohibited bases apply to all programs and/or employment activities.) 
+
+FY 2016 Amendment to Classification and Correlation of the Soils of El Paso County Area, Colorado (CO625)
+Introduction
+This amendment was prepared during September 2016 in Salina, Kansas by Paul Rindfleisch, Soil Data Quality Specialist, Central Great Plains MLRA Regional Office.  This correlation updates the soil survey legend of the El Paso County Area, Colorado Soil Survey, issued May 1975.
+
+As a result of the Soil Data Join Re-correlation (SDJR) initiative, the following mapunits have been changed as indicated.
+
+ Bresser sandy loam, 1 to 3 percent slopes (11) (367d) changed to Bresser sandy loam, cool, 0 to 3 percent slopes (11) (2tlph)
+ Bresser sandy loam, 3 to 5 percent slopes (12) (367g) changed to Bresser sandy loam, cool, 3 to 5 percent slopes (12 (2tlpd)
+ Bresser sandy loam, 5 to 9 percent slopes (13) (367h) changed to Bresser sandy loam, cool, 5 to 9 percent slopes (13) (2tlpk)",10662,59034
+08/23/2017 00:00:00,Correlation notes,amendment,FY2017 Amendment,"FY 2017 Amendment to the Classification and Correlation of the Soils of El Paso County Area, Colorado, August 2017
+U.S. Department of Agriculture, Natural Resources Conservation Service, Central Great Plains MLRA Regional Office Salina, Kansas 
+______________________________ Clint Evans	    	State Conservationist	  Date:_____________
+______________________________ Chad Remley  	    SSR5 Director             Date:______________
+
+FY 2017 Amendment to Classification and Correlation of the Soils of El Paso County Area, Colorado (CO625)
+Introduction
+This amendment was prepared during September 2017 in Salina, Kansas by Paul Rindfleisch, Soil Data Quality Specialist, Central Great Plains MLRA Regional Office.  This correlation updates the soil survey legend of the El Paso County Area, Colorado Soil Survey, issued May 1975.
+
+As a result of the Soil Data Join Re-correlation (SDJR) initiative, the following mapunits have been changed as indicated.
+
+Project_ID	User_Project_ID	Area_Name								Area_Sym	Old_Sym	  Old_Nat_Sym	Old_MUname									Old_DMUID				Corr_Sym	Corr_Nat_Sym	Corr_MUname									Corr_Status	New_DMIUD
+  180596	FY17FTMRND3-023	El Paso County Area, Colorado			  CO625			97		36bg		Truckton sandy loam, 3 to 9 percent slopes	   68239	changed to	   97			2x0j2		Truckton sandy loam, 3 to 9 percent slopes	 correlated	  783732
+",10662,59035
+12/10/2008 00:00:00,Edit notes,archived legend,NA,"This Correlation Legend was generated from the archived legend data, which was dated 07/1999.
+ The archived legend was deleted prior to conversion to NASIS 6.0.
+
+U.S. Department of Agriculture                                                                         Page   1 of   3
+Natural Resources Conservation Service                                                                      12/08/2008
+
+Correlation of PIKE NATIONAL FOREST, EASTERN PART, COLORADO, PARTS OF DOUGLAS, EL PASO, JEFFERSON, AND TELLER COUNTIES
+                                               Detailed Soil Map Legend
+                                             Archived Correlation Legend
+
+______________________________________________________________________________________________________________________
+|          |                                              |           |                                              |
+|  Field   |                    Field                     |Publication|                 Publication                  |
+|  Symbol  |                Map Unit Name                 |  Symbol   |                Map Unit Name                 |
+|__________|______________________________________________|___________|______________________________________________|
+|          |                                              |           |                                              |
+|      --- | ---                                          |         1 |ALAMOSA LOAM, 0 TO 6 PERCENT SLOPES           |
+|          |                                              |           |                                              |
+|      --- | ---                                          |         2 |AQUOLLS, 1 TO 10 PERCENT SLOPES               |
+|          |                                              |           |                                              |
+|      --- | ---                                          |         3 |BOYETT-FRENCHCREEK COMPLEX, 2 TO 15 PERCENT   |
+|          |                                              |           | SLOPES                                       |
+|          |                                              |           |                                              |
+|      --- | ---                                          |         4 |BOYETT-FRENCHCREEK COMPLEX, 15 TO 40 PERCENT  |
+|          |                                              |           | SLOPES                                       |
+|          |                                              |           |                                              |
+|      --- | ---                                          |         5 |CATAMOUNT GRAVELLY SANDY LOAM, 5 TO 40 PERCENT|
+|          |                                              |           | SLOPES                                       |
+|          |                                              |           |                                              |
+|      --- | ---                                          |         6 |CATAMOUNT GRAVELLY SANDY LOAM, 40 TO 70       |
+|          |                                              |           | PERCENT SLOPES                               |
+|          |                                              |           |                                              |
+|      --- | ---                                          |         7 |CATAMOUNT-ROCK OUTCROP COMPLEX, 15 TO 70      |
+|          |                                              |           | PERCENT SLOPES                               |
+|          |                                              |           |                                              |
+|      --- | ---                                          |         8 |CATHEDRAL GRAVELLY SANDY LOAM, 40 TO 65       |
+|          |                                              |           | PERCENT SLOPES, EXTREMELY STONY              |
+|          |                                              |           |                                              |
+|      --- | ---                                          |         9 |CIRQUE LAND, 15 TO 75 PERCENT SLOPES          |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        10 |CONDIE COARSE SANDY LOAM, 2 TO 15 PERCENT     |
+|          |                                              |           | SLOPES                                       |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        11 |CONDIE COARSE SANDY LOAM, 15 TO 40 PERCENT    |
+|          |                                              |           | SLOPES                                       |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        12 |FORTWINGATE-ROCK OUTCROP COMPLEX, 15 TO 60    |
+|          |                                              |           | PERCENT SLOPES                               |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        13 |GARBER VERY GRAVELLY COARSE SANDY LOAM, 2 TO  |
+|          |                                              |           | 15 PERCENT SLOPES                            |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        14 |GARBER VERY GRAVELLY COARSE SANDY LOAM, 15 TO |
+|          |                                              |           | 40 PERCENT SLOPES                            |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        15 |GUFFEY VERY GRAVELLY SANDY LOAM, 5 TO 40      |
+|          |                                              |           | PERCENT SLOPES                               |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        16 |GUFFEY VERY GRAVELLY SANDY LOAM, 40 TO 60     |
+|          |                                              |           | PERCENT SLOPES                               |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        17 |HERBMAN VERY GRAVELLY SANDY LOAM, 15 TO 40    |
+|          |                                              |           | PERCENT SLOPES                               |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        18 |HERBMAN-ROCK OUTCROP COMPLEX, 15 TO 40 PERCENT|
+|          |                                              |           | SLOPES                                       |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        19 |IVYWILD GRAVELLY SANDY LOAM, 5 TO 40 PERCENT  |
+|          |                                              |           | SLOPES                                       |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        20 |IVYWILD GRAVELLY SANDY LOAM, 40 TO 70 PERCENT |
+|          |                                              |           | SLOPES                                       |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        21 |IVYWILD-CATAMOUNT GRAVELLY SANDY LOAMS, 5 TO  |
+|          |                                              |           | 70 PERCENT SLOPES,                           |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        22 |KASSLER VERY GRAVELLY COARSE SANDY LOAM, 5 TO |
+|          |                                              |           | 35 PERCENT SLOPES                            |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        23 |KUTCH CLAY LOAM, 10 TO 40 PERCENT SLOPES      |
+|          |                                              |           |                                              |
+U.S. Department of Agriculture                                                                         Page   2 of   3
+Natural Resources Conservation Service                                                                      12/08/2008
+
+Correlation of PIKE NATIONAL FOREST, EASTERN PART, COLORADO, PARTS OF DOUGLAS, EL PASO, JEFFERSON, AND TELLER COUNTIES
+                                               Detailed Soil Map Legend
+                                             Archived Correlation Legend
+
+______________________________________________________________________________________________________________________
+|          |                                              |           |                                              |
+|  Field   |                    Field                     |Publication|                 Publication                  |
+|  Symbol  |                Map Unit Name                 |  Symbol   |                Map Unit Name                 |
+|__________|______________________________________________|___________|______________________________________________|
+|          |                                              |           |                                              |
+|      --- | ---                                          |        24 |LEGAULT VERY GRAVELLY COARSE SANDY LOAM, 5 TO |
+|          |                                              |           | 40 PERCENT SLOPES                            |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        25 |LEGAULT VERY GRAVELLY COARSE SANDY LOAM, 40 TO|
+|          |                                              |           | 65 PERCENT SLOPES                            |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        26 |LEGAULT-ROCK OUTCROP COMPLEX, 15 TO 65 PERCENT|
+|          |                                              |           | SLOPES                                       |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        27 |PALBOONE-SECURITY COMPLEX, 15 TO 40 PERCENT   |
+|          |                                              |           | SLOPES                                       |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        28 |PALBOONE-SECURITY COMPLEX, 40 TO 70 PERCENT   |
+|          |                                              |           | SLOPES                                       |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        29 |PENDANT COBBLY LOAM, 15 TO 40 PERCENT SLOPES  |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        30 |PENDANT COBBLY LOAM, 40 TO 70 PERCENT SLOPES  |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        31 |PENDANT-ROCK OUTCROP COMPLEX, 15 TO 70 PERCENT|
+|          |                                              |           | SLOPES                                       |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        32 |PERRYPARK COARSE SANDY LOAM, 1 TO 15 PERCENT  |
+|          |                                              |           | SLOPES                                       |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        33 |ROCK OUTCROP-CATAMOUNT COMPLEX, 15 TO 70      |
+|          |                                              |           | PERCENT SLOPES                               |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        34 |ROCK OUTCROP-SECURITY-CATHEDRAL COMPLEX, 15 TO|
+|          |                                              |           | 65 PERCENT SLOPES                            |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        35 |ROCK OUTCROP-SPHINX COMPLEX, 15 TO 80 PERCENT |
+|          |                                              |           | SLOPES                                       |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        36 |ROCK OUTCROP-SPHINX, WARM COMPLEX, 15 TO 80   |
+|          |                                              |           | PERCENT SLOPES                               |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        37 |SACHETT-ROCK OUTCROP COMPLEX, 5 TO 70 PERCENT |
+|          |                                              |           | SLOPES                                       |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        38 |SECURITY VERY GRAVELLY COARSE SANDY LOAM, 5 TO|
+|          |                                              |           | 40 PERCENT SLOPES                            |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        39 |SECURITY VERY GRAVELLY COARSE SANDY LOAM, 40  |
+|          |                                              |           | TO 65 PERCENT SLOPES                         |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        40 |SECURITY-CATHEDRAL COMPLEX, 40 TO 65 PERCENT  |
+|          |                                              |           | SLOPES, VERY STONY                           |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        41 |SECURITY-CATHEDRAL-ROCK OUTCROP COMPLEX, 15 TO|
+|          |                                              |           | 65 PERCENT SLOPES VERY STONY                 |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        42 |SPHINX GRAVELLY COARSE SANDY LOAM, 15 TO 40   |
+|          |                                              |           | PERCENT SLOPES                               |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        43 |SPHINX GRAVELLY COARSE SANDY LOAM, 40 TO 70   |
+|          |                                              |           | PERCENT SLOPES                               |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        44 |SPHINX GRAVELLY COARSE SANDY LOAM, WARM, 15 TO|
+|          |                                              |           | 40 PERCENT SLOPES                            |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        45 |SPHINX GRAVELLY COARSE SANDY LOAM, WARM, 40 TO|
+|          |                                              |           | 70 PERCENT SLOPES                            |
+|          |                                              |           |                                              |
+U.S. Department of Agriculture                                                                         Page   3 of   3
+Natural Resources Conservation Service                                                                      12/08/2008
+
+Correlation of PIKE NATIONAL FOREST, EASTERN PART, COLORADO, PARTS OF DOUGLAS, EL PASO, JEFFERSON, AND TELLER COUNTIES
+                                               Detailed Soil Map Legend
+                                             Archived Correlation Legend
+
+______________________________________________________________________________________________________________________
+|          |                                              |           |                                              |
+|  Field   |                    Field                     |Publication|                 Publication                  |
+|  Symbol  |                Map Unit Name                 |  Symbol   |                Map Unit Name                 |
+|__________|______________________________________________|___________|______________________________________________|
+|          |                                              |           |                                              |
+|      --- | ---                                          |        46 |SPHINX-ROCK OUTCROP COMPLEX, 15 TO 80 PERCENT |
+|          |                                              |           | SLOPES                                       |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        47 |SPHINX, WARM-ROCK OUTCROP COMPLEX, 15 TO 80   |
+|          |                                              |           | PERCENT SLOPES                               |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        48 |TECOLOTE VERY GRAVELLY SANDY LOAM, 15 TO 40   |
+|          |                                              |           | PERCENT SLOPES, VERY STONY                   |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        49 |TECOLOTE VERY GRAVELLY SANDY LOAM, 40 TO 70   |
+|          |                                              |           | PERCENT SLOPES, VERY STONY                   |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        50 |TOMAH SANDY LOAM, 2 TO 15 PERCENT SLOPES      |
+|          |                                              |           |                                              |
+|      --- | ---                                          |        51 |TRIPIT LOAM, 5 TO 15 PERCENT SLOPES           |
+|          |                                              |           |                                              |
+|__________|______________________________________________|___________|______________________________________________|",14374,61971
+04/23/2009 00:00:00,Edit notes,archived acreage,NA,"The following is the mapunit acreage prior to revision for SSURGO (prior to deleting acres fo MU 1, and adding acres for MUs 52 and W).  In addition, the previous acre figures were so far off from the GIS figures, they were all re-entered.
+
+Pike National Forest, Eastern Part, Colorado, Parts of Douglas, El Paso,         Print date:  04/23/2009
+Jefferson, and Teller Counties
+Acreage and Proportionate Extent of the Soils
+_____________________________________________________________________________________________________________________
+       |                                             |          |          |          |          |       Total
+  Map  |                  Soil name                  | Douglas  | El Paso  |Jefferson |  Teller  |___________________
+symbol |                                             |  County  |  County  |  County  |  County  |   Area   | Extent
+_______|_____________________________________________|__________|__________|__________|__________|__________|________
+       |                                             |  Acres   |  Acres   |  Acres   |  Acres   |  Acres   |  Pct
+       |                                             |          |          |          |          |          |
+2      |Aquolls, 1 to 10 percent slopes--------------|    3,000 |    3,187 |    1,262 |    3,500 |   10,949 |    2.4
+3      |Boyett-Frenchcreek complex, 2 to 15 percent  |          |          |          |          |          |
+       | slopes--------------------------------------|        0 |    1,614 |        0 |    6,000 |    7,614 |    1.7
+4      |Boyett-Frenchcreek complex, 15 to 40 percent |          |          |          |          |          |
+       | slopes--------------------------------------|      --- |      --- |      --- |      --- |        0 |     *
+5      |Catamount gravelly sandy loam, 5 to 40       |          |          |          |          |          |
+       | percent slopes------------------------------|      --- |      --- |      --- |      --- |        0 |     *
+6      |Catamount gravelly sandy loam, 40 to 70      |          |          |          |          |          |
+       | percent slopes------------------------------|        0 |    1,089 |        0 |    2,800 |    3,889 |    0.8
+7      |Catamount-Rock outcrop complex, 15 to 70     |          |          |          |          |          |
+       | percent slopes------------------------------|        0 |    5,500 |        0 |   12,518 |   18,018 |    3.9
+8      |Cathedral gravelly sandy loam, 40 to 65      |          |          |          |          |          |
+       | percent slopes, extremely stony-------------|      502 |      --- |      --- |      --- |      502 |    0.1
+9      |Cirque land, 15 to 75 percent slopes---------|        0 |    6,166 |        0 |    9,039 |   15,205 |    3.3
+10     |Condie coarse sandy loam, 2 to 15 percent    |          |          |          |          |          |
+       | slopes--------------------------------------|        0 |    2,000 |        0 |      566 |    2,566 |    0.6
+11     |Condie coarse sandy loam, 15 to 40 percent   |          |          |          |          |          |
+       | slopes--------------------------------------|        0 |    1,150 |        0 |      436 |    1,586 |    0.3
+12     |Fortwingate-Rock outcrop complex, 15 to 60   |          |          |          |          |          |
+       | percent slopes------------------------------|      --- |      --- |      --- |      --- |        0 |     *
+13     |Garber very gravelly coarse sandy loam, 2 to |          |          |          |          |          |
+       | 15 percent slopes---------------------------|      859 |      714 |        0 |      341 |    1,914 |    0.4
+14     |Garber very gravelly coarse sandy loam, 15 to|          |          |          |          |          |
+       | 40 percent slopes---------------------------|    1,800 |      523 |        0 |      835 |    3,158 |    0.7
+15     |Guffey very gravelly sandy loam, 5 to 40     |          |          |          |          |          |
+       | percent slopes------------------------------|    2,932 |      --- |      --- |      --- |    2,932 |    0.6
+16     |Guffey very gravelly sandy loam, 40 to 60    |          |          |          |          |          |
+       | percent slopes------------------------------|    3,107 |      --- |      --- |      --- |    3,107 |    0.7
+17     |Herbman very gravelly sandy loam, 15 to 40   |          |          |          |          |          |
+       | percent slopes------------------------------|       74 |      950 |        0 |      450 |    1,474 |    0.3
+18     |Herbman-Rock outcrop complex, 15 to 40       |          |          |          |          |          |
+       | percent slopes------------------------------|        0 |      936 |        0 |      586 |    1,522 |    0.3
+19     |Ivywild gravelly sandy loam, 5 to 40 percent |          |          |          |          |          |
+       | slopes--------------------------------------|        0 |        0 |        0 |      387 |      387 |     *
+20     |Ivywild gravelly sandy loam, 40 to 70 percent|          |          |          |          |          |
+       | slopes--------------------------------------|        0 |        0 |        0 |      613 |      613 |    0.1
+21     |Ivywild-Catamount gravelly sandy loams, 5 to |          |          |          |          |          |
+       | 70 percent slopes, very bouldery------------|        0 |    6,055 |        0 |   12,102 |   18,157 |    3.9
+22     |Kassler very gravelly coarse sandy loam, 5 to|          |          |          |          |          |
+       | 35 percent slopes---------------------------|      600 |       53 |      --- |      --- |      653 |    0.1
+23     |Kutch clay loam, 10 to 40 percent slopes-----|       60 |      152 |      --- |      --- |      212 |     *
+24     |Legault very gravelly coarse sandy loam, 5 to|          |          |          |          |          |
+       | 40 percent slopes---------------------------|    5,139 |      780 |        0 |    2,500 |    8,419 |    1.8
+
+
+     See footnote at end of table.
+Acreage and Proportionate Extent of the Soils
+_____________________________________________________________________________________________________________________
+       |                                             |          |          |          |          |       Total
+  Map  |                  Soil name                  | Douglas  | El Paso  |Jefferson |  Teller  |___________________
+symbol |                                             |  County  |  County  |  County  |  County  |   Area   | Extent
+_______|_____________________________________________|__________|__________|__________|__________|__________|________
+       |                                             |  Acres   |  Acres   |  Acres   |  Acres   |  Acres   |  Pct
+       |                                             |          |          |          |          |          |
+25     |Legault very gravelly coarse sandy loam, 40  |          |          |          |          |          |
+       | to 65 percent slopes------------------------|    4,000 |      700 |        0 |    2,815 |    7,515 |    1.6
+26     |Legault-Rock outcrop complex, 15 to 65       |          |          |          |          |          |
+       | percent slopes------------------------------|    6,950 |      450 |        0 |    4,800 |   12,200 |    2.7
+27     |Palboone-Security complex, 15 to 40 percent  |          |          |          |          |          |
+       | slopes--------------------------------------|      217 |      --- |      --- |      --- |      217 |     *
+28     |Palboone-Security complex, 40 to 70 percent  |          |          |          |          |          |
+       | slopes--------------------------------------|    1,945 |      --- |      --- |      --- |    1,945 |    0.4
+29     |Pendant cobbly loam, 15 to 40 percent slopes-|      895 |    1,915 |      --- |      --- |    2,810 |    0.6
+30     |Pendant cobbly loam, 40 to 70 percent slopes-|      498 |    1,010 |      --- |      --- |    1,508 |    0.3
+31     |Pendant-Rock outcrop complex, 15 to 70       |          |          |          |          |          |
+       | percent slopes------------------------------|    2,950 |      982 |      --- |      --- |    3,932 |    0.9
+32     |Perrypark coarse sandy loam, 1 to 15 percent |          |          |          |          |          |
+       | slopes--------------------------------------|      --- |      363 |      --- |      --- |      363 |     *
+33     |Rock outcrop-Catamount complex, 15 to 70     |          |          |          |          |          |
+       | percent slopes------------------------------|        0 |    1,980 |        0 |    2,507 |    4,487 |    1.0
+34     |Rock outcrop-Security-Cathedral complex, 15  |          |          |          |          |          |
+       | to 65 percent slopes------------------------|      887 |      --- |      --- |      --- |      887 |    0.2
+35     |Rock outcrop-Sphinx complex, 15 to 80 percent|          |          |          |          |          |
+       | slopes--------------------------------------|    6,671 |    6,990 |    1,880 |    9,987 |   25,528 |    5.5
+36     |Rock outcrop-Sphinx, warm complex, 15 to 80  |          |          |          |          |          |
+       | percent slopes------------------------------|    3,375 |    5,108 |    1,156 |    4,095 |   13,734 |    3.0
+37     |Sachett-Rock outcrop complex, 5 to 70 percent|          |          |          |          |          |
+       | slopes--------------------------------------|      --- |    3,709 |      --- |      --- |    3,709 |    0.8
+38     |Security very gravelly coarse sandy loam, 5  |          |          |          |          |          |
+       | to 40 percent slopes------------------------|    1,609 |      --- |      --- |      --- |    1,609 |    0.3
+39     |Security very gravelly coarse sandy loam, 40 |          |          |          |          |          |
+       | to 65 percent slopes------------------------|    2,407 |      --- |      --- |      --- |    2,407 |    0.5
+40     |Security-Cathedral complex, 40 to 65 percent |          |          |          |          |          |
+       | slopes, very stony--------------------------|    2,581 |      --- |      --- |      --- |    2,581 |    0.6
+41     |Security-Cathedral-Rock outcrop complex, 15  |          |          |          |          |          |
+       | to 65 percent slopes very stony-------------|    1,830 |      --- |      --- |      --- |    1,830 |    0.4
+42     |Sphinx gravelly coarse sandy loam, 15 to 40  |          |          |          |          |          |
+       | percent slopes------------------------------|   28,045 |   10,300 |    5,940 |   10,800 |   55,085 |   12.0
+43     |Sphinx gravelly coarse sandy loam, 40 to 70  |          |          |          |          |          |
+       | percent slopes------------------------------|   19,209 |   11,100 |    4,440 |   11,110 |   45,859 |   10.0
+44     |Sphinx gravelly coarse sandy loam, warm, 15  |          |          |          |          |          |
+       | to 40 percent slopes------------------------|    4,612 |   11,006 |    2,187 |    7,570 |   25,375 |    5.5
+45     |Sphinx gravelly coarse sandy loam, warm, 40  |          |          |          |          |          |
+       | to 70 percent slopes------------------------|    3,848 |    9,883 |    2,287 |    6,430 |   22,448 |    4.9
+46     |Sphinx-Rock outcrop complex, 15 to 80 percent|          |          |          |          |          |
+       | slopes--------------------------------------|   40,072 |   11,180 |    9,955 |   21,533 |   82,740 |   18.0
+47     |Sphinx, warm-Rock outcrop complex, 15 to 80  |          |          |          |          |          |
+       | percent slopes------------------------------|    5,086 |   11,002 |    3,093 |   13,380 |   32,561 |    7.1
+48     |Tecolote very gravelly sandy loam, 15 to 40  |          |          |          |          |          |
+       | percent slopes, very stony------------------|      --- |    4,446 |      --- |      --- |    4,446 |    1.0
+
+     See footnote at end of table.
+Acreage and Proportionate Extent of the Soils
+_____________________________________________________________________________________________________________________
+       |                                             |          |          |          |          |       Total
+  Map  |                  Soil name                  | Douglas  | El Paso  |Jefferson |  Teller  |___________________
+symbol |                                             |  County  |  County  |  County  |  County  |   Area   | Extent
+_______|_____________________________________________|__________|__________|__________|__________|__________|________
+       |                                             |  Acres   |  Acres   |  Acres   |  Acres   |  Acres   |  Pct
+       |                                             |          |          |          |          |          |
+49     |Tecolote very gravelly sandy loam, 40 to 70  |          |          |          |          |          |
+       | percent slopes, very stony------------------|      --- |      772 |      --- |      --- |      772 |    0.2
+50     |Tomah sandy loam, 2 to 15 percent slopes-----|      --- |      190 |      --- |      --- |      190 |     *
+51     |Tripit loam, 5 to 15 percent slopes----------|      --- |      145 |      --- |      --- |      145 |     *
+52     |Pits-----------------------------------------|      --- |      --- |      --- |      --- |        0 |     *
+W      |Water----------------------------------------|      --- |      --- |      --- |      --- |        0 |     *
+       |                                             |__________|__________|__________|__________|__________|________
+       |     Total-----------------------------------|  155,760 |  124,100 |   32,200 |  147,700 |  459,760 |   99.9
+_______|_____________________________________________|__________|__________|__________|__________|__________|________
+
+     * Less than 0.1 percent.",14374,61972

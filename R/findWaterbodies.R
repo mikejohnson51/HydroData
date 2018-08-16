@@ -1,5 +1,5 @@
-#' Find National Hydrography Dataset Waterbodies
-#' #' \code{findWaterbodies} returns a \code{SpatialPolgonsDataframe} of all NHDwaterbodies within an AOI.
+#' @title Find National Hydrography Dataset Waterbodies
+#' @description \code{findWaterbodies} returns a \code{SpatialPolgonsDataframe} of all NHDwaterbodies within an AOI.
 #' Data comes from the USGS CIDA server and contain 23 attributes, perhaps most notably:
 #' \itemize{
 #' \item 'objectid'   : \code{integer}  Integer value that uniquely identifies the waterbody of each feature in the NHD

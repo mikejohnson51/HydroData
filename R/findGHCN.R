@@ -13,8 +13,8 @@
 #' }
 #' @param AOI  A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
 #' @param param Returned results can be filtered by a requested parameter valid parameters can be found calling \code{unique(ghcn_stations$PARAMETER)}
-#' @param ids  If TRUE,  a vector of station IDs codes is added to retuned list (default = \code{FALSE})
-#' @return a list() of minimum length 2: AOI and a
+#' @param ids  If TRUE,  a vector of station IDs is added to retuned list (default = \code{FALSE})
+#' @return a list() of minimum length 2: AOI and ghcn
 #' @examples
 #' \dontrun{
 #' # Get all stations and parameters

@@ -11,10 +11,10 @@ findGHCN(AOI = NULL, param = NULL, ids = FALSE)
 
 \item{param}{Returned results can be filtered by a requested parameter valid parameters can be found calling \code{unique(ghcn_stations$PARAMETER)}}
 
-\item{ids}{If TRUE,  a vector of station IDs codes is added to retuned list (default = \code{FALSE})}
+\item{ids}{If TRUE,  a vector of station IDs is added to retuned list (default = \code{FALSE})}
 }
 \value{
-a list() of minimum length 2: AOI and a
+a list() of minimum length 2: AOI and ghcn
 }
 \description{
 \code{findGHCN} returns a \code{SpatailPointsDataframe} of all

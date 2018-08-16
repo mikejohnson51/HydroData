@@ -34,7 +34,7 @@ Subregion \tab 4 \tab  16,800  \tab Lower Snake \tab 1706\cr
   Subbasin \tab 8 \tab 700  \tab Imnaha River \tab 17060102 \cr
   Watershed \tab 10 \tab 227 \tab Upper Imnaha River \tab 1706010201 \cr
   Subwatershed \tab 12 \tab 40 \tab North Fork Imnaha River \tab 170601020101 \cr
-}\cr
+}
 }
 \examples{
 \dontrun{
