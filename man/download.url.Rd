@@ -2,17 +2,20 @@
 % Please edit documentation in R/utility_download_url.R
 \name{download.url}
 \alias{download.url}
-\title{Download data from URL}
+\title{Download data from URL via httr::GET}
 \usage{
-download.url(url, mode = "curl", max.try = 5)
+download.url(url)
 }
 \arguments{
-\item{url}{the url}
-
-\item{mode}{download mode}
-
-\item{max.try}{number of attempts allowed}
+\item{url}{url}
+}
+\value{
+a status and path to downloaded file
 }
 \description{
-Download data from URL
+Download file from URL using httr:GET.
+File is written to the tmp directory with the basename of the URL call.
+}
+\author{
+Mike Johnson
 }

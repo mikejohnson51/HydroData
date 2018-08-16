@@ -12,12 +12,18 @@ Depends:
     AOI,
     leaflet
 Imports:
+    crayon,
     dams,
     foreach,
+    htmlwidgets,
+    httr,
+    jsonlite,
+    magrittr,
     sf,
     sp,
     utils,
-    raster
+    raster,
+    rgeos
 Remotes: mikejohnson51/AOI
 License: MIT + file LICENSE
 Encoding: UTF-8

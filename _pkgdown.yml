@@ -5,23 +5,21 @@ template:
 reference:
   - title: Find Features
     desc: ~
-      Functions for finding features
+      Functions for finding Spatial Data
     contents:
       - '`findAirports`'
       - '`findDaymet`'
       - '`findGAGESII`'
-      - '`findGHCN`'
       - '`findNED`'
       - '`findNHD`'
       - '`findNHD`'
       - '`findNID`'
       - '`findNLCD`'
       - '`findNLDI`'
-      - '`findNWIS`'
       - '`findRoads`'
-      - '`findSnotel`'
       - '`findWaterbodies`'
       - '`findHUC`'
+      - '`findWaterPoly`'
   - title: Find Nearest Features
     desc: ~
       Functions for finding the 'X' nearest features to a location
@@ -32,6 +30,18 @@ reference:
       - '`findNearestHUC12`'
       - '`findNearestNWIS`'
       - '`findNearestWaterbodies`'
+  - title: Find Stations
+    desc: ~
+      Functions for station locations
+    contents:
+      - '`findACIS`'
+      - '`findASOS`'
+      - '`findGHCN`'
+      - '`findUSCRN`'
+      - '`findNearestNWIS`'
+      - '`findNearestWaterbodies`'
+      - '`findNWIS`'
+      - '`findSnotel`'
   - title: Tools
     desc: ~
       Tools for exploring, describing and defining AOIs
@@ -39,7 +49,7 @@ reference:
      - '`explore`'
      - '`metaHD`'
      - '`saveHD`'
-
+     - '`to_sf`'
   - title: Data and Package Helpers
     desc: ~
       Data and functions that make the package useable

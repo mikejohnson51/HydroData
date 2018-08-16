@@ -7,8 +7,11 @@
 meta.data(AOI)
 }
 \arguments{
-\item{AOI}{}
+\item{AOI}{and AOI object with appended HydroDat features}
 }
-\description{
-Return HydroData Object metadata
+\value{
+a data.frame of meta.data describing a HydroData object
+}
+\author{
+Mike Johnson
 }

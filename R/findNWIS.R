@@ -12,6 +12,7 @@
 #' } \cr
 #' @param AOI A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
 #' @param ids If TRUE, a vector of NIWS gage IDs are added to retuned list (default = \code{FALSE})
+#' @param comids f TRUE, a vector of NHD COMIDs IDs are added to retuned list (default = \code{FALSE})
 #' @return a list() of minimum length 2: AOI and nwis
 #' @examples
 #' \dontrun{
@@ -33,6 +34,8 @@ findNWIS = function(AOI = NULL, ids = FALSE, comids = FALSE){
   if (dim(sp)[1] == 0) { warning("0 stations found in AOI") } else {
 
   AOI[["nwis"]] = sp
+
+  if(comids){ AOI[['nwis_comids']] = sp$feature_id}
 
   report = paste(length(sp), "USGS NWIS stations")
 

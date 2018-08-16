@@ -36,6 +36,8 @@
 #' @export
 #' @author
 #' Mike Johnson
+#'
+
 
 explore = function(input = NULL, save = FALSE) {
 
@@ -591,10 +593,8 @@ if (!is.null(ap)) {
   )
 
   m = addMarkers(
-    m ,
+    m,
     data = data,
-    lng = data$lon,
-    lat = data$lat,
     icon = apIcon,
     popup = pop,
     group = "ap"

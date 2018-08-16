@@ -1,4 +1,4 @@
-findACIS <- function (AOI, param = NULL) {
+findACIS <- function (AOI, param = NULL, ids = FALSE) {
 
   if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 
@@ -52,7 +52,11 @@ findACIS <- function (AOI, param = NULL) {
 
     AOI[["acis"]] = dat
 
-    cat(crayon::green("Returned object contains ACIS SpatialPointsDataFrame\n"))
+    report = paste(length(dat$uid), "ACIS station(s)")
+
+    AOI = return.what(AOI, type = 'acis', report, vals = if(ids){"sid1"}else{NULL})
+
+    rm(base)
 
     return(AOI)
 

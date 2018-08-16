@@ -15,8 +15,7 @@
 \item 'END_YEAR':   A \code{integer}   Longitude of NHD reach center
 }}
 \source{
-\href{
-https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn}{
+\href{https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn}{
 NOAA National Centers for Environmental Information}
 }
 \usage{

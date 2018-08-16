@@ -2,20 +2,32 @@
 % Please edit documentation in R/findNearestAirports.R
 \name{findNearestAirports}
 \alias{findNearestAirports}
-\title{Find Neareast Airports}
+\title{Find the Airports nearest a point}
 \usage{
-findNearestAirports(point = NULL, n = 5, ids = FALSE, AOI = FALSE)
+findNearestAirports(point = NULL, n = 5, ids = FALSE, bb = FALSE)
 }
 \arguments{
-\item{n}{the number of Airports to return}
+\item{point}{a point described by lat/long, can be piped from \link[AOI]{geocode}}
 
-\item{location}{a lat, long pair}
+\item{n}{the number of Airports to find (default = 5)}
+
+\item{ids}{If TRUE, a vector of airport ICAO IDs is added to retuned list (default = \code{FALSE})}
+
+\item{AOI}{If TRUE, the geometry of the minimum bounding area of the features is added to returned list  (default = \code{FALSE})}
 }
 \value{
-A list contatining a data.frame of Airports and a minimum bounding box data.frame
+a list() of minimum length 2: AOI and ap
 }
 \description{
-Find Neareast Airports
+\code{findNearestAirports} returns a \code{SpatialLinesPointsframe} of the 'n' number of airports closest to a declared point.
+}
+\examples{
+\dontrun{
+pt = geocode("UCSB") \%>\% findNearestAirports(n = 5)
+}
+}
+\seealso{
+findAirports
 }
 \author{
 Mike Johnson

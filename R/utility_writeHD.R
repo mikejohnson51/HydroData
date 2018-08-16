@@ -1,11 +1,11 @@
-#' Write Data to disk
-#'
+#' @title Write Data to disk
+#' @description interal function used to write data to disk according to it meta.data found via HydroData::meta.data()
 #' @param class objects class
 #' @param dir directory
 #' @param feature_name object id
 #' @param ext shp or gpkg
 #'
-#' @return
+#' @return NULL
 #' @export
 #'
 

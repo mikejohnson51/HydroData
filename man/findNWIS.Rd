@@ -10,6 +10,8 @@ findNWIS(AOI = NULL, ids = FALSE, comids = FALSE)
 \item{AOI}{A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}}
 
 \item{ids}{If TRUE, a vector of NIWS gage IDs are added to retuned list (default = \code{FALSE})}
+
+\item{comids}{f TRUE, a vector of NHD COMIDs IDs are added to retuned list (default = \code{FALSE})}
 }
 \value{
 a list() of minimum length 2: AOI and nwis

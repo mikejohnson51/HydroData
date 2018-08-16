@@ -1,10 +1,10 @@
 #HydroData: Earth Systems Data in R <img src="man/figures/logo.png" width=160 height = 120 align="right" />
 
-[![travis](https://travis-ci.org/mikejohnson51/HydroData.svg?branch=master)](https://travis-ci.org/mikejohnson51/HydroData) [![Coverage Status](https://img.shields.io/coveralls/github/mikejohnson51/HydroData.svg)](https://coveralls.io/github/mikejohnson51/HydroData?branch=master)
+[![travis](https://travis-ci.org/mikejohnson51/HydroData.svg?branch=master)](http://travis-ci.org/mikejohnson51/HydroData) [![Coverage Status](https://img.shields.io/coveralls/github/mikejohnson51/HydroData.svg)](https://coveralls.io/github/mikejohnson51/HydroData?branch=master)
 
-**HydroData** is designed to help (1) find, (2) get, (3) visualize and (4) format disparate earth systems data through a core language (R); a common geospatial reference; and unifying vocabulary built around querying data for an area of interest (AOI). The package supports access to 19 National/Global data sources. 
+**HydroData** is designed to help (1) find, (2) get, (3) visualize, and (4) format disparate earth systems data through a core language (R); a common geospatial reference (ESPG:4629) ; and unifying vocabulary built around querying data by an area of interest (AOI). The package supports access to 20+ National/Global data sources. 
 
-All functions are dsigned to work with the [AOI](https://mikejohnson51.github.io/AOI/) package and with the magrittr pipe operation `%>%`. This way HydroData calls can be directly chained to the area of interest:
+All functions are designed to work with the [AOI](https://mikejohnson51.github.io/AOI/) package and magrittr pipe operation `%>%` allowing successive HydroData calls to be directly chained to an area of interest:
 
 ```r
 myData = getAOI(clip = list("UCSB", 10, 10)) %>% 
@@ -23,9 +23,38 @@ List of 5
  $ nwis       :Formal class 'SpatialPointsDataFrame' [package "sp"] with 5 slots
  $ NED        :Formal class 'RasterLayer' [package "raster"] with 12 slots
  - attr(*, "class")= chr "HydroData"
-
 ```
 
+For now, most internal HydroData operations are based of the 'simple feature (sf)' library however objects are all returned as Spatial* sp objects. As the community around simple features grows the default output of 'HydroData' might change. Until then users can use the `to_sf` function to convert a `HydroData` object to simple features where appropriate.
+
+HydroData offer in-package tools for generating interactive visualizations of HydroData Spatial* objects
+
+```r
+myData.sf = myData %>% to_sf
+```
+```
+str(myData.sf,max.level = 1)
+
+List of 5
+ $ NED        :Formal class 'RasterLayer' [package "raster"] with 12 slots
+ $ AOI        :Classes ‘sf’ and 'data.frame':	1 obs. of  1 variable:
+  ..- attr(*, "sf_column")= chr "geometry"
+  ..- attr(*, "agr")= Factor w/ 3 levels "constant","aggregate",..: 
+  .. ..- attr(*, "names")= chr(0) 
+ $ nhd        :Classes ‘sf’ and 'data.frame':	100 obs. of  92 variables:
+  ..- attr(*, "sf_column")= chr "geometry"
+  ..- attr(*, "agr")= Factor w/ 3 levels "constant","aggregate",..: NA NA NA NA NA NA NA NA NA NA ...
+  .. ..- attr(*, "names")= chr [1:91] "id" "ogc_fid" "comid" "fdate" ...
+ $ waterbodies:Classes ‘sf’ and 'data.frame':	11 obs. of  24 variables:
+  ..- attr(*, "sf_column")= chr "geometry"
+  ..- attr(*, "agr")= Factor w/ 3 levels "constant","aggregate",..: NA NA NA NA NA NA NA NA NA NA ...
+  .. ..- attr(*, "names")= chr [1:23] "id" "objectid" "comid" "fdate" ...
+ $ nwis       :Classes ‘sf’ and 'data.frame':	3 obs. of  8 variables:
+  ..- attr(*, "sf_column")= chr "geometry"
+  ..- attr(*, "agr")= Factor w/ 3 levels "constant","aggregate",..: NA NA NA NA NA NA NA
+  .. ..- attr(*, "names")= chr [1:7] "OBJECTID" "feature_id" "site_no" "site_name" ...
+  
+```
 HydroData offer in-package tools for generating interactive visualizations of HydroData Spatial* objects
 
 ```r
@@ -36,43 +65,15 @@ HydroData offer in-package tools for generating interactive visualizations of Hy
 <img src="man/figures/explore_ex.png" width=500 />
 <br>
 
-The data can be ploted piecemeal:
-
-```r
-
-raster::plot(myData$NED, col = col_elev, main = "UCSB HydroData")
-sp::plot(myData$nhd, add =T, col = "ghostwhite", lwd = myData$nhd$streamorde)
-sp::plot(myData$waterbodies, add =T, col = 'ghostwhite')
-
-```
-<br>
-<img src="man/figures/plot_ex.png" width=500 />
-<br>
-
-and for fun the NED file can be passed though the rayshaer package to generate a beautiful hillshade image
-
-```r
-library(rayshader)
-
-ned = myData$NED
-ned = matrix(raster::extract(ned,raster::extent(ned),buffer=1000),
-             nrow=ncol(ned),ncol=nrow(ned))
-             
-ned %>% sphere_shade(texture = "imhof1") %>%
-  add_water(detect_water(ned), color="desert") %>%
-  add_shadow(ray_shade(ned)) %>%
-  add_shadow(ambient_shade(ned)) %>%
-  plot_map()
-  
-```
-<br>
-<img src="man/figures/rayshade_ex.png" width=500 />
-<br>
-
 To download and get started with HydroData, install from GitHub using the `devtools` packages:
 
 ```r
 library(devtools)
 install_github("mikejohnson51/HydroData")
 ```
+
+### Support:
+
+The "AOI" R package is written by [Mike Johnson], a graduate Student at the [University of California, Santa Barbara] in [Keith C. Clarke's] Lab, 2018. ~<br>~
+
 

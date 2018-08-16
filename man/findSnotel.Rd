@@ -72,9 +72,6 @@ explore(nv.snow)
 \code{\link{getSnotel}}
 
 \code{\link{explore}}
-
-Other HydroData 'find' functions: \code{\link{findHUC}},
-  \code{\link{findWaterbodies}}
 }
 \author{
 Mike Johnson

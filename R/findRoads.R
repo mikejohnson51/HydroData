@@ -38,16 +38,14 @@ findRoads = function(AOI = FALSE) {
 
   if (length(urls) > 1) { verb = 'are'; noun = 'files' } else { verb = 'is'; noun = 'file' }
 
-  #message(paste("There", verb, length(urls), "TIGER", noun, "in this AOI"))
-
   input.shp = list()
 
   sl <- for(i in seq_along(urls)){
-    cat(crayon::white(paste0("Downloading (", i, "/", length(urls), "):")) %+% crayon::yellow(basename(urls[i]), "\n"))
+    cat(crayon::white(paste0("Downloading (", i, "/", length(urls), "): ")) %+% crayon::yellow(basename(urls[i]), "\n"))
     x = download.url(urls[i])
     unzip(x$destfile, exdir = tempdir(), overwrite = TRUE)
     input.shp[[i]] = sf::read_sf(list.files(tempdir(), pattern = ".shp$", full.names = T))
-    input.shp[[i]] = sf::st_transform(input.shp[[i]], as.character(AOI::aoiProj))
+    input.shp[[i]] = sf::st_transform(input.shp[[i]], as.character(AOI$AOI@proj4string))
     input.shp[[i]] = suppressMessages(suppressWarnings( sf::st_intersection(input.shp[[i]], sf::st_as_sf(AOI$AOI))))
     input.shp[[i]] = sf::as_Spatial(input.shp[[i]])
   }

@@ -1,23 +1,27 @@
-#' Find Neareast COMIDs
-#'
-#' @param location a lat, long pair or Colloqiual Name
-#'
-#' @return A list contatining a data.frame of Airports and a minimum bounding box data.frame
+#' @title Find Neareast COMIDs
+#' @description \code{findNearestCOMID} returns a \code{SpatialPointsDataFrame} of the 'n' number of COMIDs closest to a declared point.
+#' @param point a point described by lat/long, can be piped from \link[AOI]{geocode}
+#' @param n the number of COMIDs to find (default = 5)
+#' @param bb If TRUE, the geometry of the minimum bounding area of the features is added to returned list  (default = \code{FALSE})
 #' @export
+#' @seealso findAirports
+#' @return a list() of minimum length 2: AOI and ap
 #' @author Mike Johnson
+#' @examples
+#' \dontrun{
+#' pt = geocode("University of Oregon") %>% findNearestCOMID(n = 5)
+#' }
 
-findNearestCOMID = function(point = NULL, n = 5, ids = FALSE, AOI = FALSE){
+findNearestCOMID = function(point = NULL, n = 5, ids = FALSE, bb = FALSE){
 
   h = 5
   w = 5
   lines = data.frame()
-  pt = definePoint(point)
+  fin = list(loc = point)
 
   while (dim(lines)[1] < n) {
     lines <-  suppressWarnings(query_cida(
-      AOI = suppressMessages(AOI::getAOI(
-        clip = list(pt$coords$lat, pt$coord$lon, h, w)
-      )),
+      AOI = suppressMessages(AOI::getAOI( clip = list(point$lat, point$lon, h, w ))),
       type = 'nhdflowline_network',
       spatial = FALSE
     ))
@@ -29,22 +33,16 @@ findNearestCOMID = function(point = NULL, n = 5, ids = FALSE, AOI = FALSE){
     w = w + 2
   }
 
-  dist = data.frame(comid = lines$comid,
-                    Distance_km = sf::st_distance(x = lines, y = pt$geo))
+  point = sf::st_as_sf(x = point,  coords = c("lon", "lat"), crs = as.character(AOI::aoiProj))
+  dist = data.frame(comid = lines$comid, Distance_km = sf::st_distance(x = lines, y = point))
   dist = dist[order(dist$Distance_km)[1:n], ]
-  fin = merge(lines, dist, by = "comid")
 
-  if (any(AOI, ids)) {
-    fin = list(closest_comids = fin)
-    if (AOI) {
-      fin[["AOI"]] = AOI::getBoundingBox(fin$closest_comids)
-    }
-    if (ids) {
-      fin[["comids"]] = unique(fin$closest_comids$comid)
-    }
-  }
+  fin[["nhd"]] = as_Spatial(merge(lines, dist, by = "comid"))
+  if (bb) { fin[["AOI"]] = AOI::getBoundingBox(fin$nhd) }
+  if (ids) { fin[["comids"]] = unique(fin$nhd$comid) }
 
   return(fin)
 
 }
+
 

@@ -1,66 +1,49 @@
-#' Find Watershed Boundaries (WBD)
+#' @title Find Watershed Boundary Geometries (WBD/HUC)
+#' @description The United States Geological Survey maintains a hierarchical system of hydrologic units each assigned a
+#' unique code (HUC). The heirarchical level is described by the number of digits in the code. A two-diget code (eg. HUC 2) is the coarsest unit of aggregation while the HUC 12 is the finest resulution.
+#' The spatail geometries of these units are stored in the Watershed Boundary Dataset with coverage of the United States.
+#' \code{findWBD} returns a \code{SpatialPolygonsDataFrame*} of WBD boundaries for the specified level within an AOI. Pending the query,
+#' data comes from the USGS CIDA server or the USGS staged products FTP.\cr
 #'
-#' @description
-#' \code{findWS} returns a list of \code{Spatial*} Objects cropped to an Area of Interest.\cr\cr
-#' To better understand defining an AOI using '\emph{state}', '\emph{county}' and '\emph{clip}' see \code{getAOI} and \code{getClipUnit}.\cr\cr
-#' Returned \code{list} can be interactivly explored via \code{\link{explore}}.\cr\cr
-#' All outputs are projected to \code{CRS '+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0+no_defs'} and spatial watershed data are (\emph{down})loaded from the  \href{https://prd-tnm.s3.amazonaws.com}{USGS Staged Data Server}.
-#'
-#' @param state    Full name(s) or two character abbriviation(s). Not case senstive
-#' @param county    County name(s). Requires \code{state} input.
-#' @param clip SpatialObject* or list. For details see \code{getClipUnit}
-#'
+#' Below you can see the general factors for each HUC level:\cr
+#' \tabular{ccccc}{
+#'   Name \tab Digits \tab Average Size (sqmiles) \tab Example Name \tab Example Code \cr
+#'  Region \tab 2 \tab 177,560 \tab Pacific Northwest \tab 17 \cr
+#' Subregion \tab 4 \tab  16,800  \tab Lower Snake \tab 1706\cr
+#'  Basin \tab 6 \tab 10,596  \tab Lower Snake \tab 170601 \cr
+#'   Subbasin \tab 8 \tab 700  \tab Imnaha River \tab 17060102 \cr
+#'   Watershed \tab 10 \tab 227 \tab Upper Imnaha River \tab 1706010201 \cr
+#'   Subwatershed \tab 12 \tab 40 \tab North Fork Imnaha River \tab 170601020101 \cr
+#' }
 #' @param ids  If TRUE, returns a list of HUC8 in AOI
 #' @param save If TRUE, data is written to a HydroData folder in users working directory.
-#' @param level defines the HUC level of interest
-#' @param subbasins If TRUE, all subbasins of the supplied \code{level} will be joined to retuned list
+#' @param level defines the HUC level of interest (default = 8)
+#' @param subbasins If TRUE, all subbasins of the supplied level will be joined to retuned list
+#' @param crop If TRUE, all subbasins are cropped to the AOI boundaries (default = \code{TRUE})
 #' @param HUC8 option to supply known HUC8 code(s)
-#'
-#' @seealso  \code{\link{getAOI}}
-#' @seealso  \code{\link{explore}}
-#'
-#' @family HydroData 'find' functions
-#'
-#' @return
-#' \code{findHUC} returns a named list of minimum length 1:
-#'
-#' \enumerate{
-#' \item 'huc_': A \code{SpatialPolygonDataFrame*} for each requested HUC level defined by \code{level} and \code{subbasins} \cr
-#'
-#' Pending parameterization, \code{findWS} can also return:
-#'
-#' \item 'ids':       A vector of HUC8 units if \code{ids = TRUE}
-#' }
-#'
-#' @examples
-#'\dontrun{
-#' # Find all HUC8, 10 and 12 units surrounding the National Water Center
-#'
-#'  ws = findWS(clip = list("National Water Center", 10 ,10),
-#'             subbasins = T,
-#'             level = 8)
-#'
-#' # Static Mapping
-#'
-#' plot(ws$basemap)
-#' plot(ws$boundary, add = T)
-#' plot(ws$huc_8, lwd = 3, add = T)
-#' plot(ws$huc_10, border = 'red', lwd = 2, add = T)
-#' plot(ws$huc_12, border = 'blue', add = T)
-#'
-#' # Generate Interactive Map
-#'
-#' explore(ws)
-#'}
-#'
 #' @export
+#' @examples
+#' \dontrun{
+#' # Get Cropped HUC8s for AOI
+#'  getAOI(clip = list("UCSB", 10, 10)) %>% findWBD()
+#'
+#'# Get Cropped HUC10s for AOI
+#'  getAOI(clip = list("UCSB", 10, 10)) %>% findWBD(level = 10)
+#'
+#'# Get Cropped HUC8s, HUC10s and HUC12s for AOI
+#'  getAOI(clip = list("UCSB", 10, 10)) %>% findWBD(level = 8, subbasins = TRUE)
+#'
+#'# Get uncropped HUC10s for AOI
+#'  getAOI(clip = list("UCSB", 10, 10)) %>% findWBD(level = 10, crop = FALSE)
+#' }
 #' @author
 #' Mike Johnson
 
 
-findHUC = function(AOI = NULL,
+findWBD = function(AOI = NULL,
                   level = 8,
                   subbasins = FALSE,
+                  crop = TRUE,
                   ids = FALSE){
 
   `%+%` = crayon::`%+%`
@@ -74,10 +57,19 @@ findHUC = function(AOI = NULL,
 
   if (all(level == 8)) {
     sp[["huc8"]] = query_cida(AOI$AOI, "huc08", spatial = TRUE)
+    shp = if(crop){
+      suppressWarnings(suppressMessages( sf::st_intersection(sp, sf::st_as_sf(AOI$AOI)))) } else {
+        suppressWarnings(suppressMessages(sp[sf::st_as_sf(AOI$AOI), ]))
+      }
+
     cat(crayon::white("Returned object contains: ") %+% crayon::green(paste(length(sp$huc8), "HUC8 boundaries"), "\n"))
   } else if (all(level == 12)) {
     sp[["huc12"]] = query_cida(AOI$AOI, "huc12", spatial = TRUE)
-    cat(crayon::white("Returned object contains: ") %+% crayon::green(paste(length(sp$huc12), "HUC12 boundaries"), "\n"))
+    shp = if(crop){
+      suppressWarnings(suppressMessages( sf::st_intersection(sp, sf::st_as_sf(AOI$AOI)))) } else {
+        suppressWarnings(suppressMessages(sp[sf::st_as_sf(AOI$AOI), ]))
+      }
+    cat(crayon::white("Returned object contains: ") %+% crayon::green(if(crop){"Cropped "} else {"Full "}, paste(length(sp$huc12), "HUC12 boundaries"), "\n"))
   } else {
 
     flow = query_cida(AOI$AOI, type ="huc08")
@@ -102,7 +94,10 @@ findHUC = function(AOI = NULL,
         shp = sf::read_sf(paste0(td, '/Shape/WBDHU', level[j], ".shp"))
         shp <- shp[!duplicated(data.frame(shp$Name)),]
         shp = sf::st_transform(shp, as.character(AOI::aoiProj))
-        shp = suppressWarnings(suppressMessages( sf::st_intersection(shp, sf::st_as_sf(AOI$AOI)) ))
+        shp = if(crop){
+            suppressWarnings(suppressMessages( sf::st_intersection(shp, sf::st_as_sf(AOI$AOI)))) } else {
+            suppressWarnings(suppressMessages(shp[sf::st_as_sf(AOI$AOI), ]))
+              }
         sp[[paste0("huc", level[j])]] = sf::as_Spatial(shp)
 
         }
@@ -118,8 +113,6 @@ findHUC = function(AOI = NULL,
           do.call(rbind, all.files[grepl(pattern = paste0(level[j], "$"), names(all.files))])
       }
 
-
-
 AOI = c(AOI, sp)
 
 tmp = names(AOI)[grep("huc", names(AOI))]
@@ -128,11 +121,12 @@ if(length(tmp) > 1){
  tmp = tmp[which.max(as.numeric(gsub("huc", "", tmp)))]
 }
 
-report = paste0(paste0("HUC", level, collapse = ", "), " boundaries")
+report = paste0( if(crop){"Cropped "} else {"Full "},   paste0("HUC", level, collapse = ", "), " boundaries")
 
 AOI = return.what(AOI, type = tmp, report, vals = if(ids){tmp})
 
 return(AOI)
 }
 }
+
 

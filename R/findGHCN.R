@@ -42,14 +42,14 @@ findGHCN = function(AOI = NULL, param = NULL, ids = FALSE) {
     }
   }
 
-  sp = sp::SpatialPointsDataFrame(cbind(stations$LON, stations$LAT), stations, proj4string = AOI::aoiProj)
+  sp = sp::SpatialPointsDataFrame(cbind(stations$LON, stations$LAT), stations, proj4string = AOI$AOI@proj4string)
   sp = sp[AOI$AOI,]
 
   if(dim(sp)[1] == 0) { cat(crayon::red("0 GHCN stations found in AOI")) } else {
 
   AOI[["ghcn"]] = sp
 
-  report = paste(length(sp), "GHCN station(s)")
+  report = paste(length(unique(sp$ID)), "unique GHCN station(s)")
 
   AOI = return.what(AOI, type = 'ghcn', report, vals = if(ids){"ID"}else{NULL})
 

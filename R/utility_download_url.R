@@ -1,9 +1,10 @@
-#' Download data from URL
-#'
+#' @title Download data from URL via httr::GET
+#' @description Download file from URL using httr:GET.
+#' File is written to the tmp directory with the basename of the URL call.
 #' @param url url
-#' @return
+#' @return a status and path to downloaded file
+#' @author Mike Johnson
 #' @export
-#'
 
 download.url = function(url){
 

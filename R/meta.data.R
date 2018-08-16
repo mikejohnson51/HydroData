@@ -1,10 +1,8 @@
-#' Return HydroData Object metadata
-#'
-#' @param AOI
-#'
-#' @return
+#' @title Return HydroData Object metadata
+#' @param AOI and AOI object with appended HydroDat features
+#' @return a data.frame of meta.data describing a HydroData object
 #' @export
-#'
+#' @author Mike Johnson
 
 meta.data = function(AOI){
 

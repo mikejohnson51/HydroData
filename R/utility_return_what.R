@@ -1,14 +1,8 @@
-#' Choose what to return for HydroData Calls
-#'
+#' @title Choose what to return for HydroData Calls
 #' @description  A function defining what should be returned in a HydroData object
-#'
 #' @param AOI Spatial object
 #' @param report a report vector
-#' @param AOI the defined AOI
 #' @param vals the ids call
-#'
-#' @family HydroData 'helper' functions
-#'
 #' @return a list of HydroData components
 #' @export
 #' @author Mike Johnson

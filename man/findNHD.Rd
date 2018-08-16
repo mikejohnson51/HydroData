@@ -9,7 +9,7 @@ findNHD(AOI = NULL, ids = FALSE)
 \arguments{
 \item{AOI}{A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}}
 
-\item{ids}{If TRUE,  a vector of airport ICAO codes is added to retuned list (default = \code{FALSE})}
+\item{ids}{If TRUE,  a vector of NHD COMIDs is added to retuned list (default = \code{FALSE})}
 }
 \value{
 a list() of minimum length 2: AOI and nhd

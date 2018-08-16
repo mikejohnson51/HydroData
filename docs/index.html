@@ -87,8 +87,8 @@
 <a href="#hydrodata-earth-systems-data-in-r" class="anchor"></a>HydroData: Earth Systems Data in R <img src="reference/figures/logo.png" width="160" height="120" align="right">
 </h1></div>
 
-<p><strong>HydroData</strong> is designed to help (1) find, (2) get, (3) visualize and (4) format disparate earth systems data through a core language (R); a common geospatial reference; and unifying vocabulary built around querying data for an area of interest (AOI). The package supports access to 19 National/Global data sources.</p>
-<p>All functions are dsigned to work with the <a href="https://mikejohnson51.github.io/AOI/">AOI</a> package and with the magrittr pipe operation <code>%&gt;%</code>. This way HydroData calls can be directly chained to the area of interest:</p>
+<p><strong>HydroData</strong> is designed to help (1) find, (2) get, (3) visualize, and (4) format disparate earth systems data through a core language (R); a common geospatial reference (ESPG:4629) ; and unifying vocabulary built around querying data by an area of interest (AOI). The package supports access to 20+ National/Global data sources.</p>
+<p>All functions are designed to work with the <a href="https://mikejohnson51.github.io/AOI/">AOI</a> package and magrittr pipe operation <code>%&gt;%</code> allowing successive HydroData calls to be directly chained to an area of interest:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myData =<span class="st"> </span><span class="kw">getAOI</span>(<span class="dt">clip =</span> <span class="kw">list</span>(<span class="st">"UCSB"</span>, <span class="dv">10</span>, <span class="dv">10</span>)) <span class="op">%&gt;%</span><span class="st"> </span>
 <span class="kw"><a href="reference/findNHD.html">findNHD</a></span>() <span class="op">%&gt;%</span><span class="st"> </span>
 findWaterbodies <span class="op">%&gt;%</span><span class="st"> </span>
@@ -102,34 +102,19 @@ List of 5
  $ waterbodies:Formal class 'SpatialPolygonsDataFrame' [package "sp"] with 5 slots
  $ nwis       :Formal class 'SpatialPointsDataFrame' [package "sp"] with 5 slots
  $ NED        :Formal class 'RasterLayer' [package "raster"] with 12 slots
- - attr(*, "class")= chr "HydroData"
-</code></pre>
+ - attr(*, "class")= chr "HydroData"</code></pre>
+<p>For now, most internal HydroData operations are based of the ‘simple featrure (sf)’ library however objects are all returned as Spatial* sp objects. As the community around simple feautures grows the default output of ‘HydroData’ might change. Until then users can use the hydrodata_sf function to convert a Hydrodata object to simple features where appropriate.</p>
 <p>HydroData offer in-package tools for generating interactive visualizations of HydroData Spatial* objects</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> myData <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="reference/explore.html">explore</a></span>()</code></pre></div>
 <p><br><img src="reference/figures/explore_ex.png" width="500"><br></p>
-<p>The data can be ploted piecemeal:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">
-raster<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/raster/topics/plot">plot</a></span>(myData<span class="op">$</span>NED, <span class="dt">col =</span> col_elev, <span class="dt">main =</span> <span class="st">"UCSB HydroData"</span>)
-sp<span class="op">::</span><span class="kw">plot</span>(myData<span class="op">$</span>nhd, <span class="dt">add =</span>T, <span class="dt">col =</span> <span class="st">"ghostwhite"</span>, <span class="dt">lwd =</span> myData<span class="op">$</span>nhd<span class="op">$</span>streamorde)
-sp<span class="op">::</span><span class="kw">plot</span>(myData<span class="op">$</span>waterbodies, <span class="dt">add =</span>T, <span class="dt">col =</span> <span class="st">'ghostwhite'</span>)</code></pre></div>
-<p><br><img src="reference/figures/plot_ex.png" width="500"><br></p>
-<p>and for fun the NED file can be passed though the rayshaer package to generate a beautiful hillshade image</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(rayshader)
-
-ned =<span class="st"> </span>myData<span class="op">$</span>NED
-ned =<span class="st"> </span><span class="kw">matrix</span>(raster<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/raster/topics/extract">extract</a></span>(ned,raster<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/raster/topics/extent">extent</a></span>(ned),<span class="dt">buffer=</span><span class="dv">1000</span>),
-             <span class="dt">nrow=</span><span class="kw">ncol</span>(ned),<span class="dt">ncol=</span><span class="kw">nrow</span>(ned))
-             
-ned <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/rayshader/topics/sphere_shade">sphere_shade</a></span>(<span class="dt">texture =</span> <span class="st">"imhof1"</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/rayshader/topics/add_water">add_water</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/rayshader/topics/detect_water">detect_water</a></span>(ned), <span class="dt">color=</span><span class="st">"desert"</span>) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/rayshader/topics/add_shadow">add_shadow</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/rayshader/topics/ray_shade">ray_shade</a></span>(ned)) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/rayshader/topics/add_shadow">add_shadow</a></span>(<span class="kw"><a href="http://www.rdocumentation.org/packages/rayshader/topics/ambient_shade">ambient_shade</a></span>(ned)) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/rayshader/topics/plot_map">plot_map</a></span>()
-  </code></pre></div>
-<p><br><img src="reference/figures/rayshade_ex.png" width="500"><br></p>
 <p>To download and get started with HydroData, install from GitHub using the <code>devtools</code> packages:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(devtools)
 <span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"mikejohnson51/HydroData"</span>)</code></pre></div>
+<div id="support" class="section level3">
+<h3 class="hasAnchor">
+<a href="#support" class="anchor"></a>Support:</h3>
+<p>The “AOI” R package is written by [Mike Johnson], a graduate Student at the [University of California, Santa Barbara] in [Keith C. Clarke’s] Lab, 2018. ~<br>~</p>
+</div>
 </div>
   </div>
 

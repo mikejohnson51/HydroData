@@ -15,7 +15,7 @@
 #' \item 'ftype': \code{character}  unique identifier of a feature type
 #' }\cr
 #' @param AOI  A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
-#' @param ids  If TRUE,  a vector of airport ICAO codes is added to retuned list (default = \code{FALSE})
+#' @param ids  If TRUE,  a vector of NHD COMIDs is added to retuned list (default = \code{FALSE})
 #' @return a list() of minimum length 2: AOI and nhd
 #' @examples
 #' \dontrun{

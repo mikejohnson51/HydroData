@@ -4,7 +4,7 @@
 \alias{writeHD}
 \title{Write Data to disk}
 \usage{
-writeHD(class, dir, feature_name, ext = "shp")
+writeHD(AOI, class, dir, feature_name, ext = "shp")
 }
 \arguments{
 \item{class}{objects class}
@@ -16,5 +16,5 @@ writeHD(class, dir, feature_name, ext = "shp")
 \item{ext}{shp or gpkg}
 }
 \description{
-Write Data to disk
+interal function used to write data to disk according to it meta.data found via HydroData::meta.data()
 }
