@@ -32,12 +32,17 @@ env:
 warnings_are_errors: false
 
 r_github_packages:
+  - mikejohnson51/AOI
   - jimhester/covr
   - r-spatial/lwgeom
-  - mikejohnson51/AOI
+
+script:
+  - |
+    R CMD build .
+    travis_wait 20 R CMD check HydroData*tar.gz
 
 after_success:
-  - if [[ "${R_CODECOV}" ]]; then R -e 'covr::coveralls()'; fi
+  - if [[ "${R_CODECOV}" ]]; then travis_wait 20 R -e 'covr::coveralls()'; fi s
 
 notifications:
   email:
