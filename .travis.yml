@@ -1,25 +1,27 @@
-# Sample .travis.yml for R projects.
-#
-# See README.md for instructions, or for more configuration options,
-# see the wiki:
-#   https://github.com/craigcitro/r-travis/wiki
+language: r
 
 language: r
 
-cache: packages
+cache:
+  - packages
+  - ccache
+
 sudo: required
 dist: trusty
+latex: false
 
-matrix:
-  include:
-    - os: linux
-      r: release
+r:
+  - release
 
-before_install:
-  - tlmgr install index
-  - sudo add-apt-repository ppa:ubuntugis/ppa --yes
-  - sudo apt-get --yes --force-yes update -qq
-  - sudo apt-get install --yes libudunits2-dev libproj-dev libgeos-dev libgdal-dev libcurl4-openssl-dev netcdf-bin
+addons:
+  apt:
+    sources:
+      - sourceline: 'ppa:ubuntugis/ubuntugis-unstable'
+    packages:
+      - libudunits2-dev
+      - libproj-dev
+      - libgeos-dev
+      - libgdal-dev
 
 env:
    global:
@@ -27,19 +29,17 @@ env:
      - R_CHECK_ARGS="--no-vignettes --no-manual --as-cran"
      - NOT_CRAN="true"
      - _R_CHECK_FORCE_SUGGESTS_=false
+     - R_CODECOV=true
 
 warnings_are_errors: false
 
 r_github_packages:
   - jimhester/covr
+  - r-spatial/lwgeom
   - mikejohnson51/AOI
 
-script:
-  - |
-    R CMD build .
-    travis_wait 20 R CMD check HydroData*tar.gz
 after_success:
-  - if [[ "${R_CODECOV}" ]]; then travis_wait 20 R -e 'covr::coveralls()'; fi
+  - if [[ "${R_CODECOV}" ]]; then R -e 'covr::coveralls()'; fi
 
 notifications:
   email:
