@@ -1,7 +1,5 @@
 language: r
 
-language: r
-
 cache:
   - packages
   - ccache
