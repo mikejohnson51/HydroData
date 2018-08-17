@@ -1,4 +1,0 @@
-areatypename,areasymbol,areaname,ssastatus,cordate,exportcertstatus,exportcertdate,exportmetadata,lkey,distmdkey,distlegendmdkey
-Non-MLRA Soil Survey Area,OR637,"Lane County Area, Oregon",NA,04/01/1981 00:00:00,"certified, all components",09/19/2017 16:09:43,"This survey was exported to the soil data warehouse after K, T, WEI/WEG, HSG, corrosion to steel, and corrosion to concrete were calculated per the instructions in National Bulletin 430-9-4.  The calculations were only run on major components.  The export includes all major components, but it only includes hydric minor components.  All other non-hydric minor components were excluded.   Reports of the pre calculated data were generated and archived prior to running the calculations.  
-
-",10395,55461,55363
