@@ -1,0 +1,86 @@
+musym,muname,mukind,mustatus,muacres,mapunitlfw.l,mapunitlfw.r,mapunitlfw.h,mapunitpfa.l,mapunitpfa.r,mapunitpfa.h,farmlndcl,muhelcl,muwathelcl,muwndhelcl,interpfocus,invesintens,iacornsr,nhiforsoigrp,nhspiagr,vtsepticsyscl,mucertstat,lkey,mukey
+100,Oxley gravelly silt loam,Consociation,NA,2227,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62566
+101,Oxley-Urban land complex,Complex,NA,768,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62567
+102C,"Panther silty clay loam, 2 to 12 percent slopes",Consociation,NA,8581,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62568
+103C,"Panther-Urban land complex, 2 to 12 percent slopes",Complex,NA,523,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62569
+105A,"Pengra silt loam, 1 to 4 percent slopes",Consociation,NA,5094,NA,NA,NA,NA,NA,NA,Prime farmland if drained,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62572
+106A,"Pengra-Urban land complex, 1 to 4 percent slopes",Complex,NA,997,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62573
+107C,"Philomath silty clay, 3 to 12 percent slopes",Consociation,NA,2312,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62574
+108C,"Philomath cobbly silty clay, 3 to 12 percent slopes",Consociation,NA,2089,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62575
+108F,"Philomath cobbly silty clay, 12 to 45 percent slopes",Consociation,NA,6786,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62576
+109F,"Philomath-Urban land complex, 12 to 45 percent slopes",Complex,NA,240,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62577
+110,Pits,Consociation,NA,2180,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62578
+113C,"Ritner cobbly silty clay loam, 2 to 12 percent slopes",Consociation,NA,4812,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62582
+113E,"Ritner cobbly silty clay loam, 12 to 30 percent slopes",Consociation,NA,12237,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62583
+113G,"Ritner cobbly silty clay loam, 30 to 60 percent slopes",Consociation,NA,21475,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62584
+114,Riverwash,Consociation,NA,2224,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62585
+116G,"Rock outcrop-Witzel complex, 10 to 70 percent slopes",Complex,NA,1687,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62587
+118,Salem gravelly silt loam,Consociation,NA,6981,NA,NA,NA,NA,NA,NA,All areas are prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62589
+119,Salem-Urban land complex,Complex,NA,3326,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62590
+11C,"Bellpine silty clay loam, 3 to 12 percent slopes",Consociation,NA,16408,NA,NA,NA,NA,NA,NA,All areas are prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62591
+11D,"Bellpine silty clay loam, 12 to 20 percent slopes",Consociation,NA,58940,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62592
+11E,"Bellpine silty clay loam, 20 to 30 percent slopes",Consociation,NA,38950,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62593
+11F,"Bellpine silty clay loam, 30 to 50 percent slopes",Consociation,NA,26883,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62594
+121B,"Salkum silty clay loam, 2 to 8 percent slopes",Consociation,NA,5450,NA,NA,NA,NA,NA,NA,All areas are prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62596
+121C,"Salkum silty clay loam, 8 to 16 percent slopes",Consociation,NA,2344,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62597
+125C,"Steiwer loam, 3 to 12 percent slopes",Consociation,NA,2345,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62602
+125D,"Steiwer loam, 12 to 20 percent slopes",Consociation,NA,927,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62603
+125F,"Steiwer loam, 20 to 50 percent slopes",Consociation,NA,1258,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62604
+127C,"Urban land-Hazelair-Dixonville complex, 3 to 12 percent slopes",Complex,NA,2094,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62607
+130,Waldo silty clay loam,Consociation,NA,7674,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62611
+135C,"Willakenzie clay loam, 2 to 12 percent slopes",Consociation,NA,2593,NA,NA,NA,NA,NA,NA,All areas are prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62618
+135D,"Willakenzie clay loam, 12 to 20 percent slopes",Consociation,NA,7465,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62619
+135E,"Willakenzie clay loam, 20 to 30 percent slopes",Consociation,NA,6331,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62620
+135F,"Willakenzie clay loam, 30 to 50 percent slopes",Consociation,NA,10180,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62621
+138E,"Witzel very cobbly loam, 3 to 30 percent slopes",Consociation,NA,5341,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62624
+138G,"Witzel very cobbly loam, 30 to 75 percent slopes",Consociation,NA,6472,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62625
+1A,"Abiqua silty clay loam, 0 to 3 percent slopes",Consociation,NA,5311,NA,NA,NA,NA,NA,NA,All areas are prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62641
+22,"Camas gravelly sandy loam, occasionally flooded",Consociation,NA,6208,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62648
+23,Camas-Urban land complex,Complex,NA,613,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62649
+24,Chapman loam,Consociation,NA,3771,NA,NA,NA,NA,NA,NA,All areas are prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62650
+25,Chapman-Urban land complex,Complex,NA,1381,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62651
+26,"Chehalis silty clay loam, occasionally flooded",Consociation,NA,9349,NA,NA,NA,NA,NA,NA,All areas are prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62652
+27,Chehalis-Urban land complex,Complex,NA,827,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62653
+28C,"Chehulpum silt loam, 3 to 12 percent slopes",Consociation,NA,1596,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62654
+28E,"Chehulpum silt loam, 12 to 40 percent slopes",Consociation,NA,554,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62655
+29,Cloquato silt loam,Consociation,NA,4954,NA,NA,NA,NA,NA,NA,All areas are prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62656
+30,Cloquato-Urban land complex,Complex,NA,279,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62658
+31,Coburg silty clay loam,Consociation,NA,12131,NA,NA,NA,NA,NA,NA,All areas are prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62659
+32,Coburg-Urban land complex,Complex,NA,4440,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62660
+33,Conser silty clay loam,Consociation,NA,4386,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62661
+34,Courtney gravelly silty clay loam,Consociation,NA,2923,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62662
+36D,"Cumley silty clay loam, 2 to 20 percent slopes",Consociation,NA,32622,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62666
+38,"Dayton silt loam, clay substratum",Consociation,NA,4587,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62669
+41C,"Dixonville silty clay loam, 3 to 12 percent slopes",Consociation,NA,2886,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62675
+41E,"Dixonville silty clay loam, 12 to 30 percent slopes",Consociation,NA,3543,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62676
+41F,"Dixonville silty clay loam, 30 to 50 percent slopes",Consociation,NA,2995,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62677
+42E,"Dixonville-Hazelair-Urban land complex, 12 to 35 percent slopes",Complex,NA,794,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62678
+43C,"Dixonville-Philomath-Hazelair complex, 3 to 12 percent slopes",Complex,NA,10336,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62679
+43E,"Dixonville-Philomath-Hazelair complex, 12 to 35 percent slopes",Complex,NA,19947,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62680
+45C,"Dupee silt loam, 3 to 20 percent slopes",Consociation,NA,22081,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62682
+48,"Fluvents, nearly level",Consociation,NA,10186,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62685
+5,Awbrig silty clay loam,Consociation,NA,9847,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62689
+52B,"Hazelair silty clay loam, 2 to 7 percent slopes",Consociation,NA,5736,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62692
+52D,"Hazelair silty clay loam, 7 to 20 percent slopes",Consociation,NA,11413,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62693
+56,Holcomb silty clay loam,Consociation,NA,1097,NA,NA,NA,NA,NA,NA,Prime farmland if drained,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62699
+6,Awbrig-Urban land complex,Complex,NA,936,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62707
+63C,"Jory silty clay loam, 2 to 12 percent slopes",Consociation,NA,4872,NA,NA,NA,NA,NA,NA,All areas are prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62713
+75,Malabon silty clay loam,Consociation,NA,14019,NA,NA,NA,NA,NA,NA,All areas are prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62737
+76,Malabon-Urban land complex,Complex,NA,8180,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62738
+78,McAlpin silty clay loam,Consociation,NA,11867,NA,NA,NA,NA,NA,NA,All areas are prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62740
+79,McBee silty clay loam,Consociation,NA,5574,NA,NA,NA,NA,NA,NA,Prime farmland if protected from flooding or not frequently flooded during the growing season,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62741
+8,Bashaw clay,Consociation,NA,9054,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62745
+81D,"McDuff clay loam, 3 to 25 percent slopes",Consociation,NA,2576,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62748
+85,Natroy silty clay loam,Consociation,NA,12517,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62754
+86,Natroy silty clay,Consociation,NA,2740,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62755
+87,Natroy-Urban land complex,Complex,NA,1344,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62756
+89C,"Nekia silty clay loam, 2 to 12 percent slopes",Consociation,NA,5576,NA,NA,NA,NA,NA,NA,All areas are prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62758
+89D,"Nekia silty clay loam, 12 to 20 percent slopes",Consociation,NA,16673,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62759
+89E,"Nekia silty clay loam, 20 to 30 percent slopes",Consociation,NA,10539,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62760
+89F,"Nekia silty clay loam, 30 to 50 percent slopes",Consociation,NA,7718,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62761
+9,Bashaw-Urban land complex,Complex,NA,461,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62762
+95,Newberg fine sandy loam,Consociation,NA,8449,NA,NA,NA,NA,NA,NA,Prime farmland if irrigated,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62770
+96,Newberg loam,Consociation,NA,8852,NA,NA,NA,NA,NA,NA,Prime farmland if irrigated,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62771
+97,Newberg-Urban land complex,Complex,NA,1472,NA,NA,NA,NA,NA,NA,Farmland of statewide importance,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62772
+99H,"Ochrepts and Umbrepts, very steep",Undifferentiated group,NA,1170,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62774
+W,Water,,NA,32026,NA,NA,NA,NA,NA,NA,Not prime farmland,NA,NA,NA,NA,,NA,NA,NA,NA,NA,10395,62775

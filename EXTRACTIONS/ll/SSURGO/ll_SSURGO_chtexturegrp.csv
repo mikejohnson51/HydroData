@@ -1,0 +1,749 @@
+texture,stratextsflag,rvindicator,texdesc,chkey,chtgkey
+GR-SIL,No ,Yes,Gravelly silt loam,42963012,84935563
+GR-CL,No ,Yes,Gravelly clay loam,42963013,84935564
+GRV-CL,No ,Yes,Very gravelly clay loam,42963014,84935565
+GRV-L,No ,No ,Very gravelly loam,42963014,84935566
+GRX-SL,No ,Yes,Extremely gravelly sandy loam,42963015,84935567
+GRX-L,No ,No ,Extremely gravelly loam,42963015,84935568
+GRV-L,No ,No ,Very gravelly loam,42963015,84935569
+GR-SICL,No ,Yes,Gravelly silty clay loam,42963016,84935570
+GR-C,No ,Yes,Gravelly clay,42963017,84935571
+GR-SIC,No ,No ,Gravelly silty clay,42963017,84935572
+GRV-CL,No ,Yes,Very gravelly clay loam,42963018,84935573
+GRX-CL,No ,No ,Extremely gravelly clay loam,42963018,84935574
+GRV-S,No ,Yes,Very gravelly sand,42963019,84935575
+GRX-S,No ,No ,Extremely gravelly sand,42963019,84935576
+GR-SIL,No ,Yes,Gravelly silt loam,42963020,84935577
+GR-CL,No ,Yes,Gravelly clay loam,42963021,84935578
+GRV-CL,No ,Yes,Very gravelly clay loam,42963022,84935579
+GRV-L,No ,No ,Very gravelly loam,42963022,84935580
+GRX-SL,No ,Yes,Extremely gravelly sandy loam,42963023,84935581
+GRX-L,No ,No ,Extremely gravelly loam,42963023,84935582
+GRV-L,No ,No ,Very gravelly loam,42963023,84935583
+GR-SICL,No ,Yes,Gravelly silty clay loam,42963024,84935584
+GR-C,No ,Yes,Gravelly clay,42963025,84935585
+GR-SIC,No ,No ,Gravelly silty clay,42963025,84935586
+GRV-CL,No ,Yes,Very gravelly clay loam,42963026,84935587
+GRX-CL,No ,No ,Extremely gravelly clay loam,42963026,84935588
+GRV-S,No ,Yes,Very gravelly sand,42963027,84935589
+GRX-S,No ,No ,Extremely gravelly sand,42963027,84935590
+SICL,No ,Yes,Silty clay loam,42963028,84935591
+C,No ,Yes,Clay,42963029,84935592
+WB,No ,Yes,Weathered bedrock,42963030,84935593
+C,No ,Yes,Clay,42963031,84935594
+SIC,No ,Yes,Silty clay,42963032,84935595
+C,No ,No ,Clay,42963032,84935596
+SC,No ,No ,Sandy clay,42963032,84935597
+SICL,No ,Yes,Silty clay loam,42963033,84935598
+C,No ,Yes,Clay,42963034,84935599
+WB,No ,Yes,Weathered bedrock,42963035,84935600
+C,No ,Yes,Clay,42963036,84935601
+SIC,No ,Yes,Silty clay,42963037,84935602
+C,No ,No ,Clay,42963037,84935603
+SC,No ,No ,Sandy clay,42963037,84935604
+SIL,No ,Yes,Silt loam,42963050,84935622
+SICL,No ,Yes,Silty clay loam,42963051,84935623
+C,No ,Yes,Clay,42963052,84935624
+GR-SICL,No ,Yes,Gravelly silty clay loam,42963053,84935625
+GR-C,No ,Yes,Gravelly clay,42963054,84935626
+GR-SIC,No ,No ,Gravelly silty clay,42963054,84935627
+GRV-CL,No ,Yes,Very gravelly clay loam,42963055,84935628
+GRX-CL,No ,No ,Extremely gravelly clay loam,42963055,84935629
+GRV-S,No ,Yes,Very gravelly sand,42963056,84935630
+GRX-S,No ,No ,Extremely gravelly sand,42963056,84935631
+SIC,No ,Yes,Silty clay,42963057,84935632
+C,No ,Yes,Clay,42963058,84935633
+GR-C,No ,Yes,Gravelly clay,42963059,84935634
+C,No ,No ,Clay,42963059,84935635
+SC,No ,No ,Sandy clay,42963059,84935636
+SICL,No ,Yes,Silty clay loam,42963060,84935637
+C,No ,Yes,Clay,42963061,84935638
+WB,No ,Yes,Weathered bedrock,42963062,84935639
+SIL,No ,Yes,Silt loam,42963063,84935640
+SICL,No ,Yes,Silty clay loam,42963064,84935641
+C,No ,Yes,Clay,42963065,84935642
+SICL,No ,Yes,Silty clay loam,42963066,84935643
+C,No ,Yes,Clay,42963067,84935644
+GR-C,No ,Yes,Gravelly clay,42963068,84935645
+C,No ,No ,Clay,42963068,84935646
+SC,No ,No ,Sandy clay,42963068,84935647
+C,No ,Yes,Clay,42963069,84935648
+WB,No ,Yes,Weathered bedrock,42963070,84935649
+SICL,No ,Yes,Silty clay loam,42963071,84935650
+SIC,No ,Yes,Silty clay,42963072,84935651
+C,No ,No ,Clay,42963073,84935652
+CB-SIC,No ,Yes,Cobbly silty clay,42963073,84935653
+CB-C,No ,No ,Cobbly clay,42963073,84935654
+WB,No ,Yes,Weathered bedrock,42963074,84935655
+CB-SIC,No ,Yes,Cobbly silty clay,42963075,84935656
+C,No ,No ,Clay,42963076,84935657
+CB-SIC,No ,Yes,Cobbly silty clay,42963076,84935658
+CB-C,No ,No ,Cobbly clay,42963076,84935659
+WB,No ,Yes,Weathered bedrock,42963077,84935660
+SICL,No ,Yes,Silty clay loam,42963078,84935661
+C,No ,Yes,Clay,42963079,84935662
+WB,No ,Yes,Weathered bedrock,42963080,84935663
+CB-SIC,No ,Yes,Cobbly silty clay,42963081,84935664
+C,No ,No ,Clay,42963082,84935665
+CB-SIC,No ,Yes,Cobbly silty clay,42963082,84935666
+CB-C,No ,No ,Cobbly clay,42963082,84935667
+WB,No ,Yes,Weathered bedrock,42963083,84935668
+WB,No ,Yes,Weathered bedrock,42963084,84935669
+CB-SIC,No ,Yes,Cobbly silty clay,42963085,84935670
+C,No ,No ,Clay,42963086,84935671
+CB-SIC,No ,Yes,Cobbly silty clay,42963086,84935672
+CB-C,No ,No ,Cobbly clay,42963086,84935673
+SPM,No ,Yes,Slightly decomposed plant material,42963109,84935711
+CB-SICL,No ,Yes,Cobbly silty clay loam,42963110,84935712
+GRV-SIC,No ,No ,Very gravelly silty clay,42963111,84935713
+CBV-SICL,No ,Yes,Very cobbly silty clay loam,42963111,84935714
+UWB,No ,Yes,Unweathered bedrock,42963112,84935715
+SPM,No ,Yes,Slightly decomposed plant material,42963113,84935716
+CB-SICL,No ,Yes,Cobbly silty clay loam,42963114,84935717
+GRV-SIC,No ,No ,Very gravelly silty clay,42963115,84935718
+CBV-SICL,No ,Yes,Very cobbly silty clay loam,42963115,84935719
+UWB,No ,Yes,Unweathered bedrock,42963116,84935720
+SPM,No ,Yes,Slightly decomposed plant material,42963117,84935721
+CB-SICL,No ,Yes,Cobbly silty clay loam,42963118,84935722
+GRV-SIC,No ,No ,Very gravelly silty clay,42963119,84935723
+CBV-SICL,No ,Yes,Very cobbly silty clay loam,42963119,84935724
+UWB,No ,Yes,Unweathered bedrock,42963120,84935725
+SR- S GR,Yes,Yes,Stratified sand to gravel,42963121,84935726
+GR-SL,No ,Yes,Gravelly sandy loam,42963122,84935727
+GRX-COS,No ,Yes,Extremely gravelly coarse sand,42963123,84935728
+GRV-S,No ,Yes,Very gravelly sand,42963123,84935729
+GRV-LS,No ,Yes,Very gravelly loamy sand,42963123,84935730
+UWB,No ,Yes,Unweathered bedrock,42963129,84935738
+CBV-L,No ,Yes,Very cobbly loam,42963130,84935739
+STV-SICL,No ,No ,Very stony silty clay loam,42963131,84935740
+CBV-CL,No ,Yes,Very cobbly clay loam,42963131,84935741
+CBX-L,No ,No ,Extremely cobbly loam,42963131,84935742
+UWB,No ,Yes,Unweathered bedrock,42963132,84935743
+GR-SIL,No ,Yes,Gravelly silt loam,42963136,84935749
+GR-CL,No ,Yes,Gravelly clay loam,42963137,84935750
+GR-SICL,No ,No ,Gravelly silty clay loam,42963137,84935751
+GR-SCL,No ,No ,Gravelly sandy clay loam,42963137,84935752
+GRV-S,No ,Yes,Very gravelly sand,42963138,84935753
+GRV-LS,No ,No ,Very gravelly loamy sand,42963138,84935754
+GRX-S,No ,No ,Extremely gravelly sand,42963138,84935755
+GR-SIL,No ,Yes,Gravelly silt loam,42963139,84935756
+GR-CL,No ,Yes,Gravelly clay loam,42963140,84935757
+GR-SICL,No ,No ,Gravelly silty clay loam,42963140,84935758
+GR-SCL,No ,No ,Gravelly sandy clay loam,42963140,84935759
+GRV-S,No ,Yes,Very gravelly sand,42963141,84935760
+GRV-LS,No ,No ,Very gravelly loamy sand,42963141,84935761
+GRX-S,No ,No ,Extremely gravelly sand,42963141,84935762
+SIC,No ,Yes,Silty clay,42963142,84935763
+C,No ,No ,Clay,42963142,84935764
+WB,No ,Yes,Weathered bedrock,42963143,84935765
+SICL,No ,Yes,Silty clay loam,42963144,84935766
+SICL,No ,Yes,Silty clay loam,42963145,84935767
+SIC,No ,Yes,Silty clay,42963146,84935768
+C,No ,No ,Clay,42963146,84935769
+WB,No ,Yes,Weathered bedrock,42963147,84935770
+SICL,No ,Yes,Silty clay loam,42963148,84935771
+SIC,No ,Yes,Silty clay,42963149,84935772
+C,No ,No ,Clay,42963149,84935773
+WB,No ,Yes,Weathered bedrock,42963150,84935774
+SICL,No ,Yes,Silty clay loam,42963151,84935775
+SIC,No ,Yes,Silty clay,42963152,84935776
+C,No ,No ,Clay,42963152,84935777
+WB,No ,Yes,Weathered bedrock,42963153,84935778
+SICL,No ,Yes,Silty clay loam,42963157,84935785
+SIC,No ,No ,Silty clay,42963158,84935786
+C,No ,Yes,Clay,42963158,84935787
+SIC,No ,No ,Silty clay,42963159,84935788
+SICL,No ,Yes,Silty clay loam,42963159,84935789
+C,No ,No ,Clay,42963159,84935790
+SICL,No ,Yes,Silty clay loam,42963160,84935791
+SIC,No ,No ,Silty clay,42963161,84935792
+C,No ,Yes,Clay,42963161,84935793
+SIC,No ,No ,Silty clay,42963162,84935794
+SICL,No ,Yes,Silty clay loam,42963162,84935795
+C,No ,No ,Clay,42963162,84935796
+L,No ,Yes,Loam,42963181,84935829
+CL,No ,Yes,Clay loam,42963182,84935830
+SICL,No ,No ,Silty clay loam,42963182,84935831
+WB,No ,Yes,Weathered bedrock,42963183,84935832
+L,No ,Yes,Loam,42963184,84935833
+CL,No ,Yes,Clay loam,42963185,84935834
+SICL,No ,No ,Silty clay loam,42963185,84935835
+WB,No ,Yes,Weathered bedrock,42963186,84935836
+L,No ,Yes,Loam,42963187,84935837
+CL,No ,Yes,Clay loam,42963188,84935838
+SICL,No ,No ,Silty clay loam,42963188,84935839
+WB,No ,Yes,Weathered bedrock,42963189,84935840
+SICL,No ,Yes,Silty clay loam,42963198,84935853
+SIC,No ,Yes,Silty clay,42963199,84935854
+SICL,No ,No ,Silty clay loam,42963199,84935855
+C,No ,Yes,Clay,42963200,84935856
+WB,No ,Yes,Weathered bedrock,42963201,84935857
+SICL,No ,Yes,Silty clay loam,42963202,84935858
+C,No ,No ,Clay,42963203,84935859
+CB-C,No ,No ,Cobbly clay,42963203,84935860
+SIC,No ,Yes,Silty clay,42963203,84935861
+WB,No ,Yes,Weathered bedrock,42963204,84935862
+SICL,No ,Yes,Silty clay loam,42963205,84935863
+C,No ,Yes,Clay,42963206,84935864
+WB,No ,Yes,Weathered bedrock,42963207,84935865
+SICL,No ,Yes,Silty clay loam,42963225,84935891
+SIC,No ,No ,Silty clay,42963226,84935892
+C,No ,Yes,Clay,42963226,84935893
+C,No ,Yes,Clay,42963227,84935894
+SIC,No ,Yes,Silty clay,42963228,84935895
+C,No ,No ,Clay,42963228,84935896
+SC,No ,No ,Sandy clay,42963228,84935897
+SICL,No ,Yes,Silty clay loam,42963229,84935898
+SICL,No ,Yes,Silty clay loam,42963230,84935899
+SIL,No ,Yes,Silt loam,42963230,84935900
+SIC,No ,Yes,Silty clay,42963231,84935901
+CL,No ,Yes,Clay loam,42963283,84935973
+SICL,No ,No ,Silty clay loam,42963284,84935974
+CL,No ,Yes,Clay loam,42963284,84935975
+WB,No ,Yes,Weathered bedrock,42963285,84935976
+CL,No ,Yes,Clay loam,42963286,84935977
+SICL,No ,No ,Silty clay loam,42963287,84935978
+CL,No ,Yes,Clay loam,42963287,84935979
+WB,No ,Yes,Weathered bedrock,42963288,84935980
+CL,No ,Yes,Clay loam,42963289,84935981
+SICL,No ,No ,Silty clay loam,42963290,84935982
+CL,No ,Yes,Clay loam,42963290,84935983
+WB,No ,Yes,Weathered bedrock,42963291,84935984
+WB,No ,Yes,Weathered bedrock,42963292,84935985
+CL,No ,Yes,Clay loam,42963293,84935986
+SICL,No ,No ,Silty clay loam,42963294,84935987
+CL,No ,Yes,Clay loam,42963294,84935988
+CBV-L,No ,Yes,Very cobbly loam,42963302,84935998
+STV-SICL,No ,No ,Very stony silty clay loam,42963303,84935999
+CBV-CL,No ,Yes,Very cobbly clay loam,42963303,84936000
+CBX-L,No ,No ,Extremely cobbly loam,42963303,84936001
+UWB,No ,Yes,Unweathered bedrock,42963304,84936002
+CBV-L,No ,Yes,Very cobbly loam,42963305,84936003
+STV-SICL,No ,No ,Very stony silty clay loam,42963306,84936004
+CBV-CL,No ,Yes,Very cobbly clay loam,42963306,84936005
+CBX-L,No ,No ,Extremely cobbly loam,42963306,84936006
+UWB,No ,Yes,Unweathered bedrock,42963307,84936007
+SICL,No ,Yes,Silty clay loam,42963376,84936107
+SIC,No ,Yes,Silty clay,42963377,84936108
+SICL,No ,No ,Silty clay loam,42963377,84936109
+C,No ,No ,Clay,42963377,84936110
+SICL,No ,No ,Silty clay loam,42963378,84936111
+GR-CL,No ,Yes,Gravelly clay loam,42963378,84936112
+C,No ,No ,Clay,42963378,84936113
+SICL,No ,Yes,Silty clay loam,42963379,84936114
+SIC,No ,No ,Silty clay,42963380,84936115
+C,No ,Yes,Clay,42963380,84936116
+SR- G S,Yes,Yes,Stratified g to sand,42963381,84936117
+GR-SL,No ,Yes,Gravelly sandy loam,42963425,84936193
+GRX-COS,No ,No ,Extremely gravelly coarse sand,42963426,84936194
+GRV-S,No ,Yes,Very gravelly sand,42963426,84936195
+GRV-LS,No ,No ,Very gravelly loamy sand,42963426,84936196
+SR- G S,Yes,Yes,Stratified g to sand,42963427,84936197
+GR-SL,No ,Yes,Gravelly sandy loam,42963428,84936198
+GRX-COS,No ,No ,Extremely gravelly coarse sand,42963429,84936199
+GRV-S,No ,Yes,Very gravelly sand,42963429,84936200
+GRV-LS,No ,No ,Very gravelly loamy sand,42963429,84936201
+L,No ,Yes,Loam,42963430,84936202
+CL,No ,No ,Clay loam,42963430,84936203
+GR-SL,No ,Yes,Gravelly sandy loam,42963431,84936204
+GR-L,No ,No ,Gravelly loam,42963431,84936205
+GRV-SL,No ,Yes,Very gravelly sandy loam,42963432,84936206
+L,No ,Yes,Loam,42963433,84936207
+L,No ,Yes,Loam,42963434,84936208
+L,No ,Yes,Loam,42963435,84936209
+CL,No ,No ,Clay loam,42963435,84936210
+GR-SL,No ,Yes,Gravelly sandy loam,42963436,84936211
+GR-L,No ,No ,Gravelly loam,42963436,84936212
+GRV-SL,No ,Yes,Very gravelly sandy loam,42963437,84936213
+SICL,No ,Yes,Silty clay loam,42963438,84936214
+SIL,No ,No ,Silt loam,42963439,84936215
+SICL,No ,Yes,Silty clay loam,42963439,84936216
+SIL,No ,Yes,Silt loam,42963440,84936217
+L,No ,No ,Loam,42963440,84936218
+SIC,No ,No ,Silty clay,42963440,84936219
+SIL,No ,Yes,Silt loam,42963441,84936220
+L,No ,No ,Loam,42963441,84936221
+SIC,No ,No ,Silty clay,42963441,84936222
+SICL,No ,Yes,Silty clay loam,42963442,84936223
+SIL,No ,No ,Silt loam,42963443,84936224
+SICL,No ,Yes,Silty clay loam,42963443,84936225
+SIL,No ,Yes,Silt loam,42963444,84936226
+SIL,No ,No ,Silt loam,42963445,84936227
+CL,No ,Yes,Clay loam,42963445,84936228
+GR-SIL,No ,No ,Gravelly silt loam,42963445,84936229
+WB,No ,Yes,Weathered bedrock,42963446,84936230
+SIL,No ,Yes,Silt loam,42963447,84936231
+SIL,No ,No ,Silt loam,42963448,84936232
+CL,No ,Yes,Clay loam,42963448,84936233
+GR-SIL,No ,No ,Gravelly silt loam,42963448,84936234
+WB,No ,Yes,Weathered bedrock,42963449,84936235
+SIL,No ,Yes,Silt loam,42963450,84936236
+SIL,No ,Yes,Silt loam,42963451,84936237
+SR- S SIL,Yes,Yes,Stratified sand to silt loam,42963452,84936238
+SIL,No ,Yes,Silt loam,42963456,84936244
+SIL,No ,Yes,Silt loam,42963457,84936245
+SR- S SIL,Yes,Yes,Stratified sand to silt loam,42963458,84936246
+SICL,No ,Yes,Silty clay loam,42963459,84936247
+SICL,No ,No ,Silty clay loam,42963460,84936248
+SIC,No ,Yes,Silty clay,42963460,84936249
+FSL,No ,Yes,Fine sandy loam,42963461,84936250
+L,No ,No ,Loam,42963461,84936251
+CL,No ,No ,Clay loam,42963461,84936252
+SICL,No ,Yes,Silty clay loam,42963462,84936253
+C,No ,No ,Clay,42963463,84936254
+SIC,No ,Yes,Silty clay,42963463,84936255
+SICL,No ,No ,Silty clay loam,42963463,84936256
+L,No ,No ,Loam,42963464,84936257
+SL,No ,Yes,Sandy loam,42963464,84936258
+CL,No ,No ,Clay loam,42963464,84936259
+SICL,No ,Yes,Silty clay loam,42963465,84936260
+SICL,No ,No ,Silty clay loam,42963466,84936261
+SIC,No ,Yes,Silty clay,42963466,84936262
+FSL,No ,Yes,Fine sandy loam,42963467,84936263
+L,No ,No ,Loam,42963467,84936264
+CL,No ,No ,Clay loam,42963467,84936265
+SICL,No ,Yes,Silty clay loam,42963468,84936266
+C,No ,No ,Clay,42963469,84936267
+SIC,No ,Yes,Silty clay,42963469,84936268
+SICL,No ,No ,Silty clay loam,42963469,84936269
+L,No ,No ,Loam,42963470,84936270
+SL,No ,Yes,Sandy loam,42963470,84936271
+CL,No ,No ,Clay loam,42963470,84936272
+SICL,No ,Yes,Silty clay loam,42963471,84936273
+C,No ,No ,Clay,42963472,84936274
+SIC,No ,Yes,Silty clay,42963472,84936275
+SICL,No ,No ,Silty clay loam,42963472,84936276
+L,No ,No ,Loam,42963473,84936277
+SL,No ,Yes,Sandy loam,42963473,84936278
+CL,No ,No ,Clay loam,42963473,84936279
+SICL,No ,Yes,Silty clay loam,42963474,84936280
+C,No ,Yes,Clay,42963475,84936281
+SIC,No ,No ,Silty clay,42963475,84936282
+SICL,No ,Yes,Silty clay loam,42963476,84936283
+CL,No ,No ,Clay loam,42963476,84936284
+C,No ,Yes,Clay,42963477,84936285
+SIC,No ,Yes,Silty clay,42963478,84936286
+C,No ,No ,Clay,42963478,84936287
+SC,No ,No ,Sandy clay,42963478,84936288
+GR-SICL,No ,Yes,Gravelly silty clay loam,42963479,84936289
+GR-C,No ,Yes,Gravelly clay,42963480,84936290
+GR-SIC,No ,No ,Gravelly silty clay,42963480,84936291
+GRV-CL,No ,Yes,Very gravelly clay loam,42963481,84936292
+GRX-CL,No ,No ,Extremely gravelly clay loam,42963481,84936293
+GRV-S,No ,Yes,Very gravelly sand,42963482,84936294
+GRX-S,No ,No ,Extremely gravelly sand,42963482,84936295
+SICL,No ,Yes,Silty clay loam,42963483,84936296
+C,No ,Yes,Clay,42963484,84936297
+SIC,No ,No ,Silty clay,42963484,84936298
+SICL,No ,Yes,Silty clay loam,42963485,84936299
+CL,No ,No ,Clay loam,42963485,84936300
+C,No ,Yes,Clay,42963486,84936301
+SIC,No ,Yes,Silty clay,42963487,84936302
+C,No ,No ,Clay,42963487,84936303
+SC,No ,No ,Sandy clay,42963487,84936304
+GR-C,No ,Yes,Gravelly clay,42963488,84936305
+C,No ,No ,Clay,42963488,84936306
+SC,No ,No ,Sandy clay,42963488,84936307
+SICL,No ,Yes,Silty clay loam,42963489,84936308
+C,No ,Yes,Clay,42963490,84936309
+SPM,No ,Yes,Slightly decomposed plant material,42963500,84936328
+SICL,No ,Yes,Silty clay loam,42963501,84936329
+SIC,No ,No ,Silty clay,42963502,84936330
+C,No ,Yes,Clay,42963502,84936331
+SPM,No ,Yes,Slightly decomposed plant material,42963503,84936332
+SICL,No ,Yes,Silty clay loam,42963504,84936333
+C,No ,Yes,Clay,42963505,84936334
+SIC,No ,No ,Silty clay,42963505,84936335
+C,No ,Yes,Clay,42963506,84936336
+SICL,No ,No ,Silty clay loam,42963506,84936337
+CL,No ,No ,Clay loam,42963506,84936338
+SIL,No ,Yes,Silt loam,42963513,84936351
+SIL,No ,Yes,Silt loam,42963514,84936352
+SICL,No ,No ,Silty clay loam,42963514,84936353
+C,No ,Yes,Clay,42963515,84936354
+SIC,No ,No ,Silty clay,42963515,84936355
+C,No ,Yes,Clay,42963516,84936356
+SICL,No ,Yes,Silty clay loam,42963517,84936357
+C,No ,Yes,Clay,42963518,84936358
+SIC,No ,No ,Silty clay,42963518,84936359
+SICL,No ,Yes,Silty clay loam,42963519,84936360
+CL,No ,No ,Clay loam,42963519,84936361
+C,No ,Yes,Clay,42963520,84936362
+SIC,No ,Yes,Silty clay,42963521,84936363
+C,No ,No ,Clay,42963521,84936364
+SC,No ,No ,Sandy clay,42963521,84936365
+SICL,No ,Yes,Silty clay loam,42963522,84936366
+C,No ,No ,Clay,42963523,84936367
+SIC,No ,Yes,Silty clay,42963523,84936368
+SICL,No ,No ,Silty clay loam,42963523,84936369
+L,No ,No ,Loam,42963524,84936370
+SL,No ,Yes,Sandy loam,42963524,84936371
+CL,No ,No ,Clay loam,42963524,84936372
+GR-SICL,No ,Yes,Gravelly silty clay loam,42963525,84936373
+GR-C,No ,Yes,Gravelly clay,42963526,84936374
+GR-SIC,No ,No ,Gravelly silty clay,42963526,84936375
+GRV-CL,No ,Yes,Very gravelly clay loam,42963527,84936376
+GRX-CL,No ,No ,Extremely gravelly clay loam,42963527,84936377
+GRV-S,No ,Yes,Very gravelly sand,42963528,84936378
+GRX-S,No ,No ,Extremely gravelly sand,42963528,84936379
+SICL,No ,Yes,Silty clay loam,42963529,84936380
+C,No ,Yes,Clay,42963530,84936381
+GR-C,No ,Yes,Gravelly clay,42963531,84936382
+C,No ,No ,Clay,42963531,84936383
+SC,No ,No ,Sandy clay,42963531,84936384
+L,No ,Yes,Loam,42963532,84936385
+L,No ,No ,Loam,42963533,84936386
+FSL,No ,Yes,Fine sandy loam,42963533,84936387
+LS,No ,Yes,Loamy sand,42963534,84936388
+GRV-LS,No ,Yes,Very gravelly loamy sand,42963535,84936389
+GRV-SL,No ,No ,Very gravelly sandy loam,42963535,84936390
+SIL,No ,Yes,Silt loam,42963536,84936391
+SICL,No ,Yes,Silty clay loam,42963537,84936392
+C,No ,Yes,Clay,42963538,84936393
+SICL,No ,Yes,Silty clay loam,42963558,84936426
+C,No ,No ,Clay,42963559,84936427
+CB-C,No ,No ,Cobbly clay,42963559,84936428
+SIC,No ,Yes,Silty clay,42963559,84936429
+WB,No ,Yes,Weathered bedrock,42963560,84936430
+SICL,No ,Yes,Silty clay loam,42963561,84936431
+C,No ,No ,Clay,42963562,84936432
+CB-C,No ,No ,Cobbly clay,42963562,84936433
+SIC,No ,Yes,Silty clay,42963562,84936434
+WB,No ,Yes,Weathered bedrock,42963563,84936435
+SICL,No ,Yes,Silty clay loam,42963564,84936436
+C,No ,No ,Clay,42963565,84936437
+CB-C,No ,No ,Cobbly clay,42963565,84936438
+SIC,No ,Yes,Silty clay,42963565,84936439
+WB,No ,Yes,Weathered bedrock,42963566,84936440
+SICL,No ,Yes,Silty clay loam,42963567,84936441
+C,No ,No ,Clay,42963568,84936442
+CB-C,No ,No ,Cobbly clay,42963568,84936443
+SIC,No ,Yes,Silty clay,42963568,84936444
+WB,No ,Yes,Weathered bedrock,42963569,84936445
+SICL,No ,Yes,Silty clay loam,42963570,84936446
+SIC,No ,Yes,Silty clay,42963571,84936447
+SICL,No ,No ,Silty clay loam,42963571,84936448
+C,No ,Yes,Clay,42963572,84936449
+WB,No ,Yes,Weathered bedrock,42963573,84936450
+WB,No ,Yes,Weathered bedrock,42963574,84936451
+SICL,No ,Yes,Silty clay loam,42963575,84936452
+C,No ,No ,Clay,42963576,84936453
+CB-C,No ,No ,Cobbly clay,42963576,84936454
+SIC,No ,Yes,Silty clay,42963576,84936455
+CB-SIC,No ,Yes,Cobbly silty clay,42963577,84936456
+C,No ,No ,Clay,42963578,84936457
+CB-SIC,No ,Yes,Cobbly silty clay,42963578,84936458
+CB-C,No ,No ,Cobbly clay,42963578,84936459
+WB,No ,Yes,Weathered bedrock,42963579,84936460
+SICL,No ,Yes,Silty clay loam,42963580,84936461
+SIC,No ,Yes,Silty clay,42963581,84936462
+SICL,No ,No ,Silty clay loam,42963581,84936463
+C,No ,Yes,Clay,42963582,84936464
+WB,No ,Yes,Weathered bedrock,42963583,84936465
+C,No ,Yes,Clay,42963584,84936466
+WB,No ,Yes,Weathered bedrock,42963585,84936467
+SICL,No ,Yes,Silty clay loam,42963586,84936468
+SICL,No ,Yes,Silty clay loam,42963587,84936469
+C,No ,No ,Clay,42963588,84936470
+CB-C,No ,No ,Cobbly clay,42963588,84936471
+SIC,No ,Yes,Silty clay,42963588,84936472
+WB,No ,Yes,Weathered bedrock,42963589,84936473
+CB-SIC,No ,Yes,Cobbly silty clay,42963590,84936474
+C,No ,No ,Clay,42963591,84936475
+CB-SIC,No ,Yes,Cobbly silty clay,42963591,84936476
+CB-C,No ,No ,Cobbly clay,42963591,84936477
+WB,No ,Yes,Weathered bedrock,42963592,84936478
+SICL,No ,Yes,Silty clay loam,42963593,84936479
+SIC,No ,Yes,Silty clay,42963594,84936480
+SICL,No ,No ,Silty clay loam,42963594,84936481
+C,No ,Yes,Clay,42963595,84936482
+WB,No ,Yes,Weathered bedrock,42963596,84936483
+SIL,No ,Yes,Silt loam,42963604,84936495
+SICL,No ,No ,Silty clay loam,42963605,84936496
+SIC,No ,Yes,Silty clay,42963605,84936497
+CL,No ,No ,Clay loam,42963605,84936498
+WB,No ,Yes,Weathered bedrock,42963606,84936499
+SICL,No ,Yes,Silty clay loam,42963607,84936500
+C,No ,Yes,Clay,42963608,84936501
+WB,No ,Yes,Weathered bedrock,42963609,84936502
+SR- G S,Yes,Yes,Stratified g to sand,42963616,84936515
+SICL,No ,Yes,Silty clay loam,42963617,84936516
+SICL,No ,Yes,Silty clay loam,42963618,84936517
+SIL,No ,Yes,Silt loam,42963618,84936518
+SIC,No ,Yes,Silty clay,42963619,84936519
+SICL,No ,Yes,Silty clay loam,42963620,84936520
+SIC,No ,No ,Silty clay,42963621,84936521
+C,No ,Yes,Clay,42963621,84936522
+FSL,No ,Yes,Fine sandy loam,42963622,84936523
+SL,No ,No ,Sandy loam,42963623,84936524
+FSL,No ,Yes,Fine sandy loam,42963623,84936525
+LFS,No ,No ,Loamy fine sand,42963624,84936526
+LS,No ,Yes,Loamy sand,42963624,84936527
+SICL,No ,Yes,Silty clay loam,42963637,84936546
+C,No ,Yes,Clay,42963638,84936547
+SIC,No ,No ,Silty clay,42963638,84936548
+SICL,No ,Yes,Silty clay loam,42963639,84936549
+CL,No ,No ,Clay loam,42963639,84936550
+C,No ,Yes,Clay,42963640,84936551
+SIC,No ,Yes,Silty clay,42963641,84936552
+C,No ,No ,Clay,42963641,84936553
+SC,No ,No ,Sandy clay,42963641,84936554
+SICL,No ,Yes,Silty clay loam,42963642,84936555
+C,No ,No ,Clay,42963643,84936556
+SIC,No ,Yes,Silty clay,42963643,84936557
+SICL,No ,No ,Silty clay loam,42963643,84936558
+L,No ,No ,Loam,42963644,84936559
+SL,No ,Yes,Sandy loam,42963644,84936560
+CL,No ,No ,Clay loam,42963644,84936561
+SIL,No ,Yes,Silt loam,42963645,84936562
+SIL,No ,Yes,Silt loam,42963646,84936563
+SICL,No ,No ,Silty clay loam,42963646,84936564
+C,No ,Yes,Clay,42963647,84936565
+SIC,No ,No ,Silty clay,42963647,84936566
+C,No ,Yes,Clay,42963648,84936567
+SICL,No ,Yes,Silty clay loam,42963668,84936599
+SIC,No ,Yes,Silty clay,42963669,84936600
+SICL,No ,No ,Silty clay loam,42963669,84936601
+C,No ,Yes,Clay,42963670,84936602
+WB,No ,Yes,Weathered bedrock,42963671,84936603
+SICL,No ,Yes,Silty clay loam,42963672,84936604
+C,No ,Yes,Clay,42963673,84936605
+WB,No ,Yes,Weathered bedrock,42963674,84936606
+SICL,No ,Yes,Silty clay loam,42963675,84936607
+SIC,No ,Yes,Silty clay,42963676,84936608
+SICL,No ,No ,Silty clay loam,42963676,84936609
+C,No ,Yes,Clay,42963677,84936610
+WB,No ,Yes,Weathered bedrock,42963678,84936611
+SICL,No ,Yes,Silty clay loam,42963679,84936612
+C,No ,Yes,Clay,42963680,84936613
+WB,No ,Yes,Weathered bedrock,42963681,84936614
+SICL,No ,Yes,Silty clay loam,42963714,84936665
+C,No ,Yes,Clay,42963715,84936666
+SIC,No ,No ,Silty clay,42963715,84936667
+SICL,No ,Yes,Silty clay loam,42963716,84936668
+C,No ,Yes,Clay,42963717,84936669
+SIC,No ,No ,Silty clay,42963717,84936670
+SICL,No ,Yes,Silty clay loam,42963718,84936671
+CL,No ,No ,Clay loam,42963718,84936672
+SIL,No ,Yes,Silt loam,42963719,84936673
+SIL,No ,Yes,Silt loam,42963720,84936674
+SICL,No ,No ,Silty clay loam,42963720,84936675
+C,No ,Yes,Clay,42963721,84936676
+SIC,No ,No ,Silty clay,42963721,84936677
+C,No ,Yes,Clay,42963722,84936678
+SICL,No ,Yes,Silty clay loam,42963750,84936717
+C,No ,Yes,Clay,42963751,84936718
+SIC,No ,No ,Silty clay,42963751,84936719
+SICL,No ,Yes,Silty clay loam,42963752,84936720
+CL,No ,No ,Clay loam,42963752,84936721
+C,No ,Yes,Clay,42963753,84936722
+SIC,No ,Yes,Silty clay,42963754,84936723
+C,No ,No ,Clay,42963754,84936724
+SC,No ,No ,Sandy clay,42963754,84936725
+SICL,No ,Yes,Silty clay loam,42963755,84936726
+C,No ,No ,Clay,42963756,84936727
+SIC,No ,Yes,Silty clay,42963756,84936728
+SICL,No ,No ,Silty clay loam,42963756,84936729
+L,No ,No ,Loam,42963757,84936730
+SL,No ,Yes,Sandy loam,42963757,84936731
+CL,No ,No ,Clay loam,42963757,84936732
+SICL,No ,Yes,Silty clay loam,42963778,84936767
+C,No ,No ,Clay,42963779,84936768
+SIC,No ,Yes,Silty clay,42963779,84936769
+SICL,No ,Yes,Silty clay loam,42963882,84936922
+SIC,No ,Yes,Silty clay,42963883,84936923
+SICL,No ,No ,Silty clay loam,42963883,84936924
+CL,No ,Yes,Clay loam,42963884,84936925
+L,No ,No ,Loam,42963884,84936926
+SICL,No ,Yes,Silty clay loam,42963885,84936927
+SIC,No ,Yes,Silty clay,42963886,84936928
+SICL,No ,No ,Silty clay loam,42963886,84936929
+CL,No ,Yes,Clay loam,42963887,84936930
+L,No ,No ,Loam,42963887,84936931
+SICL,No ,Yes,Silty clay loam,42963890,84936936
+SIC,No ,Yes,Silty clay,42963891,84936937
+C,No ,No ,Clay,42963891,84936938
+SICL,No ,Yes,Silty clay loam,42963892,84936939
+SIC,No ,No ,Silty clay,42963893,84936940
+C,No ,Yes,Clay,42963893,84936941
+SR- G S,Yes,Yes,Stratified g to sand,42963894,84936942
+SICL,No ,Yes,Silty clay loam,42963895,84936943
+SICL,No ,No ,Silty clay loam,42963896,84936944
+CL,No ,No ,Clay loam,42963896,84936945
+SIL,No ,Yes,Silt loam,42963896,84936946
+SIC,No ,No ,Silty clay,42963897,84936947
+GR-L,No ,No ,Gravelly loam,42963897,84936948
+SIL,No ,Yes,Silt loam,42963897,84936949
+SICL,No ,Yes,Silty clay loam,42963898,84936950
+SICL,No ,Yes,Silty clay loam,42963899,84936951
+SIL,No ,Yes,Silt loam,42963899,84936952
+SIC,No ,Yes,Silty clay,42963900,84936953
+C,No ,Yes,Clay,42963916,84936975
+SIC,No ,Yes,Silty clay,42963917,84936976
+C,No ,No ,Clay,42963917,84936977
+SC,No ,No ,Sandy clay,42963917,84936978
+SICL,No ,Yes,Silty clay loam,42963918,84936979
+C,No ,Yes,Clay,42963919,84936980
+SIC,No ,No ,Silty clay,42963919,84936981
+SICL,No ,Yes,Silty clay loam,42963920,84936982
+CL,No ,No ,Clay loam,42963920,84936983
+SICL,No ,Yes,Silty clay loam,42963921,84936984
+C,No ,No ,Clay,42963922,84936985
+SIC,No ,Yes,Silty clay,42963922,84936986
+SICL,No ,No ,Silty clay loam,42963922,84936987
+L,No ,No ,Loam,42963923,84936988
+SL,No ,Yes,Sandy loam,42963923,84936989
+CL,No ,No ,Clay loam,42963923,84936990
+GR-SICL,No ,Yes,Gravelly silty clay loam,42963924,84936991
+GR-C,No ,Yes,Gravelly clay,42963925,84936992
+GR-SIC,No ,No ,Gravelly silty clay,42963925,84936993
+GRV-CL,No ,Yes,Very gravelly clay loam,42963926,84936994
+GRX-CL,No ,No ,Extremely gravelly clay loam,42963926,84936995
+GRV-S,No ,Yes,Very gravelly sand,42963927,84936996
+GRX-S,No ,No ,Extremely gravelly sand,42963927,84936997
+SICL,No ,Yes,Silty clay loam,42963928,84936998
+C,No ,Yes,Clay,42963929,84936999
+GR-C,No ,Yes,Gravelly clay,42963930,84937000
+C,No ,No ,Clay,42963930,84937001
+SC,No ,No ,Sandy clay,42963930,84937002
+SPM,No ,Yes,Slightly decomposed plant material,42963939,84937013
+CL,No ,Yes,Clay loam,42963940,84937014
+SIC,No ,No ,Silty clay,42963941,84937015
+C,No ,Yes,Clay,42963941,84937016
+WB,No ,Yes,Weathered bedrock,42963942,84937017
+SICL,No ,Yes,Silty clay loam,42963962,84937047
+C,No ,Yes,Clay,42963963,84937048
+GR-C,No ,Yes,Gravelly clay,42963964,84937049
+C,No ,No ,Clay,42963964,84937050
+SC,No ,No ,Sandy clay,42963964,84937051
+C,No ,Yes,Clay,42963965,84937052
+SIC,No ,Yes,Silty clay,42963966,84937053
+C,No ,No ,Clay,42963966,84937054
+SC,No ,No ,Sandy clay,42963966,84937055
+GR-SICL,No ,Yes,Gravelly silty clay loam,42963967,84937056
+GR-C,No ,Yes,Gravelly clay,42963968,84937057
+GR-SIC,No ,No ,Gravelly silty clay,42963968,84937058
+GRV-CL,No ,Yes,Very gravelly clay loam,42963969,84937059
+GRX-CL,No ,No ,Extremely gravelly clay loam,42963969,84937060
+GRV-S,No ,Yes,Very gravelly sand,42963970,84937061
+GRX-S,No ,No ,Extremely gravelly sand,42963970,84937062
+SIL,No ,Yes,Silt loam,42963971,84937063
+SIL,No ,Yes,Silt loam,42963972,84937064
+SICL,No ,No ,Silty clay loam,42963972,84937065
+C,No ,Yes,Clay,42963973,84937066
+SIC,No ,No ,Silty clay,42963973,84937067
+C,No ,Yes,Clay,42963974,84937068
+SIC,No ,Yes,Silty clay,42963975,84937069
+C,No ,Yes,Clay,42963976,84937070
+GR-C,No ,Yes,Gravelly clay,42963977,84937071
+C,No ,No ,Clay,42963977,84937072
+SC,No ,No ,Sandy clay,42963977,84937073
+C,No ,Yes,Clay,42963978,84937074
+SIC,No ,Yes,Silty clay,42963979,84937075
+C,No ,No ,Clay,42963979,84937076
+SC,No ,No ,Sandy clay,42963979,84937077
+GR-SICL,No ,Yes,Gravelly silty clay loam,42963980,84937078
+GR-C,No ,Yes,Gravelly clay,42963981,84937079
+GR-SIC,No ,No ,Gravelly silty clay,42963981,84937080
+GRV-CL,No ,Yes,Very gravelly clay loam,42963982,84937081
+GRX-CL,No ,No ,Extremely gravelly clay loam,42963982,84937082
+GRV-S,No ,Yes,Very gravelly sand,42963983,84937083
+GRX-S,No ,No ,Extremely gravelly sand,42963983,84937084
+SIL,No ,Yes,Silt loam,42963984,84937085
+SICL,No ,No ,Silty clay loam,42963984,84937086
+C,No ,Yes,Clay,42963985,84937087
+SIC,No ,No ,Silty clay,42963985,84937088
+C,No ,Yes,Clay,42963986,84937089
+SIL,No ,Yes,Silt loam,42963987,84937090
+SICL,No ,Yes,Silty clay loam,42963988,84937091
+C,No ,Yes,Clay,42963989,84937092
+GR-C,No ,Yes,Gravelly clay,42963990,84937093
+C,No ,No ,Clay,42963990,84937094
+SC,No ,No ,Sandy clay,42963990,84937095
+SICL,No ,Yes,Silty clay loam,42963991,84937096
+C,No ,Yes,Clay,42963992,84937097
+SIC,No ,No ,Silty clay,42963992,84937098
+SICL,No ,Yes,Silty clay loam,42963993,84937099
+CL,No ,No ,Clay loam,42963993,84937100
+C,No ,Yes,Clay,42963994,84937101
+SIC,No ,Yes,Silty clay,42963995,84937102
+C,No ,No ,Clay,42963995,84937103
+SC,No ,No ,Sandy clay,42963995,84937104
+GR-SICL,No ,Yes,Gravelly silty clay loam,42963996,84937105
+GR-C,No ,Yes,Gravelly clay,42963997,84937106
+GR-SIC,No ,No ,Gravelly silty clay,42963997,84937107
+GRV-CL,No ,Yes,Very gravelly clay loam,42963998,84937108
+GRX-CL,No ,No ,Extremely gravelly clay loam,42963998,84937109
+GRV-S,No ,Yes,Very gravelly sand,42963999,84937110
+GRX-S,No ,No ,Extremely gravelly sand,42963999,84937111
+SICL,No ,Yes,Silty clay loam,42964000,84937112
+C,No ,No ,Clay,42964001,84937113
+SIC,No ,Yes,Silty clay,42964001,84937114
+SICL,No ,No ,Silty clay loam,42964001,84937115
+L,No ,No ,Loam,42964002,84937116
+SL,No ,Yes,Sandy loam,42964002,84937117
+CL,No ,No ,Clay loam,42964002,84937118
+SPM,No ,Yes,Slightly decomposed plant material,42964008,84937128
+SICL,No ,Yes,Silty clay loam,42964009,84937129
+C,No ,Yes,Clay,42964010,84937130
+GR-C,No ,No ,Gravelly clay,42964010,84937131
+SIC,No ,No ,Silty clay,42964010,84937132
+UWB,No ,Yes,Unweathered bedrock,42964011,84937133
+SPM,No ,Yes,Slightly decomposed plant material,42964012,84937134
+SICL,No ,Yes,Silty clay loam,42964013,84937135
+C,No ,Yes,Clay,42964014,84937136
+GR-C,No ,No ,Gravelly clay,42964014,84937137
+SIC,No ,No ,Silty clay,42964014,84937138
+UWB,No ,Yes,Unweathered bedrock,42964015,84937139
+SPM,No ,Yes,Slightly decomposed plant material,42964016,84937140
+SICL,No ,Yes,Silty clay loam,42964017,84937141
+C,No ,Yes,Clay,42964018,84937142
+GR-C,No ,No ,Gravelly clay,42964018,84937143
+SIC,No ,No ,Silty clay,42964018,84937144
+UWB,No ,Yes,Unweathered bedrock,42964019,84937145
+SPM,No ,Yes,Slightly decomposed plant material,42964020,84937146
+SICL,No ,Yes,Silty clay loam,42964021,84937147
+C,No ,Yes,Clay,42964022,84937148
+GR-C,No ,No ,Gravelly clay,42964022,84937149
+SIC,No ,No ,Silty clay,42964022,84937150
+UWB,No ,Yes,Unweathered bedrock,42964023,84937151
+C,No ,Yes,Clay,42964024,84937152
+SIC,No ,Yes,Silty clay,42964025,84937153
+C,No ,No ,Clay,42964025,84937154
+SC,No ,No ,Sandy clay,42964025,84937155
+SICL,No ,Yes,Silty clay loam,42964026,84937156
+C,No ,Yes,Clay,42964027,84937157
+SIC,No ,No ,Silty clay,42964027,84937158
+SICL,No ,Yes,Silty clay loam,42964028,84937159
+CL,No ,No ,Clay loam,42964028,84937160
+SICL,No ,Yes,Silty clay loam,42964029,84937161
+C,No ,No ,Clay,42964030,84937162
+SIC,No ,Yes,Silty clay,42964030,84937163
+SICL,No ,No ,Silty clay loam,42964030,84937164
+L,No ,No ,Loam,42964031,84937165
+SL,No ,Yes,Sandy loam,42964031,84937166
+CL,No ,No ,Clay loam,42964031,84937167
+GR-SICL,No ,Yes,Gravelly silty clay loam,42964032,84937168
+GR-C,No ,Yes,Gravelly clay,42964033,84937169
+GR-SIC,No ,No ,Gravelly silty clay,42964033,84937170
+GRV-CL,No ,Yes,Very gravelly clay loam,42964034,84937171
+GRX-CL,No ,No ,Extremely gravelly clay loam,42964034,84937172
+GRV-S,No ,Yes,Very gravelly sand,42964035,84937173
+GRX-S,No ,No ,Extremely gravelly sand,42964035,84937174
+SICL,No ,Yes,Silty clay loam,42964036,84937175
+C,No ,Yes,Clay,42964037,84937176
+GR-C,No ,Yes,Gravelly clay,42964038,84937177
+C,No ,No ,Clay,42964038,84937178
+SC,No ,No ,Sandy clay,42964038,84937179
+FSL,No ,Yes,Fine sandy loam,42964081,84937248
+SL,No ,No ,Sandy loam,42964082,84937249
+FSL,No ,Yes,Fine sandy loam,42964082,84937250
+COSL,No ,No ,Coarse sandy loam,42964082,84937251
+L,No ,Yes,Loam,42964083,84937252
+SL,No ,No ,Sandy loam,42964084,84937253
+FSL,No ,Yes,Fine sandy loam,42964084,84937254
+COSL,No ,No ,Coarse sandy loam,42964084,84937255
+FSL,No ,Yes,Fine sandy loam,42964085,84937256
+SL,No ,No ,Sandy loam,42964086,84937257
+FSL,No ,Yes,Fine sandy loam,42964086,84937258
+COSL,No ,No ,Coarse sandy loam,42964086,84937259

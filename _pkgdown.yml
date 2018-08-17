@@ -15,6 +15,7 @@ reference:
       - '`findNLCD`'
       - '`findNLDI`'
       - '`findRoads`'
+      - '`findSSURGO`'
       - '`findWaterbodies`'
       - '`findWaterPoly`'
       - '`findWBD`'

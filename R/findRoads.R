@@ -52,7 +52,9 @@ findRoads = function(AOI = FALSE) {
 
   sl = do.call(rbind, input.shp)
 
-  AOI[["tiger"]] <- raster::crop(x = sl,  y = raster::extent(AOI$AOI))
+  AOI[["tiger"]] <- sl
+
+  #raster::crop(x = sl,  y = raster::extent(AOI$AOI))
 
   cat(crayon::white("Returned object contains: ") %+% crayon::green("cropped TIGER road network\n"))
 

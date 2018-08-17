@@ -1,0 +1,194 @@
+geomftname,geomfname,geomfmod,geomfeatid,existsonfeat,rvindicator,cokey,cogeomdkey
+Landform,terraces,,NA,NA,Yes,14896856,21870248
+Landform,depressions,,NA,NA,Yes,14896857,21870110
+Landform,terraces,,NA,NA,Yes,14896858,21870249
+Landform,depressions,,NA,NA,Yes,14896860,21870111
+Landform,benches,,1,3,Yes,14896861,21870108
+Landform,swales,,2,3,Yes,14896861,21870236
+Landform,hills,,3,NA,Yes,14896861,21870328
+Landform,terraces,,NA,NA,Yes,14896862,21870250
+Landform,benches,,1,3,Yes,14896863,21870109
+Landform,swales,,2,3,Yes,14896863,21870237
+Landform,hills,,3,NA,Yes,14896863,21870329
+Landform,terraces,,NA,NA,Yes,14896865,21870251
+Landform,hills,,NA,NA,Yes,14896869,21870330
+Landform,fans,,NA,NA,Yes,14896869,21870321
+Landform,depressions,,NA,NA,Yes,14896870,21870113
+Landform,terraces,,NA,NA,Yes,14896871,21870252
+Landform,swales,,NA,NA,Yes,14896872,21870238
+Landform,fans,,NA,NA,Yes,14896873,21870322
+Landform,hills,,NA,NA,Yes,14896873,21870331
+Landform,terraces,,NA,NA,Yes,14896875,21870253
+Landform,swales,,NA,NA,Yes,14896876,21870239
+Landform,hills,,NA,NA,Yes,14896877,21870332
+Landform,hills,,NA,NA,Yes,14896878,21870333
+Landform,swales,,NA,NA,Yes,14896879,21870240
+Landform,hills,,NA,NA,Yes,14896880,21870358
+Landform,hills,,NA,NA,Yes,14896881,21870359
+Landform,hills,,NA,NA,Yes,14896889,21870360
+Landform,hills,,NA,NA,Yes,14896890,21870361
+Landform,hills,,NA,NA,Yes,14896891,21870362
+Landform,flood plains,,NA,NA,Yes,14896892,21870135
+Landform,flood plains,,NA,NA,Yes,14896893,21870136
+Landform,hills,,NA,NA,Yes,14896897,21870363
+Landform,stream terraces,,NA,NA,Yes,14896899,21870582
+Landform,stream terraces,,NA,NA,Yes,14896900,21870583
+Landform,hillslopes,,NA,NA,Yes,14896902,21870611
+Landform,hillslopes,,NA,NA,Yes,14896903,21870612
+Landform,hillslopes,,NA,NA,Yes,14896904,21870613
+Landform,hillslopes,,NA,NA,Yes,14896905,21870614
+Landform,terraces,old high,NA,NA,Yes,14896907,21870307
+Landform,terraces,old high,NA,NA,Yes,14896908,21870308
+Landform,low hills,,NA,NA,Yes,14896914,21870637
+Landform,low hills,,NA,NA,Yes,14896915,21870638
+Landform,low hills,,NA,NA,Yes,14896916,21870639
+Landform,hills,,NA,NA,Yes,14896920,21870352
+Landform,hills,,NA,NA,Yes,14896921,21870353
+Landform,swales,,NA,NA,Yes,14896922,21870241
+Landform,flood plains,depressions on,NA,NA,Yes,14896928,21870138
+Landform,terraces,depressions on low,NA,NA,Yes,14896928,21870301
+Landform,terraces,,NA,NA,Yes,14896929,21870302
+Landform,flood plains,,NA,NA,Yes,14896930,21870139
+Landform,hills,,NA,NA,Yes,14896947,21870354
+Landform,hills,,NA,NA,Yes,14896948,21870355
+Landform,hills,,NA,NA,Yes,14896949,21870356
+Landform,hills,,NA,NA,Yes,14896950,21870357
+Landform,hills,,NA,NA,Yes,14896955,21870346
+Landform,hills,,NA,NA,Yes,14896956,21870347
+Landform,flood plains,high,NA,NA,Yes,14896985,21870196
+Landform,flood plains,,NA,NA,Yes,14896986,21870197
+Landform,flood plains,,NA,NA,Yes,14896987,21870198
+Landform,flood plains,,NA,NA,Yes,14897000,21870189
+Landform,flood plains,,NA,NA,Yes,14897001,21870190
+Landform,flood plains,,NA,NA,Yes,14897002,21870191
+Landform,flood plains,,NA,NA,Yes,14897003,21870192
+Landform,stream terraces,low,NA,NA,Yes,14897005,21870587
+Landform,stream terraces,low,NA,NA,Yes,14897006,21870603
+Landform,flood plains,,NA,NA,Yes,14897008,21870181
+Landform,flood plains,,NA,NA,Yes,14897009,21870182
+Landform,low hills,,NA,NA,Yes,14897011,21870641
+Landform,low hills,,NA,NA,Yes,14897012,21870642
+Landform,flood plains,,NA,NA,Yes,14897013,21870183
+Landform,flood plains,,NA,NA,Yes,14897015,21870184
+Landform,stream terraces,low,NA,NA,Yes,14897017,21870604
+Landform,stream terraces,,NA,NA,Yes,14897018,21870605
+Landform,stream terraces,low,NA,NA,Yes,14897019,21870606
+Landform,stream terraces,,NA,NA,Yes,14897021,21870607
+Landform,drainageways,,1,3,Yes,14897022,21870314
+Landform,stream terraces,,3,NA,Yes,14897022,21870608
+Landform,depressions,,2,3,Yes,14897022,21870123
+Landform,terraces,,NA,NA,Yes,14897023,21870305
+Landform,terraces,,NA,NA,Yes,14897024,21870294
+Landform,stream terraces,,3,NA,Yes,14897025,21870597
+Landform,depressions,,2,3,Yes,14897025,21870124
+Landform,drainageways,,1,3,Yes,14897025,21870315
+Landform,terraces,,NA,NA,Yes,14897026,21870295
+Landform,terraces,,NA,NA,Yes,14897027,21870296
+Landform,terraces,,NA,NA,Yes,14897028,21870297
+Landform,mountains,,NA,NA,Yes,14897032,21870463
+Landform,depressions,,NA,NA,Yes,14897033,21870125
+Landform,terraces,broad valley,2,NA,Yes,14897036,21870288
+Landform,drainageways,,1,2,Yes,14897036,21870316
+Landform,terraces,,NA,NA,Yes,14897037,21870289
+Landform,flood plains,,NA,NA,Yes,14897038,21870185
+Landform,stream terraces,,NA,NA,Yes,14897039,21870598
+Landform,terraces,,NA,NA,Yes,14897040,21870290
+Landform,terraces,,NA,NA,Yes,14897041,21870291
+Landform,depressions,,NA,NA,Yes,14897042,21870126
+Landform,alluvial fans,,NA,NA,Yes,14897043,21870101
+Landform,low hills,,NA,NA,Yes,14897050,21870646
+Landform,low hills,coastal,NA,NA,Yes,14897050,21870647
+Landform,low hills,coastal,NA,NA,Yes,14897051,21870648
+Landform,low hills,,NA,NA,Yes,14897051,21870649
+Landform,low hills,coastal,NA,NA,Yes,14897052,21870650
+Landform,low hills,,NA,NA,Yes,14897052,21870651
+Landform,hills,,NA,NA,Yes,14897053,21870348
+Landform,hills,,NA,NA,Yes,14897054,21870349
+Landform,hills,,NA,NA,Yes,14897056,21870350
+Landform,hills,,NA,NA,Yes,14897057,21870351
+Landform,hills,,NA,NA,Yes,14897058,21870340
+Landform,swales,,NA,NA,Yes,14897059,21870242
+Landform,hills,,NA,NA,Yes,14897060,21870341
+Landform,hills,,NA,NA,Yes,14897061,21870342
+Landform,hills,,NA,NA,Yes,14897062,21870343
+Landform,drainageways,alluvial,2,3,Yes,14897066,21870317
+Landform,hills,,3,NA,Yes,14897066,21870344
+Landform,depressions,,1,3,Yes,14897066,21870127
+Landform,swales,,NA,NA,Yes,14897067,21870243
+Landform,flood plains,low,NA,NA,Yes,14897070,21870186
+Landform,oxbows,,NA,NA,Yes,14897070,21870235
+Landform,sloughs,,NA,NA,Yes,14897070,21870247
+Landform,overflow stream channels,,NA,NA,Yes,14897070,21870609
+Landform,islands,,NA,NA,Yes,14897070,21870610
+Landform,flood plains,,NA,NA,Yes,14897071,21870175
+Landform,flood plains,,NA,NA,Yes,14897072,21870176
+Landform,flood plains,,NA,NA,Yes,14897073,21870177
+Landform,flood plains,,NA,NA,Yes,14897074,21870178
+Landform,stream terraces,,NA,NA,Yes,14897079,21870600
+Landform,terraces,,NA,NA,Yes,14897080,21870293
+Landform,stream terraces,,NA,NA,Yes,14897081,21870601
+Landform,terraces,,NA,NA,Yes,14897082,21870282
+Landform,mountains,,NA,NA,Yes,14897090,21870453
+Landform,mountains,coastal,NA,NA,Yes,14897090,21870454
+Landform,swales,,NA,NA,Yes,14897091,21870244
+Landform,mountains,coastal,NA,NA,Yes,14897092,21870443
+Landform,mountains,,NA,NA,Yes,14897092,21870444
+Landform,swales,,NA,NA,Yes,14897093,21870245
+Landform,terraces,,NA,NA,Yes,14897102,21870283
+Landform,terraces,,NA,NA,Yes,14897103,21870284
+Landform,terraces,,NA,NA,Yes,14897104,21870285
+Landform,stream terraces,,NA,NA,Yes,14897112,21870592
+Landform,terraces,,NA,NA,Yes,14897114,21870286
+Landform,stream terraces,,NA,NA,Yes,14897115,21870593
+Landform,low hills,,NA,NA,Yes,14897123,21870643
+Landform,terraces,broad valley,NA,NA,Yes,14897152,21870276
+Landform,terraces,broad valley,NA,NA,Yes,14897153,21870277
+Landform,alluvial fans,,NA,NA,Yes,14897156,21870103
+Landform,flood plains,,NA,NA,Yes,14897156,21870170
+Landform,flood plains,,NA,NA,Yes,14897157,21870171
+Landform,flood plains,,NA,NA,Yes,14897158,21870172
+Landform,flood plains,,NA,NA,Yes,14897159,21870173
+Landform,flood plains,,NA,NA,Yes,14897160,21870174
+Landform,flood plains,,NA,NA,Yes,14897161,21870163
+Landform,alluvial fans,,NA,NA,Yes,14897165,21870104
+Landform,flood plains,,NA,NA,Yes,14897165,21870164
+Landform,terraces,,NA,NA,Yes,14897165,21870278
+Landform,terraces,,NA,NA,Yes,14897166,21870279
+Landform,stream terraces,,NA,NA,Yes,14897167,21870588
+Landform,terraces,,NA,NA,Yes,14897168,21870280
+Landform,flood plains,,NA,NA,Yes,14897169,21870165
+Landform,mountains,,NA,NA,Yes,14897172,21870395
+Landform,mountains,slump benches on,NA,NA,Yes,14897172,21870406
+Landform,terraces,drainageways and depressions on,NA,NA,Yes,14897180,21870270
+Landform,fans,drainageways and depressions on,NA,NA,Yes,14897180,21870326
+Landform,terraces,,NA,NA,Yes,14897181,21870271
+Landform,terraces,,NA,NA,Yes,14897182,21870272
+Landform,terraces,,NA,NA,Yes,14897183,21870273
+Landform,terraces,drainageways and depressions on,NA,NA,Yes,14897184,21870274
+Landform,fans,drainageways and depressions on,NA,NA,Yes,14897184,21870327
+Landform,terraces,,NA,NA,Yes,14897185,21870275
+Landform,terraces,,NA,NA,Yes,14897186,21870264
+Landform,terraces,,NA,NA,Yes,14897187,21870265
+Landform,alluvial fans,,NA,NA,Yes,14897188,21870105
+Landform,terraces,,NA,NA,Yes,14897188,21870266
+Landform,terraces,,NA,NA,Yes,14897190,21870267
+Landform,terraces,,NA,NA,Yes,14897191,21870268
+Landform,terraces,,NA,NA,Yes,14897192,21870269
+Landform,stream terraces,,NA,NA,Yes,14897193,21870589
+Landform,hills,,NA,NA,Yes,14897197,21870336
+Landform,hills,,NA,NA,Yes,14897198,21870337
+Landform,hills,,NA,NA,Yes,14897199,21870338
+Landform,hills,,NA,NA,Yes,14897200,21870339
+Landform,alluvial fans,,NA,NA,Yes,14897201,21870106
+Landform,terraces,,NA,NA,Yes,14897201,21870258
+Landform,terraces,,NA,NA,Yes,14897203,21870259
+Landform,stream terraces,,NA,NA,Yes,14897204,21870590
+Landform,terraces,,NA,NA,Yes,14897205,21870260
+Landform,flood plains,,NA,NA,Yes,14897206,21870158
+Landform,flood plains,,NA,NA,Yes,14897221,21870152
+Landform,flood plains,,NA,NA,Yes,14897222,21870153
+Landform,flood plains,,NA,NA,Yes,14897223,21870154
+Landform,terraces,fronts of,NA,NA,Yes,14897229,21870254
+Landform,terraces,streams that have cut into,NA,NA,Yes,14897229,21870255
+Landform,terraces,fronts of,NA,NA,Yes,14897230,21870256
+Landform,terraces,streams that have cut into,NA,NA,Yes,14897230,21870257
