@@ -1,5 +1,5 @@
 #' @title Find SSURGO Maps and Mapunit Aggregated Attributes
-#' @description SSURGO is a geospatial database of soils produced by the Natural Resources Conservation Service (NRCS). @description \code{findSSURGO}
+#' @description SSURGO is a geospatial database of soils produced by the Natural Resources Conservation Service (NRCS). \code{findSSURGO}
 #' returns a \code{SpatialPolygonsDataFrame} of SSURGO map units and the Mapunit aggregated attributes (muaggatt table) associated with each MUKEY. In total 43 attributes are returned,
 #' all of which can be found in the [SSURGO documentation](https://sdmdataaccess.sc.egov.usda.gov/documents/TableColumnDescriptionsReport.pdf). The MUAGGATT values cover a wide range of
 #' soil realted questions however if a user is interested in the full range of tabular data associated with the SSURGO map units we suggest checking out the FedData package.
