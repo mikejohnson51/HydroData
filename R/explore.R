@@ -309,7 +309,7 @@ if (!is.null(fiat)) {
       popup = label,
       group = "NHD",
 
-      hightlightOptions= highlightOptions(
+      highlightOptions = highlightOptions(
         weight = 10,
         color = "#666",
         fillOpacity = 0.7,
@@ -392,7 +392,7 @@ if (!is.null(fiat)) {
       smoothFactor = 0.7,
       popup = label,
       group = "Water bodies",
-      hightlightOptions= highlightOptions(
+      highlightOptions = highlightOptions(
         weight = 5,
         color = "darkred",
         fillOpacity = 0.7,
@@ -418,7 +418,7 @@ if (!is.null(fiat)) {
       weight = 2,
       popup = label,
       group = "tiger",
-      hightlightOptions= highlightOptions(
+      highlightOptions = highlightOptions(
         weight = 10,
         color = "#666",
         fillOpacity = 0.7,
@@ -552,7 +552,7 @@ if (!is.null(fiat)) {
       smoothFactor = 0.7,
       popup = ll,
       group = "WBD",
-      hightlightOptions= highlightOptions(
+      highlightOptions = highlightOptions(
         weight = 5,
         color = "darkred",
         fillOpacity = 0.7,
