@@ -1,6 +1,6 @@
-#HydroData: Earth Systems Data in R <img src="man/figures/logo.png" width=160 height = 120 align="right" />
+# HydroData: Earth Systems Data in R <img src="man/figures/logo.png" width=160 height = 120 align="right" />
 
-[![travis](https://travis-ci.org/mikejohnson51/HydroData.svg?branch=master)](http://travis-ci.org/mikejohnson51/HydroData) [![Coverage Status](https://img.shields.io/coveralls/github/mikejohnson51/HydroData.svg)](https://coveralls.io/github/mikejohnson51/HydroData?branch=master)
+[![travis](https://travis-ci.org/mikejohnson51/HydroData.svg?branch=master)](http://travis-ci.org/mikejohnson51/HydroData) [![Coverage Status](https://img.shields.io/coveralls/github/mikejohnson51/HydroData.svg)](https://coveralls.io/github/mikejohnson51/HydroData?branch=master)[![DOI](https://zenodo.org/badge/112221493.svg)](https://zenodo.org/badge/latestdoi/112221493)
 
 **HydroData** is designed to help (1) find, (2) get, (3) visualize, and (4) format disparate earth systems data through a core language (R); a common geospatial reference (ESPG:4629) ; and unifying vocabulary built around querying data by an area of interest (AOI). The package supports access to 20+ National/Global data sources. 
 
