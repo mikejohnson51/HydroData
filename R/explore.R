@@ -668,5 +668,5 @@ if (!is.null(ap)) {
   }
 
   print(m)
-  return(list(AOI = input, map = m))
+  return(m)
 }

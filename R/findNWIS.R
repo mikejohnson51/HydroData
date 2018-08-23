@@ -26,8 +26,7 @@ findNWIS = function(AOI = NULL, ids = FALSE, comids = FALSE){
   if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 
   usgsStations = HydroData::usgsStations
-
-  sp = SpatialPointsDataFrame(cbind(usgsStations$lon_reachCent, usgsStations$lat_reachCent), usgsStations, proj4string = AOI::aoiProj)
+  sp = sf::st_as_sf(x = usgsStations, coords = c("lon_reachCent", "lat_reachCent"), crs = 4269) %>% sf::as_Spatial()
 
   sp = sp[AOI$AOI,]
 

@@ -49,7 +49,7 @@ findNOAAnorms = function(AOI, ids = FALSE){
 
 if(!is.null(sp)){
 
-  AOI[["nnorms"]] = as_Spatil(sp)
+  AOI[["nnorms"]] = as_Spatial(sp)
 
   report = paste(length(sp), "NOAA Normals stations")
 

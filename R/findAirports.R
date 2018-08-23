@@ -25,13 +25,7 @@ findAirports = function(AOI = NULL, ids = FALSE) {
   if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
   if(any(class(AOI) == "sf")){ AOI = as_Spatial(AOI) }
 
-  ap = HydroData::ap
-
-  air = sp::SpatialPointsDataFrame(
-    coords = cbind(ap$lon, ap$lat),
-    data = as.data.frame(ap),
-    proj4string = AOI::aoiProj
-  )
+  air = sf::st_as_sf(x =  HydroData::ap,  coords = c('lon', 'lat'), crs = 4269 ) %>% sf::as_Spatial()
 
   sp = air[AOI$AOI,]
 

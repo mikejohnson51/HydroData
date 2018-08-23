@@ -29,9 +29,7 @@ findSnotel = function(AOI = NULL, ids = FALSE){
 
   if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 
-  snotel = HydroData::snotel
-
-  sp = sp::SpatialPointsDataFrame(cbind(snotel$LONG, snotel$LAT), data = as.data.frame(snotel), proj4string = AOI::aoiProj)
+  sp =  sf::st_as_sf(x = HydroData::snotel, coords = c('LONG', 'LAT'), crs = 4269 ) %>% sf::as_Spatial()
 
   sp = sp[AOI$AOI,]
 

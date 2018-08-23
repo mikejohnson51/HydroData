@@ -42,7 +42,7 @@
 findWBD = function(AOI = NULL,
                   level = 8,
                   subbasins = FALSE,
-                  crop = TRUE,
+                  crop = FALSE,
                   ids = FALSE){
 
   `%+%` = crayon::`%+%`
@@ -52,23 +52,27 @@ findWBD = function(AOI = NULL,
   td <-  tempfile()
   series  = list()
 
+
   if(subbasins) { level =  seq(level, 12, 2) }
 
   if (all(level == 8)) {
-    sp[["huc8"]] = query_cida(AOI$AOI, "huc08", spatial = TRUE)
-    shp = if(crop){
-      suppressWarnings(suppressMessages( sf::st_intersection(sp, sf::st_as_sf(AOI$AOI)))) } else {
-        suppressWarnings(suppressMessages(sp[sf::st_as_sf(AOI$AOI), ]))
-      }
+    s = query_cida(AOI$AOI, "huc08", spatial = F)
+    s = if(crop){
+      suppressWarnings(suppressMessages( sf::st_intersection(s, sf::st_as_sf(AOI$AOI)))) } else {
+        suppressWarnings(suppressMessages(s[sf::st_as_sf(AOI$AOI), ]))
+   }
 
-    cat(crayon::white("Returned object contains: ") %+% crayon::green(paste(length(sp$huc8), "HUC8 boundaries"), "\n"))
+    sp[["huc8"]] = sf::as_Spatial(s)
+    cat(crayon::white("Returned object contains: ") %+% crayon::green(paste(length(s$huc8), "HUC8 boundaries"), "\n"))
+
   } else if (all(level == 12)) {
-    sp[["huc12"]] = query_cida(AOI$AOI, "huc12", spatial = TRUE)
-    shp = if(crop){
+    s = query_cida(AOI$AOI, "huc12", spatial = F)
+    s = if(crop){
       suppressWarnings(suppressMessages( sf::st_intersection(sp, sf::st_as_sf(AOI$AOI)))) } else {
-        suppressWarnings(suppressMessages(sp[sf::st_as_sf(AOI$AOI), ]))
+        suppressWarnings(suppressMessages(s[sf::st_as_sf(AOI$AOI), ]))
       }
-    cat(crayon::white("Returned object contains: ") %+% crayon::green(if(crop){"Cropped "} else {"Full "}, paste(length(sp$huc12), "HUC12 boundaries"), "\n"))
+    sp[["huc12"]] = sf::as_Spatial(s)
+    cat(crayon::white("Returned object contains: ") %+% crayon::green(if(crop){"Cropped "} else {"Full "}, paste(length(s$huc12), "HUC12 boundaries"), "\n"))
   } else {
 
     flow = query_cida(AOI$AOI, type ="huc08")
@@ -111,21 +115,21 @@ findWBD = function(AOI = NULL,
         sp[[paste0("huc", level[j])]] <-
           do.call(rbind, all.files[grepl(pattern = paste0(level[j], "$"), names(all.files))])
       }
+  }
 
-AOI = c(AOI, sp)
+  AOI = c(AOI, sp)
 
-tmp = names(AOI)[grep("huc", names(AOI))]
+  tmp = names(AOI)[grep("huc", names(AOI))]
 
-if(length(tmp) > 1){
- tmp = tmp[which.max(as.numeric(gsub("huc", "", tmp)))]
-}
+  if(length(tmp) > 1){
+    tmp = tmp[which.max(as.numeric(gsub("huc", "", tmp)))]
+  }
 
-report = paste0( if(crop){"Cropped "} else {"Full "},   paste0("HUC", level, collapse = ", "), " boundaries")
+  report = paste0( if(crop){"Cropped "} else {"Full "},   paste0("HUC", level, collapse = ", "), " boundaries")
 
-AOI = return.what(AOI, type = tmp, report, vals = if(ids){tmp})
+  AOI = return.what(AOI, type = tmp, report, vals = if(ids){tmp})
 
-return(AOI)
-}
+  return(AOI)
 }
 
 

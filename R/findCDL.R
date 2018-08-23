@@ -28,7 +28,7 @@ findCDL = function(AOI, year = 2017){
    urls = paste0("https://nassgeodata.gmu.edu/axis2/services/CDLService/GetCDLFile?year=",year,"&bbox=", bb)
 
    for(j in seq_along(urls)){
-     cat(crayon::white(paste0("Downloading (", j, "/", length(urls), "): ")) %+% crayon::yellow(basename(file)), "\n")
+     cat(crayon::white(paste0("Downloading (", j, "/", length(urls), "): ")) %+% crayon::yellow(year[j]), "\n")
      file = gsub(".*<returnURL>|</returnURL>.*", "", readLines(urls[j], warn = F))
      check = download.url(url = file)
      tmp = raster::raster(check$destfile)

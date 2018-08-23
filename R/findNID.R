@@ -35,19 +35,15 @@ findNID = function(AOI = NULL, ids = FALSE){
   dams = dams[!is.na(dams$Longitude),]
   dams = dams[!is.na(dams$Latitude),]
 
-  sp = sp::SpatialPointsDataFrame(cbind(dams$Longitude, dams$Latitude), data = dams, proj4string = AOI::aoiProj)
-
-  message("All dams in CONUS loaded: ", formatC(dim(sp)[1], format="d", big.mark=","), " dams in total")
+  sp = sf::st_as_sf(x = dams, coords = c('Longitude', 'Latitude'), crs = 4269) %>%  sf::as_Spatial()
 
   sp = sp[AOI$AOI, ]
 
   if (dim(sp)[1] == 0) { warning("0 dams found in AOI") } else {
 
-  message(formatC(as.numeric(length(sp)), format="d", big.mark=","), " NID dams found")
-
   AOI[["dams"]] = sp
 
-  report = "Returned list includes: NID dams shapefile"
+  report = paste(length(sp), "NID dam(s)")
 
   AOI = return.what(AOI, type = 'dams', report, vals = if(ids){"Dam_Name"}else{NULL})
 

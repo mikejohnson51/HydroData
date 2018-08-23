@@ -22,7 +22,7 @@
 #' @author Mike Johnson
 #' @export
 
-findACIS <- function (AOI, ids = FALSE) {
+findACIS <- function (AOI, ids = FALSE, param = NULL) {
 
   if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 
@@ -78,12 +78,11 @@ findACIS <- function (AOI, ids = FALSE) {
     dat$lat = as.numeric(dat$lat)
     dat$minDate = as.Date(dat$minDate, format = "%Y-%m-%d")
     dat$maxDate = as.Date(dat$maxDate, format = "%Y-%m-%d")
-    dat[is.na(dat)] = NULL
+    #dat[is.na(dat)] <-  NULL
 
     dat = sf::st_as_sf(x = dat, coords = c("lon", "lat"), crs = as.character(AOI$AOI@proj4string))
-    st_crs(dat) <- 4269
 
-    AOI[["acis"]] = as_Spatial(dat)
+    AOI[["acis"]] = sf::as_Spatial(dat)
 
     report = paste(length(dat$uid), "ACIS station(s)")
 

@@ -48,15 +48,13 @@ findASOS = function(AOI, ids = FALSE){
 
    mydata = mydata[!is.na(mydata$LAT),]
    mydata = mydata[!is.na(mydata$LON),]
-   sum(mydata =="")
 
-   sp = sf::st_as_sf(x = mydata, coords = c("LON", "LAT"))
-   sf::st_crs(sp) = 4269
-   sp = suppressMessages( sp[st_as_sf(AOI$AOI), ] )
+   sp = sf::st_as_sf(x = mydata, coords = c("LON", "LAT"), crs = 4269) %>% sf::as_Spatial()
+   sp = sp[AOI$AOI,]
 
   if(!is.null(sp)){
 
-    AOI[["asos"]] = sf::as_Spatial(sp)
+    AOI[["asos"]] = sp
 
     report = paste(length(sp), "ACOS Stations")
 
