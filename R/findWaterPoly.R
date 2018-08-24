@@ -10,6 +10,8 @@
 #' getAOI(state = 'CO', county = 'El Paso') %>% findWaterPoly()
 #' }
 #' @export
+#'
+AOI = getAOI(list("University of Oregon", 5, 5))
 
 findWaterPoly = function(AOI){
 
@@ -23,7 +25,7 @@ wb = val$waterbodies
 wb = wb[wb$areasqkm > .1,]
 
 river.p = sf::st_transform(river, "+init=epsg:3395")
-wb.p = sf::st_transform(wb, "+init=epsg:3395")
+if(dim(wb)[1] > 1){ wb.p = sf::st_transform(wb, "+init=epsg:3395") } else {wb.p = NULL}
 
 rivers = list()
 
@@ -32,19 +34,21 @@ st.order = sort(st.order[st.order !=0])
 
 for( i in st.order ){
   tmp = river.p[river.p$streamorde == i,]
-  rivers[[i]] = st_buffer(tmp, dist=10 * i)
+  rivers[[i]] = sf::st_buffer(tmp, dist=10 * i)
 }
 
 
 rivers[sapply(rivers, is.null)] <- NULL
 
-r = do.call(rbind, rivers)
-r = sf::st_union(r)
+t = do.call(rbind, rivers)
+t = sf::st_union(t)
 
+if(!is.null(wb.p)){
 wb.j = sf::st_union(wb.p)
-t = sf::st_union(r, wb.j)
+t = sf::st_union(t, wb.j)
+}
 
-t = sf::st_transform(t, as.character(AOI::aoiProj))
+t = sf::st_transform(t, as.character(AOI::aoiProj)) %>% sf::as_Spatial()
 
 AOI[["waterPoly"]] = t
 
