@@ -4,7 +4,7 @@
 \alias{findACIS}
 \title{Find Meterologic Stations from the Applied Climate Information System}
 \usage{
-findACIS(AOI, ids = FALSE)
+findACIS(AOI, ids = FALSE, param = NULL)
 }
 \arguments{
 \item{AOI}{A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}}

@@ -1,8 +1,8 @@
-.Rproj.user
+^.*\.Rproj$
+^\.Rproj\.user$
 .Rhistory
 .RData
 .Ruserdata
-.Rproj.user
 .DS_Store
 tests
 help

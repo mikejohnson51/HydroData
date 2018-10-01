@@ -44,3 +44,4 @@ explore(ucsb.nwis)
 \author{
 Mike Johnson
 }
+\concept{HydroData 'viz' functions}

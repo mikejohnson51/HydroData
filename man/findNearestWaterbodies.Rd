@@ -4,7 +4,8 @@
 \alias{findNearestWaterbodies}
 \title{Find Neareast NHD Waterbodies}
 \usage{
-findNearestWaterbodies(point = NULL, n = 5, ids = FALSE, bb = FALSE)
+findNearestWaterbodies(point = NULL, n = 5, ids = FALSE,
+  bb = FALSE)
 }
 \arguments{
 \item{point}{a point described by lat/long, can be piped from \link[AOI]{geocode}}

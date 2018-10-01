@@ -11,7 +11,6 @@
 #' }
 #' @export
 #'
-AOI = getAOI(list("University of Oregon", 5, 5))
 
 findWaterPoly = function(AOI){
 
