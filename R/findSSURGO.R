@@ -13,9 +13,10 @@
 #' @export
 #'
 
-findSSURGO <- function(AOI, table = FALSE) {
+findSSURGO <- function(AOI) {
 
   `%+%` = crayon::`%+%`
+
 
   if (!(class(AOI) %in% c("list", "HydroData"))) {AOI = list(AOI = AOI)}
 
@@ -80,10 +81,10 @@ findSSURGO <- function(AOI, table = FALSE) {
 
   tab = do.call(rbind,
                lapply(list.files(tempdir(), recursive = T, pattern = 'muaggatt', full.names = T),
-                      function(e){ read.delim(e, header = F, sep = "|", stringsAsFactors = F) }
+                      function(e){ utils::read.delim(e, header = F, sep = "|", stringsAsFactors = F) }
                ))
 
-  names(tab) = names(read.csv( paste0("https://casoilresource.lawr.ucdavis.edu/soil_web/component_data.php?mukey=95439&action=muaggatt&format=csv")))[-1]
+  names(tab) = names(utils::read.csv( paste0("https://casoilresource.lawr.ucdavis.edu/soil_web/component_data.php?mukey=95439&action=muaggatt&format=csv")))[-1]
 
   soils = merge(soils, tab, by.x = "MUKEY", by.y = "mukey")
 

@@ -10,7 +10,7 @@ mosaic.hd(input)
 \item{input}{raster stack}
 }
 \description{
-Interal function for mosaicing a list of rasters
+Internal function for mosaicing a list of rasters
 }
 \author{
 Mike Johnson

@@ -14,6 +14,15 @@
 #' }\cr
 #' @param AOI  A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
 #' @param ids  If TRUE,  a vector of unique acis station IDs is added to retuned list (default = \code{FALSE})
+#' @param param what observation type to search for: options include:
+#' \itemize{
+#' \item 'maxt'  :  Maximum temperature (Fahrenheit)
+#' \item 'mint'  :  Maximum temperature (Fahrenheit)
+#' \item 'avgt'  :  Maximum temperature (Fahrenheit)
+#' \item 'prcpn' :  Precipitation       (inches)
+#' \item 'snwd'  :  Snow depth          (inches)
+#' \item 'snow'  :  Snowfall            (inches)
+#' }
 #' @return a list() of minimum length 2: AOI and and acis
 #' @examples
 #' \dontrun{
@@ -21,6 +30,7 @@
 #' }
 #' @author Mike Johnson
 #' @export
+
 
 findACIS <- function (AOI, ids = FALSE, param = NULL) {
 
@@ -30,9 +40,11 @@ findACIS <- function (AOI, ids = FALSE, param = NULL) {
 
   bbox = AOI$AOI %>% AOI::bbox_st()
 
-  if (is.null(param)) { param <- meta$element$code[1:7] }
+  good.parm = c("maxt", "mint", "avgt", "pcpn", "snwd", "snow")
 
-  bad.param = param[!(param %in% meta$element$code[1:7])]
+  if (is.null(param)) { param <-good.parm }
+
+  bad.param = param[!(param %in% good.parm)]
 
   if(length(bad.param) >=1) {
    cat(crayon::red(bad.param, "is not a valid parameter\n"))

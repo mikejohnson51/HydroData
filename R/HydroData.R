@@ -17,7 +17,7 @@
 #' @importFrom jsonlite fromJSON
 #' @importFrom sf st_zm read_sf as_Spatial st_as_sf st_coordinates st_write st_transform st_intersection st_buffer
 #' @importFrom sp SpatialPoints SpatialPointsDataFrame CRS spTransform
-#' @importFrom utils head tail write.csv unzip flush.console read.table
+#' @importFrom utils head tail write.csv unzip flush.console read.table read.delim read.csv
 #' @importFrom htmlwidgets saveWidget
 
 

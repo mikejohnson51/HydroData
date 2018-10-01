@@ -4,7 +4,7 @@
 \alias{findSSURGO}
 \title{Find SSURGO Maps and Mapunit Aggregated Attributes}
 \usage{
-findSSURGO(AOI, table = FALSE)
+findSSURGO(AOI)
 }
 \arguments{
 \item{AOI}{A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}}

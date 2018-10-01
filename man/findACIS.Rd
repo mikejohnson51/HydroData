@@ -10,6 +10,16 @@ findACIS(AOI, ids = FALSE, param = NULL)
 \item{AOI}{A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}}
 
 \item{ids}{If TRUE,  a vector of unique acis station IDs is added to retuned list (default = \code{FALSE})}
+
+\item{param}{what observation type to search for: options include:
+\itemize{
+\item 'maxt'  :  Maximum temperature (Fahrenheit)
+\item 'mint'  :  Maximum temperature (Fahrenheit)
+\item 'avgt'  :  Maximum temperature (Fahrenheit)
+\item 'prcpn' :  Precipitation       (inches)
+\item 'snwd'  :  Snow depth          (inches)
+\item 'snow'  :  Snowfall            (inches)
+}}
 }
 \value{
 a list() of minimum length 2: AOI and and acis
