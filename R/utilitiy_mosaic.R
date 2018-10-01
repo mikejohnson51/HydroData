@@ -1,6 +1,6 @@
 #' Mosaic
 #'
-#' Interal function for mosaicing a list of rasters
+#' Internal function for mosaicing a list of rasters
 #'
 #' @param input raster stack
 #' @author Mike Johnson
