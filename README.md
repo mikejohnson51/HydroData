@@ -76,4 +76,6 @@ install_github("mikejohnson51/HydroData")
 
 The "AOI" R package is written by [Mike Johnson], a graduate Student at the [University of California, Santa Barbara] in [Keith C. Clarke's] Lab, 2018. ~<br>~
 
+This project is supported by the UCAR COMET program and the National Water Center.
+
 
