@@ -74,11 +74,15 @@ findNLDI = function(comid = NULL,
 
   shp = lapply(urls, sf::read_sf)
 
+  for(i in 1:length(shp)){
+    if(  any(is.na(as.character(sf::st_bbox(shp[[i]])))) ) { shp[[i]] = NULL}
+  }
+
   if (spatial) {
     shp = lapply(shp, sf::as_Spatial)
   }
 
-  shp[['bb']] = AOI::getBoundingBox(shp[[2]])
+  shp[['bb']] = AOI::getBoundingBox(shp[[length(shp)]])
   return(shp)
 
 }

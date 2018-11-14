@@ -1,5 +1,5 @@
 #' @title Find National Land Cover Products (NLCD)
-#' @description \code{findNLCD} returns \code{Raster} land cover data from the National Land Cover Dataset (\href{https://www.mrlc.gov}{NED}) for an AOI.
+#' @description \code{findNLCD} returns \code{Raster} land cover data from the National Land Cover Dataset (\href{https://www.mrlc.gov}{NLCD}) for an AOI.
 #' Data comes the the USA National Map and is avaialble for years 2001, 2006, 2011.
 #' In additon to landcover, users can get data reflecting impervious surface and conaopy cover.
 #' @param AOI A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}

@@ -14,7 +14,7 @@
 #' \item 'COUNTY'   : \code{integer}  The county the station is located in
 #' \item 'HUC12.NAME': \code{character}  The HUC12 name the station is located in
 #' \item 'HUC12.ID': \code{character}  The HUC12 ID the station is located in
-#' }\cr
+#' }
 #' @param AOI  A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
 #' @param ids  If TRUE,  a vector of NHD COMIDs is added to retuned list (default = \code{FALSE})
 #' @examples

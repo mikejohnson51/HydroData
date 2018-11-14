@@ -27,7 +27,7 @@ Data comes from the USGS CIDA server and contain 23 attributes, perhaps most not
 \item 'lakevolume'    : \code{numeric}    Total waterbody volume
 \item 'maxdepth'   : \code{character}     Maximum depth of waterbody
 \item 'meanused'   : \code{integer}  The average amount of water used
-}\cr
+}
 }
 \examples{
 \dontrun{

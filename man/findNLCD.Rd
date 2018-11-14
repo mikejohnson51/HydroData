@@ -17,7 +17,7 @@ findNLCD(AOI = NULL, year = 2011, type = "landcover")
 a list() of minimum length 2: AOI and NLCD
 }
 \description{
-\code{findNLCD} returns \code{Raster} land cover data from the National Land Cover Dataset (\href{https://www.mrlc.gov}{NED}) for an AOI.
+\code{findNLCD} returns \code{Raster} land cover data from the National Land Cover Dataset (\href{https://www.mrlc.gov}{NLCD}) for an AOI.
 Data comes the the USA National Map and is avaialble for years 2001, 2006, 2011.
 In additon to landcover, users can get data reflecting impervious surface and conaopy cover.
 }

@@ -3,7 +3,7 @@ Type: Package
 Title: HydroData
 Description: A set of functions to find, process, export and visualize land surface, infrastructural and station based datasets relevant to geography, hydrology, and earth system science. 
 Version: 0.0.7
-Authors@R: person("Mike", "Johnson", role = c("aut", "cre"), email = "mike.johnson@geog.ucsb.edu")
+Authors@R: person(given = "Mike", family = "Johnson", role = c("aut", "cre"), email = "jmj00ucsb.edu", comment = c(ORCID = "0000-0002-5288-8350"))
 Maintainer: Mike Johnson <jmj00@ucsb.edu>
 BugReports: https://github.com/mikejohnson51/HydroData/issues
 URL: https://github.com/mikejohnson51/HydroData
@@ -23,10 +23,9 @@ Imports:
     sp,
     utils,
     raster
-VignetteBuilder: knitr
 Remotes: mikejohnson51/AOI
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.0
-Suggests: testthat, knitr
+Suggests: testthat

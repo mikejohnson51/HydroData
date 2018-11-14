@@ -13,7 +13,7 @@
 #' \item 'flowdir'   : \code{character}     Direction of flow relative to coordinate order.
 #' \item 'wbareacomi'   : \code{integer}  The COMID of the waterbody through which the flowline flows.
 #' \item 'ftype': \code{character}  unique identifier of a feature type
-#' }\cr
+#' }
 #' @param AOI  A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
 #' @param ids  If TRUE,  a vector of NHD COMIDs is added to retuned list (default = \code{FALSE})
 #' @return a list() of minimum length 2: AOI and nhd

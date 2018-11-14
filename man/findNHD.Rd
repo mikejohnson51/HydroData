@@ -28,7 +28,7 @@ Data comes from the USGS CIDA server and contain 92 attributes, perhaps most not
 \item 'flowdir'   : \code{character}     Direction of flow relative to coordinate order.
 \item 'wbareacomi'   : \code{integer}  The COMID of the waterbody through which the flowline flows.
 \item 'ftype': \code{character}  unique identifier of a feature type
-}\cr
+}
 }
 \examples{
 \dontrun{

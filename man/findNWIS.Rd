@@ -27,7 +27,7 @@ of all USGS NWIS gages for an Area of Interest. This dataset is accessed through
 \item 'da_sqkm'   : \code{character}   Area drainign to gage in square kilometers
 \item 'lat_reachCent'    : \code{numeric}    Latitude of the reach center, decimil degrees
 \item 'lon_reachCent'    : \code{numeric}    Longitude of the reach center, decimil degrees
-} \cr
+}
 }
 \examples{
 \dontrun{

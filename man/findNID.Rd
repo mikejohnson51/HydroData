@@ -31,7 +31,7 @@ This dataset is accessed through the \code{dams} R package and contains 61 attri
 \item 'Max_Discharge'   : \code{numeric}  Maximum Discharge
 \item 'Max_Storage': \code{character}  Maximum Storage
  \item 'Normal_Storage': \code{character}  Normal Storage
-} \cr
+}
 }
 \examples{
 \dontrun{

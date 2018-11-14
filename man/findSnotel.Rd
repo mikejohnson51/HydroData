@@ -26,7 +26,7 @@ Station data is extacted from \href{https://wcc.sc.egov.usda.gov/nwcc/yearcount?
 \item 'COUNTY'   : \code{integer}  The county the station is located in
 \item 'HUC12.NAME': \code{character}  The HUC12 name the station is located in
 \item 'HUC12.ID': \code{character}  The HUC12 ID the station is located in
-}\cr
+}
 }
 \examples{
 \dontrun{

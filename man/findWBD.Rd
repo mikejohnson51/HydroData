@@ -23,9 +23,9 @@ The United States Geological Survey maintains a hierarchical system of hydrologi
 unique code (HUC). The heirarchical level is described by the number of digits in the code. A two-diget code (eg. HUC 2) is the coarsest unit of aggregation while the HUC 12 is the finest resulution.
 The spatail geometries of these units are stored in the Watershed Boundary Dataset with coverage of the United States.
 \code{findWBD} returns a \code{SpatialPolygonsDataFrame*} of WBD boundaries for the specified level within an AOI. Pending the query,
-data comes from the USGS CIDA server or the USGS staged products FTP.\cr
+data comes from the USGS CIDA server or the USGS staged products FTP.
 
-Below you can see the general factors for each HUC level:\cr
+Below you can see the general factors for each HUC level:\
 \tabular{ccccc}{
   Name \tab Digits \tab Average Size (sqmiles) \tab Example Name \tab Example Code \cr
   Region \tab 2 \tab 177,560 \tab Pacific Northwest \tab 17 \cr

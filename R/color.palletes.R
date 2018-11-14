@@ -54,7 +54,9 @@ col_lc <- data.frame(
   stringsAsFactors = FALSE)
 
 
-value = 0:254
+col_crops = data.frame(
+
+value = c(0:254),
 
 classes = c("Background",
             "Corn",
@@ -310,7 +312,7 @@ classes = c("Background",
             NA,
             NA,
             NA,
-            "Dbl Crop Barley/Soybeans")
+            "Dbl Crop Barley/Soybeans"),
 
 
 colors = c('#000000',
@@ -567,8 +569,9 @@ colors = c('#000000',
            '#FFD200',
            '#257000',
            '#A47000',
-           '#257000')
+           '#257000'),
 
-col_crops = data.frame(values = value, description = classes, color = colors,stringsAsFactors = F)
+stringsAsFactors = F)
+
 
 

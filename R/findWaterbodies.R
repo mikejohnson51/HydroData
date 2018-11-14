@@ -11,7 +11,7 @@
 #' \item 'lakevolume'    : \code{numeric}    Total waterbody volume
 #' \item 'maxdepth'   : \code{character}     Maximum depth of waterbody
 #' \item 'meanused'   : \code{integer}  The average amount of water used
-#' }\cr
+#' }
 #' @param AOI A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
 #' @param ids If TRUE, a vector of waterbody IDs is added to retuned list (default = \code{FALSE})
 #' @return a list() of minimum length 2: AOI and waterboies

@@ -25,33 +25,6 @@
 
 "ap"
 
-#' Global Historical Climatology Network (GHCN) daily data
-#'
-#' Dataset containing the GCHN daily station network
-#'
-#' @docType data
-#'
-#' @format a \code{dataframe} instance, 1 row per station with columns:
-#' \itemize{
-#' \item 'ID':         A \code{character} Station ID
-#' \item 'NAME':       A \code{character} Station name
-#' \item 'LAT':        A \code{numeric}   Station latitude
-#' \item 'LON':        A \code{numeric}   Station longitude
-#' \item 'PARAMETER':  A \code{character} Parameter being recorded
-#' \item 'START_YEAR': A \code{integer}   Latitude of NHD reach center
-#' \item 'END_YEAR':   A \code{integer}   Longitude of NHD reach center
-#' }
-#'
-#' @source \href{https://www.ncdc.noaa.gov/data-access/land-based-station-data/land-based-datasets/global-historical-climatology-network-ghcn}{
-#' NOAA National Centers for Environmental Information}
-#'
-#' @examples
-#' \dontrun{
-#'  gchn = HydroData::ghcn_stations
-#' }
-
-"ghcn_stations"
-
 #' USGS NWIS station information
 #'
 #' Dataset containing information about USGS stations in the United States
@@ -106,45 +79,3 @@
 #' }
 
 "snotel"
-
-#' DAYMET Tile Index
-#'
-#' \code{daymet_tiles} contains the Polygon tile index for DAYMET meterological Data
-#'
-#' @docType data
-#'
-#' @format a \code{SpatialPolygonsDataFrame}
-#' \itemize{
-#' \item 'TileID':  A \code{integer} Tile ID
-#' \item 'XMin':    A \code{integer} minimum latitude
-#' \item 'XMax':    A \code{integer} maximum latitude
-#' \item 'YMin':    A \code{integer} minimum longitide
-#' \item 'YMax':    A \code{integer} maximum longitude
-#' }
-#'
-#' @source \href{https://daymet.ornl.gov/gridded.html}{DAYMET Tile Data}
-#'
-#' @examples
-#' \dontrun{
-#'  tiles = HydroData::daymet_tiles
-#' }
-
-"daymet_tiles"
-
-#' Appliced Climate Information Systems Meta Data
-#'
-#' \code{ACIS_meta} contains the meta data needed to query stations from the ACIS API tile index for DAYMET meterological Data
-#'
-#' @docType data
-#'
-#' @format a \code{list}
-#
-#' @source \href{http://www.rcc-acis.org}{Applied Climate Information System}
-#'
-#' @examples
-#' \dontrun{
-#'  meta = HydroData::meta
-#' }
-
-"meta"
-

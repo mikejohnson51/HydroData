@@ -234,10 +234,8 @@ if (!is.null(fiat)) {
     )
 
     m = addMarkers(
-      m ,
+      m,
       data = data,
-      lng = data$lon_reachCent,
-      lat = data$lat_reachCent,
       icon = usgsIcon,
       popup = pop,
       group = "USGS",
@@ -608,7 +606,7 @@ if (!is.null(ap)) {
   if (!is.null(lc)) {
     lc.interest = c(0, 11)
 
-    values(lc)[(values(lc) %in% lc.interest)] = NA
+    raster::values(lc)[(raster::values(lc) %in% lc.interest)] = NA
 
     pal = colorNumeric(col_lc$color, col_lc$code , na.color = "transparent")
 
@@ -625,9 +623,9 @@ if (!is.null(ap)) {
   if (!is.null(elv)) {
     elev.interest = 0
 
-    values(elv)[(values(elv) %in% elev.interest)] = NA
+    raster::values(elv)[(raster::values(elv) %in% elev.interest)] = NA
 
-    pal = colorNumeric(col_elev, values(elv) , na.color = "transparent")
+    pal = colorNumeric(col_elev, raster::values(elv) , na.color = "transparent")
 
     m = m %>% addRasterImage(elv,
                              colors = pal,
@@ -641,8 +639,8 @@ if (!is.null(ap)) {
 
   if (length(crops) > 0) {
     for (i in seq_along(crops)) {
-      values(crops[[i]])[(values(crops[[i]]) == 0)] = NA
-      pal = colorNumeric(col_crops$color, col_crops$values , na.color = "transparent")
+      raster::values(crops[[i]])[(raster::values(crops[[i]]) == 0)] = NA
+      pal = colorNumeric(col_crops$color, col_crops$value , na.color = "transparent")
       m = m %>% addRasterImage(
         crops[[i]],
         colors = pal,

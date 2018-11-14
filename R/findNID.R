@@ -15,7 +15,7 @@
 #' \item 'Max_Discharge'   : \code{numeric}  Maximum Discharge
 #' \item 'Max_Storage': \code{character}  Maximum Storage
 #'  \item 'Normal_Storage': \code{character}  Normal Storage
-#' } \cr
+#' }
 #' @param AOI A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}
 #' @param ids If TRUE, a vector of Dam IDs is added to retuned list (default = \code{FALSE})
 #' @return a list() of minimum length 2: AOI and dams
