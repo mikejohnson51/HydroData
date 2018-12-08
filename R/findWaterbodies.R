@@ -23,11 +23,21 @@
 #' }
 #'
 
-findWaterbodies = function(AOI = NULL, ids = FALSE) {
+findWaterbodies = function(AOI = NULL, area = NULL) {
 
   if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
+  f= NULL
+  if(!is.null(area)){
 
-    sl = query_cida(AOI$AOI, type = "nhdwaterbody", spatial = TRUE)
+    f = paste0('<ogc:And>',
+               '<ogc:PropertyIsGreaterThan>',
+               '<ogc:PropertyName>areasqkm</ogc:PropertyName>',
+               '<ogc:Literal>',area,'</ogc:Literal>',
+               '</ogc:PropertyIsGreaterThan>'
+    )
+  }
+
+    sl = query_cidaXY(AOI$AOI, type = "waterbodies", spatial = TRUE, filter = f)
 
     if(!is.null(sl)){
 
@@ -35,6 +45,7 @@ findWaterbodies = function(AOI = NULL, ids = FALSE) {
 
     report = paste(length(sl),  "NHD waterbodies")
 
+    ids = FALSE
     AOI = return.what(AOI, type = 'waterbodies', report, vals = if(ids){"objectid"})
    }
     return(AOI)

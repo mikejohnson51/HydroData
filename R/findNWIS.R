@@ -20,31 +20,49 @@
 #' }
 #' @author Mike Johnson
 #' @export
+#'
 
-findNWIS = function(AOI = NULL, ids = FALSE, comids = FALSE){
+
+findNWIS = function(AOI = NULL, siteType = "ST", paramCode = "00060", startDate = NULL, endDate = NULL, active = TRUE){
 
   if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 
-  usgsStations = HydroData::usgsStations
-  sp = sf::st_as_sf(x = usgsStations, coords = c("lon_reachCent", "lat_reachCent"), crs = 4269) %>% sf::as_Spatial()
+  if(all(!is.null(startDate), is.null(endDate))){ endDate = Sys.Date() - 1}
+  bb = round(AOI::bbox_st(AOI$AOI), 7)
 
-  sp = sp[AOI$AOI,]
+  url = paste0("https://waterservices.usgs.gov/nwis/site/?format=mapper&bBox=",
+               bb$xmin, ",", bb$ymin, ",", bb$xmax, ",", bb$ymax,
+               if(!is.null(siteType)) { paste0("&siteType=", paste(siteType, collapse = ","))},
+               if(full) {"&seriesCatalogOutput=true"},
+               if(!is.null(paramCode)) { paste0("&parameterCd=", paste(paramCode, collapse = ","))},
+               if(!is.null(startDate)) { paste0("&startDT=", startDate)},
+               if(!is.null(endDate))   { paste0("&endDT=", endDate)},
+               "&siteStatus=", ifelse(active, "active", "all"))
 
-  if (dim(sp)[1] == 0) { warning("0 stations found in AOI") } else {
+  dest = file.path(tempdir(), "tmp.xml")
+  httr::GET(url, httr::write_disk(dest, overwrite=T), httr::add_headers('--header="Accept-Encoding: gzip"'))
+
+  y          <- xml2::read_xml(dest)
+  doc        <- xml2::xml_root(y)
+  sc         <- xml2::xml_children(doc)
+  sites      <- xml2::xml_children(sc)
+  site_no    <- xml2::xml_attr(sites, "sno")
+  station_nm <- xml2::xml_attr(sites, "sna")
+  site_type  <- xml2::xml_attr(sites, "cat")
+  lat        <- as.numeric(xml2::xml_attr(sites, "lat"))
+  lon        <- as.numeric(xml2::xml_attr(sites, "lng"))
+  agency_cd  <- xml2::xml_attr(sites, "agc")
+
+  df <- data.frame(agency_cd, site_no, station_nm, site_type,
+                   lat, lon, stringsAsFactors=FALSE)
+
+
+  sp = sf::st_as_sf(x = df,  coords = c("lon", "lat"), crs = as.character(AOI::aoiProj)) %>% sf::as_Spatial()
 
   AOI[["nwis"]] = sp
 
-  if(comids){ AOI[['nwis_comids']] = sp$feature_id}
-
-  report = paste(length(sp), "USGS NWIS stations")
-
+  report = paste(length(unique(sp$site_no)), "USGS NWIS", paste0(siteType, collapse = ", "), "stations")
+  ids = FALSE
   AOI = return.what(AOI, type = 'nwis', report, vals = if(ids){"site_no"} else {NULL})
-  }
-
   return(AOI)
-
-
 }
-
-
-

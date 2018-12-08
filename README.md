@@ -1,10 +1,28 @@
 # HydroData: Earth Systems Data in R <img src="man/figures/logo.png" width=160 height = 120 align="right" />
 
-[![travis](https://travis-ci.org/mikejohnson51/HydroData.svg?branch=master)](http://travis-ci.org/mikejohnson51/HydroData) [![Coverage Status](https://img.shields.io/coveralls/github/mikejohnson51/HydroData.svg)](https://coveralls.io/github/mikejohnson51/HydroData?branch=master) [![DOI](https://zenodo.org/badge/112221493.svg)](https://zenodo.org/badge/latestdoi/112221493)
+[![travis](https://travis-ci.org/mikejohnson51/HydroData.svg?branch=master)](http://travis-ci.org/mikejohnson51/HydroData)  [![DOI](https://zenodo.org/badge/112221493.svg)](https://zenodo.org/badge/latestdoi/112221493)
 
 **HydroData** is designed to help (1) find, (2) get, (3) visualize, and (4) format disparate earth systems data through a core language (R); a common geospatial reference (ESPG:4629) ; and unifying vocabulary built around querying data by an area of interest (AOI). The package supports access to 20+ National/Global data sources. 
 
 All functions are designed to work with the [AOI](https://mikejohnson51.github.io/AOI/) package and magrittr pipe operation `%>%` allowing successive HydroData calls to be directly chained to an area of interest:
+
+|**Number**|**Dataset**                 | **Description**                                                            | **Format**                       |
+|----------|----------------------------| ---------------------------------------------------------------------------|----------------------------------|
+|1         | **GHCN**                   | Global Historical Climate Network                                          | Vector point                     |
+|2         | **International Airports** | OpenFlights Geo-database                                                   | Vector point                     |
+|3         | **NID**                    | National Inventory of Dams (USACE)                                         | Vector point                     |
+|4         | **NWIS**                   | National Water Information System Site Index                               | Vector point                     |
+|5         | **Snotel**                 | The NRCS Snow Measurement Stations                                         | Vector point                     |
+|6         | **GagesII**                | Geospatial Attributes of Gages for Evaluating Streamflow                   | Vector point, line               |
+|7         | **NLDI**                   | The Network Linked Data Index                                              | Vector point, line, polygon      |
+|8         | **TIGER**                  | 2017 US Census Bureau Road Network                                         | Vector line                      |
+|9         | **NHDPlus**                | National Hydrography Dataset Waterbodies, River Network, Catchments        | Vector line, polygon             |
+|10        | **EPA Basins**             | Environmental Protection Agency NWIS drainage basins                       | Vector polygon                   |
+|11        | **SSURGO**                 | National Cooperative Soil Survey Geospatial Soil Data Base                 | Vector polygon                   |
+|12        | **WBD**                    | The Watershed Boundary Dataset (all HUC levels)                            | Vector polygon                   |
+|13        | **CDL**                    | USDA Crop Data Layers (2008 - 2017)                                        | Raster                           |
+|14        | **NED**                    | National Elevation Dataset (10 and 30 meter resolutions)                   | Raster                           |
+|15        | **NLCD**                   | National Land Cover Dataset (01,06,11) (Impervious, canopy, Land cover)    | Raster                           |
 
 ```r
 myData = getAOI(clip = list("UCSB", 10, 10)) %>% 
