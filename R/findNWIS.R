@@ -23,7 +23,7 @@
 #'
 
 
-findNWIS = function(AOI = NULL, siteType = "ST", paramCode = "00060", startDate = NULL, endDate = NULL, active = TRUE){
+findNWIS = function(AOI = NULL, siteType = "ST", paramCode = "00060", startDate = NULL, endDate = NULL, active = TRUE, full = FALSE){
 
   if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 

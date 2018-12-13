@@ -44,7 +44,7 @@ findNED = function(AOI = NULL, res = 1){
   for(i in 1:dim(mat)[1]){
     urls.bu[i] = paste0('https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/',
                      res,
-                     '/IMG/n',
+                     '/IMG/USGS_NED_',res, "n",
                      mat[i,1],
                      "w",
                      mat[i,2],
@@ -81,5 +81,7 @@ findNED = function(AOI = NULL, res = 1){
   return(AOI)
 }
 
+
+file.remove(tempdir(), recursive = T)
 
 

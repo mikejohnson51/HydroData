@@ -91,7 +91,6 @@ query_cida = function(AOI = NULL, type, spatial = TRUE, filter = NULL){
     sl = NULL
     warning("No features found in this AOI.")
   } else {
-    sl = sf::st_transform(sl, as.character(AOI$AOI@proj4string))
     if(spatial){ sl = sf::as_Spatial(sl)
     }
     return(sl)

@@ -37,7 +37,7 @@ findWaterbodies = function(AOI = NULL, area = NULL) {
     )
   }
 
-    sl = query_cidaXY(AOI$AOI, type = "waterbodies", spatial = TRUE, filter = f)
+    sl = query_cida(AOI$AOI, type = "waterbodies", spatial = TRUE, filter = f)
 
     if(!is.null(sl)){
 

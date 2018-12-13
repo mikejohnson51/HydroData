@@ -23,7 +23,7 @@ findNearestCOMID = function(point = NULL, n = 5, ids = FALSE, bb = FALSE){
   while (dim(lines)[1] < n) {
     lines <-  suppressWarnings(query_cida(
       AOI = suppressMessages(AOI::getAOI( clip = list(point$lat, point$lon, h, w ))),
-      type = 'nhdflowline_network',
+      type = 'nhd',
       spatial = FALSE
     ))
 

@@ -24,11 +24,31 @@
 #' @author Mike Johnson
 #' @export
 
-findNHD = function(AOI = NULL, comid = NULL, streamorder = NULL) {
+findNHD = function(AOI = NULL, comid = NULL, nwis = NULL, streamorder = NULL, crop = T) {
 
   if(!(class(AOI) %in% c("list","HydroData"))){AOI = list(AOI = AOI)}
 
+  substrRight <- function(x, n){
+    substr(x, nchar(x)-n+1, nchar(x))
+  }
+
   f = NULL
+  df = NULL
+
+  if(!is.null(nwis)){
+    url = paste0( "https://cida.usgs.gov/nldi/nwissite/", 'USGS-', nwis)
+    mat = NULL
+    for(i in 1:length(url)){
+      c <- rawToChar(httr::RETRY("GET", url[i], times = 10, pause_cap = 240)$content)
+      f.comid = jsonlite::fromJSON(c, simplifyVector = TRUE)
+      comid = f.comid$features$properties$comid
+      mat = rbind(mat, c(substrRight(url[i], 8), comid))
+    }
+
+    df = data.frame(nwis = mat[,1], comid = mat[,2], stringsAsFactors = FALSE)
+    comid = df$comid
+  }
+
 
   if(!is.null(streamorder)){
 
@@ -56,13 +76,19 @@ findNHD = function(AOI = NULL, comid = NULL, streamorder = NULL) {
                '</ogc:Or>')
   }
 
-  sl = query_cida(AOI = AOI$AOI, type = 'nhd', filter  = f)
+  sl = query_cida(AOI = AOI$AOI, type = 'nhd', filter  = f, spatial = F)
+
+  if(!is.null(df)) { sl = merge(sl, df, "comid")}
 
   if(!is.null(sl)){
 
-    AOI[["nhd"]] = sl[AOI$AOI,]
+    if(!is.null(AOI$AOI)){sl = sf::st_transform(sl, as.character(AOI::aoiProj)) %>%
+      cropHUC(AOI = AOI$AOI, crop = crop)
+    }
 
-    report = paste(length(sl), "nhd flowlines")
+    AOI[["nhd"]] <- if(any(class(sl) %in% "sf")){ sf::as_Spatial(sl) } else { sl }
+
+    report = paste(length(AOI$nhd), "nhd flowlines")
 
     ids = FALSE
     AOI = return.what(AOI, type = 'nhd', report, vals = if(ids){"comid"})
@@ -71,8 +97,3 @@ findNHD = function(AOI = NULL, comid = NULL, streamorder = NULL) {
 
   return(AOI)
 }
-
-
-
-
-
