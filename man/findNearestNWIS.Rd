@@ -4,7 +4,7 @@
 \alias{findNearestNWIS}
 \title{Find Neareast NWIS stations}
 \usage{
-findNearestNWIS(point = NULL, n = 5, ids = FALSE, bb = FALSE)
+findNearestNWIS(point = NULL, n = 5, ids = FALSE, bb = FALSE, ...)
 }
 \arguments{
 \item{point}{a point described by lat/long, can be piped from \link[AOI]{geocode}}

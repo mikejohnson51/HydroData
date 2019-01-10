@@ -16,12 +16,12 @@ findWBD(AOI, level = 8, subbasins = FALSE, crop = TRUE,
 
 \item{crop}{If TRUE, all objects are cropped to the AOI boundaries (default = \code{TRUE})}
 
-\item{ids}{If TRUE,  a vector of finest resolution HUC codes is added to retuned list (default = \code{FALSE})}
+\item{ids}{If TRUE,  a vector of finest resolution HUC codes is added to returned list (default = \code{FALSE})}
 }
 \description{
 The United States Geological Survey maintains a hierarchical system of hydrologic units each assigned a
-unique code (HUC). The heirarchical level is described by the number of digits in the code. A two-diget code (eg. HUC 2) is the coarsest unit of aggregation while the HUC 12 is the finest resulution.
-The spatail geometries of these units are stored in the Watershed Boundary Dataset with coverage of the United States.
+unique code (HUC). The hierarchical level is described by the number of digits in the code. A two-digit code (eg. HUC 2) is the coarsest unit of aggregation while the HUC 12 is the finest resolution.
+The spatial geometries of these units are stored in the Watershed Boundary Dataset with coverage of the United States.
 \code{findWBD} returns a \code{SpatialPolygonsDataFrame*} of WBD boundaries for the specified level within an AOI. Pending the query,
 data comes from the USGS CIDA server or the USGS staged products FTP.
 

@@ -13,7 +13,7 @@
 #' pt = geocode("University of Oregon") %>% findNearestCOMID(n = 5)
 #' }
 
-findNearestCOMID = function(point = NULL, n = 5, ids = FALSE, bb = FALSE){
+findNearestCOMID = function(point = NULL, n = 5, ids = FALSE, streamorder = NULL, bb = FALSE){
 
   h = 5
   w = 5
@@ -21,19 +21,23 @@ findNearestCOMID = function(point = NULL, n = 5, ids = FALSE, bb = FALSE){
   fin = list(loc = point)
 
   while (dim(lines)[1] < n) {
-    lines <-  suppressWarnings(query_cida(
-      AOI = suppressMessages(AOI::getAOI( clip = list(point$lat, point$lon, h, w ))),
-      type = 'nhd',
-      spatial = FALSE
-    ))
+    lines <-  suppressWarnings(
+      findNHD(
+        AOI = suppressMessages(AOI::getAOI( clip = list(point$lat, point$lon, h, w ))),
+        streamorder = streamorder)
+    )
+
+    lines = lines[['nhd']]
 
     if (is.null(lines)) {
       lines = data.frame()
     }
+
     h = h + 2
     w = w + 2
   }
 
+  lines = lines %>% sf::st_as_sf()
   point = sf::st_as_sf(x = point,  coords = c("lon", "lat"), crs = as.character(AOI::aoiProj))
   dist = data.frame(comid = lines$comid, Distance_km = sf::st_distance(x = lines, y = point))
   dist = dist[order(dist$Distance_km)[1:n], ]

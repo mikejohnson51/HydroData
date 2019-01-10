@@ -4,7 +4,8 @@
 \alias{findNearestCOMID}
 \title{Find Neareast COMIDs}
 \usage{
-findNearestCOMID(point = NULL, n = 5, ids = FALSE, bb = FALSE)
+findNearestCOMID(point = NULL, n = 5, ids = FALSE,
+  streamorder = NULL, bb = FALSE)
 }
 \arguments{
 \item{point}{a point described by lat/long, can be piped from \link[AOI]{geocode}}

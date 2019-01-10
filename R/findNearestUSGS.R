@@ -13,23 +13,42 @@
 #' pt = geocode("UCSB") %>% findNearestNWIS(n = 5)
 #' }
 
-findNearestNWIS = function(point = NULL, n = 5, ids = FALSE, bb = FALSE){
+findNearestNWIS = function(point = NULL, n = 5, ids = FALSE, bb = FALSE, ...) {
 
+  h = 5
+  w = 5
+  sta = data.frame()
   fin = list(loc = point)
 
-  df = HydroData::usgsStations
-  df = sf::st_as_sf(x = df,  coords = c("lon_reachCent", "lat_reachCent"), crs = as.character(AOI::aoiProj))
+  while (dim(sta)[1] < n) {
+    sta <-  suppressWarnings(
+      findNWIS(
+        AOI = AOI::getAOI( clip = list(point$lat, point$lon, h, w )), ... )
+    )
+
+    sta = sta[['nwis']]
+
+    if (is.null(sta)) {
+      sta = data.frame()
+    }
+
+    h = h + 2
+    w = w + 2
+  }
+
   point = sf::st_as_sf(x = point,  coords = c("lon", "lat"), crs = as.character(AOI::aoiProj))
-  dist = data.frame(site_no = df$site_no, Distance_km = sf::st_distance(x = df, y = point))
-  dist = dist[order(dist$Distance_km)[1:n],]
 
-  fin[["nwis"]] = as_Spatial(merge(df, dist, by = "site_no"))
-  if (bb)  { fin[["AOI"]] = AOI::getBoundingBox(fin$closest_nwis)}
-  if (ids) { fin[["site_no"]] = unique(fin$closest_nwis$site_no) }
+  sta = sta %>% sf::st_as_sf( crs = st_crs(point))
 
+  dist = data.frame(site_no = sta$site_no, Distance_km = sf::st_distance(x = sta, y = point))
+  dist = dist[order(dist$Distance_km)[1:n], ]
+
+  fin[["nwis"]] = as_Spatial(merge(sta, dist, by = "site_no"))
+  if (bb & dim(fin$nwis)[1] > 1) { fin[["AOI"]] = AOI::getBoundingBox(fin$nwis) }
+  if (ids) { fin[["site_no"]] = unique(fin$nwis$site_no) }
 
   return(fin)
-
 }
+
 
 

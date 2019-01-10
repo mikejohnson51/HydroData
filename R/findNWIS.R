@@ -40,7 +40,9 @@ findNWIS = function(AOI = NULL, siteType = "ST", paramCode = "00060", startDate 
                "&siteStatus=", ifelse(active, "active", "all"))
 
   dest = file.path(tempdir(), "tmp.xml")
-  httr::GET(url, httr::write_disk(dest, overwrite=T), httr::add_headers('--header="Accept-Encoding: gzip"'))
+  y = httr::GET(url, httr::write_disk(dest, overwrite=T), httr::add_headers('--header="Accept-Encoding: gzip"'))
+
+  if(y$status_code != 200) { message("No gages found in this AOI.")} else {
 
   y          <- xml2::read_xml(dest)
   doc        <- xml2::xml_root(y)
@@ -65,4 +67,5 @@ findNWIS = function(AOI = NULL, siteType = "ST", paramCode = "00060", startDate 
   ids = FALSE
   AOI = return.what(AOI, type = 'nwis', report, vals = if(ids){"site_no"} else {NULL})
   return(AOI)
+  }
 }

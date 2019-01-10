@@ -20,7 +20,7 @@ findSSURGO <- function(AOI) {
 
   if (!(class(AOI) %in% c("list", "HydroData"))) {AOI = list(AOI = AOI)}
 
-  bb.st = AOI$AOI %>% AOI::bbox_st()
+  bb.st = AOI::bbox_st(AOI$AOI)
   AOI.sf = sf::st_as_sf(AOI$AOI)
   AOI.sf = sf::st_transform(AOI.sf, "+proj=longlat +datum=WGS84")
 

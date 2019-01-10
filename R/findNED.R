@@ -10,8 +10,7 @@
 #' }
 #' @author Mike Johnson
 #' @export
-
-
+#'
 
 findNED = function(AOI = NULL, res = 1){
 
@@ -39,16 +38,18 @@ findNED = function(AOI = NULL, res = 1){
                      mat[i,1],
                      "w",
                      mat[i,2],
-                     "_IMG.zip")}
+                     "_IMG.zip")
+    }
 
   for(i in 1:dim(mat)[1]){
     urls.bu[i] = paste0('https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/',
                      res,
-                     '/IMG/USGS_NED_',res, "n",
+                     '/IMG/USGS_NED_',res, "_n",
                      mat[i,1],
                      "w",
                      mat[i,2],
-                     ".zip")}
+                     ".zip")
+    }
 
   if(length(urls) > 1){
     verb = 'are'
@@ -81,7 +82,5 @@ findNED = function(AOI = NULL, res = 1){
   return(AOI)
 }
 
-
-file.remove(tempdir(), recursive = T)
 
 

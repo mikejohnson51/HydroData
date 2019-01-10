@@ -108,7 +108,7 @@ findWBD_staged = function(AOI,
 
   if (!(class(AOI) %in% c("list", "HydroData"))) { AOI = list(AOI = AOI) }
 
-  huc_8 = query_cida(AOI$AOI, type = 'huc08', spatial  = FALSE)
+  huc_8 = query_cida(AOI$AOI, type = 'huc8', spatial  = FALSE)
 
   for(i in seq_along(level)) {
     AOI[[paste0("huc", level[i])]] = getWBD_raw(huc_8 = huc_8, level = level[i] ) %>% cropHUC(AOI = AOI$AOI, crop = crop)

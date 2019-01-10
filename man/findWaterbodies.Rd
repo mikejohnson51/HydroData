@@ -4,7 +4,7 @@
 \alias{findWaterbodies}
 \title{Find National Hydrography Dataset Waterbodies}
 \usage{
-findWaterbodies(AOI = NULL, ids = FALSE)
+findWaterbodies(AOI = NULL, area = NULL)
 }
 \arguments{
 \item{AOI}{A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}}

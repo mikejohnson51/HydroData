@@ -15,6 +15,8 @@ download.url = function(url){
     x = httr::GET(url = url, httr::write_disk(destfile, overwrite = T), httr::progress(type = "down"))
   } else {x = list(status_code = 200)}
 
+  if(x$status_code != 200){ file.remove(destfile) }
+
   return(list(code = x$status_code, destfile = destfile))
 
 }

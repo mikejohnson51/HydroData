@@ -4,7 +4,8 @@
 \alias{findNWIS}
 \title{Find USGS NWIS Stream Gages}
 \usage{
-findNWIS(AOI = NULL, ids = FALSE, comids = FALSE)
+findNWIS(AOI = NULL, siteType = "ST", paramCode = "00060",
+  startDate = NULL, endDate = NULL, active = TRUE, full = FALSE)
 }
 \arguments{
 \item{AOI}{A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}}

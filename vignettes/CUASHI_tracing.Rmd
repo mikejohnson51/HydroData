@@ -1,0 +1,160 @@
+---
+title: "Tracing Scripts"
+author: "Mike Johnson"
+date: "1/9/2019"
+output:
+   html_document:
+    toc: true
+    theme: united
+---
+
+```{r setup, include=FALSE}
+library(leaflet)
+devtools::load_all('/Users/mikejohnson/Documents/GitHub/AOI')
+devtools::load_all('/Users/mikejohnson/Documents/GitHub/HydroData')
+
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width=6, 
+  fig.height=4
+)
+
+options(scipen = 9999)
+```
+
+This document outlines the process of tracing upstream basins from a number of possible inputs. The primary purpose of these examples is to extract the bounding coordinates of self-contained headwaters to subset the NWM model/ WRF-hydro input files via [CUAHSI's new toolset](http://subset.cuahsi.org:8080) in a reproducible, meaningful way.
+
+Three examples are given, the first shows a case where a user knows the outlet COMID they what; the second makes use of place-based name to find the nearest COMID; and the third shows how to extract headwater basins from a USGS NWIS Gage, again determined by a place-name location.
+
+Finally, an example shows how to buffer the returned basin by a set number of kilometers (unit of NWM grid); re-project the bounding region to the National Water Model grid, and extract the bounding box coordinates. 
+
+All scripts lie within the [HydroData](https://github.com/mikejohnson51/HydroData) package and an associated AGU presentation can be found [here](https://drive.google.com/open?id=14rwW-uWLirksT_qF7Pvuke29Xrw3cR_N)
+
+## The NLDI
+
+The primary function that will be used is `findNLDI` which provides an interface to the USGS National Linked Data Index. The NLDI is a core product of the Open Water Initiative and provides a search service to discover indexed NHD, NWIS, and WBD data. From a known location (either NHD COMID, NWIS Site ID, or HUC12 ID) `findNLDI`  can return a number of indexed features including the:
+
+1. 'UT' (upper tributary)
+2. 'UM' (upper main stem)
+3. 'DT' (downstream tributary)
+4. 'DM' (downstream main stem)
+5. 'basin' (the delineated basin of the upstream tributary aka 'drainage basin'). 
+
+Obviously, the more features requested, the longer the function will take. For our use we are only interested in the upstream drainage basin so we will only be request  'basins'. Adding a parameters via a vector (eg c("UT", "UM", "basin")), add time, generally on the magnitude of seconds. 
+
+## Example 1: Tracing a known COMID
+
+Starting with a known COMID: 8784031, we can request the upper tributary basin using the HydroData::findNLDI function. 
+
+```{r}
+# Trace NLDI
+system.time({
+  path = HydroData::findNLDI(comid = 8784031, type = 'basin')
+})
+```
+
+`findNLDI` returns a list with a variable number of objects. At minimum, this list includes the query object aka 'site' (in this case the NHD reach); all requested features; and a bounding box of the largest feature (bb). In this example we see the function returned NHD reach 8784031, the drainage basin, and the bounding box containing the drainage basin (bb).
+
+
+```{r}
+## Look at object structure
+str(path, max.level = 2)
+```
+These features can be mapped via leaflet in R. 
+
+```{r , echo = FALSE}
+leaflet() %>% addTiles() %>% 
+  addPolygons(data = path$bb, col = 'gray') %>% 
+  addPolygons(data = path$basin, col = 'red') 
+```
+
+## Example 2: Unknown COMID
+
+In the last example we knew the COMID we wanted, often though this isn't the case. The [AOI package](https://github.com/mikejohnson51/AOI) (a dependency of HydroData) offers a number of useful utilities for geocoding, generating, and manipulating bounding boxes for spatial queries.
+
+Starting with the location of 'University of Alabama', we are going to identify the nearest COMID with a stream order of at least 3 (to avoid small drainage basins) using `HydroData::findNearestCOMID`
+
+```{r}
+#Get the lat/long pair for UofA
+loc = AOI::geocode("University of Alabama")
+  
+# Request the nearest 1 (n) reach with a stream order of at least 3
+seg = HydroData::findNearestCOMID( point = loc, streamorder = 3, n = 1)
+
+# Trace NLDI
+system.time({
+  ua = HydroData::findNLDI(comid = seg$nhd$comid, type = 'basin')
+})
+```
+
+```{r, echo = FALSE}
+# Map
+leaflet() %>% addTiles() %>% 
+  addPolygons(data = ua$bb, col = 'gray') %>% 
+  addPolygons(data = ua$basin, col = 'red') 
+```
+
+## Example 3: Unkwown NWIS Gage:
+
+Often the validation of a modeling effort requires the comparison of a hydrograph. This generally requires observation data which can most easily be accessed from the USGS NWIS system. For those with an unspecified domain, tracing the basin draining to an NWIS gage can be advantageous. In this example we use the HydroData function `findNearestNWIS` to locate the closest gage to 'UCSB':
+
+```{r}
+
+loc = AOI::geocode("UCSB") %>% HydroData::findNearestNWIS(n = 1)
+
+system.time({
+  ucsb = HydroData::findNLDI(nwis = loc$nwis$site_no, type = c('basin'))
+})
+
+```
+```{r, echo = FALSE}
+
+leaflet() %>% addTiles() %>% 
+  addPolygons(data = ucsb$bb, col = 'gray') %>% 
+  addPolygons(data = ucsb$basin, col = 'red') 
+
+```
+
+
+## Buffering a bounding box
+
+By definition a bounding box is the minimum rectangular area containing a region. Since we are interested in subsetting the gridded NWM model domain, it is a good idea to provide some buffer along the edges of our region to ensure it is all retained through projection and clipping. The AOI package offers a nice function to do this called `modify`. Here we are creating a new bounding box (buff.bb) with a 5 kilometer buffer (five NWM grid cells in each direction) and adding it to our object list:
+
+```{r}
+path$buff.bb = AOI::modify(path$bb, d = 5, km = T)
+```
+
+```{r, echo = FALSE}
+leaflet() %>% addTiles() %>% 
+  addPolygons(data = path$bb, col = 'gray') %>% 
+  addPolygons(data = path$basin, col = 'red') %>% 
+  addPolygons(data = path$buff.bb, col = 'green') 
+```
+
+One additional function that might be useful for limiting subsets from the CUAHSI interface is describing the AOI by lat,lon, width (miles), and height (miles) and determining the area (miles2):
+
+```{r}
+
+d = AOI::describe(path$buff.bb)
+
+cat("The region requested is", d$height*d$width, "square miles in size")
+```
+
+## Re-project for NWM subset
+
+To identify the subsetting coordinates in the NWM grid, the buffered bounding box will be re-projected (along with all other listed features) and the coordinates extracted: 
+
+```{r}
+nwm.proj = "+proj=lcc +lat_1=30 +lat_2=60 +lat_0=40.0000076293945 +lon_0=-97 +x_0=0 +y_0=0 +a=6370000 +b=6370000 +units=m +no_defs"
+
+proj.path = lapply(names(path), function(x) sp::spTransform(path[[x]], CRSobj = nwm.proj))
+names(proj.path) = names(path)
+
+(bb.coords = AOI::bbox_st(proj.path$buff.bb))
+
+```
+
+With the `bb.coords` all NCAR subsetting scripts should be able to work!
+
+

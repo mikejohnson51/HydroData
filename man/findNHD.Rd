@@ -4,7 +4,8 @@
 \alias{findNHD}
 \title{Find National Hydrography River Networks}
 \usage{
-findNHD(AOI = NULL, ids = FALSE)
+findNHD(AOI = NULL, comid = NULL, nwis = NULL, streamorder = NULL,
+  crop = T)
 }
 \arguments{
 \item{AOI}{A Spatial* or simple features geometry, can be piped from \link[AOI]{getAOI}}
@@ -16,7 +17,7 @@ a list() of minimum length 2: AOI and nhd
 }
 \description{
 \code{findNHD} returns a \code{SpatialLinesDataframe} of all NHDFlowlines reaches within an AOI.
-Data comes from the USGS CIDA server and contain 92 attributes, perhaps most notably:
+Data comes from the USGS CIDA server and contain 90 attributes, perhaps most notably:
 \itemize{
 \item 'comid'   : \code{integer}  Integer value that uniquely identifies the occurrence of each feature in the NHD
 \item 'reachcode'   : \code{character}  Unique identifier for a ‘reach’. The first eight numbers are the WBD_HUC8
