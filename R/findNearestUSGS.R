@@ -38,7 +38,7 @@ findNearestNWIS = function(point = NULL, n = 5, ids = FALSE, bb = FALSE, ...) {
 
   point = sf::st_as_sf(x = point,  coords = c("lon", "lat"), crs = as.character(AOI::aoiProj))
 
-  sta = sta %>% sf::st_as_sf( crs = st_crs(point))
+  sta = sta %>% sf::st_as_sf( crs = sf::st_crs(point))
 
   dist = data.frame(site_no = sta$site_no, Distance_km = sf::st_distance(x = sta, y = point))
   dist = dist[order(dist$Distance_km)[1:n], ]

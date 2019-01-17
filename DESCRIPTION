@@ -22,7 +22,8 @@ Imports:
     sf,
     sp,
     utils,
-    raster
+    raster,
+    xml2
 Remotes: mikejohnson51/AOI
 License: MIT + file LICENSE
 Encoding: UTF-8

@@ -81,7 +81,7 @@ findWBD = function(AOI,
     if(is.null(shp)){
 
       cat(crayon::white("\nQuery to large for REST Service...\nReverting to direct download...\nPlease be patient...\n\n"))
-      AOI = HydroData:::findWBD_staged(AOI = AOI, level = level, crop = crop)
+      AOI = findWBD_staged(AOI = AOI, level = level, crop = crop)
       return(report.wbd(AOI, ids = ids, crop = crop, level = level))
 
     } else {
